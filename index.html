@@ -2,120 +2,156 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Scheme Sathi</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Citizen Support Portal</title>
+  <link href="css/styles.css" rel="stylesheet">
+  <style>
+    /* If not using Tailwind, add this */
+    .hidden { display: none; }
+    body { font-family: Arial, sans-serif; }
+  </style>
+  <script>
+    function toggleContent(id) {
+      const content = document.getElementById(id);
+      content.classList.toggle('hidden');
+    }
+  </script>
 </head>
 <body class="bg-gray-100">
 
- <!-- Navigation Bar -->
-<nav class="bg-blue-700 text-white p-4 flex justify-between items-center">
-  <h1 class="text-2xl font-bold">Citizen Digital Help Portal</h1>
-  <div class="space-x-6">
-    <a href="schemes.html" class="px-4 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500">Schemes</a>
-    <a href="scholarships.html" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Scholarships</a>
-    <a href="laws.html" class="px-4 py-2 bg-gray-200 text-black rounded hover:bg-gray-300">Laws</a>
-    <a href="contact.html" class="px-4 py-2 bg-blue-300 text-black rounded hover:bg-blue-400">Contact</a>
-  </div>
-</nav>
-<section class="banner">
+  <!-- Navigation -->
+  <header class="bg-blue-600 text-white p-4">
+    <nav class="flex space-x-6">
+      <a href="farmers.html" class="hover:underline">Farmers</a>
+      <a href="women.html" class="hover:underline">Women</a>
+      <a href="middleclass.html" class="hover:underline">Middle Class</a>
+      <a href="pension.html" class="hover:underline">Pension</a>
+    </nav>
+  </header>
 
   <!-- Hero Banner -->
-<section class="bg-blue-700 text-white text-center py-16 hero">
-  <h1 class="text-4xl font-bold">Citizen Digital Help Portal</h1>
-  <p class="mt-4 text-lg max-w-2xl mx-auto">
-    A platform that acts as a bridge between citizens and government services.
-  </p>
-  <p class="mt-2 text-lg max-w-2xl mx-auto italic">
-    Your one-stop guide to government schemes, explained simply and clearly.
-  </p>
-
-  <!-- Announcement strip -->
-  <div class="mt-8">
-    <p class="bg-yellow-400 text-black inline-block px-6 py-2 rounded font-semibold">
-      📢 Latest Update: New Pension Scheme announced for senior citizens.
+  <section class="bg-blue-700 text-white text-center py-16 hero">
+    <h1 class="text-4xl font-bold">Citizen Digital Help Portal</h1>
+    <p class="mt-4 text-lg max-w-2xl mx-auto">
+      A platform that acts as a bridge between citizens and government services.
     </p>
-  </div>
+    <p class="mt-2 text-lg max-w-2xl mx-auto italic">
+      Your one-stop guide to government schemes, explained simply and clearly.
+    </p>
 
-  <!-- Navigation buttons -->
-  <div class="mt-8 space-x-4">
-    <a href="schemes.html" class="px-6 py-3 bg-yellow-400 text-black rounded hover:bg-yellow-500 font-semibold">
-      Explore Schemes
-    </a>
-    <a href="scholarships.html" class="px-6 py-3 bg-green-500 text-white rounded hover:bg-green-600 font-semibold">
-      Check Scholarships
-    </a>
-    <a href="laws.html" class="px-6 py-3 bg-gray-200 text-black rounded hover:bg-gray-300 font-semibold">
-      Latest Laws
-    </a>
-    <a href="contact.html" class="px-6 py-3 bg-blue-300 text-black rounded hover:bg-blue-400 font-semibold">
-      Contact
-    </a>
-  </div>
-</section>
-<section class="categories">
+    <!-- Announcement strip -->
+    <div class="mt-8">
+      <p class="bg-yellow-400 text-black inline-block px-6 py-2 rounded font-semibold">
+        📢 Latest Update: New Pension Scheme announced for senior citizens.
+      </p>
+    </div>
 
- <!-- Categories Grid -->
-<section id="categories" class="max-w-6xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-  
-  <!-- Students -->
-  <div class="bg-white shadow-lg rounded-lg p-6 text-center">
-    <div class="text-4xl mb-3">🎓</div>
-    <h3 class="text-xl font-bold text-blue-700">Students</h3>
-    <p class="text-gray-600 mt-2">Scholarships and education support programs.</p>
-    <a href="schemes.html?category=student" 
-       class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-      View Schemes
-    </a>
-  </div>
+    <!-- Navigation buttons -->
+    <div class="mt-8 space-x-4">
+      <a href="schemes.html" class="px-6 py-3 bg-yellow-400 text-black rounded hover:bg-yellow-500 font-semibold">
+        Explore Schemes
+      </a>
+      <a href="scholarships.html" class="px-6 py-3 bg-green-500 text-white rounded hover:bg-green-600 font-semibold">
+        Check Scholarships
+      </a>
+      <a href="laws.html" class="px-6 py-3 bg-gray-200 text-black rounded hover:bg-gray-300 font-semibold">
+        Latest Laws
+      </a>
+      <a href="contact.html" class="px-6 py-3 bg-blue-300 text-black rounded hover:bg-blue-400 font-semibold">
+        Contact
+      </a>
+    </div>
+  </section>
 
-  <!-- Farmers -->
-  <div class="bg-white shadow-lg rounded-lg p-6 text-center">
-    <div class="text-4xl mb-3">🚜</div>
-    <h3 class="text-xl font-bold text-blue-700">Farmers</h3>
-    <p class="text-gray-600 mt-2">Income support, subsidies, and crop insurance.</p>
-    <a href="schemes.html?category=farmer" 
-       class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-      View Schemes
-    </a>
-  </div>
+  <!-- Featured Schemes -->
+  <main class="max-w-5xl mx-auto p-6 space-y-8">
+    <h1 class="text-3xl font-bold mb-6">Featured Schemes</h1>
 
-  <!-- Pensioners -->
-  <div class="bg-white shadow-lg rounded-lg p-6 text-center">
-    <div class="text-4xl mb-3">👵</div>
-    <h3 class="text-xl font-bold text-blue-700">Pensioners</h3>
-    <p class="text-gray-600 mt-2">Retirement and pension benefits for senior citizens.</p>
-    <a href="schemes.html?category=pensioner" 
-       class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-      View Schemes
-    </a>
-  </div>
+    <!-- Scheme Card -->
+    <div class="bg-white shadow-md rounded-lg mb-6">
+      <div class="p-4 border-b flex justify-between items-center">
+        <h2 class="text-xl font-semibold">PM-KISAN Samman Nidhi</h2>
+        <button onclick="toggleContent('scheme1')" class="text-blue-600 hover:underline">
+          View Details
+        </button>
+      </div>
+      <div id="scheme1" class="hidden p-4 space-y-3">
+        <p><strong>Overview:</strong> ₹6,000 annual income support for small/marginal farmers.</p>
+        <p><strong>Eligibility:</strong> Farmers owning cultivable land.</p>
+        <p><strong>Benefits:</strong> Direct benefit transfer in three installments annually.</p>
+        <a href="https://pmkisan.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+      </div>
+    </div>
 
-  <!-- Women -->
-  <div class="bg-white shadow-lg rounded-lg p-6 text-center">
-    <div class="text-4xl mb-3">👩</div>
-    <h3 class="text-xl font-bold text-blue-700">Women</h3>
-    <p class="text-gray-600 mt-2">Empowerment and welfare programs for women.</p>
-    <a href="schemes.html?category=women" 
-       class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-      View Schemes
-    </a>
-  </div>
+    <!-- Another Scheme Card -->
+    <div class="bg-white shadow-md rounded-lg mb-6">
+      <div class="p-4 border-b flex justify-between items-center">
+        <h2 class="text-xl font-semibold">Ayushman Bharat (PM-JAY)</h2>
+        <button onclick="toggleContent('scheme2')" class="text-blue-600 hover:underline">
+          View Details
+        </button>
+      </div>
+      <div id="scheme2" class="hidden p-4 space-y-3">
+        <p><strong>Overview:</strong> ₹5 lakh health insurance coverage per family.</p>
+        <p><strong>Eligibility:</strong> Families identified under SECC database.</p>
+        <p><strong>Benefits:</strong> Free treatment in empaneled hospitals.</p>
+        <a href="https://pmjay.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+      </div>
+    </div>
+  </main>
 
-  <!-- Middle Class -->
-  <div class="bg-white shadow-lg rounded-lg p-6 text-center">
-    <div class="text-4xl mb-3">👨</div>
-    <h3 class="text-xl font-bold text-blue-700">Middle Class</h3>
-    <p class="text-gray-600 mt-2">Support for families and workers.</p>
-    <a href="schemes.html?category=middle" 
-       class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-      View Schemes
-    </a>
-  </div>
+  <!-- Categories Grid -->
+  <section id="categories" class="max-w-6xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-</section>
+    <!-- Students -->
+    <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+      <div class="text-4xl mb-3">🎓</div>
+      <h3 class="text-xl font-bold text-blue-700">Students</h3>
+      <p class="text-gray-600 mt-2">Scholarships and education support programs.</p>
+      <a href="scholarships.html" class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        View Schemes
+      </a>
+    </div>
 
- 
-  
+    <!-- Farmers -->
+    <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+      <div class="text-4xl mb-3">🚜</div>
+      <h3 class="text-xl font-bold text-blue-700">Farmers</h3>
+      <p class="text-gray-600 mt-2">Income support, subsidies, and crop insurance.</p>
+      <a href="farmers.html" class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        View Schemes
+      </a>
+    </div>
+
+    <!-- Pensioners -->
+    <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+      <div class="text-4xl mb-3">👵</div>
+      <h3 class="text-xl font-bold text-blue-700">Pensioners</h3>
+      <p class="text-gray-600 mt-2">Retirement and pension benefits for senior citizens.</p>
+      <a href="pension.html" class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        View Schemes
+      </a>
+    </div>
+
+    <!-- Women -->
+    <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+      <div class="text-4xl mb-3">👩</div>
+      <h3 class="text-xl font-bold text-blue-700">Women</h3>
+      <p class="text-gray-600 mt-2">Empowerment and welfare programs for women.</p>
+      <a href="women.html" class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        View Schemes
+      </a>
+    </div>
+
+    <!-- Middle Class -->
+    <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+      <div class="text-4xl mb-3">👨</div>
+      <h3 class="text-xl font-bold text-blue-700">Middle Class</h3>
+      <p class="text-gray-600 mt-2">Support for families and workers.</p>
+      <a href="middleclass.html" class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        View Schemes
+      </a>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-gray-800 text-white text-center p-6 mt-12">
