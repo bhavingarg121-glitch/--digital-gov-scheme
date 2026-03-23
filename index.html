@@ -2,46 +2,146 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Citizen Digital Help Portal</title>
+  <title>Scheme Sathi</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Custom CSS for professional government look -->
-  <link rel="stylesheet" href="style.css">
-
 </head>
-<body>
+<body class="bg-gray-100">
 
   <!-- Header -->
-  <header class="bg-blue-900 text-white p-4 flex justify-between items-center w-full">
-    <h1 class="text-xl font-bold">Citizen Digital Help Portal</h1>
-    <nav>
-      <ul class="flex space-x-6">
-        <li><a href="#">Home</a></li>
-        <li><a href="#laws">Laws</a></li>
-        <li><a href="#schemes">Schemes</a></li>
-        <li><a href="#students">Scholarships</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <button id="lang-toggle" class="bg-yellow-400 text-black px-3 py-1 rounded hover:bg-yellow-500">
-      हिंदी / English
-    </button>
+  <header class="bg-blue-700 text-white p-4 text-center">
+    <h1 class="text-2xl font-bold">Scheme Sathi</h1>
+    <p class="text-sm">Your guide to government schemes</p>
   </header>
 
   <!-- Search Bar -->
-  <section class="bg-gray-200 p-4 flex flex-col items-center">
-    <div class="flex w-full max-w-md">
-      <input id="searchInput" type="text" placeholder="Search schemes, laws, scholarships..." 
-             class="flex-grow p-2 rounded border border-gray-400">
-      <button onclick="searchPortal()" class="ml-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-        Search
+  <div class="max-w-2xl mx-auto mt-6">
+    <input type="text" id="searchInput" 
+           placeholder="Search schemes..." 
+           class="w-full p-3 border rounded-lg shadow-sm">
+  </div>
+
+  <!-- Eligibility Checker -->
+  <div class="max-w-2xl mx-auto mt-6 bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-lg font-bold text-blue-700 mb-4">Eligibility Checker</h2>
+    <form id="eligibilityForm" class="space-y-4">
+      <div>
+        <label class="block font-semibold">Age</label>
+        <input type="number" id="age" class="w-full p-2 border rounded" placeholder="Enter your age">
+      </div>
+      <div>
+        <label class="block font-semibold">Annual Income (₹)</label>
+        <input type="number" id="income" class="w-full p-2 border rounded" placeholder="Enter your income">
+      </div>
+      <div>
+        <label class="block font-semibold">Occupation</label>
+        <select id="occupation" class="w-full p-2 border rounded">
+          <option value="">Select</option>
+          <option value="student">Student</option>
+          <option value="farmer">Farmer</option>
+          <option value="pensioner">Pensioner</option>
+        </select>
+      </div>
+      <button type="button" id="checkBtn"
+              class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        Check Schemes
       </button>
+    </form>
+  </div>
+
+  <!-- Scheme Cards -->
+  <div class="max-w-4xl mx-auto mt-8 space-y-6">
+
+    <!-- PM Kisan Scheme -->
+    <div class="scheme-card bg-white shadow-md rounded-lg p-6 border border-gray-200"
+         data-occupation="farmer" data-income="200000" data-minage="18" data-maxage="60">
+      <h2 class="text-xl font-bold text-blue-700">PM Kisan Samman Nidhi</h2>
+      <p class="text-gray-600">Category: Farmers</p>
+      <p class="mt-2 text-gray-800">Income support for small farmers.</p>
+      <div class="details hidden mt-4 bg-gray-50 p-4 rounded-lg">
+        <h3 class="font-bold">Eligibility</h3>
+        <ul class="list-disc list-inside">
+          <li>Small and marginal farmers</li>
+          <li>Own cultivable land</li>
+        </ul>
+      </div>
     </div>
+
+    <!-- Student Scholarship Scheme -->
+    <div class="scheme-card bg-white shadow-md rounded-lg p-6 border border-gray-200"
+         data-occupation="student" data-income="300000" data-minage="15" data-maxage="25">
+      <h2 class="text-xl font-bold text-blue-700">National Scholarship Portal</h2>
+      <p class="text-gray-600">Category: Students</p>
+      <p class="mt-2 text-gray-800">Scholarships for economically weaker students.</p>
+      <div class="details hidden mt-4 bg-gray-50 p-4 rounded-lg">
+        <h3 class="font-bold">Eligibility</h3>
+        <ul class="list-disc list-inside">
+          <li>Students aged 15–25</li>
+          <li>Annual family income below ₹3,00,000</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- External Script -->
+  <script src="js/script.js"></script>
+</body>
+</html>
     <!-- Results will appear here -->
     <div id="searchResults" class="mt-4 w-full max-w-md bg-white shadow-md rounded p-4 hidden"></div>
   </section>
 
+<!-- Scheme Snapshot Cards -->
+  <div class="max-w-4xl mx-auto mt-8 space-y-6">
 
+    <!-- Example Scheme Card -->
+    <div class="bg-white shadow-md rounded-lg p-6 border border-gray-200">
+      <h2 class="text-xl font-bold text-blue-700">PM Kisan Samman Nidhi</h2>
+      <p class="text-gray-600">Category: Farmers</p>
+      <p class="mt-2 text-gray-800">Income support for small farmers.</p>
+      
+      <!-- Expand Button -->
+      <button onclick="toggleDetails('pmkisan')" 
+              class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        View Details
+      </button>
+
+      <!-- Hidden Details -->
+      <div id="pmkisan" class="hidden mt-4 bg-gray-50 p-4 rounded-lg">
+        <h3 class="font-bold">Eligibility</h3>
+        <ul class="list-disc list-inside">
+          <li>Small and marginal farmers</li>
+          <li>Own cultivable land</li>
+        </ul>
+        <h3 class="font-bold mt-3">Documents</h3>
+        <ul class="list-disc list-inside">
+          <li>Aadhaar card</li>
+          <li>Bank account details</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+<!-- Script for Toggle & Search -->
+  <script>
+    function toggleDetails(id) {
+      const section = document.getElementById(id);
+      section.classList.toggle('hidden');
+    }
+
+    // Simple search filter
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+      let filter = this.value.toLowerCase();
+      let cards = document.querySelectorAll('.bg-white.shadow-md');
+      cards.forEach(card => {
+        let text = card.innerText.toLowerCase();
+        card.style.display = text.includes(filter) ? '' : 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>
   <!-- Hero Section -->
 <section class="hero relative bg-cover bg-center h-[80vh]" 
          style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3e/Parliament_House_of_India.jpg');">
@@ -70,9 +170,7 @@
     </ul>
   </section>
 
-  <!-- Schemes Section -->
-  <section id="schemes" class="p-6">
-  <h2>Government Schemes</h2>
+ 
   <!-- Dynamic cards will be injected here -->
   <div id="schemesContainer"></div>
 </section>
@@ -100,6 +198,8 @@
   <footer class="bg-blue-900 text-white text-center p-4 mt-6">
     © 2026 Citizen Digital Help Portal | Connecting People to Government
   </footer>
+ <!-- External Script -->
+  <script src="js/script.js"></script>
 
   <!-- Scripts -->
   <script src="lang.js"></script>
