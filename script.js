@@ -49,17 +49,27 @@ function searchPortal() {
 }
 function searchPortal() {
   const query = document.getElementById("searchInput").value.toLowerCase().trim();
+  const resultsContainer = document.getElementById("searchResults");
+  resultsContainer.innerHTML = ""; // clear old results
 
-  // Find matching scheme
-  const result = schemesIndex.find(scheme =>
+  const matches = schemesIndex.filter(scheme =>
     scheme.keywords.some(keyword => query.includes(keyword))
   );
 
-  if (result) {
-    // Show result in alert or redirect
-    alert(`Found: ${result.name}\nCategory: ${result.category}\nOpening link...`);
-    window.open(result.link, "_blank");
+  if (matches.length > 0) {
+    matches.forEach(scheme => {
+      const item = document.createElement("div");
+      item.className = "mb-3";
+      item.innerHTML = `
+        <h3 class="font-bold">${scheme.name}</h3>
+        <p class="text-sm text-gray-600">Category: ${scheme.category}</p>
+        <a href="${scheme.link}" target="_blank" class="text-blue-700 underline">Go to official site</a>
+      `;
+      resultsContainer.appendChild(item);
+    });
+    resultsContainer.classList.remove("hidden");
   } else {
-    alert("No matching scheme found. Try keywords like 'pension', 'scholarship', or 'PM Kisan'.");
+    resultsContainer.innerHTML = "<p class='text-red-600'>No matching scheme found. Try keywords like 'pension', 'scholarship', or 'PM Kisan'.</p>";
+    resultsContainer.classList.remove("hidden");
   }
 }
