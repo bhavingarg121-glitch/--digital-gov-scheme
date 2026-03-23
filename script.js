@@ -83,3 +83,8 @@ document.getElementById("lang-toggle").addEventListener("click", () => {
   document.querySelector(".hero h2").innerText = t.heroTitle;
   // repeat for other elements
 });
+// script.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderSchemes(); // This will inject all scheme cards into index.html
+});
