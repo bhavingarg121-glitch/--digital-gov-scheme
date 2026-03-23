@@ -69,41 +69,90 @@
   </section>
 
   <!-- Featured Schemes -->
-  <main class="max-w-5xl mx-auto p-6 space-y-8">
-    <h1 class="text-3xl font-bold mb-6">Featured Schemes</h1>
+  
+    <main class="max-w-5xl mx-auto p-6 space-y-8">
+  <h1 class="text-3xl font-bold mb-6">Featured Schemes</h1>
 
-    <!-- Scheme Card -->
-    <div class="bg-white shadow-md rounded-lg mb-6">
-      <div class="p-4 border-b flex justify-between items-center">
-        <h2 class="text-xl font-semibold">PM-KISAN Samman Nidhi</h2>
-        <button onclick="toggleContent('scheme1')" class="text-blue-600 hover:underline">
-          View Details
-        </button>
-      </div>
-      <div id="scheme1" class="scheme-details hidden p-4 space-y-3">
-        <p><strong>Overview:</strong> ₹6,000 annual income support for small/marginal farmers.</p>
-        <p><strong>Eligibility:</strong> Farmers owning cultivable land.</p>
-        <p><strong>Benefits:</strong> Direct benefit transfer in three installments annually.</p>
-        <a href="https://pmkisan.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
-      </div>
+  <!-- Scheme 1 -->
+  <div class="bg-white shadow-md rounded-lg mb-6">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h2 class="text-xl font-semibold">PM-KISAN Samman Nidhi</h2>
+      <button onclick="toggleContent('scheme1')" class="text-blue-600 hover:underline">
+        View Details
+      </button>
     </div>
+    <div id="scheme1" class="scheme-details hidden p-4 space-y-3 transition-all duration-500 ease-in-out">
+      <p><strong>Overview:</strong> ₹6,000 annual income support for small/marginal farmers.</p>
+      <p><strong>Eligibility:</strong> Farmers owning cultivable land.</p>
+      <p><strong>Benefits:</strong> Direct benefit transfer in three installments annually.</p>
+      <a href="https://pmkisan.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+    </div>
+  </div>
 
-    <!-- Another Scheme Card -->
-    <div class="bg-white shadow-md rounded-lg mb-6">
-      <div class="p-4 border-b flex justify-between items-center">
-        <h2 class="text-xl font-semibold">Ayushman Bharat (PM-JAY)</h2>
-        <button onclick="toggleContent('scheme2')" class="text-blue-600 hover:underline">
-          View Details
-        </button>
-      </div>
-      <div id="scheme2" class="scheme-details hidden p-4 space-y-3">
-        <p><strong>Overview:</strong> ₹5 lakh health insurance coverage per family.</p>
-        <p><strong>Eligibility:</strong> Families identified under SECC database.</p>
-        <p><strong>Benefits:</strong> Free treatment in empaneled hospitals.</p>
-        <a href="https://pmjay.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
-      </div>
+  <!-- Scheme 2 -->
+  <div class="bg-white shadow-md rounded-lg mb-6">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h2 class="text-xl font-semibold">Ayushman Bharat (PM-JAY)</h2>
+      <button onclick="toggleContent('scheme2')" class="text-blue-600 hover:underline">
+        View Details
+      </button>
     </div>
-  </main>
+    <div id="scheme2" class="scheme-details hidden p-4 space-y-3 transition-all duration-500 ease-in-out">
+      <p><strong>Overview:</strong> ₹5 lakh health insurance coverage per family.</p>
+      <p><strong>Eligibility:</strong> Families identified under SECC database.</p>
+      <p><strong>Benefits:</strong> Free treatment in empaneled hospitals.</p>
+      <a href="https://pmjay.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+    </div>
+  </div>
+
+  <!-- Scheme 3 -->
+  <div class="bg-white shadow-md rounded-lg mb-6">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h2 class="text-xl font-semibold">Pradhan Mantri Awas Yojana (PMAY)</h2>
+      <button onclick="toggleContent('scheme3')" class="text-blue-600 hover:underline">
+        View Details
+      </button>
+    </div>
+    <div id="scheme3" class="scheme-details hidden p-4 space-y-3 transition-all duration-500 ease-in-out">
+      <p><strong>Overview:</strong> Affordable housing for urban and rural families.</p>
+      <p><strong>Eligibility:</strong> Middle-income groups (MIG I & II).</p>
+      <p><strong>Benefits:</strong> Subsidized home loans, interest rate reduction.</p>
+      <a href="https://pmaymis.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+    </div>
+  </div>
+
+  <!-- Scheme 4 -->
+  <div class="bg-white shadow-md rounded-lg mb-6">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h2 class="text-xl font-semibold">Atal Pension Yojana (APY)</h2>
+      <button onclick="toggleContent('scheme4')" class="text-blue-600 hover:underline">
+        View Details
+      </button>
+    </div>
+    <div id="scheme4" class="scheme-details hidden p-4 space-y-3 transition-all duration-500 ease-in-out">
+      <p><strong>Overview:</strong> Monthly pension for unorganized workers.</p>
+      <p><strong>Eligibility:</strong> Citizens aged 18–40 years with savings account.</p>
+      <p><strong>Benefits:</strong> Pension between ₹1,000–₹5,000 depending on contributions.</p>
+      <a href="https://npscra.nsdl.co.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+    </div>
+  </div>
+
+  <!-- Scheme 5 -->
+  <div class="bg-white shadow-md rounded-lg mb-6">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h2 class="text-xl font-semibold">Beti Bachao Beti Padhao</h2>
+      <button onclick="toggleContent('scheme5')" class="text-blue-600 hover:underline">
+        View Details
+      </button>
+    </div>
+    <div id="scheme5" class="scheme-details hidden p-4 space-y-3 transition-all duration-500 ease-in-out">
+      <p><strong>Overview:</strong> National campaign to promote education and welfare of girl children.</p>
+      <p><strong>Eligibility:</strong> Families with girl children.</p>
+      <p><strong>Benefits:</strong> Awareness programs, scholarships, and community support initiatives.</p>
+      <a href="https://wcd.nic.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+    </div>
+  </div>
+</main>
 
   <!-- Categories Grid -->
   <section id="categories" class="max-w-6xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
