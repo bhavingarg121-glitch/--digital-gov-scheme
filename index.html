@@ -7,109 +7,100 @@
 </head>
 <body class="bg-gray-100">
 
+  <!-- Navigation Bar -->
+  <nav class="bg-blue-700 text-white p-4 flex justify-between">
+    <h1 class="text-2xl font-bold">Scheme Sathi</h1>
+    <div class="space-x-6">
+      <a href="#categories" class="hover:underline">Categories</a>
+      <a href="#eligibility" class="hover:underline">Eligibility</a>
+      <a href="#search" class="hover:underline">Search</a>
+      <a href="#about" class="hover:underline">About</a>
+    </div>
+  </nav>
+
   <!-- Hero Section -->
-  <header class="bg-blue-700 text-white text-center p-10">
-    <h1 class="text-4xl font-bold">Scheme Sathi</h1>
-    <p class="mt-2 text-lg">Your guide to government schemes</p>
-    <div class="mt-6 space-x-4">
-      <button onclick="showSection('categories')" 
-              class="px-4 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500">
-        Explore Schemes
-      </button>
-      <button onclick="showSection('eligibility')" 
-              class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-        Check Eligibility
-      </button>
-      <button onclick="showSection('search')" 
-              class="px-4 py-2 bg-gray-200 text-black rounded hover:bg-gray-300">
-        Search
-      </button>
-      <button onclick="showSection('about')" 
-              class="px-4 py-2 bg-blue-300 text-black rounded hover:bg-blue-400">
-        About
-      </button>
+  <header class="bg-blue-100 text-center p-10">
+    <h2 class="text-3xl font-bold text-blue-700">Welcome to Scheme Sathi</h2>
+    <p class="mt-2 text-lg text-gray-700">
+      Your one-stop guide to government schemes, explained simply and clearly.
+    </p>
+    <div class="mt-6 max-w-xl mx-auto">
+      <input type="text" id="searchInput" 
+             placeholder="Search schemes..." 
+             class="w-full p-3 border rounded shadow">
     </div>
   </header>
 
   <!-- Categories Section -->
-<div id="categories" class="hidden max-w-4xl mx-auto mt-8 grid grid-cols-2 gap-6">
-  <button onclick="loadCategory('student')" 
-          class="bg-white shadow p-6 rounded hover:shadow-lg">🎓 Students</button>
-  <button onclick="loadCategory('farmer')" 
-          class="bg-white shadow p-6 rounded hover:shadow-lg">🚜 Farmers</button>
-  <button onclick="loadCategory('pensioner')" 
-          class="bg-white shadow p-6 rounded hover:shadow-lg">👵 Pensioners</button>
-  <button onclick="loadCategory('women')" 
-          class="bg-white shadow p-6 rounded hover:shadow-lg">👩 Women</button>
-  <button onclick="loadCategory('middle')" 
-          class="bg-white shadow p-6 rounded hover:shadow-lg">👨 Middle Class</button>
-</div>
+  <section id="categories" class="max-w-5xl mx-auto mt-10 grid grid-cols-2 md:grid-cols-3 gap-6">
+    <button onclick="loadCategory('student')" 
+            class="bg-white shadow p-6 rounded text-center hover:shadow-lg">
+      🎓 <h3 class="font-bold text-blue-700">Students</h3>
+      <p class="text-gray-600">Scholarships and education support</p>
+    </button>
+    <button onclick="loadCategory('farmer')" 
+            class="bg-white shadow p-6 rounded text-center hover:shadow-lg">
+      🚜 <h3 class="font-bold text-blue-700">Farmers</h3>
+      <p class="text-gray-600">Income support and subsidies</p>
+    </button>
+    <button onclick="loadCategory('pensioner')" 
+            class="bg-white shadow p-6 rounded text-center hover:shadow-lg">
+      👵 <h3 class="font-bold text-blue-700">Pensioners</h3>
+      <p class="text-gray-600">Retirement and pension benefits</p>
+    </button>
+    <button onclick="loadCategory('women')" 
+            class="bg-white shadow p-6 rounded text-center hover:shadow-lg">
+      👩 <h3 class="font-bold text-blue-700">Women</h3>
+      <p class="text-gray-600">Empowerment and welfare programs</p>
+    </button>
+    <button onclick="loadCategory('middle')" 
+            class="bg-white shadow p-6 rounded text-center hover:shadow-lg">
+      👨 <h3 class="font-bold text-blue-700">Middle Class</h3>
+      <p class="text-gray-600">Support for families and workers</p>
+    </button>
+  </section>
 
-<!-- Dynamic Content Container -->
-<div id="schemeContainer" class="max-w-4xl mx-auto mt-8 space-y-6"></div>
+  <!-- Dynamic Scheme Container -->
+  <section id="schemeContainer" class="max-w-4xl mx-auto mt-8 space-y-6"></section>
 
   <!-- Eligibility Section -->
-  <div id="eligibility" class="hidden max-w-2xl mx-auto mt-8 bg-white p-6 rounded shadow">
-    <h2 class="text-lg font-bold text-blue-700 mb-4">Eligibility Checker</h2>
-    <form id="eligibilityForm" class="space-y-4">
-      <div>
-        <label class="block font-semibold">Age</label>
-        <input type="number" id="age" class="w-full p-2 border rounded" placeholder="Enter your age">
-      </div>
-      <div>
-        <label class="block font-semibold">Annual Income (₹)</label>
-        <input type="number" id="income" class="w-full p-2 border rounded" placeholder="Enter your income">
-      </div>
-      <div>
-        <label class="block font-semibold">Occupation</label>
-        <select id="occupation" class="w-full p-2 border rounded">
-          <option value="">Select</option>
-          <option value="student">Student</option>
-          <option value="farmer">Farmer</option>
-          <option value="pensioner">Pensioner</option>
-        </select>
-      </div>
+  <section id="eligibility" class="max-w-2xl mx-auto mt-12 bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-bold text-blue-700 mb-4">Eligibility Checker</h2>
+    <form class="space-y-4">
+      <input type="number" id="age" placeholder="Enter your age" class="w-full p-2 border rounded">
+      <input type="number" id="income" placeholder="Enter your annual income (₹)" class="w-full p-2 border rounded">
+      <select id="occupation" class="w-full p-2 border rounded">
+        <option value="">Select Occupation</option>
+        <option value="student">Student</option>
+        <option value="farmer">Farmer</option>
+        <option value="pensioner">Pensioner</option>
+        <option value="women">Women</option>
+        <option value="middle">Middle Class</option>
+      </select>
       <button type="button" id="checkBtn"
               class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
         Check Schemes
       </button>
     </form>
-  </div>
-
-  <!-- Search Section -->
-  <div id="search" class="hidden max-w-2xl mx-auto mt-8">
-    <input type="text" id="searchInput" 
-           placeholder="Search schemes..." 
-           class="w-full p-3 border rounded shadow">
-  </div>
+  </section>
 
   <!-- About Section -->
-  <div id="about" class="hidden max-w-3xl mx-auto mt-8 bg-white p-6 rounded shadow">
+  <section id="about" class="max-w-3xl mx-auto mt-12 bg-white p-6 rounded shadow">
     <h2 class="text-xl font-bold text-blue-700 mb-4">About Scheme Sathi</h2>
     <p class="text-gray-700 leading-relaxed">
       Scheme Sathi is designed to bridge the gap between citizens and government resources.
       We provide clear, bilingual, accessible information with direct links to official portals.
-      Our mission is to empower every citizen—students, farmers, pensioners, women, and the middle class—
-      with simplified guidance to access benefits they deserve.
+      Our mission is to empower every citizen with simplified guidance to access benefits they deserve.
     </p>
-  </div>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-gray-800 text-white text-center p-6 mt-12">
     <p>© 2026 Scheme Sathi | Simplifying Government Schemes</p>
-    <p class="text-sm mt-2">Disclaimer: Scheme Sathi provides simplified information. Always verify details on official portals.</p>
+    <p class="text-sm mt-2">Disclaimer: Always verify details on official portals.</p>
   </footer>
 
-  <!-- Script -->
-  <script>
-    function showSection(id) {
-      // Hide all sections
-      document.querySelectorAll('#categories, #eligibility, #search, #about')
-        .forEach(section => section.classList.add('hidden'));
-      // Show selected section
-      document.getElementById(id).classList.remove('hidden');
-    }
-  </script>
-
+  <!-- External Script -->
+  <script src="js/script.js"></script>
 </body>
 </html>
