@@ -7,29 +7,46 @@
 </head>
 <body class="bg-gray-100">
 
-  <!-- Navigation Bar -->
-  <nav class="bg-blue-700 text-white p-4 flex justify-between">
-    <h1 class="text-2xl font-bold">Scheme Sathi</h1>
-    <div class="space-x-6">
-      <a href="#categories" class="hover:underline">Categories</a>
-      <a href="#eligibility" class="hover:underline">Eligibility</a>
-      <a href="#search" class="hover:underline">Search</a>
-      <a href="#about" class="hover:underline">About</a>
-    </div>
-  </nav>
+ <!-- Navigation Bar -->
+<nav class="bg-blue-700 text-white p-4 flex justify-between items-center">
+  <h1 class="text-2xl font-bold">Citizen Digital Help Portal</h1>
+  <div class="space-x-6">
+    <a href="schemes.html" class="px-4 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500">Schemes</a>
+    <a href="scholarships.html" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Scholarships</a>
+    <a href="laws.html" class="px-4 py-2 bg-gray-200 text-black rounded hover:bg-gray-300">Laws</a>
+    <a href="contact.html" class="px-4 py-2 bg-blue-300 text-black rounded hover:bg-blue-400">Contact</a>
+  </div>
+</nav>
 
-  <!-- Hero Section -->
-  <header class="bg-blue-100 text-center p-10">
-    <h2 class="text-3xl font-bold text-blue-700">Welcome to Scheme Sathi</h2>
-    <p class="mt-2 text-lg text-gray-700">
-      Your one-stop guide to government schemes, explained simply and clearly.
+  <!-- Hero Banner -->
+<section class="bg-blue-700 text-white text-center py-16 hero">
+  <h1 class="text-4xl font-bold">Citizen Digital Help Portal</h1>
+  <p class="mt-4 text-lg max-w-2xl mx-auto">
+    A platform that acts as a bridge between citizens and government services.
+  </p>
+  <p class="mt-2 text-lg max-w-2xl mx-auto italic">
+    Your one-stop guide to government schemes, explained simply and clearly.
+  </p>
+  <div class="mt-8">
+    <p class="bg-yellow-400 text-black inline-block px-6 py-2 rounded font-semibold">
+      📢 Latest Update: New Pension Scheme announced for senior citizens.
     </p>
-    <div class="mt-6 max-w-xl mx-auto">
-      <input type="text" id="searchInput" 
-             placeholder="Search schemes..." 
-             class="w-full p-3 border rounded shadow">
-    </div>
-  </header>
+  </div>
+  <div class="mt-8 space-x-4">
+    <a href="schemes.html" class="px-6 py-3 bg-yellow-400 text-black rounded hover:bg-yellow-500 font-semibold">
+      Explore Schemes
+    </a>
+    <a href="scholarships.html" class="px-6 py-3 bg-green-500 text-white rounded hover:bg-green-600 font-semibold">
+      Check Scholarships
+    </a>
+    <a href="laws.html" class="px-6 py-3 bg-gray-200 text-black rounded hover:bg-gray-300 font-semibold">
+      Latest Laws
+    </a>
+    <a href="contact.html" class="px-6 py-3 bg-blue-300 text-black rounded hover:bg-blue-400 font-semibold">
+      Contact
+    </a>
+  </div>
+</section>
 
   <!-- Categories Section -->
   <section id="categories" class="max-w-5xl mx-auto mt-10 grid grid-cols-2 md:grid-cols-3 gap-6">
