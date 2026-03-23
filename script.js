@@ -88,3 +88,50 @@ document.getElementById("lang-toggle").addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
   renderSchemes(); // This will inject all scheme cards into index.html
 });
+
+// Toggle details manually (optional if you want expand buttons later)
+function toggleDetails(id) {
+  const section = document.getElementById(id);
+  section.classList.toggle('hidden');
+}
+
+// Search filter
+document.getElementById('searchInput').addEventListener('keyup', function() {
+  let filter = this.value.toLowerCase();
+  let cards = document.querySelectorAll('.scheme-card');
+  cards.forEach(card => {
+    let text = card.innerText.toLowerCase();
+    card.style.display = text.includes(filter) ? '' : 'none';
+  });
+});
+
+// Eligibility Checker
+document.getElementById('checkBtn').addEventListener('click', checkEligibility);
+
+function checkEligibility() {
+  const age = parseInt(document.getElementById('age').value);
+  const income = parseInt(document.getElementById('income').value);
+  const occupation = document.getElementById('occupation').value;
+
+  const cards = document.querySelectorAll('.scheme-card');
+  cards.forEach(card => {
+    const minAge = parseInt(card.dataset.minage);
+    const maxAge = parseInt(card.dataset.maxage);
+    const maxIncome = parseInt(card.dataset.income);
+    const schemeOccupation = card.dataset.occupation;
+
+    // Hide all first
+    card.style.display = 'none';
+    card.querySelector('.details').classList.add('hidden');
+
+    // Show only matching schemes
+    if (
+      (!isNaN(age) && age >= minAge && age <= maxAge) &&
+      (!isNaN(income) && income <= maxIncome) &&
+      (occupation === schemeOccupation)
+    ) {
+      card.style.display = '';
+      card.querySelector('.details').classList.remove('hidden');
+    }
+  });
+}
