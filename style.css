@@ -1,1 +1,121 @@
+/* General Reset */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
 
+/* Header */
+header {
+  background-color: #0a3d62; /* Deep government blue */
+  color: #fff;
+  border-bottom: 4px solid #f1c40f; /* Accent yellow */
+}
+header h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+header nav a {
+  color: #fff;
+  font-weight: 500;
+}
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+section.hero {
+  background-color: #0a3d62;
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+}
+section.hero h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+section.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Announcement Banner */
+section.announcement {
+  background-color: #f1c40f;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Section Titles */
+h2 {
+  color: #0a3d62;
+  border-bottom: 2px solid #f1c40f;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+/* Cards (Schemes, Laws, etc.) */
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
+  transition: box-shadow 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.card h3 {
+  color: #0a3d62;
+  margin-bottom: 8px;
+}
+.card a {
+  color: #0066cc;
+  text-decoration: none;
+}
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* Search Bar */
+#searchInput {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+button {
+  background-color: #0a3d62;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #082d4a;
+}
+
+/* Search Results */
+#searchResults h3 {
+  color: #0a3d62;
+}
+#searchResults a {
+  color: #0066cc;
+}
+#searchResults a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background-color: #0a3d62;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+}
