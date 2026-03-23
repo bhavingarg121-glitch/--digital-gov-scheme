@@ -1,17 +1,17 @@
 /* General Reset */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #f5f7fa;
-  color: #333;
+  background-color: #FAF9F6; /* Cream background */
+  color: #2C2C2C; /* Dark gray text */
   margin: 0;
   padding: 0;
 }
 
 /* Header */
 header {
-  background-color: #0a3d62; /* Deep government blue */
+  background-color: #A52A2A; /* Lighter maroon */
   color: #fff;
-  border-bottom: 4px solid #f1c40f; /* Accent yellow */
+  border-bottom: 4px solid #FFD700; /* Gold accent */
 }
 header h1 {
   font-size: 1.5rem;
@@ -26,25 +26,29 @@ header nav a:hover {
 }
 
 /* Hero Section */
-section.hero {
-  background-color: #0a3d62;
+.hero {
+  background-color: #A52A2A;
   color: #fff;
   text-align: center;
   padding: 60px 20px;
 }
-section.hero h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
+.hero h2 {
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
-section.hero p {
-  font-size: 1.2rem;
-  max-width: 700px;
-  margin: 0 auto;
+.hero p {
+  color: #f1f1f1;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  font-size: 1.3rem;
+  line-height: 1.6;
 }
 
 /* Announcement Banner */
-section.announcement {
-  background-color: #f1c40f;
+.announcement {
+  background-color: #FFD700; /* Gold */
   color: #000;
   font-weight: bold;
   text-align: center;
@@ -53,15 +57,15 @@ section.announcement {
 
 /* Section Titles */
 h2 {
-  color: #0a3d62;
-  border-bottom: 2px solid #f1c40f;
+  color: #A52A2A;
+  border-bottom: 2px solid #FFD700;
   padding-bottom: 5px;
   margin-bottom: 15px;
 }
 
 /* Cards (Schemes, Laws, etc.) */
 .card {
-  background: #fff;
+  background: #FAF9F6; /* Cream background */
   border: 1px solid #ddd;
   border-radius: 6px;
   padding: 15px;
@@ -71,14 +75,16 @@ h2 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 .card h3 {
-  color: #0a3d62;
+  color: #A52A2A;
   margin-bottom: 8px;
 }
 .card a {
-  color: #0066cc;
+  color: #A52A2A;
   text-decoration: none;
+  font-weight: 500;
 }
 .card a:hover {
+  color: #FFD700;
   text-decoration: underline;
 }
 
@@ -89,7 +95,7 @@ h2 {
   border-radius: 4px;
 }
 button {
-  background-color: #0a3d62;
+  background-color: #A52A2A;
   color: #fff;
   border: none;
   padding: 10px 16px;
@@ -97,7 +103,7 @@ button {
   cursor: pointer;
 }
 button:hover {
-  background-color: #082d4a;
+  background-color: #922B21; /* Slightly darker maroon */
 }
 
 /* Search Results */
@@ -108,10 +114,19 @@ button:hover {
 #searchResults div:hover {
   background: #f9f9f9;
 }
+#searchResults h3 {
+  color: #A52A2A;
+}
+#searchResults a {
+  color: #FFD700;
+}
+#searchResults a:hover {
+  text-decoration: underline;
+}
 
 /* Footer */
 footer {
-  background-color: #0a3d62;
+  background-color: #A52A2A;
   color: #fff;
   text-align: center;
   padding: 15px;
