@@ -101,14 +101,12 @@ button:hover {
 }
 
 /* Search Results */
-#searchResults h3 {
-  color: #0a3d62;
+#searchResults div {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
-#searchResults a {
-  color: #0066cc;
-}
-#searchResults a:hover {
-  text-decoration: underline;
+#searchResults div:hover {
+  background: #f9f9f9;
 }
 
 /* Footer */
