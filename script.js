@@ -47,3 +47,19 @@ function searchPortal() {
     alert("No matching section found. Try 'laws', 'schemes', 'scholarship', or 'contact'.");
   }
 }
+function searchPortal() {
+  const query = document.getElementById("searchInput").value.toLowerCase().trim();
+
+  // Find matching scheme
+  const result = schemesIndex.find(scheme =>
+    scheme.keywords.some(keyword => query.includes(keyword))
+  );
+
+  if (result) {
+    // Show result in alert or redirect
+    alert(`Found: ${result.name}\nCategory: ${result.category}\nOpening link...`);
+    window.open(result.link, "_blank");
+  } else {
+    alert("No matching scheme found. Try keywords like 'pension', 'scholarship', or 'PM Kisan'.");
+  }
+}
