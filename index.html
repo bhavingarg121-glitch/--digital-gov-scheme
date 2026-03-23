@@ -11,6 +11,15 @@
   </style>
   <script>
     function toggleContent(id) {
+      // Close all open scheme details first
+      const allSchemes = document.querySelectorAll('.scheme-details');
+      allSchemes.forEach(scheme => {
+        if (scheme.id !== id) {
+          scheme.classList.add('hidden');
+        }
+      });
+
+      // Toggle the clicked scheme
       const content = document.getElementById(id);
       content.classList.toggle('hidden');
     }
@@ -74,7 +83,7 @@
           View Details
         </button>
       </div>
-      <div id="scheme1" class="hidden p-4 space-y-3">
+      <div id="scheme1" class="scheme-details hidden p-4 space-y-3">
         <p><strong>Overview:</strong> ₹6,000 annual income support for small/marginal farmers.</p>
         <p><strong>Eligibility:</strong> Farmers owning cultivable land.</p>
         <p><strong>Benefits:</strong> Direct benefit transfer in three installments annually.</p>
@@ -90,7 +99,7 @@
           View Details
         </button>
       </div>
-      <div id="scheme2" class="hidden p-4 space-y-3">
+      <div id="scheme2" class="scheme-details hidden p-4 space-y-3">
         <p><strong>Overview:</strong> ₹5 lakh health insurance coverage per family.</p>
         <p><strong>Eligibility:</strong> Families identified under SECC database.</p>
         <p><strong>Benefits:</strong> Free treatment in empaneled hospitals.</p>
