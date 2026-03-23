@@ -25,15 +25,22 @@
     id="searchInput" 
     type="text" 
     placeholder="Search schemes, laws, scholarships..." 
-    class="w-full max-w-md p-2 rounded border border-gray-400"
-  >
-  <button 
-    onclick="searchPortal()" 
-    class="ml-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-  >
-    Search
-  </button>
+    class="flex-grow p-2 rounded border border-gray-400"
+    >
+    <button 
+      onclick="searchPortal()" 
+      class="ml-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+    >
+      Search
+    </button>
+  </div>
+
+  <!-- Results will appear here -->
+  <div id="searchResults" class="mt-4 w-full max-w-md bg-white shadow-md rounded p-4 hidden">
+    <!-- JS will inject results -->
+  </div>
 </section>
+
 
 <!-- Navigation -->
   <nav>
