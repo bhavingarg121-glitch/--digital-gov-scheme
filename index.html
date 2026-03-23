@@ -7,21 +7,41 @@
 </head>
 <body class="bg-gray-100">
 
-  <!-- Header -->
-  <header class="bg-blue-700 text-white p-4 text-center">
-    <h1 class="text-2xl font-bold">Scheme Sathi</h1>
-    <p class="text-sm">Your guide to government schemes</p>
+  <!-- Hero Section -->
+  <header class="bg-blue-700 text-white text-center p-10">
+    <h1 class="text-4xl font-bold">Scheme Sathi</h1>
+    <p class="mt-2 text-lg">Your guide to government schemes</p>
+    <div class="mt-6 space-x-4">
+      <button onclick="showSection('categories')" 
+              class="px-4 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500">
+        Explore Schemes
+      </button>
+      <button onclick="showSection('eligibility')" 
+              class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+        Check Eligibility
+      </button>
+      <button onclick="showSection('search')" 
+              class="px-4 py-2 bg-gray-200 text-black rounded hover:bg-gray-300">
+        Search
+      </button>
+      <button onclick="showSection('about')" 
+              class="px-4 py-2 bg-blue-300 text-black rounded hover:bg-blue-400">
+        About
+      </button>
+    </div>
   </header>
 
-  <!-- Search Bar -->
-  <div class="max-w-2xl mx-auto mt-6">
-    <input type="text" id="searchInput" 
-           placeholder="Search schemes..." 
-           class="w-full p-3 border rounded-lg shadow-sm">
+  <!-- Categories Section -->
+  <div id="categories" class="hidden max-w-4xl mx-auto mt-8 grid grid-cols-2 gap-6">
+    <button class="bg-white shadow p-6 rounded hover:shadow-lg">🎓 Students</button>
+    <button class="bg-white shadow p-6 rounded hover:shadow-lg">🚜 Farmers</button>
+    <button class="bg-white shadow p-6 rounded hover:shadow-lg">👵 Pensioners</button>
+    <button class="bg-white shadow p-6 rounded hover:shadow-lg">👩 Women</button>
+    <button class="bg-white shadow p-6 rounded hover:shadow-lg">👨 Middle Class</button>
   </div>
 
-  <!-- Eligibility Checker -->
-  <div class="max-w-2xl mx-auto mt-6 bg-white p-6 rounded-lg shadow-md">
+  <!-- Eligibility Section -->
+  <div id="eligibility" class="hidden max-w-2xl mx-auto mt-8 bg-white p-6 rounded shadow">
     <h2 class="text-lg font-bold text-blue-700 mb-4">Eligibility Checker</h2>
     <form id="eligibilityForm" class="space-y-4">
       <div>
@@ -48,163 +68,40 @@
     </form>
   </div>
 
-  <!-- Scheme Cards -->
-  <div class="max-w-4xl mx-auto mt-8 space-y-6">
-
-    <!-- PM Kisan Scheme -->
-    <div class="scheme-card bg-white shadow-md rounded-lg p-6 border border-gray-200"
-         data-occupation="farmer" data-income="200000" data-minage="18" data-maxage="60">
-      <h2 class="text-xl font-bold text-blue-700">PM Kisan Samman Nidhi</h2>
-      <p class="text-gray-600">Category: Farmers</p>
-      <p class="mt-2 text-gray-800">Income support for small farmers.</p>
-      <div class="details hidden mt-4 bg-gray-50 p-4 rounded-lg">
-        <h3 class="font-bold">Eligibility</h3>
-        <ul class="list-disc list-inside">
-          <li>Small and marginal farmers</li>
-          <li>Own cultivable land</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Student Scholarship Scheme -->
-    <div class="scheme-card bg-white shadow-md rounded-lg p-6 border border-gray-200"
-         data-occupation="student" data-income="300000" data-minage="15" data-maxage="25">
-      <h2 class="text-xl font-bold text-blue-700">National Scholarship Portal</h2>
-      <p class="text-gray-600">Category: Students</p>
-      <p class="mt-2 text-gray-800">Scholarships for economically weaker students.</p>
-      <div class="details hidden mt-4 bg-gray-50 p-4 rounded-lg">
-        <h3 class="font-bold">Eligibility</h3>
-        <ul class="list-disc list-inside">
-          <li>Students aged 15–25</li>
-          <li>Annual family income below ₹3,00,000</li>
-        </ul>
-      </div>
-    </div>
-
+  <!-- Search Section -->
+  <div id="search" class="hidden max-w-2xl mx-auto mt-8">
+    <input type="text" id="searchInput" 
+           placeholder="Search schemes..." 
+           class="w-full p-3 border rounded shadow">
   </div>
 
-  <!-- External Script -->
-  <script src="js/script.js"></script>
-</body>
-</html>
-    <!-- Results will appear here -->
-    <div id="searchResults" class="mt-4 w-full max-w-md bg-white shadow-md rounded p-4 hidden"></div>
-  </section>
-
-<!-- Scheme Snapshot Cards -->
-  <div class="max-w-4xl mx-auto mt-8 space-y-6">
-
-    <!-- Example Scheme Card -->
-    <div class="bg-white shadow-md rounded-lg p-6 border border-gray-200">
-      <h2 class="text-xl font-bold text-blue-700">PM Kisan Samman Nidhi</h2>
-      <p class="text-gray-600">Category: Farmers</p>
-      <p class="mt-2 text-gray-800">Income support for small farmers.</p>
-      
-      <!-- Expand Button -->
-      <button onclick="toggleDetails('pmkisan')" 
-              class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-        View Details
-      </button>
-
-      <!-- Hidden Details -->
-      <div id="pmkisan" class="hidden mt-4 bg-gray-50 p-4 rounded-lg">
-        <h3 class="font-bold">Eligibility</h3>
-        <ul class="list-disc list-inside">
-          <li>Small and marginal farmers</li>
-          <li>Own cultivable land</li>
-        </ul>
-        <h3 class="font-bold mt-3">Documents</h3>
-        <ul class="list-disc list-inside">
-          <li>Aadhaar card</li>
-          <li>Bank account details</li>
-        </ul>
-      </div>
-    </div>
-
+  <!-- About Section -->
+  <div id="about" class="hidden max-w-3xl mx-auto mt-8 bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-bold text-blue-700 mb-4">About Scheme Sathi</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Scheme Sathi is designed to bridge the gap between citizens and government resources.
+      We provide clear, bilingual, accessible information with direct links to official portals.
+      Our mission is to empower every citizen—students, farmers, pensioners, women, and the middle class—
+      with simplified guidance to access benefits they deserve.
+    </p>
   </div>
-<!-- Script for Toggle & Search -->
-  <script>
-    function toggleDetails(id) {
-      const section = document.getElementById(id);
-      section.classList.toggle('hidden');
-    }
-
-    // Simple search filter
-    document.getElementById('searchInput').addEventListener('keyup', function() {
-      let filter = this.value.toLowerCase();
-      let cards = document.querySelectorAll('.bg-white.shadow-md');
-      cards.forEach(card => {
-        let text = card.innerText.toLowerCase();
-        card.style.display = text.includes(filter) ? '' : 'none';
-      });
-    });
-  </script>
-
-</body>
-</html>
-  <!-- Hero Section -->
-<section class="hero relative bg-cover bg-center h-[80vh]" 
-         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3e/Parliament_House_of_India.jpg');">
-  <div class="absolute inset-0 bg-blue-900 bg-opacity-70 flex flex-col justify-center items-center text-center text-white px-4">
-    <h2>Connecting Citizens to Government Services</h2>
-    <p>One portal for laws, schemes, pensions, scholarships, and more—accessible to everyone.</p>
-    <div>
-      <a href="#schemes">Explore Schemes</a>
-      <a href="#students">Check Scholarships</a>
-      <a href="#laws">Latest Laws</a>
-    </div>
-  </div>
-</section>
-
- <!-- Announcement Banner -->
-<section class="announcement">
-  📢 Latest Update: New Pension Scheme announced for senior citizens.
-</section>
-
-  <!-- Laws Section -->
-  <section id="laws" class="p-6">
-    <h2 class="text-2xl font-bold mb-4">Latest Laws & Policies</h2>
-    <ul class="list-disc pl-6">
-      <li><a href="https://legislative.gov.in/" target="_blank" class="text-blue-700 underline">Recent Law Changes</a></li>
-      <li><a href="https://prsindia.org/" target="_blank" class="text-blue-700 underline">Policy Updates</a></li>
-    </ul>
-  </section>
-
- 
-  <!-- Dynamic cards will be injected here -->
-  <div id="schemesContainer"></div>
-</section>
-      <h3>Farmers</h3>
-      <a href="https://pmkisan.gov.in/" target="_blank">PM Kisan Yojana</a>
-    </div>
-    <div class="card">
-      <h3>Middle Class</h3>
-      <a href="https://www.nsiindia.gov.in/" target="_blank">Pension Schemes</a>
-    </div>
-    <div class="card">
-      <h3>Students</h3>
-      <a href="https://scholarships.gov.in/" target="_blank">National Scholarship Portal</a>
-    </div>
-  </div>
-</section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="p-6">
-    <h2 class="text-2xl font-bold mb-4">Need Help?</h2>
-    <p>Visit <a href="https://www.india.gov.in/" target="_blank" class="text-blue-700 underline">India.gov.in</a> for official government resources.</p>
-  </section>
 
   <!-- Footer -->
-  <footer class="bg-blue-900 text-white text-center p-4 mt-6">
-    © 2026 Citizen Digital Help Portal | Connecting People to Government
+  <footer class="bg-gray-800 text-white text-center p-6 mt-12">
+    <p>© 2026 Scheme Sathi | Simplifying Government Schemes</p>
+    <p class="text-sm mt-2">Disclaimer: Scheme Sathi provides simplified information. Always verify details on official portals.</p>
   </footer>
- <!-- External Script -->
-  <script src="js/script.js"></script>
 
-  <!-- Scripts -->
-  <script src="lang.js"></script>
-  <script src="schemes.js"></script>
-  <script src="script.js"></script>
-  
+  <!-- Script -->
+  <script>
+    function showSection(id) {
+      // Hide all sections
+      document.querySelectorAll('#categories, #eligibility, #search, #about')
+        .forEach(section => section.classList.add('hidden'));
+      // Show selected section
+      document.getElementById(id).classList.remove('hidden');
+    }
+  </script>
+
 </body>
 </html>
