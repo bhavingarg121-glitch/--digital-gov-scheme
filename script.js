@@ -32,3 +32,18 @@ const translations = {
     contactText: "आधिकारिक सरकारी संसाधनों के लिए India.gov.in पर जाएँ।"
   }
 };
+function searchPortal() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+
+  if (query.includes("law")) {
+    document.getElementById("laws").scrollIntoView({ behavior: "smooth" });
+  } else if (query.includes("scheme") || query.includes("farmer") || query.includes("middle") || query.includes("student")) {
+    document.getElementById("schemes").scrollIntoView({ behavior: "smooth" });
+  } else if (query.includes("scholarship")) {
+    document.getElementById("students").scrollIntoView({ behavior: "smooth" });
+  } else if (query.includes("contact") || query.includes("help")) {
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+  } else {
+    alert("No matching section found. Try 'laws', 'schemes', 'scholarship', or 'contact'.");
+  }
+}
