@@ -73,3 +73,13 @@ function searchPortal() {
     resultsContainer.classList.remove("hidden");
   }
 }
+document.getElementById("lang-toggle").addEventListener("click", () => {
+  const currentLang = document.documentElement.lang;
+  const newLang = currentLang === "en" ? "hi" : "en";
+  document.documentElement.lang = newLang;
+
+  const t = translations[newLang];
+  document.querySelector("header h1").innerText = t.header;
+  document.querySelector(".hero h2").innerText = t.heroTitle;
+  // repeat for other elements
+});
