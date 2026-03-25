@@ -7,41 +7,22 @@
 
   <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-  <script>
-    function toggleContent(id) {
-      const allSchemes = document.querySelectorAll('.scheme-details');
-      allSchemes.forEach(scheme => {
-        if (scheme.id !== id) scheme.classList.add('hidden');
-      });
-      document.getElementById(id).classList.toggle('hidden');
-    }
-
-    function toggleMenu() {
-      document.getElementById("mobileMenu").classList.toggle("hidden");
-    }
-  </script>
 </head>
 
 <body class="bg-gray-100">
 
 <!-- 🔷 HEADER -->
 <header class="bg-blue-900 text-white px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-  
   <h1 class="text-2xl font-bold">
     Scheme <span class="text-yellow-400">Sathi</span>
   </h1>
 
-  <!-- Desktop Menu -->
   <nav class="hidden md:flex space-x-6">
-    <a href="news.html" class="hover:text-yellow-400">News</a>
-    <a href="contact.html" class="hover:text-yellow-400">Contact</a>
+    <a href="news.html">News</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- Hamburger -->
-  <button onclick="toggleMenu()" class="md:hidden">
-    ☰
-  </button>
+  <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
 </header>
 
 <!-- Mobile Menu -->
@@ -56,16 +37,13 @@
     Empowering Citizens with Government Schemes
   </h2>
   <p class="text-gray-600">
-    Find, understand, and benefit from government schemes easily.
+    Find and explore schemes easily.
   </p>
 
   <!-- 🔍 SEARCH -->
-  <div class="mt-6 flex justify-center gap-2 flex-wrap">
-    <input type="text" placeholder="Search schemes..."
+  <div class="mt-6 flex justify-center">
+    <input id="searchInput" type="text" placeholder="Search (student, farmer...)"
       class="px-4 py-3 w-72 rounded shadow text-black">
-    <button class="px-5 py-3 bg-yellow-400 text-black font-semibold rounded hover:bg-yellow-500">
-      Search
-    </button>
   </div>
 
   <!-- ⭐ FEATURE -->
@@ -74,69 +52,78 @@
   </p>
 </section>
 
-<!-- 🔷 MISSION -->
-<section class="text-center py-10 bg-white">
-  <p class="text-lg font-medium max-w-3xl mx-auto">
-    Our mission is to empower every citizen of India by providing easy access 
-    to reliable information about government schemes.
-  </p>
-</section>
-
-<!-- 🔷 FEATURED SCHEMES -->
-<main class="w-full p-6">
-  <h2 class="text-3xl font-bold mb-6">Featured Schemes</h2>
-
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-    <!-- Scheme 1 -->
-    <div class="bg-white shadow-lg rounded-lg">
-      <div class="p-4 border-b flex justify-between items-center">
-        <h3 class="text-xl font-semibold">PM-KISAN Samman Nidhi</h3>
-        <button onclick="toggleContent('scheme1')" class="text-blue-600">View</button>
-      </div>
-      <div id="scheme1" class="scheme-details hidden p-4">
-        ₹6,000 support for farmers.
-      </div>
-    </div>
-
-    <!-- Scheme 2 -->
-    <div class="bg-white shadow-lg rounded-lg">
-      <div class="p-4 border-b flex justify-between items-center">
-        <h3 class="text-xl font-semibold">Ayushman Bharat</h3>
-        <button onclick="toggleContent('scheme2')" class="text-blue-600">View</button>
-      </div>
-      <div id="scheme2" class="scheme-details hidden p-4">
-        ₹5 lakh health insurance.
-      </div>
-    </div>
-
-    <!-- Scheme 3 -->
-    <div class="bg-white shadow-lg rounded-lg">
-      <div class="p-4 border-b flex justify-between items-center">
-        <h3 class="text-xl font-semibold">National Scholarship</h3>
-        <button onclick="toggleContent('scheme3')" class="text-blue-600">View</button>
-      </div>
-      <div id="scheme3" class="scheme-details hidden p-4">
-        Scholarships for students.
-      </div>
-    </div>
-
-  </div>
-</main>
-
 <!-- 🔷 CATEGORY CARDS -->
 <section class="w-full mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
 
-  <a href="student.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">🎓 Students</div></a>
-  <a href="farmers.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">🚜 Farmers</div></a>
-  <a href="pensioners.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">👵 Pensioners</div></a>
-  <a href="women.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">👩 Women</div></a>
-  <a href="army.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">🪖 Army</div></a>
-  <a href="scst.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">✊ SC/ST</div></a>
-  <a href="pwd.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">♿ PwD</div></a>
-  <a href="youth.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">💼 Youth</div></a>
-  <a href="msme.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">🏢 MSME</div></a>
+  <a href="student.html" class="card-item">
+    <div class="bg-white p-6 rounded shadow text-center">
+      🎓 Students
+      <p class="text-sm text-gray-600 mt-2">Get scholarships & education support</p>
+    </div>
+  </a>
 
+  <a href="farmers.html" class="card-item">
+    <div class="bg-white p-6 rounded shadow text-center">
+      🚜 Farmers
+      <p class="text-sm text-gray-600 mt-2">Subsidies, insurance & income support</p>
+    </div>
+  </a>
+
+  <a href="pensioners.html" class="card-item">
+    <div class="bg-white p-6 rounded shadow text-center">
+      👵 Pensioners
+      <p class="text-sm text-gray-600 mt-2">Secure monthly pension benefits</p>
+    </div>
+  </a>
+
+  <a href="women.html" class="card-item">
+    <div class="bg-white p-6 rounded shadow text-center">
+      👩 Women
+      <p class="text-sm text-gray-600 mt-2">Empowerment & financial support</p>
+    </div>
+  </a>
+
+  <a href="army.html" class="card-item">
+    <div class="bg-white p-6 rounded shadow text-center">
+      🪖 Army
+      <p class="text-sm text-gray-600 mt-2">Support for ex-servicemen families</p>
+    </div>
+  </a>
+
+  <a href="scst.html" class="card-item">
+    <div class="bg-white p-6 rounded shadow text-center">
+      ✊ SC/ST
+      <p class="text-sm text-gray-600 mt-2">Special scholarships & benefits</p>
+    </div>
+  </a>
+
+  <a href="pwd.html" class="card-item">
+    <div class="bg-white p-6 rounded shadow text-center">
+      ♿ PwD
+      <p class="text-sm text-gray-600 mt-2">Support & accessibility schemes</p>
+    </div>
+  </a>
+
+  <a href="youth.html" class="card-item">
+    <div class="bg-white p-6 rounded shadow text-center">
+      💼 Youth & Jobs
+      <p class="text-sm text-gray-600 mt-2">Jobs, skills & training programs</p>
+    </div>
+  </a>
+
+  <a href="msme.html" class="card-item">
+    <div class="bg-white p-6 rounded shadow text-center">
+      🏢 MSME
+      <p class="text-sm text-gray-600 mt-2">Loans & startup support</p>
+    </div>
+  </a>
+
+</section>
+
+<!-- 📰 LIVE NEWS -->
+<section class="p-6 mt-10">
+  <h2 class="text-2xl font-bold mb-4 text-center">📰 Latest News</h2>
+  <div id="newsContainer" class="grid md:grid-cols-2 gap-6"></div>
 </section>
 
 <!-- 🔷 FOOTER -->
@@ -165,6 +152,45 @@
     © 2026 Scheme Sathi
   </div>
 </footer>
+
+<!-- 🔥 SCRIPTS -->
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("hidden");
+}
+
+// 🔍 SEARCH
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card-item");
+
+searchInput.addEventListener("keyup", function() {
+  const value = this.value.toLowerCase();
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(value) ? "block" : "none";
+  });
+});
+
+// 📰 NEWS API
+const apiKey = "YOUR_API_KEY"; // put your key here
+
+fetch(`https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}`)
+.then(res => res.json())
+.then(data => {
+  const container = document.getElementById("newsContainer");
+
+  data.articles.slice(0,6).forEach(article => {
+    const card = `
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="font-bold">${article.title}</h3>
+        <p class="text-sm text-gray-600 mt-2">${article.description || ""}</p>
+        <a href="${article.url}" target="_blank" class="text-blue-500 mt-2 inline-block">Read more</a>
+      </div>
+    `;
+    container.innerHTML += card;
+  });
+});
+</script>
 
 </body>
 </html>
