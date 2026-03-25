@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 app = Flask(__name__)
 
 # 🔥 NEWS API (Primary)
-API_KEY = "YOUR_API_KEY"
+API_KEY = "766ef16a3a3c48c381e72d76e79a328f"
 
 @app.route("/news")
 def get_news():
