@@ -2,154 +2,145 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Student Schemes | Citizen Support Portal</title>
+  <title>Student Schemes - Scheme Sathi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link href="css/styles.css" rel="stylesheet">
-
-  <style>
-    .hidden { display: none; }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-      animation: fadeInUp 0.6s ease-out;
-    }
-  </style>
 
   <script>
     function toggleContent(id) {
       const allSchemes = document.querySelectorAll('.scheme-details');
       allSchemes.forEach(scheme => {
-        if (scheme.id !== id) {
-          scheme.classList.add('hidden');
-        }
+        if (scheme.id !== id) scheme.classList.add('hidden');
       });
-      const content = document.getElementById(id);
-      content.classList.toggle('hidden');
+      document.getElementById(id).classList.toggle('hidden');
     }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const elements = document.querySelectorAll(".animate-on-scroll");
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, { threshold: 0.2 });
-      elements.forEach(el => observer.observe(el));
-    });
   </script>
 </head>
+
 <body class="bg-gray-100">
 
-  <!-- Navigation -->
-  <header class="bg-blue-600 text-white p-4">
-    <nav class="flex space-x-6">
+<!-- 🔷 HEADER -->
+<header class="bg-blue-900 text-white px-6 py-4 shadow-md w-full sticky top-0 z-50">
+  <div class="flex justify-between items-center">
+    <h1 class="text-2xl font-bold">Scheme <span class="text-yellow-400">Sathi</span></h1>
+    <nav class="space-x-6 text-sm">
       <a href="index.html" class="hover:underline">Home</a>
-      <a href="farmers.html" class="hover:underline">Farmers</a>
-      <a href="women.html" class="hover:underline">Women</a>
-      <a href="middleclass.html" class="hover:underline">Middle Class</a>
-      <a href="pension.html" class="hover:underline">Pension</a>
-      <a href="student.html" class="hover:underline font-bold">Students</a>
+      <a href="schemes.html" class="hover:underline">Schemes</a>
+      <a href="student.html" class="hover:underline font-semibold text-yellow-400">Students</a>
+      <a href="contact.html" class="hover:underline">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <!-- Hero Banner -->
-  <section class="bg-green-600 text-white text-center py-12 hero animate-fadeIn">
-    <h1 class="text-4xl font-bold">Student Support Schemes</h1>
-    <p class="mt-4 text-lg max-w-2xl mx-auto">
-      Scholarships, skill development, and education support programs for students across India.
-    </p>
-  </section>
+<!-- 🔷 HERO -->
+<section class="bg-blue-700 text-white text-center py-12 px-4">
+  <h2 class="text-4xl font-bold mb-4">Student Beneficial Schemes</h2>
+  <p class="max-w-2xl mx-auto text-lg">
+    Explore scholarships, loans, and support programs designed to empower students across India.
+  </p>
+</section>
 
-  <!-- Featured Student Schemes -->
-  <main class="max-w-5xl mx-auto p-6 space-y-8">
-    <h2 class="text-3xl font-bold mb-6">Featured Student Schemes</h2>
+<!-- 🔷 SCHEMES LIST -->
+<main class="max-w-6xl mx-auto p-6 space-y-6">
 
-    <!-- Scheme 1 -->
-    <div class="bg-white shadow-md rounded-lg mb-6 animate-on-scroll">
-      <div class="p-4 border-b flex justify-between items-center">
-        <h3 class="text-xl font-semibold">National Scholarship Portal (NSP)</h3>
-        <button onclick="toggleContent('scheme1')" class="text-blue-600 hover:underline">View Details</button>
-      </div>
-      <div id="scheme1" class="scheme-details hidden p-4 space-y-3 transition-all duration-500 ease-in-out">
-        <p><strong>Overview:</strong> Centralized portal for scholarships offered by the Government of India.</p>
-        <p><strong>Eligibility:</strong> Students from SC/ST/OBC/Minority and economically weaker sections.</p>
-        <p><strong>Benefits:</strong> Direct scholarship transfer to bank accounts.</p>
-        <a href="https://scholarships.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
-      </div>
+  <!-- National Scholarship Portal -->
+  <div class="bg-white shadow-lg rounded-lg">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h3 class="text-xl font-semibold">National Scholarship Portal (NSP)</h3>
+      <button onclick="toggleContent('scheme1')" class="text-blue-600 hover:underline">View Details</button>
     </div>
-
-    <!-- Scheme 2 -->
-    <div class="bg-white shadow-md rounded-lg mb-6 animate-on-scroll">
-      <div class="p-4 border-b flex justify-between items-center">
-        <h3 class="text-xl font-semibold">PM Scholarship Scheme (PMSS)</h3>
-        <button onclick="toggleContent('scheme2')" class="text-blue-600 hover:underline">View Details</button>
-      </div>
-      <div id="scheme2" class="scheme-details hidden p-4 space-y-3 transition-all duration-500 ease-in-out">
-        <p><strong>Overview:</strong> Scholarships for wards of ex-servicemen and widows.</p>
-        <p><strong>Eligibility:</strong> Students pursuing professional courses.</p>
-        <p><strong>Benefits:</strong> Financial support for tuition and living expenses.</p>
-        <a href="https://ksb.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
-      </div>
+    <div id="scheme1" class="scheme-details hidden p-4 space-y-3">
+      <p><strong>Overview:</strong> Centralized platform for scholarships from various ministries.</p>
+      <p><strong>Eligibility:</strong> Students from Class 1 to PhD.</p>
+      <p><strong>Benefits:</strong> Tuition, living expenses, exam fees.</p>
+      <a href="https://scholarships.gov.in" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
     </div>
+  </div>
 
-    <!-- Scheme 3 -->
-    <div class="bg-white shadow-md rounded-lg mb-6 animate-on-scroll">
-      <div class="p-4 border-b flex justify-between items-center">
-        <h3 class="text-xl font-semibold">AICTE Pragati & Saksham Scholarships</h3>
-        <button onclick="toggleContent('scheme3')" class="text-blue-600 hover:underline">View Details</button>
-      </div>
-      <div id="scheme3" class="scheme-details hidden p-4 space-y-3 transition-all duration-500 ease-in-out">
-        <p><strong>Overview:</strong> Scholarships for girl students (Pragati) and differently-abled students (Saksham).</p>
-        <p><strong>Eligibility:</strong> Students admitted to AICTE-approved institutions.</p>
-        <p><strong>Benefits:</strong> Annual financial support for tuition and books.</p>
-        <a href="https://www.aicte-india.org/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
-      </div>
+  <!-- PM-USP -->
+  <div class="bg-white shadow-lg rounded-lg">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h3 class="text-xl font-semibold">Pradhan Mantri Uchchatar Shiksha Protsahan (PM-USP)</h3>
+      <button onclick="toggleContent('scheme2')" class="text-blue-600 hover:underline">View Details</button>
     </div>
+    <div id="scheme2" class="scheme-details hidden p-4 space-y-3">
+      <p><strong>Overview:</strong> Central Sector Scholarship for college/university students.</p>
+      <p><strong>Eligibility:</strong> Meritorious students from low-income families.</p>
+      <p><strong>Benefits:</strong> ₹10,000 per year for UG, ₹20,000 per year for PG.</p>
+      <a href="https://www.myscheme.gov.in" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+    </div>
+  </div>
 
-    <!-- Scheme 4 -->
-    <div class="bg-white shadow-md rounded-lg mb-6 animate-on-scroll">
-      <div class="p-4 border-b flex justify-between items-center">
-        <h3 class="text-xl font-semibold">INSPIRE Scholarship</h3>
-        <button onclick="toggleContent('scheme4')" class="text-blue-600 hover:underline">View Details</button>
-      </div>
-      <div id="scheme4" class="scheme-details hidden p-4 space-y-3 transition-all duration-500 ease-in-out">
-        <p><strong>Overview:</strong> Scholarship for students pursuing natural and basic sciences.</p>
-        <p><strong>Eligibility:</strong> Top 1% in Class XII or JEE/NEET rank holders.</p>
-        <p><strong>Benefits:</strong> Annual scholarship for higher education in science.</p>
-        <a href="https://online-inspire.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
-      </div>
+  <!-- Post-Matric SC/ST -->
+  <div class="bg-white shadow-lg rounded-lg">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h3 class="text-xl font-semibold">Post-Matric Scholarship for SC/ST Students</h3>
+      <button onclick="toggleContent('scheme3')" class="text-blue-600 hover:underline">View Details</button>
     </div>
+    <div id="scheme3" class="scheme-details hidden p-4 space-y-3">
+      <p><strong>Overview:</strong> Financial support for SC/ST students pursuing higher education.</p>
+      <p><strong>Eligibility:</strong> Family income below ₹2.5 lakh/year.</p>
+      <p><strong>Benefits:</strong> Tuition fees, maintenance allowance, exam fees.</p>
+    </div>
+  </div>
 
-    <!-- Scheme 5 -->
-    <div class="bg-white shadow-md rounded-lg mb-6 animate-on-scroll">
-      <div class="p-4 border-b flex justify-between items-center">
-        <h3 class="text-xl font-semibold">National Means-Cum-Merit Scholarship (NMMS)</h3>
-        <button onclick="toggleContent('scheme5')" class="text-blue-600 hover:underline">View Details</button>
-      </div>
-      <div id="scheme5" class="scheme-details hidden p-4 space-y-3 transition-all duration-500 ease-in-out">
-        <p><strong>Overview:</strong> Scholarships for meritorious students from economically weaker sections.</p>
-        <p><strong>Eligibility:</strong> Class VIII students with family income below ₹1.5 lakh.</p>
-        <p><strong>Benefits:</strong> Annual scholarship to support secondary education.</p>
-        <a href="https://scholarships.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
-      </div>
+  <!-- NMMS -->
+  <div class="bg-white shadow-lg rounded-lg">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h3 class="text-xl font-semibold">National Means-Cum-Merit Scholarship (NMMS)</h3>
+      <button onclick="toggleContent('scheme4')" class="text-blue-600 hover:underline">View Details</button>
     </div>
-  </main>
+    <div id="scheme4" class="scheme-details hidden p-4 space-y-3">
+      <p><strong>Overview:</strong> Helps meritorious students from weaker sections continue secondary education.</p>
+      <p><strong>Eligibility:</strong> Class 9–12 students, parental income below ₹1.5 lakh/year.</p>
+      <p><strong>Benefits:</strong> ₹12,000 per year till Class 12.</p>
+    </div>
+  </div>
+
+  <!-- AICTE Pragati & Saksham -->
+  <div class="bg-white shadow-lg rounded-lg">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h3 class="text-xl font-semibold">AICTE Pragati & Saksham Scholarships</h3>
+      <button onclick="toggleContent('scheme5')" class="text-blue-600 hover:underline">View Details</button>
+    </div>
+    <div id="scheme5" class="scheme-details hidden p-4 space-y-3">
+      <p><strong>Pragati:</strong> For girl students in technical education.</p>
+      <p><strong>Saksham:</strong> For differently-abled students in technical courses.</p>
+      <p><strong>Benefits:</strong> ₹50,000 per year for tuition, books, living expenses.</p>
+    </div>
+  </div>
+
+  <!-- Vidya Lakshmi -->
+  <div class="bg-white shadow-lg rounded-lg">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h3 class="text-xl font-semibold">Vidya Lakshmi Education Loan Portal</h3>
+      <button onclick="toggleContent('scheme6')" class="text-blue-600 hover:underline">View Details</button>
+    </div>
+    <div id="scheme6" class="scheme-details hidden p-4 space-y-3">
+      <p><strong>Overview:</strong> Single-window platform for education loans.</p>
+      <p><strong>Eligibility:</strong> Students seeking higher education in India or abroad.</p>
+      <p><strong>Benefits:</strong> Loans up to ₹7.5 lakh (India) and ₹15 lakh (abroad).</p>
+      <a href="https://www.vidyalakshmi.co.in" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+    </div>
+  </div>
+
+  <!-- Skill India -->
+  <div class="bg-white shadow-lg rounded-lg">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h3 class="text-xl font-semibold">Skill India & PMKVY</h3>
+      <button onclick="toggleContent('scheme7')" class="text-blue-600 hover:underline">View Details</button>
+    </div>
+    <div id="scheme7" class="scheme-details hidden p-4 space-y-3">
+      <p><strong>Overview:</strong> Vocational training and skill development for youth.</p>
+      <p><strong>Eligibility:</strong> Students aged 18–35.</p>
+      <p><strong>Benefits:</strong> Free training, certification, job placement support.</p>
+    </div>
+  </div>
+
+</main>
+
 
   <!-- Footer -->
   <footer class="bg-gray-800 text-white text-center p-6 mt-12">
