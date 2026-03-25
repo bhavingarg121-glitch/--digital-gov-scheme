@@ -49,7 +49,23 @@
   <h1 class="text-3xl font-bold">
     Scheme <span class="text-yellow-400">Sathi</span>
   </h1>
-  
+   <!-- Hamburger Button -->
+  <button onclick="toggleMenu()" class="md:hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         class="h-8 w-8" 
+         fill="none" 
+         viewBox="0 0 24 24" 
+         stroke="white">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+            d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+
+  <!-- Desktop Menu -->
+  <nav class="hidden md:flex space-x-6">
+    <a href="news.html" class="hover:text-yellow-400">News</a>
+    <a href="contact.html" class="hover:text-yellow-400">Contact</a>
+  </nav>
 </header>
 
     <!-- Desktop Menu -->
