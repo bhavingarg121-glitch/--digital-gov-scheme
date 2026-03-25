@@ -17,33 +17,42 @@ function toggleContent(id){
 
 <body class="bg-gray-100">
 
-<header class="bg-blue-900 text-white p-4">
-<h1 class="text-xl font-bold">Pensioner Schemes</h1>
+<!-- NAVBAR -->
+<header class="bg-blue-900 text-white px-6 py-4">
+  <div class="flex justify-between">
+    <h1 class="font-bold text-xl">Scheme Sathi</h1>
+    <nav class="space-x-4">
+      <a href="index.html">Home</a>
+      <a href="farmers.html">Farmers</a>
+      <a href="youth.html">Youth</a>
+      <a href="msme.html">MSME</a>
+    </nav>
+  </div>
 </header>
 
 <main class="p-6 space-y-6 max-w-6xl mx-auto">
 
 <!-- PMVVY -->
-<div class="bg-white shadow rounded">
+<div class="bg-white shadow-lg rounded">
 <div class="p-4 flex justify-between">
 <h3>PM Vaya Vandana Yojana</h3>
-<button onclick="toggleContent('p1')">View</button>
+<button onclick="toggleContent('p1')" class="text-blue-600">View</button>
 </div>
-<div id="p1" class="hidden p-4">
+<div id="p1" class="scheme-details hidden p-4">
 <p>Pension plan for senior citizens.</p>
-<a href="https://licindia.in" class="text-blue-500">Official Website</a>
+<a href="https://licindia.in" target="_blank" class="text-blue-500">Official</a>
 </div>
 </div>
 
 <!-- APY -->
-<div class="bg-white shadow rounded">
+<div class="bg-white shadow-lg rounded">
 <div class="p-4 flex justify-between">
 <h3>Atal Pension Yojana</h3>
-<button onclick="toggleContent('p2')">View</button>
+<button onclick="toggleContent('p2')" class="text-blue-600">View</button>
 </div>
-<div id="p2" class="hidden p-4">
-<p>Retirement savings scheme.</p>
-<a href="https://npscra.nsdl.co.in" class="text-blue-500">Official Website</a>
+<div id="p2" class="scheme-details hidden p-4">
+<p>Guaranteed pension after retirement.</p>
+<a href="https://npscra.nsdl.co.in" target="_blank" class="text-blue-500">Official</a>
 </div>
 </div>
 
