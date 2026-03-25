@@ -33,6 +33,9 @@
       });
 
       document.getElementById(id).classList.toggle('hidden');
+      function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("hidden");
+}
     }
   </script>
 </head>
@@ -67,7 +70,10 @@
     <a href="contact.html" class="hover:text-yellow-400">Contact</a>
   </nav>
 </header>
-
+<div id="mobileMenu" class="hidden bg-blue-800 text-white flex flex-col p-4 space-y-3 md:hidden">
+  <a href="news.html" class="hover:text-yellow-300">📰 News</a>
+  <a href="contact.html" class="hover:text-yellow-300">📞 Contact</a>
+</div>
     <!-- Desktop Menu -->
     <nav class="hidden md:flex space-x-4 text-sm">
       <a href="index.html">Home</a>
