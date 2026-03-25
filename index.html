@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,111 +7,68 @@
 
   <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<style>
-    .card {
-      background: white;
-      padding: 24px;
-      border-radius: 14px;
-      text-align: center;
-      font-weight: 600;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
 
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-    }
-  </style>
   <script>
     function toggleContent(id) {
       const allSchemes = document.querySelectorAll('.scheme-details');
       allSchemes.forEach(scheme => {
         if (scheme.id !== id) scheme.classList.add('hidden');
       });
-
       document.getElementById(id).classList.toggle('hidden');
-      function toggleMenu() {
-  document.getElementById("mobileMenu").classList.toggle("hidden");
-}
+    }
+
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
     }
   </script>
 </head>
 
 <body class="bg-gray-100">
- 
 
-<header class="bg-blue-900 text-white px-6 py-4 shadow-md w-full sticky top-0 z-50">
+<!-- 🔷 HEADER -->
+<header class="bg-blue-900 text-white px-6 py-4 flex justify-between items-center sticky top-0 z-50">
   
-  <div class="flex justify-between items-center">
-    
-    <!-- 🔷 HEADER -->
-<header class="bg-blue-900 text-white py-6 text-center shadow-md">
-  <h1 class="text-3xl font-bold">
+  <h1 class="text-2xl font-bold">
     Scheme <span class="text-yellow-400">Sathi</span>
   </h1>
-   <!-- Hamburger Button -->
-  <button onclick="toggleMenu()" class="md:hidden">
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         class="h-8 w-8" 
-         fill="none" 
-         viewBox="0 0 24 24" 
-         stroke="white">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-            d="M4 6h16M4 12h16M4 18h16"/>
-    </svg>
-  </button>
 
   <!-- Desktop Menu -->
   <nav class="hidden md:flex space-x-6">
     <a href="news.html" class="hover:text-yellow-400">News</a>
     <a href="contact.html" class="hover:text-yellow-400">Contact</a>
   </nav>
+
+  <!-- Hamburger -->
+  <button onclick="toggleMenu()" class="md:hidden">
+    ☰
+  </button>
 </header>
+
+<!-- Mobile Menu -->
 <div id="mobileMenu" class="hidden bg-blue-800 text-white flex flex-col p-4 space-y-3 md:hidden">
-  <a href="news.html" class="hover:text-yellow-300">📰 News</a>
-  <a href="contact.html" class="hover:text-yellow-300">📞 Contact</a>
+  <a href="news.html">📰 News</a>
+  <a href="contact.html">📞 Contact</a>
 </div>
-    
-
-    <!-- Mobile Button -->
-    <button onclick="toggleMenu()" class="md:hidden text-2xl">
-      ☰
-    </button>
-
-  </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden flex-col mt-4 space-y-3 md:hidden">
-    <a href="index.html">Home</a>
-  
-    <a href="contact.html">Contact</a>
-  </div>
-
-</header>
-
 
 <!-- 🔷 HERO -->
 <section class="text-center py-10 px-4">
   <h2 class="text-3xl font-bold mb-4">
-
     Empowering Citizens with Government Schemes
   </h2>
- <p class="text-gray-600">
-    Find, understand, and benefit from government schemes in a simple and accessible way.
+  <p class="text-gray-600">
+    Find, understand, and benefit from government schemes easily.
   </p>
-</section>
-  <!-- 🔍 Search -->
-  <div class="mt-6">
+
+  <!-- 🔍 SEARCH -->
+  <div class="mt-6 flex justify-center gap-2 flex-wrap">
     <input type="text" placeholder="Search schemes..."
-      class="px-4 py-3 w-72 rounded text-black">
+      class="px-4 py-3 w-72 rounded shadow text-black">
     <button class="px-5 py-3 bg-yellow-400 text-black font-semibold rounded hover:bg-yellow-500">
       Search
     </button>
   </div>
 
-  <!-- Announcement -->
+  <!-- ⭐ FEATURE -->
   <p class="mt-6 bg-yellow-400 text-black inline-block px-6 py-2 rounded font-semibold">
     📢 New Pension Scheme for Senior Citizens Announced
   </p>
@@ -126,150 +82,88 @@
   </p>
 </section>
 
-<!-- Featured Schemes -->
+<!-- 🔷 FEATURED SCHEMES -->
 <main class="w-full p-6">
   <h2 class="text-3xl font-bold mb-6">Featured Schemes</h2>
 
   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <!-- PM-KISAN -->
+
+    <!-- Scheme 1 -->
     <div class="bg-white shadow-lg rounded-lg">
       <div class="p-4 border-b flex justify-between items-center">
         <h3 class="text-xl font-semibold">PM-KISAN Samman Nidhi</h3>
-        <button onclick="toggleContent('scheme1')" class="text-blue-600 hover:underline">View Details</button>
+        <button onclick="toggleContent('scheme1')" class="text-blue-600">View</button>
       </div>
-      <div id="scheme1" class="scheme-details hidden p-4 space-y-3">
-        <p><strong>Overview:</strong> ₹6,000 annual support for farmers.</p>
-        <p><strong>Eligibility:</strong> Farmers with cultivable land.</p>
-        <a href="https://pmkisan.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+      <div id="scheme1" class="scheme-details hidden p-4">
+        ₹6,000 support for farmers.
       </div>
     </div>
 
-    <!-- Ayushman Bharat -->
+    <!-- Scheme 2 -->
     <div class="bg-white shadow-lg rounded-lg">
       <div class="p-4 border-b flex justify-between items-center">
-        <h3 class="text-xl font-semibold">Ayushman Bharat Yojana</h3>
-        <button onclick="toggleContent('scheme2')" class="text-blue-600 hover:underline">View Details</button>
+        <h3 class="text-xl font-semibold">Ayushman Bharat</h3>
+        <button onclick="toggleContent('scheme2')" class="text-blue-600">View</button>
       </div>
-      <div id="scheme2" class="scheme-details hidden p-4 space-y-3">
-        <p><strong>Overview:</strong> Free health insurance up to ₹5 lakh per family.</p>
-        <p><strong>Eligibility:</strong> Low-income families.</p>
-        <a href="https://pmjay.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+      <div id="scheme2" class="scheme-details hidden p-4">
+        ₹5 lakh health insurance.
       </div>
     </div>
 
-    <!-- National Scholarship -->
+    <!-- Scheme 3 -->
     <div class="bg-white shadow-lg rounded-lg">
       <div class="p-4 border-b flex justify-between items-center">
-        <h3 class="text-xl font-semibold">National Scholarship Portal</h3>
-        <button onclick="toggleContent('scheme3')" class="text-blue-600 hover:underline">View Details</button>
+        <h3 class="text-xl font-semibold">National Scholarship</h3>
+        <button onclick="toggleContent('scheme3')" class="text-blue-600">View</button>
       </div>
-      <div id="scheme3" class="scheme-details hidden p-4 space-y-3">
-        <p><strong>Overview:</strong> Scholarships for students across India.</p>
-        <p><strong>Eligibility:</strong> Students from Class 1 to PhD.</p>
-        <a href="https://scholarships.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+      <div id="scheme3" class="scheme-details hidden p-4">
+        Scholarships for students.
       </div>
     </div>
+
   </div>
 </main>
-<!-- Categories -->
+
+<!-- 🔷 CATEGORY CARDS -->
 <section class="w-full mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
 
-  <!-- Students -->
-  <a href="student.html">
-    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
-      <div class="text-4xl">🎓</div>
-      <h3 class="text-xl font-bold mt-2">Students</h3>
-      <p class="text-gray-600">Scholarships & education schemes</p>
+  <a href="student.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">🎓 Students</div></a>
+  <a href="farmers.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">🚜 Farmers</div></a>
+  <a href="pensioners.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">👵 Pensioners</div></a>
+  <a href="women.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">👩 Women</div></a>
+  <a href="army.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">🪖 Army</div></a>
+  <a href="scst.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">✊ SC/ST</div></a>
+  <a href="pwd.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">♿ PwD</div></a>
+  <a href="youth.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">💼 Youth</div></a>
+  <a href="msme.html"><div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">🏢 MSME</div></a>
+
+</section>
+
+<!-- 🔷 FOOTER -->
+<footer class="bg-blue-900 text-white mt-12">
+  <div class="max-w-6xl mx-auto px-6 py-8 grid md:grid-cols-3 gap-6">
+
+    <div>
+      <h3 class="font-bold">Scheme Sathi</h3>
+      <p class="text-sm text-gray-300">Helping citizens access schemes easily.</p>
     </div>
-  </a>
 
-  <!-- Farmers -->
-  <a href="farmers.html">
-    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
-      <div class="text-4xl">🚜</div>
-      <h3 class="text-xl font-bold mt-2">Farmers</h3>
-      <p class="text-gray-600">Subsidies & agricultural support</p>
+    <div>
+      <h3 class="font-bold">Links</h3>
+      <a href="news.html" class="block">News</a>
+      <a href="contact.html" class="block">Contact</a>
     </div>
-  </a>
 
-  <!-- Pensioners -->
-  <a href="pensioners.html">
-    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
-      <div class="text-4xl">👵</div>
-      <h3 class="text-xl font-bold mt-2">Pensioners</h3>
-      <p class="text-gray-600">Retirement & social security</p>
+    <div>
+      <h3 class="font-bold">Info</h3>
+      <p class="text-sm text-gray-300">India 🇮🇳</p>
     </div>
-  </a>
 
-  <!-- Women -->
-  <a href="women.html">
-    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
-      <div class="text-4xl">👩</div>
-      <h3 class="text-xl font-bold mt-2">Women</h3>
-      <p class="text-gray-600">Empowerment & welfare schemes</p>
-    </div>
-  </a>
+  </div>
 
-  <!-- Army -->
-  <a href="army.html">
-    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
-      <div class="text-4xl">🪖</div>
-      <h3 class="text-xl font-bold mt-2">Army</h3>
-      <p class="text-gray-600">Support for ex-servicemen</p>
-    </div>
-  </a>
-
-  <!-- SC/ST -->
-  <a href="scst.html">
-    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
-      <div class="text-4xl">✊</div>
-      <h3 class="text-xl font-bold mt-2">SC/ST</h3>
-      <p class="text-gray-600">Special category benefits</p>
-    </div>
-  </a>
-
-  <!-- PwD -->
-  <a href="pwd.html">
-    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
-      <div class="text-4xl">♿</div>
-      <h3 class="text-xl font-bold mt-2">PwD</h3>
-      <p class="text-gray-600">Schemes for persons with disabilities</p>
-    </div>
-  </a>
-
-  <!-- Youth & Jobs -->
-  <a href="youth.html">
-    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
-      <div class="text-4xl">💼</div>
-      <h3 class="text-xl font-bold mt-2">Youth & Jobs</h3>
-      <p class="text-gray-600">Employment & skill development</p>
-    </div>
-  </a>
-
-  <!-- MSME -->
-  <a href="msme.html">
-    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
-      <div class="text-4xl">🏢</div>
-      <h3 class="text-xl font-bold mt-2">Entrepreneurs & MSMEs</h3>
-      <p class="text-gray-600">Business loans & startup support</p>
-    </div>
-  </a>
-
-
-
- 
-<!-- 🔻 FOOTER -->
-<footer class="bg-blue-900 text-white text-center p-6 mt-12">
-  <p class="font-semibold">Government Schemes Hub</p>
-
-  <p class="text-sm mt-2 max-w-2xl mx-auto">
-    This platform is an independent initiative to spread awareness about government schemes. 
-    Please verify details from official government websites.
-  </p>
-
-  <p class="text-xs mt-2 opacity-70">
+  <div class="text-center text-sm bg-blue-800 py-3">
     © 2026 Scheme Sathi
-  </p>
+  </div>
 </footer>
 
 </body>
