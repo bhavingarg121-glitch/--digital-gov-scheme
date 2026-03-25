@@ -5,7 +5,7 @@
   <title>Scheme Sathi Portal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Tailwind -->
+  <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
@@ -17,15 +17,17 @@
     Scheme <span class="text-yellow-400">Sathi</span>
   </h1>
 
+  <!-- Desktop Menu -->
   <nav class="hidden md:flex space-x-6">
-    <a href="news.html">News</a>
-    <a href="contact.html">Contact</a>
+    <a href="news.html" class="hover:text-yellow-400">News</a>
+    <a href="contact.html" class="hover:text-yellow-400">Contact</a>
   </nav>
 
+  <!-- Mobile Menu Button -->
   <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
 </header>
 
-<!-- Mobile Menu -->
+<!-- 📱 MOBILE MENU -->
 <div id="mobileMenu" class="hidden bg-blue-800 text-white flex flex-col p-4 space-y-3 md:hidden">
   <a href="news.html">📰 News</a>
   <a href="contact.html">📞 Contact</a>
@@ -56,89 +58,78 @@
 <section class="w-full mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
 
   <a href="student.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
+    <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">
       🎓 Students
       <p class="text-sm text-gray-600 mt-2">Get scholarships & education support</p>
     </div>
   </a>
 
   <a href="farmers.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
+    <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">
       🚜 Farmers
-      <p class="text-sm text-gray-600 mt-2">Subsidies, insurance & income support</p>
+      <p class="text-sm text-gray-600 mt-2">Subsidies & income support</p>
     </div>
   </a>
 
   <a href="pensioners.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
+    <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">
       👵 Pensioners
-      <p class="text-sm text-gray-600 mt-2">Secure monthly pension benefits</p>
+      <p class="text-sm text-gray-600 mt-2">Monthly pension benefits</p>
     </div>
   </a>
 
   <a href="women.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
+    <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">
       👩 Women
-      <p class="text-sm text-gray-600 mt-2">Empowerment & financial support</p>
+      <p class="text-sm text-gray-600 mt-2">Empowerment schemes</p>
     </div>
   </a>
 
   <a href="army.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
+    <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">
       🪖 Army
-      <p class="text-sm text-gray-600 mt-2">Support for ex-servicemen families</p>
+      <p class="text-sm text-gray-600 mt-2">Ex-servicemen support</p>
     </div>
   </a>
 
   <a href="scst.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
+    <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">
       ✊ SC/ST
-      <p class="text-sm text-gray-600 mt-2">Special scholarships & benefits</p>
+      <p class="text-sm text-gray-600 mt-2">Special category benefits</p>
     </div>
   </a>
 
   <a href="pwd.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
+    <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">
       ♿ PwD
-      <p class="text-sm text-gray-600 mt-2">Support & accessibility schemes</p>
+      <p class="text-sm text-gray-600 mt-2">Disability support schemes</p>
     </div>
   </a>
 
   <a href="youth.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
+    <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">
       💼 Youth & Jobs
-      <p class="text-sm text-gray-600 mt-2">Jobs, skills & training programs</p>
+      <p class="text-sm text-gray-600 mt-2">Jobs & skill programs</p>
     </div>
   </a>
 
   <a href="msme.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
+    <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition">
       🏢 MSME
-      <p class="text-sm text-gray-600 mt-2">Loans & startup support</p>
+      <p class="text-sm text-gray-600 mt-2">Business & startup support</p>
     </div>
   </a>
 
 </section>
 
 <!-- 📰 LIVE NEWS -->
-<script>
-fetch("http://127.0.0.1:5000/news")
-.then(res => res.json())
-.then(data => {
-  const container = document.getElementById("newsContainer");
+<section class="p-6 mt-10">
+  <h2 class="text-2xl font-bold mb-4 text-center">📰 Latest News</h2>
 
-  data.forEach(article => {
-    const card = `
-      <div class="bg-white p-4 rounded shadow">
-        <h3 class="font-bold">${article.title}</h3>
-        <p class="text-sm text-gray-600">${article.description || ""}</p>
-        <a href="${article.url}" target="_blank" class="text-blue-500">Read more</a>
-      </div>
-    `;
-    container.innerHTML += card;
-  });
-});
-</script>
+  <div id="newsContainer" class="grid md:grid-cols-2 gap-6">
+    <p class="text-center col-span-full">Loading news...</p>
+  </div>
+</section>
 
 <!-- 🔷 FOOTER -->
 <footer class="bg-blue-900 text-white mt-12">
@@ -150,9 +141,9 @@ fetch("http://127.0.0.1:5000/news")
     </div>
 
     <div>
-      <h3 class="font-bold">Links</h3>
-      <a href="news.html" class="block">News</a>
-      <a href="contact.html" class="block">Contact</a>
+      <h3 class="font-bold">Quick Links</h3>
+      <a href="news.html" class="block hover:underline">News</a>
+      <a href="contact.html" class="block hover:underline">Contact</a>
     </div>
 
     <div>
@@ -173,7 +164,7 @@ function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("hidden");
 }
 
-// 🔍 SEARCH
+// 🔍 SEARCH FUNCTION
 const searchInput = document.getElementById("searchInput");
 const cards = document.querySelectorAll(".card-item");
 
@@ -185,24 +176,33 @@ searchInput.addEventListener("keyup", function() {
   });
 });
 
-// 📰 NEWS API
-const apiKey = "YOUR_API_KEY"; // put your key here
-
-fetch(`https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}`)
+// 📰 FETCH NEWS FROM BACKEND
+fetch("http://127.0.0.1:5000/news")
 .then(res => res.json())
 .then(data => {
   const container = document.getElementById("newsContainer");
 
-  data.articles.slice(0,6).forEach(article => {
+  container.innerHTML = "";
+
+  if (!data || data.length === 0) {
+    container.innerHTML = "<p>No news available</p>";
+    return;
+  }
+
+  data.forEach(article => {
     const card = `
-      <div class="bg-white p-4 rounded shadow">
-        <h3 class="font-bold">${article.title}</h3>
-        <p class="text-sm text-gray-600 mt-2">${article.description || ""}</p>
-        <a href="${article.url}" target="_blank" class="text-blue-500 mt-2 inline-block">Read more</a>
+      <div class="bg-white p-4 rounded shadow text-black">
+        <h3 class="font-bold text-lg">${article.title || "No Title"}</h3>
+        <p class="text-gray-700 mt-2">${article.description || "No description available"}</p>
+        <a href="${article.url}" target="_blank" class="text-blue-600 mt-2 inline-block">Read more</a>
       </div>
     `;
     container.innerHTML += card;
   });
+})
+.catch(() => {
+  document.getElementById("newsContainer").innerHTML =
+    "<p class='text-red-500'>Failed to load news</p>";
 });
 </script>
 
