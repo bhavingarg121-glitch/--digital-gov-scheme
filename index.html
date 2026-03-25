@@ -8,7 +8,23 @@
 
   <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 14px;
+      text-align: center;
+      font-weight: 600;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
 
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    }
+  </style>
   <script>
     function toggleContent(id) {
       const allSchemes = document.querySelectorAll('.scheme-details');
@@ -28,10 +44,13 @@
   
   <div class="flex justify-between items-center">
     
-    <!-- Logo -->
-    <h1 class="text-2xl font-bold">
-      Scheme <span class="text-yellow-400">Sathi</span>
-    </h1>
+    <!-- 🔷 HEADER -->
+<header class="bg-blue-900 text-white py-6 text-center shadow-md">
+  <h1 class="text-3xl font-bold">
+    Scheme <span class="text-yellow-400">Sathi</span>
+  </h1>
+  
+</header>
 
     <!-- Desktop Menu -->
     <nav class="hidden md:flex space-x-4 text-sm">
@@ -73,41 +92,17 @@
 
 </header>
 
-<!-- 🔷 HEADER -->
-<header class="bg-blue-900 text-white px-6 py-4 shadow-md w-full sticky top-0 z-50">
-  <div class="flex justify-between items-center">
-    
-    <h1 class="text-2xl font-bold">
-      Scheme <span class="text-yellow-400">Sathi</span>
-    </h1>
 
-    <nav class="space-x-4 text-sm flex flex-wrap">
-      <a href="index.html" class="hover:underline">Home</a>
-      <a href="schemes.html" class="hover:underline">Schemes</a>
-      <a href="farmers.html" class="hover:underline">Farmers</a>
-      <a href="student.html" class="hover:underline">Students</a>
-      <a href="women.html" class="hover:underline">Women</a>
-      <a href="pensioners.html" class="hover:underline">Pensioners</a>
-      <a href="army.html" class="hover:underline">Army</a>
-      <a href="scst.html" class="hover:underline">SC/ST</a>
-      <a href="pwd.html" class="hover:underline">PwD</a>
-      <a href="youth.html" class="hover:underline">Youth</a>
-      <a href="msme.html" class="hover:underline">MSME</a>
-      <a href="contact.html" class="hover:underline">Contact</a>
-    </nav>
-
-  </div>
-</header>
 <!-- 🔷 HERO -->
-<section class="bg-blue-700 text-white text-center py-16 px-4">
-  <h2 class="text-4xl font-bold mb-4">
+<section class="text-center py-10 px-4">
+  <h2 class="text-3xl font-bold mb-4">
+
     Empowering Citizens with Government Schemes
   </h2>
-
-  <p class="max-w-2xl mx-auto text-lg">
+ <p class="text-gray-600">
     Find, understand, and benefit from government schemes in a simple and accessible way.
   </p>
-
+</section>
   <!-- 🔍 Search -->
   <div class="mt-6">
     <input type="text" placeholder="Search schemes..."
@@ -180,70 +175,87 @@
 <section class="w-full mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
 
   <!-- Students -->
-  <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-xl transition">
-    <div class="text-4xl">🎓</div>
-    <h3 class="text-xl font-bold mt-2">Students</h3>
-    <p class="text-gray-600">Scholarships & education schemes</p>
-  </div>
+  <a href="student.html">
+    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
+      <div class="text-4xl">🎓</div>
+      <h3 class="text-xl font-bold mt-2">Students</h3>
+      <p class="text-gray-600">Scholarships & education schemes</p>
+    </div>
+  </a>
 
   <!-- Farmers -->
-  <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-xl transition">
-    <div class="text-4xl">🚜</div>
-    <h3 class="text-xl font-bold mt-2">Farmers</h3>
-    <p class="text-gray-600">Subsidies & agricultural support</p>
-  </div>
+  <a href="farmers.html">
+    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
+      <div class="text-4xl">🚜</div>
+      <h3 class="text-xl font-bold mt-2">Farmers</h3>
+      <p class="text-gray-600">Subsidies & agricultural support</p>
+    </div>
+  </a>
 
   <!-- Pensioners -->
-  <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-xl transition">
-    <div class="text-4xl">👵</div>
-    <h3 class="text-xl font-bold mt-2">Pensioners</h3>
-    <p class="text-gray-600">Retirement & social security</p>
-  </div>
+  <a href="pensioners.html">
+    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
+      <div class="text-4xl">👵</div>
+      <h3 class="text-xl font-bold mt-2">Pensioners</h3>
+      <p class="text-gray-600">Retirement & social security</p>
+    </div>
+  </a>
 
   <!-- Women -->
-  <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-xl transition">
-    <div class="text-4xl">👩</div>
-    <h3 class="text-xl font-bold mt-2">Women</h3>
-    <p class="text-gray-600">Empowerment & welfare schemes</p>
-  </div>
+  <a href="women.html">
+    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
+      <div class="text-4xl">👩</div>
+      <h3 class="text-xl font-bold mt-2">Women</h3>
+      <p class="text-gray-600">Empowerment & welfare schemes</p>
+    </div>
+  </a>
 
   <!-- Army -->
-  <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-xl transition">
-    <div class="text-4xl">🪖</div>
-    <h3 class="text-xl font-bold mt-2">Army</h3>
-    <p class="text-gray-600">Support for ex-servicemen</p>
-  </div>
+  <a href="army.html">
+    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
+      <div class="text-4xl">🪖</div>
+      <h3 class="text-xl font-bold mt-2">Army</h3>
+      <p class="text-gray-600">Support for ex-servicemen</p>
+    </div>
+  </a>
 
   <!-- SC/ST -->
-  <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-xl transition">
-    <div class="text-4xl">✊</div>
-    <h3 class="text-xl font-bold mt-2">SC/ST</h3>
-    <p class="text-gray-600">Special category benefits</p>
-  </div>
+  <a href="scst.html">
+    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
+      <div class="text-4xl">✊</div>
+      <h3 class="text-xl font-bold mt-2">SC/ST</h3>
+      <p class="text-gray-600">Special category benefits</p>
+    </div>
+  </a>
 
   <!-- PwD -->
-  <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-xl transition">
-    <div class="text-4xl">♿</div>
-    <h3 class="text-xl font-bold mt-2">PwD</h3>
-    <p class="text-gray-600">Schemes for persons with disabilities</p>
-  </div>
+  <a href="pwd.html">
+    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
+      <div class="text-4xl">♿</div>
+      <h3 class="text-xl font-bold mt-2">PwD</h3>
+      <p class="text-gray-600">Schemes for persons with disabilities</p>
+    </div>
+  </a>
 
   <!-- Youth & Jobs -->
-  <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-xl transition">
-    <div class="text-4xl">💼</div>
-    <h3 class="text-xl font-bold mt-2">Youth & Jobs</h3>
-    <p class="text-gray-600">Employment & skill development</p>
-  </div>
+  <a href="youth.html">
+    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
+      <div class="text-4xl">💼</div>
+      <h3 class="text-xl font-bold mt-2">Youth & Jobs</h3>
+      <p class="text-gray-600">Employment & skill development</p>
+    </div>
+  </a>
 
-  <!-- Entrepreneurs/MSMEs -->
-  <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-xl transition">
-    <div class="text-4xl">🏢</div>
-    <h3 class="text-xl font-bold mt-2">Entrepreneurs & MSMEs</h3>
-    <p class="text-gray-600">Business loans & startup support</p>
-  </div>
+  <!-- MSME -->
+  <a href="msme.html">
+    <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
+      <div class="text-4xl">🏢</div>
+      <h3 class="text-xl font-bold mt-2">Entrepreneurs & MSMEs</h3>
+      <p class="text-gray-600">Business loans & startup support</p>
+    </div>
+  </a>
 
 </section>
-
 
 <!-- 🔻 FOOTER -->
 <footer class="bg-blue-900 text-white text-center p-6 mt-12">
