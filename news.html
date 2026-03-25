@@ -1,10 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Latest News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h2>🇮🇳 India News</h2>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
 
-<div class="news-card">New education policy announced</div>
-<div class="news-card">Farmer subsidy update</div>
+<body class="bg-gray-100">
 
-<h2 class="mt-8">Global News</h2>
+<header class="bg-blue-900 text-white p-4 text-center">
+  <h1 class="text-2xl font-bold">📰 Latest News</h1>
+</header>
 
-<div class="news-card">Global economy trends</div>
-<div class="news-card">Tech innovation news</div>
+<main class="p-6">
+  <div id="newsContainer" class="grid md:grid-cols-2 gap-6"></div>
+</main>
+
+<script>
+const apiKey = "YOUR_API_KEY"; // replace this
+
+fetch(`https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}`)
+.then(res => res.json())
+.then(data => {
+  const container = document.getElementById("newsContainer");
+
+  data.articles.slice(0, 10).forEach(article => {
+    const card = `
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="font-bold">${article.title}</h3>
+        <p class="text-gray-600 text-sm mt-2">${article.description || ""}</p>
+        <a href="${article.url}" target="_blank" class="text-blue-500 mt-2 inline-block">Read More</a>
+      </div>
+    `;
+    container.innerHTML += card;
+  });
+});
+</script>
+
+</body>
+</html>
