@@ -76,53 +76,52 @@
 </section>
 
 <!-- Featured Schemes -->
-<main class="max-w-5xl mx-auto p-6">
+<main class="w-full p-6">
   <h2 class="text-3xl font-bold mb-6">Featured Schemes</h2>
 
-  <!-- PM-KISAN -->
-  <div class="bg-white shadow-lg rounded-lg mb-6">
-    <div class="p-4 border-b flex justify-between items-center">
-      <h3 class="text-xl font-semibold">PM-KISAN Samman Nidhi</h3>
-      <button onclick="toggleContent('scheme1')" class="text-blue-600 hover:underline">View Details</button>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- PM-KISAN -->
+    <div class="bg-white shadow-lg rounded-lg">
+      <div class="p-4 border-b flex justify-between items-center">
+        <h3 class="text-xl font-semibold">PM-KISAN Samman Nidhi</h3>
+        <button onclick="toggleContent('scheme1')" class="text-blue-600 hover:underline">View Details</button>
+      </div>
+      <div id="scheme1" class="scheme-details hidden p-4 space-y-3">
+        <p><strong>Overview:</strong> ₹6,000 annual support for farmers.</p>
+        <p><strong>Eligibility:</strong> Farmers with cultivable land.</p>
+        <a href="https://pmkisan.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+      </div>
     </div>
-    <div id="scheme1" class="scheme-details hidden p-4 space-y-3">
-      <p><strong>Overview:</strong> ₹6,000 annual support for farmers.</p>
-      <p><strong>Eligibility:</strong> Farmers with cultivable land.</p>
-      <a href="https://pmkisan.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
-    </div>
-  </div>
 
-  <!-- Ayushman Bharat -->
-  <div class="bg-white shadow-lg rounded-lg mb-6">
-    <div class="p-4 border-b flex justify-between items-center">
-      <h3 class="text-xl font-semibold">Ayushman Bharat Yojana</h3>
-      <button onclick="toggleContent('scheme2')" class="text-blue-600 hover:underline">View Details</button>
+    <!-- Ayushman Bharat -->
+    <div class="bg-white shadow-lg rounded-lg">
+      <div class="p-4 border-b flex justify-between items-center">
+        <h3 class="text-xl font-semibold">Ayushman Bharat Yojana</h3>
+        <button onclick="toggleContent('scheme2')" class="text-blue-600 hover:underline">View Details</button>
+      </div>
+      <div id="scheme2" class="scheme-details hidden p-4 space-y-3">
+        <p><strong>Overview:</strong> Free health insurance up to ₹5 lakh per family.</p>
+        <p><strong>Eligibility:</strong> Low-income families.</p>
+        <a href="https://pmjay.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+      </div>
     </div>
-    <div id="scheme2" class="scheme-details hidden p-4 space-y-3">
-      <p><strong>Overview:</strong> Free health insurance up to ₹5 lakh per family.</p>
-      <p><strong>Eligibility:</strong> Low-income families.</p>
-      <a href="https://pmjay.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
-    </div>
-  </div>
 
-  <!-- National Scholarship -->
-  <div class="bg-white shadow-lg rounded-lg mb-6">
-    <div class="p-4 border-b flex justify-between items-center">
-      <h3 class="text-xl font-semibold">National Scholarship Portal</h3>
-      <button onclick="toggleContent('scheme3')" class="text-blue-600 hover:underline">View Details</button>
-    </div>
-    <div id="scheme3" class="scheme-details hidden p-4 space-y-3">
-      <p><strong>Overview:</strong> Scholarships for students across India.</p>
-      <p><strong>Eligibility:</strong> Students from Class 1 to PhD.</p>
-      <a href="https://scholarships.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+    <!-- National Scholarship -->
+    <div class="bg-white shadow-lg rounded-lg">
+      <div class="p-4 border-b flex justify-between items-center">
+        <h3 class="text-xl font-semibold">National Scholarship Portal</h3>
+        <button onclick="toggleContent('scheme3')" class="text-blue-600 hover:underline">View Details</button>
+      </div>
+      <div id="scheme3" class="scheme-details hidden p-4 space-y-3">
+        <p><strong>Overview:</strong> Scholarships for students across India.</p>
+        <p><strong>Eligibility:</strong> Students from Class 1 to PhD.</p>
+        <a href="https://scholarships.gov.in/" target="_blank" class="text-blue-500 hover:underline">Official Website</a>
+      </div>
     </div>
   </div>
 </main>
-
- 
-
 <!-- Categories -->
-<section class="max-w-6xl mx-auto mt-10 grid md:grid-cols-3 gap-6 px-4">
+<section class="w-full mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
 
   <!-- Students -->
   <div class="bg-white p-6 rounded-lg shadow text-center hover:shadow-xl transition">
@@ -188,7 +187,6 @@
   </div>
 
 </section>
-
 
 
 <!-- 🔻 FOOTER -->
