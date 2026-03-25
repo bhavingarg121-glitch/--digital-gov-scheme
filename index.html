@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Scheme Sathi Portal</title>
@@ -8,9 +6,8 @@
   <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
-  <style>
-    .card-item:hover { transform: scale(1.05); transition: 0.3s; }
-  </style>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-gray-100">
@@ -167,31 +164,34 @@ searchInput.addEventListener("keyup", function() {
 });
 
 // FETCH NEWS FROM BACKEND
+<script>
+// Fetch news from backend
 fetch("http://127.0.0.1:5000/news")
 .then(res => res.json())
 .then(data => {
   const container = document.getElementById("newsContainer");
   container.innerHTML = "";
-  if(!data || data.length === 0){
-    container.innerHTML = "<p>No news available</p>";
+
+  if(!data || data.length === 0) {
+    container.innerHTML = "<p class='text-red-500'>No news available</p>";
     return;
   }
-  data.slice(0,6).forEach(article => {
-    const card = `
-      <div class="bg-white p-4 rounded shadow text-black">
-        <h3 class="font-bold text-lg">${article.title || "No Title"}</h3>
-        <p class="text-gray-700 mt-2">${article.description || "No description available"}</p>
-        <a href="${article.url}" target="_blank" class="text-blue-600 mt-2 inline-block">Read more</a>
-      </div>
+
+  data.forEach((article, index) => {
+    const card = document.createElement("div");
+    card.className = "news-card";
+    card.style.animationDelay = `${index * 0.15}s`; // staggered fade-in
+    card.innerHTML = `
+      <h3 class="font-bold text-lg">${article.title || "No Title"}</h3>
+      <p class="text-gray-700 mt-2">${article.description || "No description"}</p>
+      <a href="${article.url}" target="_blank" class="text-blue-600 mt-2 inline-block">Read more</a>
     `;
-    container.innerHTML += card;
+    container.appendChild(card);
   });
 })
 .catch(err => {
-  document.getElementById("newsContainer").innerHTML = "<p class='text-red-500'>Failed to load news</p>";
+  document.getElementById("newsContainer").innerHTML =
+    "<p class='text-red-500'>Failed to load news</p>";
   console.error(err);
 });
 </script>
-
-</body>
-</html>
