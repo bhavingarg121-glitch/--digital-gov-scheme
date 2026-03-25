@@ -24,22 +24,54 @@
 <body class="bg-gray-100">
  
 
-<!-- ✅ PUT NAVBAR HERE -->
-<header class="bg-blue-900 text-white px-6 py-4">
+<header class="bg-blue-900 text-white px-6 py-4 shadow-md w-full sticky top-0 z-50">
+  
   <div class="flex justify-between items-center">
-    <h1 class="text-xl font-bold">Scheme Sathi</h1>
+    
+    <!-- Logo -->
+    <h1 class="text-2xl font-bold">
+      Scheme <span class="text-yellow-400">Sathi</span>
+    </h1>
 
-    <nav class="space-x-6">
+    <!-- Desktop Menu -->
+    <nav class="hidden md:flex space-x-4 text-sm">
       <a href="index.html">Home</a>
+      <a href="schemes.html">Schemes</a>
       <a href="farmers.html">Farmers</a>
       <a href="student.html">Students</a>
       <a href="women.html">Women</a>
+      <a href="pensioners.html">Pensioners</a>
+      <a href="army.html">Army</a>
+      <a href="scst.html">SC/ST</a>
+      <a href="pwd.html">PwD</a>
       <a href="youth.html">Youth</a>
       <a href="msme.html">MSME</a>
     </nav>
-  </div>
-</header>
 
+    <!-- Mobile Button -->
+    <button onclick="toggleMenu()" class="md:hidden text-2xl">
+      ☰
+    </button>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden flex-col mt-4 space-y-3 md:hidden">
+    <a href="index.html">Home</a>
+    <a href="schemes.html">Schemes</a>
+    <a href="farmers.html">Farmers</a>
+    <a href="student.html">Students</a>
+    <a href="women.html">Women</a>
+    <a href="pensioners.html">Pensioners</a>
+    <a href="army.html">Army</a>
+    <a href="scst.html">SC/ST</a>
+    <a href="pwd.html">PwD</a>
+    <a href="youth.html">Youth</a>
+    <a href="msme.html">MSME</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+</header>
 
 <!-- 🔷 HEADER -->
 <header class="bg-blue-900 text-white px-6 py-4 shadow-md w-full sticky top-0 z-50">
