@@ -1,35 +1,30 @@
-# app.py
 from flask import Flask, jsonify
 import feedparser
 
 app = Flask(__name__)
 
 # ------------------ RSS Feeds ------------------
-RSS_FEEDS = {
-    "central": "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1",
-    "education": "https://pib.gov.in/RssMain.aspx?ModId=21&Lang=1&Regid=1",
-    "health": "https://pib.gov.in/RssMain.aspx?ModId=17&Lang=1&Regid=1"
-}
+RSS_FEEDS = [
+    {"name": "Central", "url": "https://pib.gov.in/rssfeed.aspx?SiteId=1&CategoryId=6"},
+    {"name": "Education", "url": "https://pib.gov.in/rssfeed.aspx?SiteId=1&CategoryId=21"},
+    {"name": "Health", "url": "https://pib.gov.in/rssfeed.aspx?SiteId=1&CategoryId=17"},
+]
 
-@app.route("/api/news")
+@app.route('/api/news')
 def get_news():
-    all_news = []
-    for source, url in RSS_FEEDS.items():
-        try:
-            feed = feedparser.parse(url)
-            for entry in feed.entries[:10]:  # Top 10 news per feed
-                all_news.append({
-                    "title": entry.title,
-                    "link": entry.link,
-                    "source": source.capitalize(),
-                    "published": entry.published if "published" in entry else ""
-                })
-        except Exception as e:
-            print(f"Error fetching {source} feed: {e}")
-
-    # Sort by published date (newest first)
-    all_news.sort(key=lambda x: x["published"], reverse=True)
-    return jsonify(all_news)
+    news_items = []
+    for feed in RSS_FEEDS:
+        parsed_feed = feedparser.parse(feed["url"])
+        for entry in parsed_feed.entries[:10]:  # get latest 10 from each feed
+            news_items.append({
+                "title": entry.title,
+                "link": entry.link,
+                "source": feed["name"],
+                "published": entry.published if "published" in entry else ""
+            })
+    # Sort news by published date (latest first)
+    news_items.sort(key=lambda x: x.get("published", ""), reverse=True)
+    return jsonify(news_items)
 
 if __name__ == "__main__":
     app.run(debug=True)
