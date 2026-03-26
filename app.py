@@ -1,57 +1,35 @@
+# app.py
 from flask import Flask, jsonify
-import requests
-from bs4 import BeautifulSoup
+import feedparser
 
 app = Flask(__name__)
 
-# 🔥 NEWS API (Primary)
-API_KEY = "766ef16a3a3c48c381e72d76e79a328f"
+# ------------------ RSS Feeds ------------------
+RSS_FEEDS = {
+    "central": "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1",
+    "education": "https://pib.gov.in/RssMain.aspx?ModId=21&Lang=1&Regid=1",
+    "health": "https://pib.gov.in/RssMain.aspx?ModId=17&Lang=1&Regid=1"
+}
 
-@app.route("/news")
+@app.route("/api/news")
 def get_news():
-    url = f"https://newsapi.org/v2/top-headlines?country=in&apiKey={API_KEY}"
-    response = requests.get(url)
-    data = response.json()
+    all_news = []
+    for source, url in RSS_FEEDS.items():
+        try:
+            feed = feedparser.parse(url)
+            for entry in feed.entries[:10]:  # Top 10 news per feed
+                all_news.append({
+                    "title": entry.title,
+                    "link": entry.link,
+                    "source": source.capitalize(),
+                    "published": entry.published if "published" in entry else ""
+                })
+        except Exception as e:
+            print(f"Error fetching {source} feed: {e}")
 
-    articles = []
-
-    for item in data.get("articles", [])[:6]:
-        articles.append({
-            "title": item.get("title"),
-            "description": item.get("description"),
-            "url": item.get("url")
-        })
-
-    return jsonify(articles)
-
-
-# 🔥 BASIC WEB SCRAPING (Fallback / Extra)
-@app.route("/scraped-news")
-def scrape_news():
-    url = "https://www.thehindu.com/news/national/"
-    response = requests.get(url)
-
-    soup = BeautifulSoup(response.text, "html.parser")
-
-    news_list = []
-    articles = soup.find_all("h3")
-
-    for article in articles[:6]:
-        title = article.text.strip()
-        news_list.append({
-            "title": title,
-            "description": "Latest update from The Hindu",
-            "url": url
-        })
-
-    return jsonify(news_list)
-
-
-# 🔥 HOME CHECK
-@app.route("/")
-def home():
-    return "Backend Running 🚀"
-
+    # Sort by published date (newest first)
+    all_news.sort(key=lambda x: x["published"], reverse=True)
+    return jsonify(all_news)
 
 if __name__ == "__main__":
     app.run(debug=True)
