@@ -190,24 +190,53 @@ loadGovNews();
 // Sections
 const schemesSection = document.getElementById('schemes-section');
 const newsSection = document.getElementById('news-section');
+const newsContainer = document.getElementById('news-container');
 
 // News button toggle
 document.getElementById('news-btn').addEventListener('click', e => {
   e.preventDefault();
-  // Show news, hide schemes
   newsSection.style.display = 'block';
   schemesSection.style.display = 'none';
+  loadGovNews(); // fetch news when clicked
 });
+
+// Function to fetch news from backend
+async function loadGovNews() {
+  newsContainer.innerHTML = '<li>Loading news…</li>';
+  try {
+    const res = await fetch('/api/news'); // Make sure your backend route /api/news exists
+    if (!res.ok) throw new Error('Failed to fetch news');
+    const news = await res.json();
+
+    newsContainer.innerHTML = '';
+    if(news.length === 0) newsContainer.innerHTML = '<li>No news available.</li>';
+
+    news.forEach(article => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = article.link;
+      a.target = "_blank";
+      a.textContent = `[${article.source}] ${article.title}`;
+      li.appendChild(a);
+      newsContainer.appendChild(li);
+    });
+  } catch (err) {
+    newsContainer.innerHTML = '<li>Failed to load news.</li>';
+    console.error(err);
+  }
+}
+
+// Category links to hide news when switching back to schemes
 document.querySelectorAll('header nav ul li a[data-category]').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     document.querySelectorAll('header nav ul li a').forEach(l => l.classList.remove('active'));
     link.classList.add('active');
-    
-    // Hide news section, show schemes
-    newsSection.style.display = 'none';
+
     schemesSection.style.display = 'block';
+    newsSection.style.display = 'none';
 
     displaySchemes(link.dataset.category, true);
   });
+});
 });
