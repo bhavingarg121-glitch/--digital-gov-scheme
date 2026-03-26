@@ -193,7 +193,53 @@ loadData();
       <!-- Stock market news items will be inserted here -->
     </ul>
   </div>
+<script>
+async function loadNews() {
+  try {
+    const response = await fetch("data.json"); // replace with your API if needed
+    const data = await response.json();
 
+    const indianNews = document.getElementById("indian-news-container");
+    const globalNews = document.getElementById("global-news-container");
+    const stockNews = document.getElementById("stock-news-container");
+
+    // Clear default "Loading..."
+    indianNews.innerHTML = "";
+    globalNews.innerHTML = "";
+    stockNews.innerHTML = "";
+
+    // Populate Indian News
+    data.indian.forEach(item => {
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="${item.url}" target="_blank" class="text-blue-600 hover:underline">${item.title}</a>`;
+      indianNews.appendChild(li);
+    });
+
+    // Populate Global News
+    data.global.forEach(item => {
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="${item.url}" target="_blank" class="text-blue-600 hover:underline">${item.title}</a>`;
+      globalNews.appendChild(li);
+    });
+
+    // Populate Stock Market News
+    data.stocks.forEach(item => {
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="${item.url}" target="_blank" class="text-blue-600 hover:underline">${item.title}</a>`;
+      stockNews.appendChild(li);
+    });
+
+  } catch (err) {
+    console.error("Error loading news:", err);
+    document.getElementById("indian-news-container").innerHTML = "<li class='text-red-500'>Failed to load Indian news</li>";
+    document.getElementById("global-news-container").innerHTML = "<li class='text-red-500'>Failed to load Global news</li>";
+    document.getElementById("stock-news-container").innerHTML = "<li class='text-red-500'>Failed to load Stock Market news</li>";
+  }
+}
+
+// Call the function
+loadNews();
+</script>
 </section>
 </body>
 </html>
