@@ -112,12 +112,56 @@
   </a>
 
 </section>
+  <script>
+async function loadData() {
+    try {
+        const response = await fetch('data.json'); // your JSON file
+        const data = await response.json();
 
-<!-- NEWS SECTION -->
-<section class="max-w-6xl mx-auto px-6 py-10">
-  <h2 class="text-3xl font-bold mb-6 text-center">Latest News</h2>
-  <div id="newsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-</section>
+        const schemesContainer = document.getElementById('schemes-container');
+        const newsContainer = document.getElementById('news-container');
+
+        // Populate schemes
+        data.schemes.forEach(scheme => {
+            const flipCard = document.createElement('div');
+            flipCard.className = 'flip-card';
+            flipCard.innerHTML = `
+                <div class="flip-card-inner">
+                    <div class="flip-card-front card">
+                        <h3>${scheme.title}</h3>
+                    </div>
+                    <div class="flip-card-back card">
+                        <p>${scheme.description}</p>
+                        <button class="btn">Learn More</button>
+                    </div>
+                </div>
+            `;
+            schemesContainer.appendChild(flipCard);
+        });
+
+        // Populate news
+        data.news.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            newsContainer.appendChild(li);
+        });
+
+        // Mobile tap flip
+        const flipCards = document.querySelectorAll('.flip-card');
+        flipCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.querySelector('.flip-card-inner').classList.toggle('flipped');
+            });
+        });
+
+    } catch (error) {
+        console.error('Error loading data:', error);
+    }
+}
+
+loadData();
+</script>
+
 
 <!-- FOOTER -->
 <footer class="bg-blue-900 text-white mt-12">
