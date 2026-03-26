@@ -10,7 +10,7 @@ const translations = {
   }
 };
 
-// Language toggle
+// ------------------ Language Toggle ------------------
 document.getElementById("lang-toggle").addEventListener("click", () => {
   const currentLang = document.documentElement.lang || "en";
   const newLang = currentLang === "en" ? "hi" : "en";
@@ -21,29 +21,23 @@ document.getElementById("lang-toggle").addEventListener("click", () => {
   document.querySelector(".hero h2").innerText = t.heroTitle;
 });
 
-async function loadGovNews() {
-  const newsContainer = document.getElementById('news-container');
-  newsContainer.innerHTML = '<li>Loading news…</li>';
-  
+// ------------------ Explore Schemes ------------------
+const container = document.getElementById('schemes-container');
+let allSchemes = [];
+let loadedCount = 0;
+const batchSize = 50; // Schemes per scroll
+
+// Fetch schemes JSON
+async function fetchSchemes() {
   try {
-    const res = await fetch('/api/news');
-    const news = await res.json();
-    newsContainer.innerHTML = '';
-    news.slice(0, 15).forEach(article => {
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = article.link;
-      a.target = "_blank";
-      a.textContent = `[${article.source}] ${article.title}`;
-      li.appendChild(a);
-      newsContainer.appendChild(li);
-    });
-  } catch (err) {
-    newsContainer.innerHTML = '<li>Failed to load news.</li>';
+    const res = await fetch('schemes.json');
+    allSchemes = await res.json();
+    displaySchemes('All', true);
+  } catch(err) {
+    container.innerHTML = '<p>Failed to load schemes.</p>';
     console.error(err);
   }
 }
-loadGovNews();
 
 // Display schemes by category
 function displaySchemes(category, reset = false) {
@@ -53,7 +47,6 @@ function displaySchemes(category, reset = false) {
   }
 
   const filtered = category === 'All' ? allSchemes : allSchemes.filter(s => s.category === category);
-
   const toLoad = filtered.slice(loadedCount, loadedCount + batchSize);
   loadedCount += batchSize;
 
@@ -70,10 +63,10 @@ function displaySchemes(category, reset = false) {
     container.appendChild(card);
   });
 
-  if (loadedCount >= filtered.length) {
-    window.removeEventListener('scroll', handleScroll);
-  } else {
+  if (loadedCount < filtered.length) {
     window.addEventListener('scroll', handleScroll);
+  } else {
+    window.removeEventListener('scroll', handleScroll);
   }
 }
 
@@ -102,12 +95,12 @@ fetchSchemes();
 async function loadGovNews() {
   const newsContainer = document.getElementById('news-container');
   newsContainer.innerHTML = '<li>Loading news…</li>';
-
+  
   try {
     const res = await fetch('/api/news'); // Backend API
     const news = await res.json();
     newsContainer.innerHTML = '';
-    news.forEach(article => {
+    news.slice(0, 15).forEach(article => {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = article.link;
@@ -121,18 +114,16 @@ async function loadGovNews() {
     console.error(err);
   }
 }
-
 loadGovNews();
 
 // ------------------ Dark Mode Toggle ------------------
-const darkModeBtn = document.getElementById('dark-mode-toggle');
-darkModeBtn.addEventListener('click', () => {
+document.getElementById('dark-mode-toggle').addEventListener('click', () => {
   document.body.classList.toggle('dark');
+  const darkModeBtn = document.getElementById('dark-mode-toggle');
   darkModeBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
 });
 
 // ------------------ Mobile Menu Toggle ------------------
-const mobileBtn = document.getElementById('mobile-menu-btn');
-mobileBtn.addEventListener('click', () => {
+document.getElementById('mobile-menu-btn').addEventListener('click', () => {
   document.querySelector('header nav').classList.toggle('hidden');
 });
