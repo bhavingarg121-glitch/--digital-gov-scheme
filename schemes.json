@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Pradhan Mantri Awas Yojana",
+    "description": "Affordable housing for urban poor.",
+    "category": "Housing",
+    "link": "https://example.gov.in/pmay"
+  },
+  {
+    "name": "Ayushman Bharat",
+    "description": "Health insurance coverage for economically weaker sections.",
+    "category": "Health",
+    "link": "https://example.gov.in/ayushman-bharat"
+  },
+  {
+    "name": "PM-KISAN",
+    "description": "Income support for farmers.",
+    "category": "Employment",
+    "link": "https://example.gov.in/pm-kisan"
+  }
+  // ... All 4650+ schemes
+]
