@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -9,23 +11,17 @@
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
 
-<!-- Skip link -->
-<a href="#main" class="skip-link absolute left-[-999px] focus:left-4 focus:top-4 bg-black text-white px-3 py-2 z-50">Skip to main content</a>
-
 <!-- HEADER -->
-<header class="header flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 shadow-md sticky top-0 z-40" role="banner">
-  <div class="header-left">
-    <h1 class="text-2xl font-bold">Scheme <span class="text-blue-600">Sathi</span></h1>
-  </div>
-  <nav class="header-right hidden md:flex space-x-6" role="navigation">
+<header class="flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 shadow-md sticky top-0 z-40">
+  <h1 class="text-2xl font-bold">Scheme <span class="text-blue-600">Sathi</span></h1>
+  <nav class="hidden md:flex space-x-6">
     <a href="#news-section" class="hover:text-blue-600">News</a>
-    <a href="#contact" class="hover:text-blue-600">Contact</a>
+    <a href="#schemes-section" class="hover:text-blue-600">Schemes</a>
     <button id="lang-toggle" class="px-3 py-1 bg-blue-600 text-white rounded">हिंदी/EN</button>
     <button id="theme-toggle" class="px-3 py-1 bg-gray-600 text-white rounded">🌙/☀️</button>
   </nav>
-  <label for="menu-toggle" class="menu-icon md:hidden cursor-pointer text-2xl">&#9776;</label>
-  <input type="checkbox" id="menu-toggle" class="hidden">
 </header>
+
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu md:hidden flex flex-col bg-gray-100 dark:bg-gray-800 px-6 py-4 space-y-3">
@@ -36,11 +32,75 @@
   <button id="theme-toggle-mobile" class="px-3 py-1 bg-gray-600 text-white rounded">🌙/☀️</button>
 </div>
 
-<!-- HERO SECTION -->
-<section id="main" class="hero text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20" role="main">
+<!-- HERO -->
+<section id="main" class="text-center bg-gradient-to-r from-blue-500 text-white py-20">
   <h2 class="text-3xl font-bold">Empowering Citizens with Government Schemes</h2>
   <p class="mt-4 text-lg">Access scholarships, subsidies, pensions, and other benefits with ease.</p>
 </section>
+<!-- FEATURED SCHEMES -->
+<section id="featured-schemes" class="px-6 mt-10">
+  <h2 class="text-2xl font-bold mb-4">Featured Schemes</h2>
+  <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Featured Scheme 1 -->
+    <div class="glass-card flip-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700" tabindex="0">
+      <div class="flip-card-inner transition-transform duration-500">
+        <div class="flip-card-front p-4">
+          <h3 class="font-semibold">PM Kisan Samman Nidhi</h3>
+        </div>
+        <div class="flip-card-back p-4">
+          <p>Provides income support to farmers with ₹6000 annually.</p>
+          <a href="https://pmkisan.gov.in/" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <!-- Featured Scheme 2 -->
+    <div class="glass-card flip-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700" tabindex="0">
+      <div class="flip-card-inner transition-transform duration-500">
+        <div class="flip-card-front p-4">
+          <h3 class="font-semibold">National Scholarship Portal</h3>
+        </div>
+        <div class="flip-card-back p-4">
+          <p>Centralized platform for students to apply for scholarships.</p>
+          <a href="https://scholarships.gov.in/" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <!-- Featured Scheme 3 -->
+    <div class="glass-card flip-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700" tabindex="0">
+      <div class="flip-card-inner transition-transform duration-500">
+        <div class="flip-card-front p-4">
+          <h3 class="font-semibold">Pradhan Mantri Jan Dhan Yojana</h3>
+        </div>
+ <div class="flip-card-back p-4">
+          <p>Financial inclusion program offering zero-balance bank accounts.</p>
+          <a href="https://pmjdy.gov.in/" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- ALL SCHEMES -->
+<section id="schemes-section" class="px-6 mt-10">
+  <h2 class="text-2xl font-bold mb-4">All Schemes</h2>
+  <input type="text" id="scheme-search" placeholder="Search schemes..." class="w-full p-2 border rounded mb-4">
+  <div id="schemes-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Example All Schemes -->
+    <div class="glass-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700">
+      <h3 class="font-semibold">Atal Pension Yojana</h3>
+      <p>Provides pension benefits to unorganized sector workers.</p>
+      <a href="https://www.npscra.nsdl.co.in/nsdl-nps.php" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
+    </div>
+    <div class="glass-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700">
+      <h3 class="font-semibold">Stand Up India Scheme</h3>
+      <p>Supports women and SC/ST entrepreneurs with loans.</p>
+      <a href="https://www.standupmitra.in/" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
+    </div>
+    <div class="glass-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700">
+      <h3 class="font-semibold">Ayushman Bharat Yojana</h3>
+      <p>Health insurance coverage for economically weaker sections.</p>
+      <a href="https://pmjay.gov.in/" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
+    </div>
+
 
 <!-- CATEGORY CARDS -->
 <section class="category-cards grid sm:grid-cols-2 md:grid-cols-4 gap-6 px-6 mt-10">
