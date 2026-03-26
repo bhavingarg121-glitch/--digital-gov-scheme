@@ -23,6 +23,8 @@ def get_news():
                 "source": source
             })
     return jsonify(news_items)
+    if __name__ == '__main__':
+    app.run(debug=True)
 
 # -------------------- SCHEMES --------------------
 # For demo, generate 4650+ fake schemes
