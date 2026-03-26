@@ -90,17 +90,79 @@
   <!-- Search bar -->
   <input type="text" id="scheme-search" placeholder="Search schemes..." class="w-full p-2 border rounded mb-4">
 
-  <!-- Category filters -->
-  <div class="flex flex-wrap gap-2 mb-4">
-    <button class="filter-btn px-3 py-1 bg-blue-600 text-white rounded" data-category="all">All</button>
-    <button class="filter-btn px-3 py-1 bg-gray-200 rounded" data-category="agriculture">Agriculture</button>
-    <button class="filter-btn px-3 py-1 bg-gray-200 rounded" data-category="education">Education</button>
-    <button class="filter-btn px-3 py-1 bg-gray-200 rounded" data-category="health">Health</button>
-    <button class="filter-btn px-3 py-1 bg-gray-200 rounded" data-category="women">Women</button>
-    <button class="filter-btn px-3 py-1 bg-gray-200 rounded" data-category="pension">Pension</button>
-    <button class="filter-btn px-3 py-1 bg-gray-200 rounded" data-category="employment">Employment</button>
-  </div>
+  
+<!-- Category Filter -->
+    <div class="flex justify-center space-x-4 mb-8 flex-wrap">
+      <button class="scheme-filter px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition" data-category="all">All</button>
+      <button class="scheme-filter px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition" data-category="Education">Education</button>
+      <button class="scheme-filter px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition" data-category="Health">Health</button>
+      <button class="scheme-filter px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition" data-category="Pension">Pension</button>
+      <button class="scheme-filter px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition" data-category="Women">Women</button>
+      <button class="scheme-filter px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition" data-category="Employment">Employment</button>
+    </div>
+  <!-- Scheme Cards Grid -->
+    <div id="scheme-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card Example -->
+      <div class="scheme-card bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden" data-category="Agriculture">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-green-100 flex items-center justify-center rounded-full">
+              <span class="text-green-600 font-bold text-lg">🌾</span>
+            </div>
+            <h3 class="ml-4 text-xl font-semibold text-gray-800">PM Kisan Samman Nidhi</h3>
+          </div>
+          <span class="inline-block bg-green-200 text-green-800 px-2 py-1 text-xs rounded mb-2">Agriculture</span>
+          <p class="text-gray-600 mb-4">Financial support to farmers with Rs. 6000 per year to cultivate crops efficiently.</p>
+          <a href="https://pmkisan.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">Learn More</a>
+        </div>
+      </div>
 
+      <div class="scheme-card bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden" data-category="Education">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-100 flex items-center justify-center rounded-full">
+              <span class="text-blue-600 font-bold text-lg">🎓</span>
+            </div>
+            <h3 class="ml-4 text-xl font-semibold text-gray-800">National Scholarship Portal</h3>
+          </div>
+          <span class="inline-block bg-blue-200 text-blue-800 px-2 py-1 text-xs rounded mb-2">Education</span>
+          <p class="text-gray-600 mb-4">Centralized portal to apply for all government scholarships for students across India.</p>
+          <a href="https://scholarships.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">Learn More</a>
+        </div>
+      </div>
+<div class="scheme-card bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden" data-category="Health">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-red-100 flex items-center justify-center rounded-full">
+              <span class="text-red-600 font-bold text-lg">🏥</span>
+            </div>
+            <h3 class="ml-4 text-xl font-semibold text-gray-800">Ayushman Bharat</h3>
+          </div>
+          <span class="inline-block bg-red-200 text-red-800 px-2 py-1 text-xs rounded mb-2">Health</span>
+          <p class="text-gray-600 mb-4">Health coverage for families, providing free treatment up to Rs. 5 lakh per year.</p>
+          <a href="https://pmjay.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">Learn More</a>
+        </div>
+      </div>
+      </section>
+<!-- ---------------- Filter Script ---------------- -->
+<script>
+  const filterButtons = document.querySelectorAll('.scheme-filter');
+  const schemeCards = document.querySelectorAll('.scheme-card');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.dataset.category;
+
+      schemeCards.forEach(card => {
+        if(category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
   <!-- Schemes container -->
   <div id="schemes-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 </section>
