@@ -138,3 +138,15 @@ async function loadGovNews() {
 }
 
 loadGovNews();
+// Example dataset (replace with API fetch)
+let schemes = [
+  { title: "PM Kisan Samman Nidhi", description: "₹6000 annual support to farmers.", eligibility: "Small/marginal farmers", link: "https://pmkisan.gov.in/", category: "agriculture" },
+  { title: "Ayushman Bharat (PM-JAY)", description: "Health insurance up to ₹5 lakh.", eligibility: "Economically weaker sections", link: "https://pmjay.gov.in/", category: "health" },
+  { title: "National Scholarship Portal", description: "Scholarships for students.", eligibility: "Students from eligible categories", link: "https://scholarships.gov.in/", category: "education" },
+  { title: "Atal Pension Yojana", description: "Monthly pension for workers.", eligibility: "Citizens aged 18–40 years", link: "https://npscra.nsdl.co.in/nsdl-nps.php", category: "pension" },
+  { title: "Stand Up India", description: "Loans for women and SC/ST entrepreneurs.", eligibility: "Women and SC/ST entrepreneurs", link: "https://www.standupmitra.in/", category: "employment" }
+];
+
+// Render schemes
+function renderSchemes(list) {
+  const container = document.getElementById("schemes-container
