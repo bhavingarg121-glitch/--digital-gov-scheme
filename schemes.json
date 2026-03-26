@@ -17,5 +17,16 @@
     "category": "Employment",
     "link": "https://example.gov.in/pm-kisan"
   }
-  // ... All 4650+ schemes
+  {
+    "name": "Sukanya Samriddhi Yojana",
+    "description": "Savings scheme for the girl child.",
+    "category": "Women",
+    "link": "https://example.gov.in/sukanya-samriddhi"
+  },
+  {
+    "name": "National Pension Scheme",
+    "description": "Retirement savings scheme for citizens.",
+    "category": "Pension",
+    "link": "https://example.gov.in/nps"
+  }
 ]
