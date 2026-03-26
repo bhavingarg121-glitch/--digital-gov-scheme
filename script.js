@@ -187,3 +187,14 @@ async function loadGovNews() {
   }
 }
 loadGovNews();
+// Sections
+const schemesSection = document.getElementById('schemes-section');
+const newsSection = document.getElementById('news-section');
+
+// News button toggle
+document.getElementById('news-btn').addEventListener('click', e => {
+  e.preventDefault();
+  // Show news, hide schemes
+  newsSection.style.display = 'block';
+  schemesSection.style.display = 'none';
+});
