@@ -1,118 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scheme Sathi Portal</title>
   <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
 
 <!-- Skip link -->
-<a href="#main" class="skip-link">Skip to main content</a>
+<a href="#main" class="skip-link absolute left-[-999px] focus:left-4 focus:top-4 bg-black text-white px-3 py-2 z-50">Skip to main content</a>
 
 <!-- HEADER -->
-<header class="header">
+<header class="header flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 shadow-md sticky top-0 z-40" role="banner">
   <div class="header-left">
-    <h1>Scheme <span>Sathi</span></h1>
+    <h1 class="text-2xl font-bold">Scheme <span class="text-blue-600">Sathi</span></h1>
   </div>
-  <nav class="header-right">
-    <a href="#news-section">News</a>
-    <a href="#contact">Contact</a>
-    <button id="lang-toggle">हिंदी/EN</button>
+  <nav class="header-right hidden md:flex space-x-6" role="navigation">
+    <a href="#news-section" class="hover:text-blue-600">News</a>
+    <a href="#contact" class="hover:text-blue-600">Contact</a>
+    <button id="lang-toggle" class="px-3 py-1 bg-blue-600 text-white rounded">हिंदी/EN</button>
+    <button id="theme-toggle" class="px-3 py-1 bg-gray-600 text-white rounded">🌙/☀️</button>
   </nav>
-  <label for="menu-toggle" class="menu-icon md:hidden">&#9776;</label>
+  <label for="menu-toggle" class="menu-icon md:hidden cursor-pointer text-2xl">&#9776;</label>
   <input type="checkbox" id="menu-toggle" class="hidden">
 </header>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu md:hidden">
+<div class="mobile-menu md:hidden flex flex-col bg-gray-100 dark:bg-gray-800 px-6 py-4 space-y-3">
   <a href="#news-section">News</a>
   <a href="#contact">Contact</a>
   <a href="#about">About</a>
-  <button id="lang-toggle-mobile">हिंदी/EN</button>
+  <button id="lang-toggle-mobile" class="px-3 py-1 bg-blue-600 text-white rounded">हिंदी/EN</button>
+  <button id="theme-toggle-mobile" class="px-3 py-1 bg-gray-600 text-white rounded">🌙/☀️</button>
 </div>
 
 <!-- HERO SECTION -->
-<section id="main" class="hero text-center">
-  <h2>Empowering Citizens with Government Schemes</h2>
-  <p>Access scholarships, subsidies, pensions, and other benefits with ease.</p>
+<section id="main" class="hero text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20" role="main">
+  <h2 class="text-3xl font-bold">Empowering Citizens with Government Schemes</h2>
+  <p class="mt-4 text-lg">Access scholarships, subsidies, pensions, and other benefits with ease.</p>
 </section>
 
 <!-- CATEGORY CARDS -->
-<section class="category-cards grid sm:grid-cols-2 md:grid-cols-4 gap-6 px-6">
-  <a href="student.html" class="glass-card text-center">
+<section class="category-cards grid sm:grid-cols-2 md:grid-cols-4 gap-6 px-6 mt-10">
+  <a href="student.html" class="glass-card text-center p-6 rounded-lg shadow-md bg-white dark:bg-gray-700 hover:scale-105 transform transition">
     🎓
-    <h3>Students</h3>
+    <h3 class="font-semibold mt-2">Students</h3>
     <p>Scholarships & education support</p>
   </a>
-  <a href="farmers.html" class="glass-card text-center">
+  <a href="farmers.html" class="glass-card text-center p-6 rounded-lg shadow-md bg-white dark:bg-gray-700 hover:scale-105 transform transition">
     🚜
-    <h3>Farmers</h3>
+    <h3 class="font-semibold mt-2">Farmers</h3>
     <p>Subsidies & income support</p>
   </a>
-  <a href="pensioners.html" class="glass-card text-center">
+  <a href="pensioners.html" class="glass-card text-center p-6 rounded-lg shadow-md bg-white dark:bg-gray-700 hover:scale-105 transform transition">
     👵
-    <h3>Pensioners</h3>
+    <h3 class="font-semibold mt-2">Pensioners</h3>
     <p>Secure monthly pension benefits</p>
   </a>
-  <a href="women.html" class="glass-card text-center">
+  <a href="women.html" class="glass-card text-center p-6 rounded-lg shadow-md bg-white dark:bg-gray-700 hover:scale-105 transform transition">
     👩
-    <h3>Women</h3>
+    <h3 class="font-semibold mt-2">Women</h3>
     <p>Empowerment & financial support</p>
   </a>
 </section>
 
 <!-- FEATURED SCHEMES -->
 <section id="featured-schemes" class="px-6 mt-10">
-  <h2>Featured Schemes</h2>
+  <h2 class="text-2xl font-bold mb-4">Featured Schemes</h2>
   <div id="featured-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 </section>
 
 <!-- ALL SCHEMES -->
 <section id="schemes-section" class="px-6 mt-10">
-  <h2>All Schemes</h2>
+  <h2 class="text-2xl font-bold mb-4">All Schemes</h2>
+  <input type="text" id="scheme-search" placeholder="Search schemes..." class="w-full p-2 border rounded mb-4">
   <div id="schemes-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 </section>
 
 <!-- NEWS SECTION -->
 <section id="news-section" class="px-6 mt-10 grid sm:grid-cols-1 md:grid-cols-3 gap-6">
-  <!-- Indian News -->
-  <div class="glass-card p-6">
-    <h3>Indian News</h3>
+  <div class="glass-card p-6 bg-white dark:bg-gray-700 rounded-lg shadow-md">
+    <h3 class="font-semibold mb-2">Indian News</h3>
     <ul id="indian-news-container"><li>Loading...</li></ul>
   </div>
-  <!-- Global News -->
-  <div class="glass-card p-6">
-    <h3>Global News</h3>
+  <div class="glass-card p-6 bg-white dark:bg-gray-700 rounded-lg shadow-md">
+    <h3 class="font-semibold mb-2">Global News</h3>
     <ul id="global-news-container"><li>Loading...</li></ul>
   </div>
-  <!-- Stock Market -->
-  <div class="glass-card p-6">
-    <h3>Stock Market</h3>
+  <div class="glass-card p-6 bg-white dark:bg-gray-700 rounded-lg shadow-md">
+    <h3 class="font-semibold mb-2">Stock Market</h3>
     <ul id="stock-news-container"><li>Loading...</li></ul>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="footer bg-gray-100 dark:bg-gray-800 px-6 py-10 mt-10 grid sm:grid-cols-1 md:grid-cols-3 gap-6" role="contentinfo">
   <div>
-    <h3>Scheme Sathi</h3>
+    <h3 class="font-bold">Scheme Sathi</h3>
     <p>Helping citizens access schemes easily.</p>
   </div>
   <div>
-    <h3>Links</h3>
-    <a href="#news-section">News</a>
-    <a href="#contact">Contact</a>
+    <h3 class="font-bold">Links</h3>
+    <a href="#news-section" class="block">News</a>
+    <a href="#contact" class="block">Contact</a>
   </div>
   <div>
-    <h3>Info</h3>
+    <h3 class="font-bold">Info</h3>
     <p>India 🇮🇳</p>
   </div>
-  <div class="copyright">
+  <div class="col-span-3 text-center mt-6 text-sm">
     © 2026 Scheme Sathi
   </div>
 </footer>
@@ -132,8 +130,27 @@ document.querySelectorAll("#lang-toggle, #lang-toggle-mobile").forEach(btn=>{
     const t = translations[newLang];
     document.querySelector("header h1").innerText = t.header;
     document.querySelector("section#main h2").innerText = t.heroTitle;
+    localStorage.setItem("lang", newLang);
   });
 });
+
+// Dark mode toggle
+function toggleTheme() {
+  document.documentElement.classList.toggle("dark");
+  localStorage.setItem("theme", document.documentElement.classList.contains("dark") ? "dark" : "light");
+}
+document.querySelectorAll("#theme-toggle, #theme-toggle-mobile").forEach(btn=>{
+  btn.addEventListener("click", toggleTheme);
+});
+
+// Load saved preferences
+if(localStorage.getItem("theme")==="dark") document.documentElement.classList.add("dark");
+if(localStorage.getItem("lang")) {
+  document.documentElement.lang = localStorage.getItem("lang");
+  const t = translations[localStorage.getItem("lang")];
+  document.querySelector("header h1").innerText = t.header;
+  document.querySelector("section#main h2").innerText = t.heroTitle;
+}
 
 // Load schemes & news
 async function loadData() {
@@ -141,40 +158,4 @@ async function loadData() {
     const res = await fetch("data.json");
     const data = await res.json();
 
-    // Schemes
-    const featured = document.getElementById("featured-container");
-    const allSchemes = document.getElementById("schemes-container");
-    data.schemes.forEach(s=>{
-      const card = document.createElement("div");
-      card.className = "glass-card flip-card p-4";
-      card.innerHTML = `
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <h3>${s.title}</h3>
-          </div>
-          <div class="flip-card-back">
-            <p>${s.description}</p>
-            <a href="${s.link}" target="_blank" class="btn mt-2">Learn More</a>
-          </div>
-        </div>
-      `;
-      card.addEventListener("click", ()=>card.querySelector(".flip-card-inner").classList.toggle("flipped"));
-      if(s.featured) featured.appendChild(card);
-      else allSchemes.appendChild(card);
-    });
-
-    // News
-    const indian = document.getElementById("indian-news-container");
-    const global = document.getElementById("global-news-container");
-    const stocks = document.getElementById("stock-news-container");
-    indian.innerHTML = ""; global.innerHTML = ""; stocks.innerHTML = "";
-    data.indian.forEach(n=>{ const li=document.createElement("li"); li.innerHTML=`<a href="${n.url}" target="_blank">${n.title}</a>`; indian.appendChild(li); });
-    data.global.forEach(n=>{ const li=document.createElement("li"); li.innerHTML=`<a href="${n.url}" target="_blank">${n.title}</a>`; global.appendChild(li); });
-    data.stocks.forEach(n=>{ const li=document.createElement("li"); li.innerHTML=`<a href="${n.url}" target="_blank">${n.title}</a>`; stocks.appendChild(li); });
-
-  } catch(err){ console.error(err); }
-}
-loadData();
-</script>
-</body>
-</html>
+    const featured = document.get
