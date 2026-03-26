@@ -21,12 +21,6 @@ document.getElementById("lang-toggle").addEventListener("click", () => {
   document.querySelector(".hero h2").innerText = t.heroTitle;
 });
 
-// ------------------ Lazy-loaded Schemes ------------------
-const container = document.getElementById('schemes-container');
-let allSchemes = [];
-let loadedCount = 0;
-const batchSize = 50; // Number of schemes per scroll
-
 async function loadGovNews() {
   const newsContainer = document.getElementById('news-container');
   newsContainer.innerHTML = '<li>Loading news…</li>';
@@ -35,9 +29,8 @@ async function loadGovNews() {
     const res = await fetch('/api/news');
     const news = await res.json();
     newsContainer.innerHTML = '';
-    news.slice(0, 15).forEach(article => { // show top 15
+    news.slice(0, 15).forEach(article => {
       const li = document.createElement('li');
-      li.style.marginBottom = "10px";
       const a = document.createElement('a');
       a.href = article.link;
       a.target = "_blank";
@@ -50,7 +43,6 @@ async function loadGovNews() {
     console.error(err);
   }
 }
-
 loadGovNews();
 
 // Display schemes by category
