@@ -198,3 +198,16 @@ document.getElementById('news-btn').addEventListener('click', e => {
   newsSection.style.display = 'block';
   schemesSection.style.display = 'none';
 });
+document.querySelectorAll('header nav ul li a[data-category]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelectorAll('header nav ul li a').forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+    
+    // Hide news section, show schemes
+    newsSection.style.display = 'none';
+    schemesSection.style.display = 'block';
+
+    displaySchemes(link.dataset.category, true);
+  });
+});
