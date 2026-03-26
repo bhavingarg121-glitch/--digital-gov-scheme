@@ -9,107 +9,121 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100">
+<body>
 
-<!-- Skip link for accessibility -->
+<!-- Skip link -->
 <a href="#main" class="skip-link">Skip to main content</a>
 
 <!-- HEADER -->
-<header class="bg-blue-900 text-white px-6 py-4 flex justify-between items-center sticky top-0 z-50" aria-label="Main navigation">
-  <h1 class="text-2xl font-bold">Scheme <span class="text-yellow-400">Sathi</span></h1>
-  <nav class="hidden md:flex space-x-6">
-    <a href="news.html" class="hover:text-yellow-400">News</a>
-    <a href="contact.html" class="hover:text-yellow-400">Contact</a>
-    <button id="lang-toggle" class="hover:text-yellow-400">हिंदी/EN</button>
-  </nav>
-  <div class="md:hidden flex items-center">
-    <label for="menu-toggle" class="text-2xl cursor-pointer">&#9776;</label>
-    <input type="checkbox" id="menu-toggle" class="hidden">
+<header class="header">
+  <div class="header-left">
+    <h1>Scheme <span>Sathi</span></h1>
   </div>
+  <nav class="header-right">
+    <a href="#news-section">News</a>
+    <a href="#contact">Contact</a>
+    <button id="lang-toggle">हिंदी/EN</button>
+  </nav>
+  <label for="menu-toggle" class="menu-icon md:hidden">&#9776;</label>
+  <input type="checkbox" id="menu-toggle" class="hidden">
 </header>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu md:hidden flex flex-col px-6 py-4 space-y-2">
-  <a href="news.html">News</a>
-  <a href="contact.html">Contact</a>
-  <a href="about.html">About</a>
+<div class="mobile-menu md:hidden">
+  <a href="#news-section">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
   <button id="lang-toggle-mobile">हिंदी/EN</button>
 </div>
 
 <!-- HERO SECTION -->
-<section id="main" class="text-center py-10 px-4">
-  <h2 class="text-3xl font-bold mb-4">Empowering Citizens with Government Schemes</h2>
-  <p class="text-gray-700 mb-6">Access scholarships, subsidies, pensions, and other benefits with ease.</p>
+<section id="main" class="hero text-center">
+  <h2>Empowering Citizens with Government Schemes</h2>
+  <p>Access scholarships, subsidies, pensions, and other benefits with ease.</p>
 </section>
 
 <!-- CATEGORY CARDS -->
-<section class="w-full mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
+<section class="category-cards grid sm:grid-cols-2 md:grid-cols-4 gap-6 px-6">
   <a href="student.html" class="glass-card text-center">
-    🎓 <h3 class="font-bold mt-2">Students</h3>
-    <p class="text-sm text-gray-100 mt-1">Scholarships & education support</p>
+    🎓
+    <h3>Students</h3>
+    <p>Scholarships & education support</p>
   </a>
   <a href="farmers.html" class="glass-card text-center">
-    🚜 <h3 class="font-bold mt-2">Farmers</h3>
-    <p class="text-sm text-gray-100 mt-1">Subsidies & income support</p>
+    🚜
+    <h3>Farmers</h3>
+    <p>Subsidies & income support</p>
   </a>
   <a href="pensioners.html" class="glass-card text-center">
-    👵 <h3 class="font-bold mt-2">Pensioners</h3>
-    <p class="text-sm text-gray-100 mt-1">Secure monthly pension benefits</p>
+    👵
+    <h3>Pensioners</h3>
+    <p>Secure monthly pension benefits</p>
   </a>
   <a href="women.html" class="glass-card text-center">
-    👩 <h3 class="font-bold mt-2">Women</h3>
-    <p class="text-sm text-gray-100 mt-1">Empowerment & financial support</p>
+    👩
+    <h3>Women</h3>
+    <p>Empowerment & financial support</p>
   </a>
 </section>
 
 <!-- FEATURED SCHEMES -->
 <section id="featured-schemes" class="px-6 mt-10">
-  <h2 class="text-2xl font-bold mb-4 text-blue-900">Featured Schemes</h2>
+  <h2>Featured Schemes</h2>
   <div id="featured-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 </section>
 
-<!-- NORMAL SCHEMES -->
+<!-- ALL SCHEMES -->
 <section id="schemes-section" class="px-6 mt-10">
-  <h2 class="text-2xl font-bold mb-4 text-blue-900">All Schemes</h2>
+  <h2>All Schemes</h2>
   <div id="schemes-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 </section>
 
-<!-- NEWS -->
-<section id="news" class="px-6 mt-10">
-  <h2 class="text-2xl font-bold mb-4 text-blue-900">Latest News</h2>
-  <div id="news-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+<!-- NEWS SECTION -->
+<section id="news-section" class="px-6 mt-10 grid sm:grid-cols-1 md:grid-cols-3 gap-6">
+  <!-- Indian News -->
+  <div class="glass-card p-6">
+    <h3>Indian News</h3>
+    <ul id="indian-news-container"><li>Loading...</li></ul>
+  </div>
+  <!-- Global News -->
+  <div class="glass-card p-6">
+    <h3>Global News</h3>
+    <ul id="global-news-container"><li>Loading...</li></ul>
+  </div>
+  <!-- Stock Market -->
+  <div class="glass-card p-6">
+    <h3>Stock Market</h3>
+    <ul id="stock-news-container"><li>Loading...</li></ul>
+  </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-blue-900 text-white mt-12">
-  <div class="max-w-6xl mx-auto px-6 py-8 grid md:grid-cols-3 gap-6">
-    <div>
-      <h3 class="font-bold">Scheme Sathi</h3>
-      <p class="text-sm text-gray-300">Helping citizens access schemes easily.</p>
-    </div>
-    <div>
-      <h3 class="font-bold">Links</h3>
-      <a href="news.html" class="block">News</a>
-      <a href="contact.html" class="block">Contact</a>
-    </div>
-    <div>
-      <h3 class="font-bold">Info</h3>
-      <p class="text-sm text-gray-300">India 🇮🇳</p>
-    </div>
+<footer class="footer">
+  <div>
+    <h3>Scheme Sathi</h3>
+    <p>Helping citizens access schemes easily.</p>
   </div>
-  <div class="text-center text-sm bg-blue-800 py-3">
+  <div>
+    <h3>Links</h3>
+    <a href="#news-section">News</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div>
+    <h3>Info</h3>
+    <p>India 🇮🇳</p>
+  </div>
+  <div class="copyright">
     © 2026 Scheme Sathi
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script>
+// Language toggle
 const translations = {
   en: { header:"Scheme Sathi Portal", heroTitle:"Empowering Citizens with Government Schemes" },
   hi: { header:"स्कीम साथी पोर्टल", heroTitle:"नागरिकों को सरकारी योजनाओं के साथ सशक्त बनाना" }
 };
-
-// Language toggle
 document.querySelectorAll("#lang-toggle, #lang-toggle-mobile").forEach(btn=>{
   btn.addEventListener("click", ()=>{
     const currentLang = document.documentElement.lang;
@@ -121,128 +135,46 @@ document.querySelectorAll("#lang-toggle, #lang-toggle-mobile").forEach(btn=>{
   });
 });
 
-// Fetch schemes and news
+// Load schemes & news
 async function loadData() {
   try {
     const res = await fetch("data.json");
     const data = await res.json();
 
-    const featuredContainer = document.getElementById("featured-container");
-    const schemesContainer = document.getElementById("schemes-container");
-
+    // Schemes
+    const featured = document.getElementById("featured-container");
+    const allSchemes = document.getElementById("schemes-container");
     data.schemes.forEach(s=>{
       const card = document.createElement("div");
-      card.className="glass-card flip-card p-4";
-      card.innerHTML=`
+      card.className = "glass-card flip-card p-4";
+      card.innerHTML = `
         <div class="flip-card-inner">
-          <div class="flip-card-front card">
-            <h3 class="font-bold">${s.title}</h3>
+          <div class="flip-card-front">
+            <h3>${s.title}</h3>
           </div>
-          <div class="flip-card-back card">
+          <div class="flip-card-back">
             <p>${s.description}</p>
-            <a href="${s.link}" target="_blank" class="mt-2 inline-block px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Learn More</a>
+            <a href="${s.link}" target="_blank" class="btn mt-2">Learn More</a>
           </div>
         </div>
       `;
-      if(s.featured) featuredContainer.appendChild(card);
-      else schemesContainer.appendChild(card);
-
-      card.addEventListener("click", ()=>{ card.querySelector(".flip-card-inner").classList.toggle("flipped"); });
+      card.addEventListener("click", ()=>card.querySelector(".flip-card-inner").classList.toggle("flipped"));
+      if(s.featured) featured.appendChild(card);
+      else allSchemes.appendChild(card);
     });
 
     // News
-    const newsContainer = document.getElementById("news-container");
-    data.news.forEach((n,i)=>{
-      const div = document.createElement("div");
-      div.className="glass-card p-4";
-      div.style.animationDelay=`${i*0.1}s`;
-      div.innerHTML=`
-        <h3 class="font-bold text-lg">${n.title}</h3>
-        <p class="text-gray-100 mt-2">${n.description}</p>
-        <a href="${n.url}" target="_blank" class="text-blue-200 mt-2 inline-block">Read more</a>
-      `;
-      newsContainer.appendChild(div);
-    });
+    const indian = document.getElementById("indian-news-container");
+    const global = document.getElementById("global-news-container");
+    const stocks = document.getElementById("stock-news-container");
+    indian.innerHTML = ""; global.innerHTML = ""; stocks.innerHTML = "";
+    data.indian.forEach(n=>{ const li=document.createElement("li"); li.innerHTML=`<a href="${n.url}" target="_blank">${n.title}</a>`; indian.appendChild(li); });
+    data.global.forEach(n=>{ const li=document.createElement("li"); li.innerHTML=`<a href="${n.url}" target="_blank">${n.title}</a>`; global.appendChild(li); });
+    data.stocks.forEach(n=>{ const li=document.createElement("li"); li.innerHTML=`<a href="${n.url}" target="_blank">${n.title}</a>`; stocks.appendChild(li); });
+
   } catch(err){ console.error(err); }
 }
-
 loadData();
 </script>
- <!-- ------------------ NEWS SECTION ------------------ -->
-<section id="news-section" class="grid sm:grid-cols-1 md:grid-cols-3 gap-6 px-6 py-10">
-
-  <!-- Indian News Card -->
-  <div class="glass-card p-6">
-    <h3 class="text-xl font-bold mb-4">Indian News</h3>
-    <ul id="indian-news-container" class="space-y-2">
-      <li>Loading...</li>
-    </ul>
-  </div>
-
-  <!-- Global News Card -->
-  <div class="glass-card p-6">
-    <h3 class="text-xl font-bold mb-4">Global News</h3>
-    <ul id="global-news-container" class="space-y-2">
-      <li>Loading...</li>
-    </ul>
-  </div>
-
-  <!-- Stock Market News Card -->
-  <div class="glass-card p-6">
-    <h3 class="text-xl font-bold mb-4">Stock Market</h3>
-    <ul id="stock-news-container" class="space-y-2">
-      <li>Loading...</li>
-    </ul>
-  </div>
-
-</section>
-<script>
-async function loadNews() {
-  try {
-    const response = await fetch("data.json"); // replace with your API if needed
-    const data = await response.json();
-
-    const indianNews = document.getElementById("indian-news-container");
-    const globalNews = document.getElementById("global-news-container");
-    const stockNews = document.getElementById("stock-news-container");
-
-    // Clear default "Loading..."
-    indianNews.innerHTML = "";
-    globalNews.innerHTML = "";
-    stockNews.innerHTML = "";
-
-    // Populate Indian News
-    data.indian.forEach(item => {
-      const li = document.createElement("li");
-      li.innerHTML = `<a href="${item.url}" target="_blank" class="text-blue-600 hover:underline">${item.title}</a>`;
-      indianNews.appendChild(li);
-    });
-
-    // Populate Global News
-    data.global.forEach(item => {
-      const li = document.createElement("li");
-      li.innerHTML = `<a href="${item.url}" target="_blank" class="text-blue-600 hover:underline">${item.title}</a>`;
-      globalNews.appendChild(li);
-    });
-
-    // Populate Stock Market News
-    data.stocks.forEach(item => {
-      const li = document.createElement("li");
-      li.innerHTML = `<a href="${item.url}" target="_blank" class="text-blue-600 hover:underline">${item.title}</a>`;
-      stockNews.appendChild(li);
-    });
-
-  } catch (err) {
-    console.error("Error loading news:", err);
-    document.getElementById("indian-news-container").innerHTML = "<li class='text-red-500'>Failed to load Indian news</li>";
-    document.getElementById("global-news-container").innerHTML = "<li class='text-red-500'>Failed to load Global news</li>";
-    document.getElementById("stock-news-container").innerHTML = "<li class='text-red-500'>Failed to load Stock Market news</li>";
-  }
-}
-
-// Call the function
-loadNews();
-</script>
-</section>
 </body>
 </html>
