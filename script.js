@@ -93,3 +93,48 @@ function checkEligibility() {
     }
   });
 }
+const rssFeeds = [
+  {name: "Central", url: "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1"},
+  {name: "Education", url: "https://pib.gov.in/RssMain.aspx?ModId=21&Lang=1&Regid=1"},
+  {name: "Health", url: "https://pib.gov.in/RssMain.aspx?ModId=17&Lang=1&Regid=1"}
+];
+
+async function loadGovNews() {
+  const newsContainer = document.getElementById('news-container');
+  newsContainer.innerHTML = '<li>Loading news…</li>';
+
+  const allNews = [];
+
+  for (const feed of rssFeeds) {
+    try {
+      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(feed.url)}`;
+      const res = await fetch(proxyUrl);
+      const xmlData = await res.text();
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlData, "text/xml");
+      const items = xmlDoc.querySelectorAll("item");
+      items.forEach(item => {
+        allNews.push({
+          title: item.querySelector("title").textContent,
+          link: item.querySelector("link").textContent,
+          source: feed.name,
+          pubDate: item.querySelector("pubDate") ? new Date(item.querySelector("pubDate").textContent) : new Date()
+        });
+      });
+    } catch(err) { console.error(`Error loading feed ${feed.name}:`, err); }
+  }
+
+  allNews.sort((a,b)=>b.pubDate-a.pubDate);
+  newsContainer.innerHTML = '';
+  allNews.slice(0,10).forEach(article=>{
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = article.link;
+    a.target = "_blank";
+    a.textContent = `[${article.source}] ${article.title}`;
+    li.appendChild(a);
+    newsContainer.appendChild(li);
+  });
+}
+
+loadGovNews();
