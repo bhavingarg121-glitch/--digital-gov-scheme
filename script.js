@@ -107,3 +107,27 @@ document.getElementById('dark-mode-toggle')?.addEventListener('click',()=>{
 // ------------------ Initial Load ------------------
 fetchSchemes(); 
 loadGovNews();
+async function loadGovNews() {
+  const newsContainer = document.getElementById('news-container');
+  newsContainer.innerHTML = '<li>Loading news…</li>';
+
+  try {
+    const res = await fetch('/api/news');
+    const news = await res.json();
+    newsContainer.innerHTML = '';
+    news.forEach(article => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = article.link;
+      a.target = "_blank";
+      a.textContent = `[${article.source}] ${article.title}`;
+      li.appendChild(a);
+      newsContainer.appendChild(li);
+    });
+  } catch(err) {
+    newsContainer.innerHTML = '<li>Failed to load news.</li>';
+    console.error(err);
+  }
+}
+
+loadGovNews();
