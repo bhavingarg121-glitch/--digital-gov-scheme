@@ -277,3 +277,65 @@ h2 {
         transform: none; /* disable hover flip on mobile */
     }
 }
+/* ------------------ Scrollable Sidebar ------------------ */
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 100px; /* below header */
+    width: 250px;
+    height: calc(100vh - 120px); /* full height minus header spacing */
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px 0 0 20px;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    color: #1e3a8a;
+    overflow-y: auto; /* enables vertical scroll */
+    scroll-behavior: smooth; /* smooth scrolling */
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 8px; /* width of scrollbar */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(30, 58, 138, 0.6); /* color of thumb */
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+}
+
+/* ------------------ Sidebar Links ------------------ */
+.sidebar h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* ------------------ Responsive (mobile) ------------------ */
+@media(max-width: 768px){
+    .sidebar {
+        display: none; /* hide on mobile */
+    }
+}
