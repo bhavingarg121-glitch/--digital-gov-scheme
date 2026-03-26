@@ -9,54 +9,59 @@ body {
 
 /* ------------------ Header ------------------ */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px 40px;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    border-radius: 0 0 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 40px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-radius: 0 0 20px 20px;
 }
 
 .header-left h1 {
-    margin: 0;
-    font-size: 1.8rem;
-    color: #1e3a8a;
+  margin: 0;
+  font-size: 1.8rem;
+  color: #1e3a8a;
 }
 
 .header-left p {
-    margin: 5px 0 0 0;
-    color: #334155;
+  margin: 5px 0 0 0;
+  color: #334155;
 }
 
 .header-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
 }
 
 .header-right .news-section,
 .header-right .contact-section {
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(8px);
-    padding: 10px 15px;
-    border-radius: 15px;
-    max-width: 300px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: 300px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-.header-right h3 {
-    margin: 0 0 5px 0;
-    color: #1e3a8a;
-    font-size: 1rem;
-}
+.header-right h3 { margin: 0 0 5px 0; color: #1e3a8a; font-size: 1rem; }
+.header-right p, .header-right li { margin: 2px 0; font-size: 0.85rem; color: #334155; }
 
-.header-right p, .header-right li {
-    margin: 2px 0;
-    font-size: 0.85rem;
-    color: #334155;
+.header-right .news-section ul { list-style: none; margin: 0; padding: 0; max-height: 100px; overflow-y: auto; }
+.header-right .news-section li a { text-decoration: none; color: #1e3a8a; }
+.header-right .news-section li a:hover { text-decoration: underline; }
+
+.lang-btn {
+  margin-left: 20px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #1e3a8a;
+  color: white;
+  cursor: pointer;
 }
 
 /* Make news scrollable if too long */
