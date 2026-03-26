@@ -3,13 +3,13 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #dbeafe, #f0f4f8); /* soft gradient background */
+    background: linear-gradient(135deg, #dbeafe, #f0f4f8);
     color: #333;
 }
 
 /* ------------------ Header ------------------ */
 header {
-    background: linear-gradient(90deg, #1e3a8a, #3b82f6); /* gradient header */
+    background: linear-gradient(90deg, #1e3a8a, #3b82f6);
     color: white;
     padding: 30px 20px;
     text-align: center;
@@ -61,73 +61,71 @@ main {
     padding: 20px;
 }
 
-/* ------------------ Glass Cards ------------------ */
-.card {
+/* ------------------ Flip Card Container ------------------ */
+.flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+    margin: 20px 0;
+}
+
+.flip-card-inner {
     position: relative;
-    background: rgba(255, 255, 255, 0.15); /* glass effect */
+    width: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* ------------------ Front & Back ------------------ */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    backface-visibility: hidden;
+}
+
+/* ------------------ Glass Card ------------------ */
+.card {
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     padding: 25px;
-    margin: 20px 0;
-    overflow: hidden;
-    transition: transform 0.4s, box-shadow 0.4s, background 0.4s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.2);
-    background: rgba(255, 255, 255, 0.25);
-}
-
-/* ------------------ Card Content ------------------ */
-.card-content {
-    z-index: 1;
-    position: relative;
-}
-
-/* ------------------ Card Overlay (Scheme Details) ------------------ */
-.card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(8px);
-    color: #1e3a8a;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.4s, transform 0.4s;
-    border-radius: 20px;
 }
 
-.card:hover .card-overlay {
-    opacity: 1;
-    transform: translateY(0);
+/* Front card */
+.flip-card-front h3 {
+    color: #1e3a8a;
+    margin: 0;
 }
 
-.card-overlay p {
+/* Back card */
+.flip-card-back {
+    transform: rotateY(180deg);
+    color: #1e3a8a;
+}
+
+.flip-card-back p {
     margin-bottom: 15px;
     font-size: 1em;
     line-height: 1.5em;
 }
 
-.card-overlay .btn {
-    padding: 10px 20px;
-    border-radius: 12px;
-}
-
 /* ------------------ Buttons ------------------ */
 button, .btn {
-    background-color: #2563eb; /* blue */
+    background-color: #2563eb;
     color: white;
     border: none;
     padding: 12px 24px;
@@ -138,7 +136,7 @@ button, .btn {
 }
 
 button:hover, .btn:hover {
-    background-color: #1e40af; /* dark blue hover */
+    background-color: #1e40af;
     transform: scale(1.05);
 }
 
@@ -166,7 +164,7 @@ input:focus, textarea:focus, select:focus {
 footer {
     text-align: center;
     padding: 20px;
-    background: rgba(224, 231, 255, 0.5); /* glass effect */
+    background: rgba(224, 231, 255, 0.5);
     backdrop-filter: blur(10px);
     color: #1e3a8a;
     font-size: 14px;
@@ -180,4 +178,11 @@ h2 {
     text-align: center;
     color: #1e3a8a;
     margin-bottom: 20px;
+}
+
+/* ------------------ Mobile Tap Flip Support ------------------ */
+@media (max-width: 768px) {
+    .flip-card:hover .flip-card-inner {
+        transform: none; /* disable hover flip on mobile */
+    }
 }
