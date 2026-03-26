@@ -1,160 +1,109 @@
 // ------------------ Translations ------------------
 const translations = {
-  en: {
-    header: "Scheme Sathi",
-    heroTitle: "Empowering Citizens with Government Schemes"
-    // add more keys...
-  },
-  hi: {
-    header: "योजना साथी",
-    heroTitle: "सरकारी योजनाओं से नागरिकों को सशक्त बनाना"
-    // add more keys...
-  }
+  en: { header:"Scheme Sathi", heroTitle:"Empowering Citizens with Government Schemes" },
+  hi: { header:"योजना साथी", heroTitle:"सरकारी योजनाओं से नागरिकों को सशक्त बनाना" }
 };
-
-// Language toggle
-document.getElementById("lang-toggle").addEventListener("click", () => {
+document.getElementById("lang-toggle")?.addEventListener("click", () => {
   const currentLang = document.documentElement.lang || "en";
-  const newLang = currentLang === "en" ? "hi" : "en";
-  document.documentElement.lang = newLang;
-
-  const t = translations[newLang];
-  document.querySelector("header h1").innerText = t.header;
-  document.querySelector(".hero h2").innerText = t.heroTitle;
+  const newLang = currentLang==="en"?"hi":"en";
+  document.documentElement.lang=newLang;
+  const t=translations[newLang];
+  document.querySelector("header h1").innerText=t.header;
+  document.querySelector(".hero h2").innerText=t.heroTitle;
 });
 
-// ------------------ Schemes ------------------
-async function loadCategory(category) {
-  const response = await fetch('data/schemes.json');
-  const schemes = await response.json();
-  const container = document.getElementById('schemeContainer');
+// ------------------ Lazy Loading Schemes ------------------
+const container=document.getElementById('schemes-container'); 
+let allSchemes=[], loadedCount=0, batchSize=50;
 
-  container.innerHTML = `<h2 class="text-2xl font-bold text-blue-700 mb-4">
-    Schemes for ${category.charAt(0).toUpperCase() + category.slice(1)}
-  </h2>`;
+async function fetchSchemes(){
+  try{
+    const res=await fetch('data/schemes.json'); 
+    allSchemes=await res.json();
+    displaySchemes('All',true);
+  }catch(err){ container.innerHTML='<p>Failed to load schemes.</p>'; console.error(err);}
+}
 
-  schemes.filter(s => s.occupation === category).forEach(scheme => {
-    const card = document.createElement('div');
-    card.className = 'bg-white shadow-md rounded-lg p-6 border border-gray-200';
-    card.innerHTML = `
-      <h3 class="text-xl font-bold text-blue-700">${scheme.name.en} 
-        <span class="text-gray-600">(${scheme.name.hi})</span>
-      </h3>
-      <p class="text-gray-600">Category: ${scheme.category.en} / ${scheme.category.hi}</p>
-      <p class="mt-2 text-gray-800">${scheme.description.en}<br>
-        <span class="italic text-gray-700">${scheme.description.hi}</span>
-      </p>
-      <a href="${scheme.link}" target="_blank" 
-         class="inline-block mt-3 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
-        Apply Now
-      </a>
-    `;
+function displaySchemes(category,reset=false){
+  if(reset){ container.innerHTML=''; loadedCount=0;}
+  const filtered=category==='All'?allSchemes:allSchemes.filter(s=>s.category===category);
+  const toLoad=filtered.slice(loadedCount,loadedCount+batchSize); 
+  loadedCount+=batchSize;
+  toLoad.forEach(scheme=>{
+    const card=document.createElement('div'); 
+    card.classList.add('card-item'); 
+    card.dataset.category=scheme.category;
+    card.innerHTML=`<div class="glass-card scheme-card">
+      <h3>${scheme.name}</h3>
+      <p>${scheme.description}</p>
+      <a href="${scheme.link}" target="_blank"><button class="btn">Learn More</button></a>
+    </div>`;
     container.appendChild(card);
   });
+  if(loadedCount>=filtered.length){ window.removeEventListener('scroll',handleScroll);}
+  else{ window.addEventListener('scroll',handleScroll);}
 }
 
+function handleScroll(){ 
+  if(window.innerHeight+window.scrollY>=document.body.offsetHeight-100){
+    const activeCategory=document.querySelector('.sidebar ul li a.active')?.dataset.category||'All';
+    displaySchemes(activeCategory);
+  }
+}
 
-
-// ------------------ Eligibility Checker ------------------
-document.getElementById('checkBtn').addEventListener('click', checkEligibility);
-
-function checkEligibility() {
-  const age = parseInt(document.getElementById('age').value);
-  const income = parseInt(document.getElementById('income').value);
-  const occupation = document.getElementById('occupation').value;
-
-  loadCategory(occupation);
-
-  const cards = document.querySelectorAll('#schemeContainer .bg-white');
-  cards.forEach(card => {
-    const minAge = parseInt(card.dataset?.minage || 0);
-    const maxAge = parseInt(card.dataset?.maxage || 100);
-    const maxIncome = parseInt(card.dataset?.income || Infinity);
-
-    if ((!isNaN(age) && age >= minAge && age <= maxAge) &&
-        (!isNaN(income) && income <= maxIncome)) {
-      card.style.display = '';
-    } else {
-      card.style.display = 'none';
-    }
+document.querySelectorAll('.sidebar ul li a').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault(); 
+    document.querySelectorAll('.sidebar ul li a').forEach(l=>l.classList.remove('active'));
+    link.classList.add('active'); 
+    displaySchemes(link.dataset.category,true);
   });
-}
+});
 
 // ------------------ News Section ------------------
-const rssFeeds = [
-  {name: "Central", url: "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1"},
-  {name: "Education", url: "https://pib.gov.in/RssMain.aspx?ModId=21&Lang=1&Regid=1"},
-  {name: "Health", url: "https://pib.gov.in/RssMain.aspx?ModId=17&Lang=1&Regid=1"}
+const rssFeeds=[
+  {name:"Central",url:"https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1"},
+  {name:"Education",url:"https://pib.gov.in/RssMain.aspx?ModId=21&Lang=1&Regid=1"},
+  {name:"Health",url:"https://pib.gov.in/RssMain.aspx?ModId=17&Lang=1&Regid=1"}
 ];
-
-async function loadGovNews() {
-  const newsContainer = document.getElementById('news-container');
-  newsContainer.innerHTML = '<li>Loading news…</li>';
-
-  const allNews = [];
-
-  for (const feed of rssFeeds) {
-    try {
-      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(feed.url)}`;
-      const res = await fetch(proxyUrl);
-      const xmlData = await res.text();
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(xmlData, "text/xml");
-      const items = xmlDoc.querySelectorAll("item");
-      items.forEach(item => {
-        allNews.push({
-          title: item.querySelector("title").textContent,
-          link: item.querySelector("link").textContent,
-          source: feed.name,
-          pubDate: item.querySelector("pubDate") ? new Date(item.querySelector("pubDate").textContent) : new Date()
-        });
-      });
-    } catch(err) { console.error(`Error loading feed ${feed.name}:`, err); }
+async function loadGovNews(){
+  const newsContainer=document.getElementById('news-container'); 
+  if(!newsContainer) return;
+  newsContainer.innerHTML='<li>Loading news…</li>'; 
+  const allNews=[];
+  for(const feed of rssFeeds){
+    try{
+      const proxyUrl=`https://api.allorigins.win/raw?url=${encodeURIComponent(feed.url)}`;
+      const res=await fetch(proxyUrl); 
+      const xmlData=await res.text();
+      const parser=new DOMParser(); 
+      const xmlDoc=parser.parseFromString(xmlData,"text/xml");
+      xmlDoc.querySelectorAll("item").forEach(item=>allNews.push({
+        title:item.querySelector("title").textContent,
+        link:item.querySelector("link").textContent,
+        source:feed.name,
+        pubDate:item.querySelector("pubDate")?new Date(item.querySelector("pubDate").textContent):new Date()
+      }));
+    }catch(err){ console.error(`Error loading feed ${feed.name}:`, err);}
   }
-
-  allNews.sort((a,b)=>b.pubDate-a.pubDate);
-  newsContainer.innerHTML = '';
+  allNews.sort((a,b)=>b.pubDate-a.pubDate); 
+  newsContainer.innerHTML='';
   allNews.slice(0,10).forEach(article=>{
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = article.link;
-    a.target = "_blank";
-    a.textContent = `[${article.source}] ${article.title}`;
-    li.appendChild(a);
+    const li=document.createElement('li'); 
+    const a=document.createElement('a'); 
+    a.href=article.link; a.target="_blank";
+    a.textContent=`[${article.source}] ${article.title}`; 
+    li.appendChild(a); 
     newsContainer.appendChild(li);
   });
 }
 
+// ------------------ Dark Mode Toggle ------------------
+document.getElementById('dark-mode-toggle')?.addEventListener('click',()=>{
+  document.body.classList.toggle('dark');
+  document.getElementById('dark-mode-toggle').textContent=document.body.classList.contains('dark')?'☀️':'🌙';
+});
+
+// ------------------ Initial Load ------------------
+fetchSchemes(); 
 loadGovNews();
-// ---------------- Scheme Filter ----------------
-const filterButtons = document.querySelectorAll('.scheme-filter');
-const schemeCards = document.querySelectorAll('.scheme-card');
-
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const category = button.dataset.category;
-    schemeCards.forEach(card => {
-      if(category === 'all' || card.dataset.category === category) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  });
-});
-
-// ---------------- Mobile Menu Toggle ----------------
-const mobileBtn = document.getElementById('mobile-menu-btn');
-mobileBtn.addEventListener('click', () => {
-  const nav = document.querySelector('header nav');
-  nav.classList.toggle('hidden');
-});
-
-// ---------------- Dark Mode Toggle ----------------
-const darkModeBtn = document.getElementById('dark-mode-toggle');
-const body = document.body;
-
-darkModeBtn.addEventListener('click', () => {
-  body.classList.toggle('dark');
-  darkModeBtn.textContent = body.classList.contains('dark') ? '☀️' : '🌙';
-});
