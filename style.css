@@ -127,7 +127,101 @@ main {
     color: #1e3a8a;
     overflow-y: auto;
 }
+/* Reset & Box sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background: #f0f4f8;
+  overflow-x: hidden;
+}
+
+/* Wrapper: Full Height Flex Column */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full screen height */
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 40px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-radius: 0 0 20px 20px;
+  flex-shrink: 0;
+}
+
+/* Main content fills remaining space */
+main {
+  flex: 1; /* Expand to fill available vertical space */
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Sidebar as horizontal or hidden in mobile */
+aside.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 15px;
+  max-width: 300px;
+  margin-left: auto; /* right side */
+  flex-shrink: 0;
+}
+
+/* Footer always at bottom */
+footer {
+  background: rgba(30,58,138,0.8);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  flex-shrink: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Flip cards & scheme container */
+#schemes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Responsive header right for news + contact */
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  header { flex-direction: column; align-items: flex-start; }
+  .header-right { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 10px; }
+  main { padding: 15px; }
+  aside.sidebar { display: none; } /* optional: hide sidebar on smaller screens */
+}
+
+@media (max-width: 640px) {
+  header { padding: 15px; }
+  main { padding: 10px; }
+  #schemes-container { grid-template-columns: 1fr; }
+}
 /* ------------------ Flip Card Container ------------------ */
 .flip-card {
     background-color: transparent;
