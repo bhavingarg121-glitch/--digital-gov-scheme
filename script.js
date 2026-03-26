@@ -1,22 +1,29 @@
-// Translations
+// ------------------ Translations ------------------
 const translations = {
-  en: { /* ... English text ... */ },
-  hi: { /* ... Hindi text ... */ }
+  en: {
+    header: "Scheme Sathi",
+    heroTitle: "Empowering Citizens with Government Schemes"
+    // add more keys...
+  },
+  hi: {
+    header: "योजना साथी",
+    heroTitle: "सरकारी योजनाओं से नागरिकों को सशक्त बनाना"
+    // add more keys...
+  }
 };
 
 // Language toggle
 document.getElementById("lang-toggle").addEventListener("click", () => {
-  const currentLang = document.documentElement.lang;
+  const currentLang = document.documentElement.lang || "en";
   const newLang = currentLang === "en" ? "hi" : "en";
   document.documentElement.lang = newLang;
 
   const t = translations[newLang];
   document.querySelector("header h1").innerText = t.header;
   document.querySelector(".hero h2").innerText = t.heroTitle;
-  // update other elements...
 });
 
-// Load schemes by category
+// ------------------ Schemes ------------------
 async function loadCategory(category) {
   const response = await fetch('data/schemes.json');
   const schemes = await response.json();
@@ -37,17 +44,6 @@ async function loadCategory(category) {
       <p class="mt-2 text-gray-800">${scheme.description.en}<br>
         <span class="italic text-gray-700">${scheme.description.hi}</span>
       </p>
-      <div class="mt-4 bg-gray-50 p-4 rounded-lg">
-        <h4 class="font-bold">Eligibility / पात्रता</h4>
-        <div class="grid grid-cols-2 gap-4">
-          <ul class="list-disc list-inside">
-            ${scheme.eligibility.en.map(item => `<li>${item}</li>`).join('')}
-          </ul>
-          <ul class="list-disc list-inside">
-            ${scheme.eligibility.hi.map(item => `<li>${item}</li>`).join('')}
-          </ul>
-        </div>
-      </div>
       <a href="${scheme.link}" target="_blank" 
          class="inline-block mt-3 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
         Apply Now
@@ -57,7 +53,7 @@ async function loadCategory(category) {
   });
 }
 
-// Search filter
+// ------------------ Search Filter ------------------
 document.getElementById('searchInput').addEventListener('keyup', function() {
   let filter = this.value.toLowerCase();
   let cards = document.querySelectorAll('#schemeContainer .bg-white');
@@ -67,7 +63,7 @@ document.getElementById('searchInput').addEventListener('keyup', function() {
   });
 });
 
-// Eligibility Checker
+// ------------------ Eligibility Checker ------------------
 document.getElementById('checkBtn').addEventListener('click', checkEligibility);
 
 function checkEligibility() {
@@ -75,7 +71,7 @@ function checkEligibility() {
   const income = parseInt(document.getElementById('income').value);
   const occupation = document.getElementById('occupation').value;
 
-  loadCategory(occupation); // load schemes for selected occupation
+  loadCategory(occupation);
 
   const cards = document.querySelectorAll('#schemeContainer .bg-white');
   cards.forEach(card => {
@@ -83,16 +79,16 @@ function checkEligibility() {
     const maxAge = parseInt(card.dataset?.maxage || 100);
     const maxIncome = parseInt(card.dataset?.income || Infinity);
 
-    if (
-      (!isNaN(age) && age >= minAge && age <= maxAge) &&
-      (!isNaN(income) && income <= maxIncome)
-    ) {
+    if ((!isNaN(age) && age >= minAge && age <= maxAge) &&
+        (!isNaN(income) && income <= maxIncome)) {
       card.style.display = '';
     } else {
       card.style.display = 'none';
     }
   });
 }
+
+// ------------------ News Section ------------------
 const rssFeeds = [
   {name: "Central", url: "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1"},
   {name: "Education", url: "https://pib.gov.in/RssMain.aspx?ModId=21&Lang=1&Regid=1"},
@@ -138,15 +134,3 @@ async function loadGovNews() {
 }
 
 loadGovNews();
-// Example dataset (replace with API fetch)
-let schemes = [
-  { title: "PM Kisan Samman Nidhi", description: "₹6000 annual support to farmers.", eligibility: "Small/marginal farmers", link: "https://pmkisan.gov.in/", category: "agriculture" },
-  { title: "Ayushman Bharat (PM-JAY)", description: "Health insurance up to ₹5 lakh.", eligibility: "Economically weaker sections", link: "https://pmjay.gov.in/", category: "health" },
-  { title: "National Scholarship Portal", description: "Scholarships for students.", eligibility: "Students from eligible categories", link: "https://scholarships.gov.in/", category: "education" },
-  { title: "Atal Pension Yojana", description: "Monthly pension for workers.", eligibility: "Citizens aged 18–40 years", link: "https://npscra.nsdl.co.in/nsdl-nps.php", category: "pension" },
-  { title: "Stand Up India", description: "Loans for women and SC/ST entrepreneurs.", eligibility: "Women and SC/ST entrepreneurs", link: "https://www.standupmitra.in/", category: "employment" }
-];
-
-// Render schemes
-function renderSchemes(list) {
-  const container = document.getElementById("schemes-container
