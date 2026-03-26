@@ -194,11 +194,52 @@ footer {
   border-radius: 10px 10px 0 0;
 }
 
-/* Flip cards & scheme container */
+
+/* Schemes Container */
 #schemes-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsive columns */
+    gap: 20px; /* spacing between cards */
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+/* Individual Card */
+.card-item div {
+    background: rgba(211, 211, 211, 0.25); /* light grey glass effect */
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(200, 200, 200, 0.3);
+    min-height: 160px; /* ensures all cards have same height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-item div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.card-item p {
+    margin-top: 10px;
+    color: #334155;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media(max-width: 768px){
+    #schemes-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+@media(max-width: 480px){
+    #schemes-container {
+        grid-template-columns: 1fr; /* single column on small screens */
+    }
 }
 
 /* Responsive header right for news + contact */
