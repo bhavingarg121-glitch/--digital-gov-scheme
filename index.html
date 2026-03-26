@@ -1,246 +1,240 @@
-<header>
-  <div class="header-left">
-    <h1 id="portal-title">Scheme Sathi Portal</h1>h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-  <button id="lang-toggle" class="lang-btn">हिंदी/EN</button>
-</header>
+  <title>Citizen Scheme Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { height:100%; width:100%; font-family:Arial,sans-serif; background:#f0f4f8; overflow-x:hidden; }
 
-  <!-- Tailwind CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body class="bg-gray-100">
-  <body>
-  <div class="wrapper">
-    <header> ... </header>
-    <main> ... </main>
-    <aside class="sidebar"> ... </aside>
-    <footer> ... </footer>
-  </div>
-</body>
-
-<!-- HEADER -->
-<header class="bg-blue-900 text-white px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-  <h1 class="text-2xl font-bold">Scheme <span class="text-yellow-400">Sathi</span></h1>
-  <nav class="hidden md:flex space-x-6">
-    <a href="news.html" class="hover:text-yellow-400">News</a>
-    <a href="contact.html" class="hover:text-yellow-400">Contact</a>
-  </nav>
-  <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
-</header>
-
-<!-- MOBILE MENU -->
-<div class="hamburger-menu">
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
-    <nav class="mobile-menu">
-               <a href="contact.html">Contact</a>
-        <a href="about.html">About</a>
-        <a href="news.html">News</a>
-    </nav>
-</div>
-<!-- HERO SECTION -->
-<section class="text-center py-10 px-4">
-  <h2 class="text-3xl font-bold mb-4">Empowering Citizens with Government Schemes</h2>
-  
-
- 
-
-<!-- CATEGORY CARDS -->
-<section class="w-full mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
-
-  <a href="student.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
-      🎓 Students
-      <p class="text-sm text-gray-600 mt-2">Get scholarships & education support</p>
-    </div>
-  </a>
-
-  <a href="farmers.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
-      🚜 Farmers
-      <p class="text-sm text-gray-600 mt-2">Subsidies, insurance & income support</p>
-    </div>
-  </a>
-
-  <a href="pensioners.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
-      👵 Pensioners
-      <p class="text-sm text-gray-600 mt-2">Secure monthly pension benefits</p>
-    </div>
-  </a>
-
-  <a href="women.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
-      👩 Women
-      <p class="text-sm text-gray-600 mt-2">Empowerment & financial support</p>
-    </div>
-  </a>
-
-  <a href="army.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
-      🪖 Army
-      <p class="text-sm text-gray-600 mt-2">Support for ex-servicemen families</p>
-    </div>
-  </a>
-
-  <a href="scst.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
-      ✊ SC/ST
-      <p class="text-sm text-gray-600 mt-2">Special scholarships & benefits</p>
-    </div>
-  </a>
-
-  <a href="pwd.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
-      ♿ PwD
-      <p class="text-sm text-gray-600 mt-2">Support & accessibility schemes</p>
-    </div>
-  </a>
-
-  <a href="youth.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
-      💼 Youth & Jobs
-      <p class="text-sm text-gray-600 mt-2">Jobs, skills & training programs</p>
-    </div>
-  </a>
-
-  <a href="msme.html" class="card-item">
-    <div class="bg-white p-6 rounded shadow text-center">
-      🏢 MSME
-      <p class="text-sm text-gray-600 mt-2">Loans & startup support</p>
-    </div>
-  </a>
-
-</section>
-  <script>
-async function loadData() {
-    try {
-        const response = await fetch('data.json'); // your JSON file
-        const data = await response.json();
-
-        const schemesContainer = document.getElementById('schemes-container');
-        const newsContainer = document.getElementById('news-container');
-
-        // Populate schemes
-        data.schemes.forEach(scheme => {
-            const flipCard = document.createElement('div');
-            flipCard.className = 'flip-card';
-            flipCard.innerHTML = `
-                <div class="flip-card-inner">
-                    <div class="flip-card-front card">
-                        <h3>${scheme.title}</h3>
-                    </div>
-                    <div class="flip-card-back card">
-                        <p>${scheme.description}</p>
-                        <button class="btn">Learn More</button>
-                    </div>
-                </div>
-            `;
-            schemesContainer.appendChild(flipCard);
-        });
-
-        // Populate news
-        data.news.forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = item;
-            newsContainer.appendChild(li);
-        });
-
-        // Mobile tap flip
-        const flipCards = document.querySelectorAll('.flip-card');
-        flipCards.forEach(card => {
-            card.addEventListener('click', () => {
-                card.querySelector('.flip-card-inner').classList.toggle('flipped');
-            });
-        });
-
-    } catch (error) {
-        console.error('Error loading data:', error);
+    .skip-link {
+      position:absolute; top:-40px; left:0; background:#1e3a8a; color:white; padding:8px 12px; z-index:100;
+      transition: top 0.3s; border-radius:0 5px 5px 0;
     }
-}
+    .skip-link:focus { top:10px; }
 
-loadData();
-</script>
+    .wrapper { display:flex; flex-direction:column; min-height:100vh; }
 
+    header {
+      display:flex; justify-content:space-between; align-items:flex-start;
+      padding:20px 40px; background:rgba(255,255,255,0.2); backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(0,0,0,0.1); border-radius:0 0 20px 20px; flex-shrink:0;
+    }
+    .header-left h1 { margin:0; font-size:1.8rem; color:#1e3a8a; }
+    .header-left p { margin:5px 0 0 0; color:#334155; }
+    .header-right { display:flex; flex-direction:column; align-items:flex-end; gap:20px; }
+    .header-right .news-section, .header-right .contact-section {
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); padding:10px 15px; border-radius:15px;
+      max-width:300px; box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    }
+    .header-right h3 { margin:0 0 5px 0; color:#1e3a8a; font-size:1rem; }
+    .header-right p, .header-right li { margin:2px 0; font-size:0.85rem; color:#334155; }
+    .header-right .news-section ul { list-style:none; margin:0; padding:0; max-height:100px; overflow-y:auto; }
+    .header-right .news-section li a { text-decoration:none; color:#1e3a8a; }
+    .header-right .news-section li a:hover { text-decoration:underline; }
+    .lang-btn { margin-left:20px; padding:6px 12px; border-radius:8px; border:none; background:#1e3a8a; color:white; cursor:pointer; }
 
-<!-- FOOTER -->
-<footer class="bg-blue-900 text-white mt-12">
-  <div class="max-w-6xl mx-auto px-6 py-8 grid md:grid-cols-3 gap-6">
+    main { flex:1; padding:20px 40px; display:flex; flex-direction:column; gap:20px; }
+    #schemes-container { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; }
 
-    <div>
-      <h3 class="font-bold">Scheme Sathi</h3>
-      <p class="text-sm text-gray-300">Helping citizens access schemes easily.</p>
-    </div>
+    .scheme-card {
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+      border-radius:15px; padding:20px; border:1px solid rgba(255,255,255,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .scheme-card:hover { transform: translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.2); }
 
-    <div>
-      <h3 class="font-bold">Links</h3>
-      <a href="news.html" class="block">News</a>
-      <a href="contact.html" class="block">Contact</a>
-    </div>
+    footer { background:rgba(30,58,138,0.8); color:white; text-align:center; padding:10px; flex-shrink:0; border-radius:10px 10px 0 0; }
 
-    <div>
-      <h3 class="font-bold">Info</h3>
-      <p class="text-sm text-gray-300">India 🇮🇳</p>
-    </div>
+    :focus { outline:3px solid #f59e0b; outline-offset:2px; }
+    a, button, input, select { transition:outline-offset 0.2s; }
+    button:focus, a:focus { outline:3px solid #f59e0b; outline-offset:2px; }
 
+    @media (max-width:1024px){
+      header{flex-direction:column; align-items:flex-start;}
+      .header-right{flex-direction:row; flex-wrap:wrap; align-items:flex-start; gap:10px;}
+      main{padding:15px;}
+    }
+    @media (max-width:640px){
+      header{padding:15px;}
+      main{padding:10px;}
+      #schemes-container{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="wrapper">
+    <header role="banner" aria-label="Main site header">
+      <div class="header-left">
+        <h1 id="portal-title">Citizen Scheme Portal</h1>
+        <p>Helping citizens access government schemes easily</p>
+      </div>
+      <nav role="navigation" aria-label="Primary navigation" class="header-right">
+        <div class="news-section" aria-label="Latest government news">
+          <h3>Latest News</h3>
+          <ul id="news-container"><li>Loading news…</li></ul>
+        </div>
+        <div class="contact-section" aria-label="Contact information">
+          <h3>Contact</h3>
+          <p>Email: info@schemeportal.com</p>
+          <p>Phone: +91 12345 67890</p>
+        </div>
+      </nav>
+      <button id="lang-toggle" class="lang-btn" aria-label="Toggle language Hindi/English">हिंदी/EN</button>
+    </header>
+
+    <main id="main-content" role="main">
+      <input id="searchInput" type="text" placeholder="Search schemes..." aria-label="Search schemes" class="p-2 border rounded">
+
+      <form aria-label="Eligibility checker form" class="flex gap-2 flex-wrap">
+        <input id="age" type="number" placeholder="Age" aria-required="true" class="p-2 border rounded">
+        <input id="income" type="number" placeholder="Income" aria-required="true" class="p-2 border rounded">
+        <select id="occupation" aria-required="true" class="p-2 border rounded">
+          <option value="">Select occupation</option>
+          <option value="student">Student</option>
+          <option value="farmer">Farmer</option>
+          <option value="worker">Worker</option>
+        </select>
+        <button type="button" id="checkBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Check Eligibility</button>
+      </form>
+
+      <section id="schemes" aria-label="Government schemes">
+        <div id="schemes-container"></div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      &copy; 2026 Citizen Scheme Portal. All rights reserved.
+    </footer>
   </div>
 
-  <div class="text-center text-sm bg-blue-800 py-3">
-    © 2026 Scheme Sathi
-  </div>
-</footer>
+  <script>
+    const translations = { en:{header:"Citizen Scheme Portal"}, hi:{header:"नागरिक योजना पोर्टल"} };
+    document.getElementById("lang-toggle").addEventListener("click", ()=>{
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang==="en"?"hi":"en";
+      document.documentElement.lang = newLang;
+      document.getElementById("portal-title").innerText = translations[newLang].header;
+    });
 
-<!-- SCRIPTS -->
-<script>
-function toggleMenu() {
-  document.getElementById("mobileMenu").classList.toggle("hidden");
-}
+    async function loadSchemes() {
+      const response = await fetch('data/schemes.json');
+      const schemes = await response.json();
+      const container = document.getElementById('schemes-container');
+      container.innerHTML = '';
 
-// SEARCH FILTER
-const searchInput = document.getElementById("searchInput");
-const cards = document.querySelectorAll(".card-item");
+      // Featured Schemes: categories with only 1 scheme
+      const featuredSchemes = schemes.filter(c => 
+        schemes.filter(s => s.occupation===c.occupation).length===1
+      );
+      if(featuredSchemes.length>0){
+        const featuredSection = document.createElement('div');
+        featuredSection.innerHTML = `<h2 class="text-2xl font-bold text-blue-700 mb-4">Featured Schemes</h2>`;
+        featuredSchemes.forEach(scheme=>{
+          const card = document.createElement('div');
+          card.className="scheme-card";
+          card.setAttribute("role","region");
+          card.setAttribute("aria-label","Scheme details: "+scheme.name.en);
+          card.innerHTML = `
+            <h3 class="text-xl font-bold text-blue-700">${scheme.name.en}</h3>
+            <p class="mt-2 text-gray-800">${scheme.description.en}</p>
+            <a href="${scheme.link}" target="_blank" class="inline-block mt-3 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+              aria-label="Apply for ${scheme.name.en}">Apply Now</a>
+          `;
+          featuredSection.appendChild(card);
+        });
+        container.appendChild(featuredSection);
+      }
 
-searchInput.addEventListener("keyup", function() {
-  const value = this.value.toLowerCase();
-  cards.forEach(card => {
-    card.style.display = card.innerText.toLowerCase().includes(value) ? "block" : "none";
-  });
-});
+      // Normal Schemes: categories with multiple schemes
+      const categories = [...new Set(schemes.map(s=>s.occupation))];
+      categories.forEach(cat=>{
+        const catSchemes = schemes.filter(s=>s.occupation===cat);
+        if(catSchemes.length>1){
+          const section = document.createElement('div');
+          section.innerHTML = `<h2 class="text-2xl font-bold text-blue-700 mb-4">${cat.charAt(0).toUpperCase()+cat.slice(1)} Schemes</h2>`;
+          catSchemes.forEach(scheme=>{
+            const card = document.createElement('div');
+            card.className="scheme-card";
+            card.setAttribute("role","region");
+            card.setAttribute("aria-label","Scheme details: "+scheme.name.en);
+            card.innerHTML = `
+              <h3 class="text-xl font-bold text-blue-700">${scheme.name.en}</h3>
+              <p class="mt-2 text-gray-800">${scheme.description.en}</p>
+              <a href="${scheme.link}" target="_blank" class="inline-block mt-3 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                aria-label="Apply for ${scheme.name.en}">Apply Now</a>
+            `;
+            section.appendChild(card);
+          });
+          container.appendChild(section);
+        }
+      });
+    }
 
-// FETCH NEWS FROM BACKEND
-<script>
-// Fetch news from backend
-fetch("http://127.0.0.1:5000/news")
-.then(res => res.json())
-.then(data => {
-  const container = document.getElementById("newsContainer");
-  container.innerHTML = "";
+    // Search filter
+    document.getElementById('searchInput').addEventListener('keyup', function(){
+      let filter=this.value.toLowerCase();
+      document.querySelectorAll('#schemes-container .scheme-card').forEach(card=>{
+        card.style.display = card.innerText.toLowerCase().includes(filter) ? '' : 'none';
+      });
+    });
 
-  if(!data || data.length === 0) {
-    container.innerHTML = "<p class='text-red-500'>No news available</p>";
-    return;
-  }
+    // Eligibility Checker
+    document.getElementById('checkBtn').addEventListener('click', checkEligibility);
+    function checkEligibility(){
+      const age=parseInt(document.getElementById('age').value);
+      const income=parseInt(document.getElementById('income').value);
+      const occupation=document.getElementById('occupation').value;
+      loadSchemes(); // reload schemes
+      document.querySelectorAll('#schemes-container .scheme-card').forEach(card=>{
+        const minAge=parseInt(card.dataset.minage||0);
+        const maxAge=parseInt(card.dataset.maxage||100);
+        const maxIncome=parseInt(card.dataset.income||Infinity);
+        if((!isNaN(age)&&age>=minAge&&age<=maxAge)&&(!isNaN(income)&&income<=maxIncome)){
+          card.style.display='';
+        }else{ card.style.display='none'; }
+      });
+    }
 
-  data.forEach((article, index) => {
-    const card = document.createElement("div");
-    card.className = "news-card";
-    card.style.animationDelay = `${index * 0.15}s`; // staggered fade-in
-    card.innerHTML = `
-      <h3 class="font-bold text-lg">${article.title || "No Title"}</h3>
-      <p class="text-gray-700 mt-2">${article.description || "No description"}</p>
-      <a href="${article.url}" target="_blank" class="text-blue-600 mt-2 inline-block">Read more</a>
-    `;
-    container.appendChild(card);
-  });
-})
-.catch(err => {
-  document.getElementById("newsContainer").innerHTML =
-    "<p class='text-red-500'>Failed to load news</p>";
-  console.error(err);
-});
-</script>
+    // Load News
+    const rssFeeds=[{name:"Central", url:"https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=1"}];
+    async function loadGovNews(){
+      const newsContainer=document.getElementById('news-container');
+      newsContainer.innerHTML='<li>Loading news…</li>';
+      const allNews=[];
+      for(const feed of rssFeeds){
+        try{
+          const proxyUrl=`https://api.allorigins.win/raw?url=${encodeURIComponent(feed.url)}`;
+          const res=await fetch(proxyUrl);
+          const xmlData=await res.text();
+          const parser=new DOMParser();
+          const xmlDoc=parser.parseFromString(xmlData,"text/xml");
+          const items=xmlDoc.querySelectorAll("item");
+          items.forEach(item=>allNews.push({
+            title:item.querySelector("title").textContent,
+            link:item.querySelector("link").textContent,
+            source:feed.name,
+            pubDate:item.querySelector("pubDate")?new Date(item.querySelector("pubDate").textContent):new Date()
+          }));
+        }catch(err){ console.error(`Error loading feed ${feed.name}:`, err); }
+      }
+      allNews.sort((a,b)=>b.pubDate-a.pubDate);
+      newsContainer.innerHTML='';
+      allNews.slice(0,10).forEach(article=>{
+        const li=document.createElement('li');
+        const a=document.createElement('a');
+        a.href=article.link; a.target="_blank";
+        a.textContent=`[${article.source}] ${article.title}`;
+        li.appendChild(a);
+        newsContainer.appendChild(li);
+      });
+    }
+    loadGovNews();
+    loadSchemes(); // initial load
+  </script>
+</body>
+</html>
