@@ -53,15 +53,7 @@ async function loadCategory(category) {
   });
 }
 
-// ------------------ Search Filter ------------------
-document.getElementById('searchInput').addEventListener('keyup', function() {
-  let filter = this.value.toLowerCase();
-  let cards = document.querySelectorAll('#schemeContainer .bg-white');
-  cards.forEach(card => {
-    let text = card.innerText.toLowerCase();
-    card.style.display = text.includes(filter) ? '' : 'none';
-  });
-});
+
 
 // ------------------ Eligibility Checker ------------------
 document.getElementById('checkBtn').addEventListener('click', checkEligibility);
@@ -134,3 +126,35 @@ async function loadGovNews() {
 }
 
 loadGovNews();
+// ---------------- Scheme Filter ----------------
+const filterButtons = document.querySelectorAll('.scheme-filter');
+const schemeCards = document.querySelectorAll('.scheme-card');
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const category = button.dataset.category;
+    schemeCards.forEach(card => {
+      if(category === 'all' || card.dataset.category === category) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// ---------------- Mobile Menu Toggle ----------------
+const mobileBtn = document.getElementById('mobile-menu-btn');
+mobileBtn.addEventListener('click', () => {
+  const nav = document.querySelector('header nav');
+  nav.classList.toggle('hidden');
+});
+
+// ---------------- Dark Mode Toggle ----------------
+const darkModeBtn = document.getElementById('dark-mode-toggle');
+const body = document.body;
+
+darkModeBtn.addEventListener('click', () => {
+  body.classList.toggle('dark');
+  darkModeBtn.textContent = body.classList.contains('dark') ? '☀️' : '🌙';
+});
