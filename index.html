@@ -1,354 +1,168 @@
 <!DOCTYPE html>
-
-<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scheme Sathi Portal</title>
-  <!-- Tailwind CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 font-sans">
 
-<!-- HEADER -->
-<header class="flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 shadow-md sticky top-0 z-40">
-  <h1 class="text-2xl font-bold">Scheme <span class="text-blue-600">Sathi</span></h1>
-  <nav class="hidden md:flex space-x-6">
-    <a href="#news-section" class="hover:text-blue-600">News</a>
-    <a href="#schemes-section" class="hover:text-blue-600">Schemes</a>
-    <button id="lang-toggle" class="px-3 py-1 bg-blue-600 text-white rounded">हिंदी/EN</button>
-    <button id="theme-toggle" class="px-3 py-1 bg-gray-600 text-white rounded">🌙/☀️</button>
-  </nav>
-</header>
-
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu md:hidden flex flex-col bg-gray-100 dark:bg-gray-800 px-6 py-4 space-y-3">
-  <a href="#news-section">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-  <button id="lang-toggle-mobile" class="px-3 py-1 bg-blue-600 text-white rounded">हिंदी/EN</button>
-  <button id="theme-toggle-mobile" class="px-3 py-1 bg-gray-600 text-white rounded">🌙/☀️</button>
-</div>
-
-<!-- HERO -->
-<section id="main" class="text-center bg-gradient-to-r from-blue-500 text-white py-20">
-  <h2 class="text-3xl font-bold">Empowering Citizens with Government Schemes</h2>
-  <p class="mt-4 text-lg">Access scholarships, subsidies, pensions, and other benefits with ease.</p>
-</section>
-<!-- FEATURED SCHEMES -->
-<section id="featured-schemes" class="px-6 mt-10">
-  <h2 class="text-2xl font-bold mb-4">Featured Schemes</h2>
-  <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-6">
-    <!-- Featured Scheme 1 -->
-    <div class="glass-card flip-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700" tabindex="0">
-      <div class="flip-card-inner transition-transform duration-500">
-        <div class="flip-card-front p-4">
-          <h3 class="font-semibold">PM Kisan Samman Nidhi</h3>
-        </div>
-        <div class="flip-card-back p-4">
-          <p>Provides income support to farmers with ₹6000 annually.</p>
-          <a href="https://pmkisan.gov.in/" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
-        </div>
+  <!-- ---------------- Header ---------------- -->
+  <header class="bg-white dark:bg-gray-900 shadow sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center px-4 py-4">
+      <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">Scheme Sathi</div>
+      <nav class="hidden md:flex space-x-6 items-center">
+        <a href="#hero" class="hover:text-blue-500 dark:hover:text-blue-300">Home</a>
+        <a href="#schemes-section" class="hover:text-blue-500 dark:hover:text-blue-300">Schemes</a>
+        <a href="#news-section" class="hover:text-blue-500 dark:hover:text-blue-300">News</a>
+        <a href="#contact-section" class="hover:text-blue-500 dark:hover:text-blue-300">Contact</a>
+        <input type="text" placeholder="Search schemes..." class="ml-4 px-2 py-1 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-700 dark:text-gray-100">
+        <select class="ml-2 border rounded px-2 py-1 dark:bg-gray-700 dark:text-gray-100">
+          <option>EN</option>
+          <option>HI</option>
+        </select>
+        <!-- Dark Mode Toggle -->
+        <button id="dark-mode-toggle" class="ml-4 text-xl">🌙</button>
+      </nav>
+      <div class="md:hidden">
+        <button id="mobile-menu-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
     </div>
-    <!-- Featured Scheme 2 -->
-    <div class="glass-card flip-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700" tabindex="0">
-      <div class="flip-card-inner transition-transform duration-500">
-        <div class="flip-card-front p-4">
-          <h3 class="font-semibold">National Scholarship Portal</h3>
-        </div>
-        <div class="flip-card-back p-4">
-          <p>Centralized platform for students to apply for scholarships.</p>
-          <a href="https://scholarships.gov.in/" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
-        </div>
-      </div>
-    </div>
-    <!-- Featured Scheme 3 -->
-    <div class="glass-card flip-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700" tabindex="0">
-      <div class="flip-card-inner transition-transform duration-500">
-        <div class="flip-card-front p-4">
-          <h3 class="font-semibold">Pradhan Mantri Jan Dhan Yojana</h3>
-        </div>
- <div class="flip-card-back p-4">
-          <p>Financial inclusion program offering zero-balance bank accounts.</p>
-          <a href="https://pmjdy.gov.in/" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  <!-- ALL SCHEMES -->
-<section id="schemes-section" class="px-6 mt-10">
-  <h2 class="text-2xl font-bold mb-4">All Schemes</h2>
-  <input type="text" id="scheme-search" placeholder="Search schemes..." class="w-full p-2 border rounded mb-4">
-  <div id="schemes-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <section id="schemes-section" class="px-6 mt-10">
-  <h2 class="text-2xl font-bold mb-4">All Schemes</h2>
+  </header>
 
-  <!-- Search bar -->
-  <input type="text" id="scheme-search" placeholder="Search schemes..." class="w-full p-2 border rounded mb-4">
-
-  
-<!-- Category Filter -->
-    <div class="flex justify-center space-x-4 mb-8 flex-wrap">
-      <button class="scheme-filter px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition" data-category="all">All</button>
-      <button class="scheme-filter px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition" data-category="Education">Education</button>
-      <button class="scheme-filter px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition" data-category="Health">Health</button>
-      <button class="scheme-filter px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition" data-category="Pension">Pension</button>
-      <button class="scheme-filter px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition" data-category="Women">Women</button>
-      <button class="scheme-filter px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition" data-category="Employment">Employment</button>
+  <!-- ---------------- Hero / Banner ---------------- -->
+  <section id="hero" class="bg-gradient-to-r from-blue-400 to-green-400 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Empowering Citizens with Government Schemes</h1>
+      <p class="text-lg md:text-xl mb-8">Access scholarships, subsidies, pensions, and other benefits easily</p>
+      <a href="#schemes-section" class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-100 transition">Browse Schemes</a>
     </div>
-  <!-- Scheme Cards Grid -->
-    <div id="scheme-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Card Example -->
-      <div class="scheme-card bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden" data-category="Agriculture">
-        <div class="p-6">
+  </section>
+
+  <!-- ---------------- Schemes Section ---------------- -->
+  <section id="schemes-section" class="py-12">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100">Explore Government Schemes</h2>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">Access scholarships, subsidies, pensions, and other benefits easily</p>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="flex justify-center space-x-4 mb-8 flex-wrap">
+        <button class="scheme-filter px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition" data-category="all">All</button>
+        <button class="scheme-filter px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition" data-category="Education">Education</button>
+        <button class="scheme-filter px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition" data-category="Health">Health</button>
+        <button class="scheme-filter px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition" data-category="Pension">Pension</button>
+        <button class="scheme-filter px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition" data-category="Women">Women</button>
+        <button class="scheme-filter px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition" data-category="Employment">Employment</button>
+      </div>
+
+      <!-- Scheme Cards Grid -->
+      <div id="scheme-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Example Scheme Cards -->
+        <div class="scheme-card rounded-lg shadow transition overflow-hidden p-6" data-category="Agriculture" data-color="green">
           <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-green-100 flex items-center justify-center rounded-full">
-              <span class="text-green-600 font-bold text-lg">🌾</span>
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-green-100 dark:bg-green-700">
+              <span class="text-green-600 dark:text-green-300 font-bold text-lg">🌾</span>
             </div>
-            <h3 class="ml-4 text-xl font-semibold text-gray-800">PM Kisan Samman Nidhi</h3>
+            <h3 class="ml-4 text-xl font-semibold text-gray-800 dark:text-gray-100">PM Kisan Samman Nidhi</h3>
           </div>
-          <span class="inline-block bg-green-200 text-green-800 px-2 py-1 text-xs rounded mb-2">Agriculture</span>
-          <p class="text-gray-600 mb-4">Financial support to farmers with Rs. 6000 per year to cultivate crops efficiently.</p>
-          <a href="https://pmkisan.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">Learn More</a>
+          <span class="inline-block px-2 py-1 text-xs rounded mb-2 bg-green-200 dark:bg-green-800 text-green-800 dark:text-green-200">Agriculture</span>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Financial support to farmers with Rs. 6000 per year to cultivate crops efficiently.</p>
+          <a href="https://pmkisan.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-green-500 dark:bg-green-600 text-white rounded hover:bg-green-600 dark:hover:bg-green-700 transition">Learn More</a>
         </div>
-      </div>
 
-      <div class="scheme-card bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden" data-category="Education">
-        <div class="p-6">
+        <div class="scheme-card rounded-lg shadow transition overflow-hidden p-6" data-category="Education" data-color="blue">
           <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-blue-100 flex items-center justify-center rounded-full">
-              <span class="text-blue-600 font-bold text-lg">🎓</span>
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 dark:bg-blue-700">
+              <span class="text-blue-600 dark:text-blue-300 font-bold text-lg">🎓</span>
             </div>
-            <h3 class="ml-4 text-xl font-semibold text-gray-800">National Scholarship Portal</h3>
+            <h3 class="ml-4 text-xl font-semibold text-gray-800 dark:text-gray-100">National Scholarship Portal</h3>
           </div>
-          <span class="inline-block bg-blue-200 text-blue-800 px-2 py-1 text-xs rounded mb-2">Education</span>
-          <p class="text-gray-600 mb-4">Centralized portal to apply for all government scholarships for students across India.</p>
-          <a href="https://scholarships.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">Learn More</a>
+          <span class="inline-block px-2 py-1 text-xs rounded mb-2 bg-blue-200 dark:bg-blue-800 text-blue-800 dark:text-blue-200">Education</span>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Centralized portal to apply for all government scholarships for students across India.</p>
+          <a href="https://scholarships.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-700 transition">Learn More</a>
         </div>
-      </div>
-<div class="scheme-card bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden" data-category="Health">
-        <div class="p-6">
+
+        <div class="scheme-card rounded-lg shadow transition overflow-hidden p-6" data-category="Health" data-color="red">
           <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-red-100 flex items-center justify-center rounded-full">
-              <span class="text-red-600 font-bold text-lg">🏥</span>
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-red-100 dark:bg-red-700">
+              <span class="text-red-600 dark:text-red-300 font-bold text-lg">🏥</span>
             </div>
-            <h3 class="ml-4 text-xl font-semibold text-gray-800">Ayushman Bharat</h3>
+            <h3 class="ml-4 text-xl font-semibold text-gray-800 dark:text-gray-100">Ayushman Bharat</h3>
           </div>
-          <span class="inline-block bg-red-200 text-red-800 px-2 py-1 text-xs rounded mb-2">Health</span>
-          <p class="text-gray-600 mb-4">Health coverage for families, providing free treatment up to Rs. 5 lakh per year.</p>
-          <a href="https://pmjay.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">Learn More</a>
+          <span class="inline-block px-2 py-1 text-xs rounded mb-2 bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200">Health</span>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Health coverage for families, providing free treatment up to Rs. 5 lakh per year.</p>
+          <a href="https://pmjay.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-red-500 dark:bg-red-600 text-white rounded hover:bg-red-600 dark:hover:bg-red-700 transition">Learn More</a>
+        </div>
+
+        <!-- Add more cards similarly -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------- News Section ---------------- -->
+  <section id="news-section" class="bg-gray-100 dark:bg-gray-800 py-12">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100">Latest News</h2>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">Stay updated with national and global news</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="news-cards">
+        <!-- Example news card -->
+        <div class="bg-white dark:bg-gray-900 rounded-lg shadow p-6">
+          <img src="https://via.placeholder.com/300x150" class="rounded mb-4" alt="News Image">
+          <h3 class="text-xl font-semibold mb-2">News Headline Here</h3>
+          <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">Short description of the news article goes here.</p>
+          <a href="#" class="text-blue-500 hover:underline dark:text-blue-300 text-sm">Read More</a>
         </div>
       </div>
-      </section>
-<!-- ---------------- Filter Script ---------------- -->
-<script>
-  const filterButtons = document.querySelectorAll('.scheme-filter');
-  const schemeCards = document.querySelectorAll('.scheme-card');
-
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const category = button.dataset.category;
-
-      schemeCards.forEach(card => {
-        if(category === 'all' || card.dataset.category === category) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
-</script>
-  <!-- Schemes container -->
-  <div id="schemes-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-</section>
-    <!-- Example All Schemes -->
-    <div class="glass-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700">
-      <h3 class="font-semibold">Atal Pension Yojana</h3>
-      <p>Provides pension benefits to unorganized sector workers.</p>
-      <a href="https://www.npscra.nsdl.co.in/nsdl-nps.php" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
     </div>
-    <div class="glass-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700">
-      <h3 class="font-semibold">Stand Up India Scheme</h3>
-      <p>Supports women and SC/ST entrepreneurs with loans.</p>
-      <a href="https://www.standupmitra.in/" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
+  </section>
+
+  <!-- ---------------- Footer ---------------- -->
+  <footer class="bg-white dark:bg-gray-900 shadow mt-12">
+    <div class="container mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h4 class="font-bold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#hero" class="hover:text-blue-500 dark:hover:text-blue-300">Home</a></li>
+          <li><a href="#schemes-section" class="hover:text-blue-500 dark:hover:text-blue-300">Schemes</a></li>
+          <li><a href="#news-section" class="hover:text-blue-500 dark:hover:text-blue-300">News</a></li>
+          <li><a href="#contact-section" class="hover:text-blue-500 dark:hover:text-blue-300">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Categories</h4>
+        <ul class="space-y-2">
+          <li>Education</li>
+          <li>Health</li>
+          <li>Pension</li>
+          <li>Employment</li>
+          <li>Women</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Contact</h4>
+        <p>Email: info@schemesathi.in</p>
+        <p>Phone: +91 12345 67890</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Legal</h4>
+        <p>© 2026 Scheme Sathi. All rights reserved.</p>
+        <p>Privacy Policy | Terms of Use</p>
+      </div>
     </div>
-    <div class="glass-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700">
-      <h3 class="font-semibold">Ayushman Bharat Yojana</h3>
-      <p>Health insurance coverage for economically weaker sections.</p>
-      <a href="https://pmjay.gov.in/" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
-    </div>
-<!-- Example All Schemes -->
-<div class="glass-card p-6 rounded-lg shadow-md bg-white dark:bg-gray-700">
-  <h3 class="text-xl font-bold flex items-center gap-2">
-    🌾 PM Kisan Samman Nidhi 
-    <span class="bg-green-200 text-green-800 px-2 py-1 rounded text-sm">Popular</span>
-  </h3>
-  <p class="mt-2 text-gray-700 dark:text-gray-300">
-    Provides ₹6000 annual income support to farmers.
-  </p>
+  </footer>
 
-  <!-- Collapsible details -->
-  <button class="mt-3 px-3 py-1 bg-blue-600 text-white rounded toggle-details">View Details</button>
-  <div class="details hidden mt-3 space-y-2">
-    <p><strong>Eligibility:</strong> Small and marginal farmers owning cultivable land.</p>
-    <p><strong>How to Apply:</strong> Register via official PM Kisan portal or CSC centers.</p>
-    <p><strong>Documents Required:</strong> Aadhaar, bank account details, land records.</p>
-    <a href="https://pmkisan.gov.in/" target="_blank" class="btn mt-2 px-3 py-1 bg-green-600 text-white rounded">Go to Official Site</a>
-  </div>
-</div>
-    <script>
-  document.querySelectorAll('.toggle-details').forEach(button => {
-    button.addEventListener('click', () => {
-      const details = button.nextElementSibling;
-      details.classList.toggle('hidden');
-    });
-  });
-</script>
-<!-- Scripts -->
-<script>
-async function loadSchemes() {
-  const res = await fetch("https://www.myscheme.gov.in/api/schemes"); 
-  const data = await res.json();
-
-  const container = document.getElementById("schemes-container");
-  container.innerHTML = "";
-
-  data.forEach(scheme => {
-    const card = document.createElement("div");
-    card.className = "glass-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700";
-    card.innerHTML = `
-      <h3 class="font-semibold">${scheme.title}</h3>
-      <p><strong>What it does:</strong> ${scheme.description}</p>
-      <p><strong>Eligibility:</strong> ${scheme.eligibility}</p>
-      <a href="${scheme.link}" target="_blank" class="btn mt-2 px-3 py-1 bg-blue-600 text-white rounded">Learn More</a>
-    `;
-    container.appendChild(card);
-  });
-}
-loadSchemes();
-
-// Search filter
-document.getElementById("scheme-search").addEventListener("input", function() {
-  const query = this.value.toLowerCase();
-  document.querySelectorAll("#schemes-container .glass-card").forEach(card => {
-    const text = card.innerText.toLowerCase();
-    card.style.display = text.includes(query) ? "" : "none";
-  });
-});
-</script>
+  <!-- ---------------- Scripts ---------------- -->
+  <script src="main.js"></script>
 </body>
 </html>
-
-<!-- CATEGORY CARDS -->
-<section class="category-cards grid sm:grid-cols-2 md:grid-cols-4 gap-6 px-6 mt-10">
-  <a href="student.html" class="glass-card text-center p-6 rounded-lg shadow-md bg-white dark:bg-gray-700 hover:scale-105 transform transition">
-    🎓
-    <h3 class="font-semibold mt-2">Students</h3>
-    <p>Scholarships & education support</p>
-  </a>
-  <a href="farmers.html" class="glass-card text-center p-6 rounded-lg shadow-md bg-white dark:bg-gray-700 hover:scale-105 transform transition">
-    🚜
-    <h3 class="font-semibold mt-2">Farmers</h3>
-    <p>Subsidies & income support</p>
-  </a>
-  <a href="pensioners.html" class="glass-card text-center p-6 rounded-lg shadow-md bg-white dark:bg-gray-700 hover:scale-105 transform transition">
-    👵
-    <h3 class="font-semibold mt-2">Pensioners</h3>
-    <p>Secure monthly pension benefits</p>
-  </a>
-  <a href="women.html" class="glass-card text-center p-6 rounded-lg shadow-md bg-white dark:bg-gray-700 hover:scale-105 transform transition">
-    👩
-    <h3 class="font-semibold mt-2">Women</h3>
-    <p>Empowerment & financial support</p>
-  </a>
-</section>
-
-
-
-
-
-<!-- NEWS SECTION -->
-<section id="news-section" class="px-6 mt-10 grid sm:grid-cols-1 md:grid-cols-3 gap-6">
-  <div class="glass-card p-6 bg-white dark:bg-gray-700 rounded-lg shadow-md">
-    <h3 class="font-semibold mb-2">Indian News</h3>
-    <ul id="indian-news-container"><li>Loading...</li></ul>
-  </div>
-  <div class="glass-card p-6 bg-white dark:bg-gray-700 rounded-lg shadow-md">
-    <h3 class="font-semibold mb-2">Global News</h3>
-    <ul id="global-news-container"><li>Loading...</li></ul>
-  </div>
-  <div class="glass-card p-6 bg-white dark:bg-gray-700 rounded-lg shadow-md">
-    <h3 class="font-semibold mb-2">Stock Market</h3>
-    <ul id="stock-news-container"><li>Loading...</li></ul>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer bg-gray-100 dark:bg-gray-800 px-6 py-10 mt-10 grid sm:grid-cols-1 md:grid-cols-3 gap-6" role="contentinfo">
-  <div>
-    <h3 class="font-bold">Scheme Sathi</h3>
-    <p>Helping citizens access schemes easily.</p>
-  </div>
-  <div>
-    <h3 class="font-bold">Links</h3>
-    <a href="#news-section" class="block">News</a>
-    <a href="#contact" class="block">Contact</a>
-  </div>
-  <div>
-    <h3 class="font-bold">Info</h3>
-    <p>India 🇮🇳</p>
-  </div>
-  <div class="col-span-3 text-center mt-6 text-sm">
-    © 2026 Scheme Sathi
-  </div>
-</footer>
-
-<!-- SCRIPTS -->
-<script>
-// Language toggle
-const translations = {
-  en: { header:"Scheme Sathi Portal", heroTitle:"Empowering Citizens with Government Schemes" },
-  hi: { header:"स्कीम साथी पोर्टल", heroTitle:"नागरिकों को सरकारी योजनाओं के साथ सशक्त बनाना" }
-};
-document.querySelectorAll("#lang-toggle, #lang-toggle-mobile").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    const currentLang = document.documentElement.lang;
-    const newLang = currentLang==="en"?"hi":"en";
-    document.documentElement.lang=newLang;
-    const t = translations[newLang];
-    document.querySelector("header h1").innerText = t.header;
-    document.querySelector("section#main h2").innerText = t.heroTitle;
-    localStorage.setItem("lang", newLang);
-  });
-});
-
-// Dark mode toggle
-function toggleTheme() {
-  document.documentElement.classList.toggle("dark");
-  localStorage.setItem("theme", document.documentElement.classList.contains("dark") ? "dark" : "light");
-}
-document.querySelectorAll("#theme-toggle, #theme-toggle-mobile").forEach(btn=>{
-  btn.addEventListener("click", toggleTheme);
-});
-
-// Load saved preferences
-if(localStorage.getItem("theme")==="dark") document.documentElement.classList.add("dark");
-if(localStorage.getItem("lang")) {
-  document.documentElement.lang = localStorage.getItem("lang");
-  const t = translations[localStorage.getItem("lang")];
-  document.querySelector("header h1").innerText = t.header;
-  document.querySelector("section#main h2").innerText = t.heroTitle;
-}
-
-// Load schemes & news
-async function loadData() {
-  try {
-    const res = await fetch("data.json");
-    const data = await res.json();
-
-    const featured = document.get
