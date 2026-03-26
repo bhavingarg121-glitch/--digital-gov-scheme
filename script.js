@@ -27,17 +27,31 @@ let allSchemes = [];
 let loadedCount = 0;
 const batchSize = 50; // Number of schemes per scroll
 
-// Load schemes JSON
-async function fetchSchemes() {
+async function loadGovNews() {
+  const newsContainer = document.getElementById('news-container');
+  newsContainer.innerHTML = '<li>Loading news…</li>';
+  
   try {
-    const res = await fetch('schemes.json');
-    allSchemes = await res.json();
-    displaySchemes('All', true);
+    const res = await fetch('/api/news');
+    const news = await res.json();
+    newsContainer.innerHTML = '';
+    news.slice(0, 15).forEach(article => { // show top 15
+      const li = document.createElement('li');
+      li.style.marginBottom = "10px";
+      const a = document.createElement('a');
+      a.href = article.link;
+      a.target = "_blank";
+      a.textContent = `[${article.source}] ${article.title}`;
+      li.appendChild(a);
+      newsContainer.appendChild(li);
+    });
   } catch (err) {
-    container.innerHTML = '<p>Failed to load schemes.</p>';
+    newsContainer.innerHTML = '<li>Failed to load news.</li>';
     console.error(err);
   }
 }
+
+loadGovNews();
 
 // Display schemes by category
 function displaySchemes(category, reset = false) {
