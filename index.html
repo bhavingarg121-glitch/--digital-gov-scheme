@@ -23,11 +23,15 @@
 </header>
 
 <!-- MOBILE MENU -->
-<div id="mobileMenu" class="hidden bg-blue-800 text-white flex flex-col p-4 space-y-3 md:hidden">
-  <a href="news.html">📰 News</a>
-  <a href="contact.html">📞 Contact</a>
+<div class="hamburger-menu">
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    <nav class="mobile-menu">
+               <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="news.html">News</a>
+    </nav>
 </div>
-
 <!-- HERO SECTION -->
 <section class="text-center py-10 px-4">
   <h2 class="text-3xl font-bold mb-4">Empowering Citizens with Government Schemes</h2>
@@ -39,11 +43,7 @@
       class="px-4 py-3 w-72 rounded shadow text-black">
   </div>
 
-  <!-- FEATURE ANNOUNCEMENT -->
-  <p class="mt-6 bg-yellow-400 text-black inline-block px-6 py-2 rounded font-semibold">
-    📢 New Pension Scheme for Senior Citizens Announced
-  </p>
-</section>
+ 
 
 <!-- CATEGORY CARDS -->
 <section class="w-full mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
