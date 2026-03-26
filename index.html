@@ -84,6 +84,26 @@
   <h2 class="text-2xl font-bold mb-4">All Schemes</h2>
   <input type="text" id="scheme-search" placeholder="Search schemes..." class="w-full p-2 border rounded mb-4">
   <div id="schemes-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section id="schemes-section" class="px-6 mt-10">
+  <h2 class="text-2xl font-bold mb-4">All Schemes</h2>
+
+  <!-- Search bar -->
+  <input type="text" id="scheme-search" placeholder="Search schemes..." class="w-full p-2 border rounded mb-4">
+
+  <!-- Category filters -->
+  <div class="flex flex-wrap gap-2 mb-4">
+    <button class="filter-btn px-3 py-1 bg-blue-600 text-white rounded" data-category="all">All</button>
+    <button class="filter-btn px-3 py-1 bg-gray-200 rounded" data-category="agriculture">Agriculture</button>
+    <button class="filter-btn px-3 py-1 bg-gray-200 rounded" data-category="education">Education</button>
+    <button class="filter-btn px-3 py-1 bg-gray-200 rounded" data-category="health">Health</button>
+    <button class="filter-btn px-3 py-1 bg-gray-200 rounded" data-category="women">Women</button>
+    <button class="filter-btn px-3 py-1 bg-gray-200 rounded" data-category="pension">Pension</button>
+    <button class="filter-btn px-3 py-1 bg-gray-200 rounded" data-category="employment">Employment</button>
+  </div>
+
+  <!-- Schemes container -->
+  <div id="schemes-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+</section>
     <!-- Example All Schemes -->
     <div class="glass-card p-4 rounded-lg shadow-md bg-white dark:bg-gray-700">
       <h3 class="font-semibold">Atal Pension Yojana</h3>
