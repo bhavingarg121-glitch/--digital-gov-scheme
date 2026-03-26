@@ -1,0 +1,21 @@
+{
+  "schemes": [
+    {
+      "title": "Education Support Program",
+      "description": "Financial aid for students pursuing higher education. Scholarships, tuition support, and mentorship programs are included."
+    },
+    {
+      "title": "Healthcare Assistance",
+      "description": "Medical support and insurance coverage for families in need. Free checkups and emergency support included."
+    },
+    {
+      "title": "Startup Grants",
+      "description": "Funding support for small businesses and startups. Mentorship, networking, and grants available."
+    }
+  ],
+  "news": [
+    "Education scheme deadline extended",
+    "Healthcare subsidy updated",
+    "Startup grants applications open"
+  ]
+}
