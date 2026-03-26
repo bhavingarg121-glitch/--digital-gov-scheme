@@ -81,7 +81,33 @@ header h1 { font-size: 1.8rem; color: #1d4ed8; }
   transition: background 0.3s;
 }
 .glass-card a button:hover { background: #059669; }
+.card-item {
+  background: rgba(255,255,255,0.8);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
 
+.card-item:hover {
+  transform: translateY(-4px);
+}
+
+.glass-card {
+  backdrop-filter: blur(10px);
+}
+
+.btn {
+  background-color: #10B981;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #059669;
+}
 /* -------------------- Sidebar Categories -------------------- */
 .sidebar ul { list-style: none; padding: 0; display:flex; justify-content:center; flex-wrap:wrap; margin: 1rem 0; }
 .sidebar ul li a {
