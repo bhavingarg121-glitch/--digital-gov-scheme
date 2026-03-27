@@ -1,11 +1,16 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 import json
 
 app = Flask(__name__)
+CORS(app)
 
 def load_data():
-    with open("schemes.json", encoding="utf-8") as f:
-        return json.load(f)
+    try:
+        with open("schemes.json", encoding="utf-8") as f:
+            return json.load(f)
+    except:
+        return []
 
 @app.route("/api/schemes")
 def get_schemes():
@@ -13,7 +18,7 @@ def get_schemes():
 
 @app.route("/")
 def home():
-    return "Scheme Sathi API is running 🚀"
+    return "Backend running ✅"
 
 if __name__ == "__main__":
     app.run(debug=True)
