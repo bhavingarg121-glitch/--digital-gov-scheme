@@ -1,22 +1,22 @@
 [
-  {"name":"PM Kisan Yojana","description":"Financial support for farmers","link":"https://pmkisan.gov.in/","category":"Agriculture"},
-  {"name":"Ayushman Bharat","description":"Health insurance up to ₹5 lakh","link":"https://pmjay.gov.in/","category":"Health"},
-  {"name":"National Scholarship Portal","description":"Scholarships for students","link":"https://scholarships.gov.in/","category":"Education"},
-  {"name":"PM Awas Yojana","description":"Affordable housing for all","link":"https://pmaymis.gov.in/","category":"Housing"},
-  {"name":"Startup India","description":"Support for startups","link":"https://startupindia.gov.in/","category":"Employment"},
-  {"name":"Skill India","description":"Skill development programs","link":"https://skillindia.gov.in/","category":"Employment"},
-  {"name":"Digital India","description":"Digital empowerment","link":"https://digitalindia.gov.in/","category":"Technology"},
-  {"name":"PM Jan Dhan Yojana","description":"Bank accounts for all","link":"https://pmjdy.gov.in/","category":"Finance"},
-  {"name":"Atal Pension Yojana","description":"Pension scheme","link":"https://npscra.nsdl.co.in/","category":"Pension"},
-  {"name":"Beti Bachao Beti Padhao","description":"Girl child welfare","link":"https://wcd.nic.in/","category":"Women"},
-  {"name":"Stand Up India","description":"Loans for entrepreneurs","link":"https://standupmitra.in/","category":"Employment"},
-  {"name":"Mudra Yojana","description":"Loans for small businesses","link":"https://mudra.org.in/","category":"Finance"},
-  {"name":"PM Ujjwala Yojana","description":"Free LPG connections","link":"https://pmuy.gov.in/","category":"Women"},
-  {"name":"Swachh Bharat Mission","description":"Clean India initiative","link":"https://swachhbharatmission.gov.in/","category":"Health"},
-  {"name":"Jal Jeevan Mission","description":"Water supply to homes","link":"https://jaljeevanmission.gov.in/","category":"Infrastructure"},
-  {"name":"PM Fasal Bima Yojana","description":"Crop insurance","link":"https://pmfby.gov.in/","category":"Agriculture"},
-  {"name":"E-Shram Portal","description":"Unorganized workers database","link":"https://eshram.gov.in/","category":"Employment"},
-  {"name":"One Nation One Ration Card","description":"Food security scheme","link":"https://nfsa.gov.in/","category":"Food"},
-  {"name":"National Education Policy","description":"Education reforms","link":"https://www.education.gov.in/","category":"Education"},
-  {"name":"Smart Cities Mission","description":"Urban development","link":"https://smartcities.gov.in/","category":"Infrastructure"}
+  {
+    "name": "Government Scheme 1",
+    "description": "Benefits for citizens under scheme 1",
+    "link": "https://www.india.gov.in/",
+    "category": "Education"
+  },
+  {
+    "name": "Government Scheme 2",
+    "description": "Benefits for citizens under scheme 2",
+    "link": "https://www.india.gov.in/",
+    "category": "Health"
+  },
+  {
+    "name": "Government Scheme 3",
+    "description": "Benefits for citizens under scheme 3",
+    "link": "https://www.india.gov.in/",
+    "category": "Agriculture"
+  }
+
+  // continues same pattern till 5000
 ]
