@@ -3,4 +3,4 @@ flask-cors
 requests
 feedparser
 gunicorn
-pip install requests beautifulsoup4 pandas
+pip install selenium webdriver-manager pandas
