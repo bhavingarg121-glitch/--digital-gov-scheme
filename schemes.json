@@ -1,37 +1,20 @@
-{
-  "name": "PM Kisan",
-  "description": "...",
-  "category": "Agriculture"
-}
 [
   {
-    "name": "Pradhan Mantri Awas Yojana",
-    "description": "Affordable housing for urban poor.",
-    "category": "Housing",
-    "link": "https://example.gov.in/pmay"
+    "name": "PM Kisan Yojana",
+    "description": "Financial support for farmers",
+    "link": "https://pmkisan.gov.in/",
+    "category": "Agriculture"
   },
   {
     "name": "Ayushman Bharat",
-    "description": "Health insurance coverage for economically weaker sections.",
-    "category": "Health",
-    "link": "https://example.gov.in/ayushman-bharat"
+    "description": "Free health insurance up to ₹5 lakh",
+    "link": "https://pmjay.gov.in/",
+    "category": "Health"
   },
   {
-    "name": "PM-KISAN",
-    "description": "Income support for farmers.",
-    "category": "Employment",
-    "link": "https://example.gov.in/pm-kisan"
-  }
-  {
-    "name": "Sukanya Samriddhi Yojana",
-    "description": "Savings scheme for the girl child.",
-    "category": "Women",
-    "link": "https://example.gov.in/sukanya-samriddhi"
-  },
-  {
-    "name": "National Pension Scheme",
-    "description": "Retirement savings scheme for citizens.",
-    "category": "Pension",
-    "link": "https://example.gov.in/nps"
+    "name": "National Scholarship Portal",
+    "description": "Scholarships for students",
+    "link": "https://scholarships.gov.in/",
+    "category": "Education"
   }
 ]
