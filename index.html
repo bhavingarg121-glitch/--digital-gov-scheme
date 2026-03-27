@@ -167,37 +167,68 @@
           <li>Health</li>
           <li>Pension</li>
           <li>Employment</li>
-       <script>
+       
+<script>
 let allSchemes = [];
+let currentPage = 1;
+const perPage = 20;
 
-document.getElementById("loadSchemes").addEventListener("click", () => {
-
-  fetch("schemes.json")
-    .then(res => res.json())
+window.onload = function () {
+  fetch("./schemes.json")
+    .then(res => {
+      console.log("STATUS:", res.status);
+      return res.json();
+    })
     .then(data => {
+      console.log("TOTAL SCHEMES:", data.length);
       allSchemes = data;
-      displaySchemes(data);
+      displayPage();
     })
     .catch(err => {
-      console.log(err);
-      alert("Error loading schemes.json");
+      console.error("ERROR:", err);
+      document.body.innerHTML = "<h1 style='color:red'>Error loading schemes</h1>";
     });
+};
 
-});
-
-function displaySchemes(data) {
+function displayPage() {
   const container = document.getElementById("scheme-cards");
+
+  if (!container) {
+    console.error("❌ scheme-cards not found");
+    return;
+  }
+
   container.innerHTML = "";
 
-  data.forEach(s => {
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+
+  const pageData = allSchemes.slice(start, end);
+
+  pageData.forEach(s => {
     container.innerHTML += `
-      <div class="scheme-card bg-white p-6 rounded shadow">
-        <h3 class="text-xl font-bold">${s.name}</h3>
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="font-bold">${s.name}</h3>
         <p>${s.description}</p>
-        <span class="text-sm text-gray-500">${s.category}</span><br>
         <a href="${s.link}" target="_blank" class="text-blue-500">View</a>
       </div>
     `;
   });
+
+  document.getElementById("pageNumber").innerText = currentPage;
 }
-</script>  
+
+function nextPage() {
+  if (currentPage * perPage < allSchemes.length) {
+    currentPage++;
+    displayPage();
+  }
+}
+
+function prevPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    displayPage();
+  }
+}
+</script>
