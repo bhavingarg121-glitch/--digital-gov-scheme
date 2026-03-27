@@ -4,145 +4,148 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scheme Sathi Portal</title>
-
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Bright hover animations -->
   <style>
-    body { background: #f0f4f8; }
+    body {
+      background: #f0f4f8; /* soft light blue background */
+    }
+
+    @keyframes bounceIcon {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .hover-bounce:hover .icon-bounce {
+      animation: bounceIcon 0.5s ease-in-out;
+    }
+
+    .hover-glow:hover {
+      box-shadow: 0 12px 30px rgba(59,130,246,0.3);
+      transform: translateY(-3px);
+    }
 
     .scheme-card {
-      transition: 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
     }
 
-    .scheme-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(59,130,246,0.3);
-    }
-
+    /* Hero background gradient */
     #hero {
       background: linear-gradient(135deg, #4f46e5, #3b82f6);
       color: white;
     }
   </style>
 </head>
+<body class="text-gray-800 font-sans">
 
-<body class="font-sans text-gray-800">
-
-<!-- HEADER -->
-<header class="bg-white shadow sticky top-0 z-50">
-  <div class="container mx-auto flex justify-between px-4 py-4">
-    <h1 class="text-2xl font-bold text-blue-600">Scheme Sathi</h1>
-    <nav class="space-x-6">
-      <a href="#hero">Home</a>
-      <a href="#schemes-section">Schemes</a>
-    </nav>
-  </div>
-</header>
-
-<!-- HERO -->
-<section id="hero" class="py-24 text-center">
-  <h1 class="text-5xl font-bold mb-4">
-    Empowering Citizens with Government Schemes
-  </h1>
-
-  <p class="text-xl mb-8">
-    Access scholarships, subsidies, pensions, and benefits with ease.
-  </p>
-
-  <button id="loadSchemes"
-    class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-200">
-    Load Schemes
-  </button>
-</section>
-
-<!-- SCHEMES -->
-<section id="schemes-section" class="py-12">
-  <div class="container mx-auto px-4">
-
-    <h2 class="text-3xl font-bold text-center mb-8">
-      Explore Government Schemes
-    </h2>
-
-    <!-- FILTER BUTTONS -->
-    <div class="flex justify-center gap-3 flex-wrap mb-8">
-      <button class="filter-btn bg-blue-500 text-white px-4 py-2 rounded" data-cat="all">All</button>
-      <button class="filter-btn bg-green-400 text-white px-4 py-2 rounded" data-cat="Education">Education</button>
-      <button class="filter-btn bg-yellow-400 px-4 py-2 rounded" data-cat="Health">Health</button>
-      <button class="filter-btn bg-purple-400 text-white px-4 py-2 rounded" data-cat="Pension">Pension</button>
-      <button class="filter-btn bg-pink-400 text-white px-4 py-2 rounded" data-cat="Women">Women</button>
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center px-4 py-4">
+      <div class="text-2xl font-bold text-blue-600">Scheme Sathi</div>
+      <nav class="hidden md:flex space-x-6 items-center">
+        <a href="#hero" class="hover:text-blue-500">Home</a>
+        <a href="#schemes-section" class="hover:text-blue-500">Schemes</a>
+        <a href="#news-section" class="hover:text-blue-500">News</a>
+        <a href="#contact-section" class="hover:text-blue-500">Contact</a>
+        <input type="text" placeholder="Search schemes..." class="ml-4 px-2 py-1 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <select class="ml-2 border rounded px-2 py-1">
+          <option>EN</option>
+          <option>HI</option>
+        </select>
+      </nav>
+      <div class="md:hidden">
+        <button id="mobile-menu-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <!-- GRID -->
-    <div id="scheme-cards"
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  <!-- Hero / Banner -->
+  <section id="hero" class="py-24 relative overflow-hidden">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl font-bold mb-4">Empowering Citizens with Government Schemes</h1>
+      <p class="text-xl mb-8">Access scholarships, subsidies, pensions, and other benefits with ease.</p>
+      
+      <a href="#schemes-section" class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-100 transition">Explore Schemes</a>
+      <button id="loadSchemes" class="ml-4 px-6 py-3 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition">Load Schemes</button>
+    </div>
+    <!-- Optional decorative circles -->
+    <div class="absolute -top-16 -left-16 w-64 h-64 bg-blue-300 rounded-full opacity-30 animate-pulse"></div>
+    <div class="absolute -bottom-16 -right-16 w-64 h-64 bg-purple-300 rounded-full opacity-30 animate-pulse"></div>
+  </section>
 
-      <div class="scheme-card bg-white p-6 rounded shadow">
-        <h3>Click Load Schemes</h3>
+  <!-- Schemes Section -->
+  <section id="schemes-section" class="py-12">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold">Explore Government Schemes</h2>
+        <p class="text-gray-600 mt-2">Access scholarships, subsidies, pensions, and other benefits easily</p>
       </div>
 
-    </div>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-white text-center py-6 shadow">
-  © 2026 Scheme Sathi
-</footer>
-
-<!-- SCRIPT -->
-<script>
-let allSchemes = [];
-
-// LOAD SCHEMES
-document.getElementById("loadSchemes").addEventListener("click", () => {
-
-  fetch("schemes.json")
-    .then(res => res.json())
-    .then(data => {
-      allSchemes = data;
-      displaySchemes(data);
-    })
-    .catch(() => alert("Backend not running"));
-});
-
-// DISPLAY FUNCTION
-function displaySchemes(data) {
-  const container = document.getElementById("scheme-cards");
-  container.innerHTML = "";
-
-  data.forEach(s => {
-    container.innerHTML += `
-      <div class="scheme-card bg-white p-6 rounded shadow">
-        <h3 class="text-xl font-bold mb-2">${s.name}</h3>
-        <p class="text-gray-600 mb-2">${s.description || ""}</p>
-        <span class="text-sm text-gray-500">${s.category || "General"}</span><br>
-        <a href="${s.link}" target="_blank"
-           class="text-blue-500 mt-2 inline-block">View</a>
+      <!-- Filter Buttons -->
+      <div class="flex justify-center space-x-4 mb-8 flex-wrap">
+        <button class="scheme-filter px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition" data-category="all">All</button>
+        <button class="scheme-filter px-4 py-2 bg-green-400 text-white rounded hover:bg-green-500 transition" data-category="Education">Education</button>
+        <button class="scheme-filter px-4 py-2 bg-yellow-300 text-gray-800 rounded hover:bg-yellow-400 transition" data-category="Health">Health</button>
+        <button class="scheme-filter px-4 py-2 bg-purple-400 text-white rounded hover:bg-purple-500 transition" data-category="Pension">Pension</button>
+        <button class="scheme-filter px-4 py-2 bg-pink-400 text-white rounded hover:bg-pink-500 transition" data-category="Women">Women</button>
+        <button class="scheme-filter px-4 py-2 bg-indigo-400 text-white rounded hover:bg-indigo-500 transition" data-category="Employment">Employment</button>
       </div>
-    `;
-  });
-}
 
-// FILTER BUTTONS WORKING
-document.querySelectorAll(".filter-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
+      <!-- Scheme Cards Grid -->
+      <div id="scheme-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Example card -->
+        <div class="scheme-card bg-white rounded-lg shadow p-6 hover-bounce hover-glow transition overflow-hidden">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-green-100">
+              <span class="icon-bounce text-green-600 font-bold text-lg">🎓</span>
+            </div>
+            <h3 class="ml-4 text-xl font-semibold">National Scholarship Portal</h3>
+          </div>
+          <span class="inline-block px-2 py-1 text-xs rounded mb-2 bg-green-200 text-green-800">Education</span>
+          <p class="text-gray-600 mb-4">Centralized portal to apply for all government scholarships for students across India.</p>
+          <a href="https://scholarships.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-green-400 text-white rounded hover:bg-green-500 transition">Learn More</a>
+        </div>
 
-    const cat = btn.getAttribute("data-cat");
+        <div class="scheme-card bg-white rounded-lg shadow p-6 hover-bounce hover-glow transition overflow-hidden">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100">
+              <span class="icon-bounce text-blue-600 font-bold text-lg">🏥</span>
+            </div>
+            <h3 class="ml-4 text-xl font-semibold">Ayushman Bharat</h3>
+          </div>
+          <span class="inline-block px-2 py-1 text-xs rounded mb-2 bg-blue-200 text-blue-800">Health</span>
+          <p class="text-gray-600 mb-4">Health coverage for families, providing free treatment up to Rs. 5 lakh per year.</p>
+          <a href="https://pmjay.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-500 transition">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    if (cat === "all") {
-      displaySchemes(allSchemes);
-    } else {
-      const filtered = allSchemes.filter(s =>
-        (s.category || "").toLowerCase() === cat.toLowerCase()
-      );
-      displaySchemes(filtered);
-    }
+  <!-- Footer -->
+  <footer class="bg-white mt-12 shadow py-10">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h4 class="font-bold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#hero" class="hover:text-blue-500">Home</a></li>
+          <li><a href="#schemes-section" class="hover:text-blue-500">Schemes</a></li>
+          <li><a href="#news-section" class="hover:text-blue-500">News</a></li>
+          <li><a href="#contact-section" class="hover:text-blue-500">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Categories</h4>
+        <ul class="space-y-2">
+          <li>Education</li>
+          <li>Health</li>
+          <li>Pension</li>
+          <li>Employment</li>
+         
 
-  });
-});
-<script src= "main.js"></script>
-</script>
-
-</body>
-</html>
