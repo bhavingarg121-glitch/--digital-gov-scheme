@@ -106,3 +106,36 @@ document.querySelectorAll('header nav ul li a[data-category]').forEach(link => {
 
 // Initial load
 fetchSchemes();
+let allSchemes = [];
+
+fetch("http://127.0.0.1:5000/api/schemes")
+  .then(res => res.json())
+  .then(data => {
+    allSchemes = data;
+    display(data);
+  });
+
+function display(data) {
+  const container = document.getElementById("schemes");
+  container.innerHTML = "";
+
+  data.forEach(s => {
+    container.innerHTML += `
+      <div class="scheme">
+        <h3>${s.name}</h3>
+        <p>${s.description}</p>
+        <a href="${s.link}" target="_blank">View</a>
+      </div>
+    `;
+  });
+}
+
+document.getElementById("search").addEventListener("input", e => {
+  const value = e.target.value.toLowerCase();
+
+  const filtered = allSchemes.filter(s =>
+    s.name.toLowerCase().includes(value)
+  );
+
+  display(filtered);
+});
