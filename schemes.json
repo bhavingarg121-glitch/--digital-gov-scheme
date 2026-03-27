@@ -7,7 +7,7 @@
   },
   {
     "name": "Ayushman Bharat",
-    "description": "Free health insurance up to ₹5 lakh",
+    "description": "Health insurance up to ₹5 lakh",
     "link": "https://pmjay.gov.in/",
     "category": "Health"
   },
@@ -16,5 +16,47 @@
     "description": "Scholarships for students",
     "link": "https://scholarships.gov.in/",
     "category": "Education"
+  },
+  {
+    "name": "PM Awas Yojana",
+    "description": "Affordable housing scheme",
+    "link": "https://pmaymis.gov.in/",
+    "category": "Housing"
+  },
+  {
+    "name": "Startup India",
+    "description": "Support for startups",
+    "link": "https://startupindia.gov.in/",
+    "category": "Employment"
+  },
+  {
+    "name": "Beti Bachao Beti Padhao",
+    "description": "Support for girl child education",
+    "link": "https://wcd.nic.in/",
+    "category": "Women"
+  },
+  {
+    "name": "PM Jan Dhan Yojana",
+    "description": "Financial inclusion scheme",
+    "link": "https://pmjdy.gov.in/",
+    "category": "Finance"
+  },
+  {
+    "name": "Skill India Mission",
+    "description": "Skill development programs",
+    "link": "https://skillindia.gov.in/",
+    "category": "Employment"
+  },
+  {
+    "name": "Atal Pension Yojana",
+    "description": "Pension scheme for workers",
+    "link": "https://npscra.nsdl.co.in/",
+    "category": "Pension"
+  },
+  {
+    "name": "Digital India",
+    "description": "Digital empowerment initiative",
+    "link": "https://digitalindia.gov.in/",
+    "category": "Technology"
   }
 ]
