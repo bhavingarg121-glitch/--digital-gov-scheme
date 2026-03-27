@@ -4,3 +4,4 @@ requests
 feedparser
 gunicorn
 pip install selenium webdriver-manager pandas
+pip install flask selenium webdriver-manager
