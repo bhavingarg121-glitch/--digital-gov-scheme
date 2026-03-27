@@ -97,7 +97,7 @@ let allSchemes = [];
 // LOAD SCHEMES
 document.getElementById("loadSchemes").addEventListener("click", () => {
 
-  fetch("http://127.0.0.1:5000/api/schemes")
+  fetch("schemes.json")
     .then(res => res.json())
     .then(data => {
       allSchemes = data;
