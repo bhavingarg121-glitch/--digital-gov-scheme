@@ -147,5 +147,38 @@
           <li>Health</li>
           <li>Pension</li>
           <li>Employment</li>
-         
+         <script>
+let allSchemes = [];
+
+document.getElementById("loadSchemes").addEventListener("click", () => {
+
+  fetch("schemes.json")
+    .then(res => res.json())
+    .then(data => {
+      allSchemes = data;
+      displaySchemes(data);
+    })
+    .catch(err => {
+      console.log(err);
+      alert("Error loading schemes.json");
+    });
+
+});
+
+function displaySchemes(data) {
+  const container = document.getElementById("scheme-cards");
+  container.innerHTML = "";
+
+  data.forEach(s => {
+    container.innerHTML += `
+      <div class="scheme-card bg-white p-6 rounded shadow">
+        <h3 class="text-xl font-bold">${s.name}</h3>
+        <p>${s.description}</p>
+        <span class="text-sm text-gray-500">${s.category}</span><br>
+        <a href="${s.link}" target="_blank" class="text-blue-500">View</a>
+      </div>
+    `;
+  });
+}
+</script>
 
