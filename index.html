@@ -11,12 +11,12 @@
     body { background: #f0f4f8; }
 
     .scheme-card {
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: 0.3s;
     }
 
     .scheme-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 12px 30px rgba(59,130,246,0.3);
     }
 
     #hero {
@@ -26,33 +26,31 @@
   </style>
 </head>
 
-<body class="text-gray-800 font-sans">
+<body class="font-sans text-gray-800">
 
 <!-- HEADER -->
 <header class="bg-white shadow sticky top-0 z-50">
-  <div class="container mx-auto flex justify-between items-center px-4 py-4">
-    <div class="text-2xl font-bold text-blue-600">Scheme Sathi</div>
+  <div class="container mx-auto flex justify-between px-4 py-4">
+    <h1 class="text-2xl font-bold text-blue-600">Scheme Sathi</h1>
     <nav class="space-x-6">
       <a href="#hero">Home</a>
       <a href="#schemes-section">Schemes</a>
-      <a href="#news-section">News</a>
-      <a href="#contact-section">Contact</a>
     </nav>
   </div>
 </header>
 
 <!-- HERO -->
-<section id="hero" class="py-20 text-center">
-  <h1 class="text-4xl font-bold mb-4">
+<section id="hero" class="py-24 text-center">
+  <h1 class="text-5xl font-bold mb-4">
     Empowering Citizens with Government Schemes
   </h1>
 
-  <p class="mb-6">
-    Access scholarships, subsidies, pensions, and benefits easily
+  <p class="text-xl mb-8">
+    Access scholarships, subsidies, pensions, and benefits with ease.
   </p>
 
   <button id="loadSchemes"
-    class="px-6 py-3 bg-white text-blue-600 rounded shadow hover:bg-gray-200">
+    class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-200">
     Load Schemes
   </button>
 </section>
@@ -61,33 +59,42 @@
 <section id="schemes-section" class="py-12">
   <div class="container mx-auto px-4">
 
-    <h2 class="text-3xl font-bold text-center mb-6">
+    <h2 class="text-3xl font-bold text-center mb-8">
       Explore Government Schemes
     </h2>
 
+    <!-- FILTER BUTTONS -->
+    <div class="flex justify-center gap-3 flex-wrap mb-8">
+      <button class="filter-btn bg-blue-500 text-white px-4 py-2 rounded" data-cat="all">All</button>
+      <button class="filter-btn bg-green-400 text-white px-4 py-2 rounded" data-cat="Education">Education</button>
+      <button class="filter-btn bg-yellow-400 px-4 py-2 rounded" data-cat="Health">Health</button>
+      <button class="filter-btn bg-purple-400 text-white px-4 py-2 rounded" data-cat="Pension">Pension</button>
+      <button class="filter-btn bg-pink-400 text-white px-4 py-2 rounded" data-cat="Women">Women</button>
+    </div>
+
+    <!-- GRID -->
     <div id="scheme-cards"
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      <!-- default cards -->
       <div class="scheme-card bg-white p-6 rounded shadow">
-        <h3 class="text-xl font-semibold">National Scholarship Portal</h3>
-        <p>Apply for scholarships easily.</p>
+        <h3>Click Load Schemes</h3>
       </div>
 
     </div>
+
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-white mt-12 shadow py-6 text-center">
+<footer class="bg-white text-center py-6 shadow">
   © 2026 Scheme Sathi
 </footer>
 
-<!-- SCRIPT (FIXED) -->
+<!-- SCRIPT -->
 <script>
 let allSchemes = [];
 
-// BUTTON CLICK
+// LOAD SCHEMES
 document.getElementById("loadSchemes").addEventListener("click", () => {
 
   fetch("http://127.0.0.1:5000/api/schemes")
@@ -96,11 +103,7 @@ document.getElementById("loadSchemes").addEventListener("click", () => {
       allSchemes = data;
       displaySchemes(data);
     })
-    .catch(err => {
-      console.log("Error:", err);
-      alert("Backend not running!");
-    });
-
+    .catch(() => alert("Backend not running"));
 });
 
 // DISPLAY FUNCTION
@@ -111,14 +114,33 @@ function displaySchemes(data) {
   data.forEach(s => {
     container.innerHTML += `
       <div class="scheme-card bg-white p-6 rounded shadow">
-        <h3 class="text-xl font-semibold">${s.name}</h3>
-        <p class="text-gray-600">${s.description || "No description"}</p>
+        <h3 class="text-xl font-bold mb-2">${s.name}</h3>
+        <p class="text-gray-600 mb-2">${s.description || ""}</p>
+        <span class="text-sm text-gray-500">${s.category || "General"}</span><br>
         <a href="${s.link}" target="_blank"
-           class="text-blue-500">View</a>
+           class="text-blue-500 mt-2 inline-block">View</a>
       </div>
     `;
   });
 }
+
+// FILTER BUTTONS WORKING
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    const cat = btn.getAttribute("data-cat");
+
+    if (cat === "all") {
+      displaySchemes(allSchemes);
+    } else {
+      const filtered = allSchemes.filter(s =>
+        (s.category || "").toLowerCase() === cat.toLowerCase()
+      );
+      displaySchemes(filtered);
+    }
+
+  });
+});
 </script>
 
 </body>
