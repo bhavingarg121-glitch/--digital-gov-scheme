@@ -1,75 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>All Schemes</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="bg-gray-100 p-6">
-
-<h1 class="text-3xl font-bold text-center mb-6">
-  Government Schemes
-</h1>
-
-<!-- BACK BUTTON -->
-<div class="text-center mb-4">
-  <a href="index.html" class="text-blue-500 underline">← Back to Home</a>
-</div>
-
-<!-- SEARCH -->
-<div class="text-center mb-6">
-  <input id="searchInput"
-    type="text"
-    placeholder="Search schemes..."
-    class="px-4 py-2 border rounded w-80">
-</div>
-
-<!-- GRID -->
-<div id="scheme-cards"
-  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-</div>
-
 <script>
 let allSchemes = [];
+let currentPage = 1;
+const perPage = 20;
 
-// LOAD AUTOMATICALLY
-window.onload = () => {
+// LOAD DATA
+window.onload = function () {
   fetch("schemes.json")
-    .then(res => res.json())
+    .then(response => response.json())
     .then(data => {
+      console.log("Loaded:", data.length); // DEBUG
       allSchemes = data;
-      display(data);
+      displayPage();
+    })
+    .catch(error => {
+      console.error("Error loading JSON:", error);
     });
 };
 
-// DISPLAY
-function display(data) {
+// DISPLAY FUNCTION
+function displayPage() {
   const container = document.getElementById("scheme-cards");
   container.innerHTML = "";
 
-  data.forEach(s => {
-    container.innerHTML += `
+  if (!allSchemes || allSchemes.length === 0) {
+    container.innerHTML = "<p>No schemes found</p>";
+    return;
+  }
+
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+
+  const pageData = allSchemes.slice(start, end);
+
+  pageData.forEach(s => {
+    const card = `
       <div class="bg-white p-4 rounded shadow">
-        <h3 class="font-bold">${s.name}</h3>
-        <p>${s.description}</p>
+        <h3 class="font-bold text-lg">${s.name}</h3>
+        <p class="text-gray-600">${s.description}</p>
         <a href="${s.link}" target="_blank" class="text-blue-500">View</a>
       </div>
     `;
+    container.innerHTML += card;
   });
+
+  document.getElementById("pageNumber").innerText = currentPage;
 }
 
-// SEARCH
-document.getElementById("searchInput").addEventListener("input", e => {
-  const val = e.target.value.toLowerCase();
+// NEXT
+function nextPage() {
+  if (currentPage * perPage < allSchemes.length) {
+    currentPage++;
+    displayPage();
+  }
+}
 
-  const filtered = allSchemes.filter(s =>
-    s.name.toLowerCase().includes(val)
-  );
-
-  display(filtered);
-});
+// PREVIOUS
+function prevPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    displayPage();
+  }
+}
 </script>
-
-</body>
-</html>
