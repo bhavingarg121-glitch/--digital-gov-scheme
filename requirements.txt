@@ -3,3 +3,4 @@ flask-cors
 requests
 feedparser
 gunicorn
+pip install requests beautifulsoup4 pandas
