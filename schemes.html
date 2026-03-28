@@ -29,10 +29,17 @@
 
     // Fetch schemes JSON
     window.onload = function() {
-      fetch("schemes.json")  // Or your API endpoint
+      fetch("schemes.json")
         .then(res => res.json())
         .then(data => {
-          allSchemes = data;
+          // Flatten all categories into a single array
+          allSchemes = [];
+          Object.keys(data).forEach(category => {
+            data[category].forEach(scheme => {
+              scheme.category = category; // optional: keep category
+              allSchemes.push(scheme);
+            });
+          });
           displayPage();
         })
         .catch(err => {
@@ -53,7 +60,8 @@
       pageData.forEach(s => {
         container.innerHTML += `
           <div class="bg-white p-6 rounded shadow hover:shadow-lg transition">
-            <h3 class="font-bold text-lg mb-2">${s.name}</h3>
+            <h3 class="font-bold text-lg mb-1">${s.name}</h3>
+            <span class="text-sm text-gray-500 mb-2 block">${s.category || ''}</span>
             <p class="text-gray-600 mb-2">${s.description || "No description available"}</p>
             <a href="${s.link || '#'}" target="_blank" class="text-blue-500 font-semibold">View</a>
           </div>
