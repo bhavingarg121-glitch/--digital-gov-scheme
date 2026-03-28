@@ -1,4 +1,5 @@
-[
+{
+  "Education": [
     {
       "name": "Samagra Shiksha Abhiyan",
       "description": "Integrated scheme for school education covering pre-school to class 12.",
@@ -48,9 +49,9 @@
       "name": "Ishan Uday Scholarship (NER)",
       "description": "Scholarship for students from North Eastern Region pursuing higher education.",
       "link": "https://www.ugc.ac.in/ner"
-    },
-  
-
+    }
+  ],
+  "Health": [
     {
       "name": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (PM-JAY)",
       "description": "Provides free health coverage up to ₹5 lakh per family per year.",
@@ -65,21 +66,6 @@
       "name": "Pradhan Mantri Swasthya Suraksha Yojana (PMSSY)",
       "description": "Establishes AIIMS-like institutions and upgrades government medical colleges.",
       "link": "https://pmssy.mohfw.gov.in"
-    },
-    {
-      "name": "Janani Suraksha Yojana (JSY)",
-      "description": "Promotes institutional delivery among poor pregnant women.",
-      "link": "https://nhm.gov.in/index1.php?lang=1&level=3&sublinkid=841&lid=309"
-    },
-    {
-      "name": "National AIDS Control Programme (NACP)",
-      "description": "Prevention and control of HIV/AIDS through awareness and treatment.",
-      "link": "https://naco.gov.in"
-    },
-    {
-      "name": "Rashtriya Bal Swasthya Karyakram (RBSK)",
-      "description": "Early identification and treatment of children with health conditions.",
-      "link": "https://nhm.gov.in/index1.php?lang=1&level=2&sublinkid=1041&lid=610"
     },
     {
       "name": "National Programme for Prevention and Control of Cancer, Diabetes, Cardiovascular Diseases and Stroke (NPCDCS)",
@@ -100,8 +86,71 @@
       "name": "National Vector Borne Disease Control Programme (NVBDCP)",
       "description": "Prevention and control of malaria, dengue, chikungunya, and other vector-borne diseases.",
       "link": "https://nvbdcp.gov.in"
+    }
+  ],
+  "Women": [
+    {
+      "name": "Janani Suraksha Yojana (JSY)",
+      "description": "Promotes institutional delivery among poor pregnant women.",
+      "link": "https://nhm.gov.in/index1.php?lang=1&level=3&sublinkid=841&lid=309"
     },
- 
+    {
+      "name": "National AIDS Control Programme (NACP)",
+      "description": "Prevention and control of HIV/AIDS through awareness and treatment.",
+      "link": "https://naco.gov.in"
+    },
+    {
+      "name": "Beti Bachao Beti Padhao (BBBP)",
+      "description": "Promotes gender equality and education for girl children.",
+      "link": "https://wcd.nic.in/bbbp"
+    },
+    {
+      "name": "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
+      "description": "Provides financial assistance to pregnant and lactating women for wage loss compensation.",
+      "link": "https://pmmvy.wcd.gov.in"
+    },
+    {
+      "name": "Integrated Child Development Services (ICDS)",
+      "description": "Provides nutrition, health, and preschool education services to children under 6 years and mothers.",
+      "link": "https://icds-wcd.nic.in"
+    },
+    {
+      "name": "One Stop Centre Scheme",
+      "description": "Provides integrated support services to women affected by violence.",
+      "link": "https://wcd.nic.in/schemes/one-stop-centre-scheme"
+    },
+    {
+      "name": "Working Women Hostel Scheme",
+      "description": "Provides safe and affordable accommodation for working women.",
+      "link": "https://wcd.nic.in/schemes/working-women-hostel"
+    },
+    {
+      "name": "National Creche Scheme",
+      "description": "Provides daycare facilities for children of working mothers.",
+      "link": "https://wcd.nic.in/schemes/national-creche-scheme"
+    },
+    {
+      "name": "Mahila Shakti Kendra (MSK)",
+      "description": "Empowers rural women through community participation and skill development.",
+      "link": "https://wcd.nic.in/schemes/mahila-shakti-kendra"
+    },
+    {
+      "name": "Ujjawala Scheme",
+      "description": "Provides prevention, rescue, rehabilitation, and reintegration services for victims of trafficking.",
+      "link": "https://wcd.nic.in/schemes/ujjawala"
+    },
+    {
+      "name": "Child Protection Services Scheme",
+      "description": "Ensures care, protection, and rehabilitation of children in need.",
+      "link": "https://wcd.nic.in/schemes/child-protection-services"
+    },
+    {
+      "name": "National Nutrition Mission (POSHAN Abhiyaan)",
+      "description": "Improves nutritional outcomes for children, pregnant women, and lactating mothers.",
+      "link": "https://poshanabhiyaan.gov.in"
+    }
+  ],
+  "Farmers": [
     {
       "name": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
       "description": "Provides income support of ₹6,000 per year to small and marginal farmers.",
@@ -151,27 +200,9 @@
       "name": "Pradhan Mantri Kisan Maan-Dhan Yojana (PM-KMY)",
       "description": "Provides pension benefits to small and marginal farmers after retirement.",
       "link": "https://maandhan.in"
-    },
-    {
-      "name": "Pradhan Mantri Kaushal Vikas Yojana (PMKVY)",
-      "description": "Provides skill training to youth to enhance employability and entrepreneurship.",
-      "link": "https://pmkvyofficial.org"
-    },
-    {
-      "name": "Stand-Up India Scheme",
-      "description": "Facilitates bank loans to SC/ST and women entrepreneurs for setting up enterprises.",
-      "link": "https://standupmitra.in"
-    },
-    {
-      "name": "Startup India",
-      "description": "Promotes innovation and entrepreneurship through tax benefits and funding support.",
-      "link": "https://www.startupindia.gov.in"
-    },
-    {
-      "name": "National Career Service (NCS)",
-      "description": "Provides employment services including job matching, career counseling, and skill training.",
-      "link": "https://www.ncs.gov.in"
-    },
+    }
+  ],
+  "Employment": [
     {
       "name": "Prime Minister’s Employment Generation Programme (PMEGP)",
       "description": "Credit-linked subsidy program to generate self-employment opportunities through micro-enterprises.",
@@ -196,61 +227,60 @@
       "name": "Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA)",
       "description": "Provides guaranteed 100 days of wage employment to rural households.",
       "link": "https://nrega.nic.in"
+    }
+  ],
+  "Tourism & Culture": [
+    {
+      "name": "Incredible India Tourism Campaign",
+      "description": "Promotes India as a global tourist destination through branding and marketing.",
+      "link": "https://incredibleindia.org"
     },
     {
-      "name": "National Skill Development Mission",
-      "description": "Coordinates skill development efforts across ministries and industries.",
-      "link": "https://nsdcindia.org"
+      "name": "PRASAD Scheme",
+      "description": "Pilgrimage Rejuvenation and Spiritual Augmentation Drive for developing pilgrimage sites.",
+      "link": "https://tourism.gov.in/prasad-scheme"
     },
     {
-      "name": "Pradhan Mantri Jan Dhan Yojana (PMJDY)",
-      "description": "Provides universal access to banking facilities with zero-balance accounts.",
-      "link": "https://pmjdy.gov.in"
+      "name": "HRIDAY Scheme",
+      "description": "National Heritage City Development and Augmentation Yojana for preserving heritage cities.",
+      "link": "https://mohua.gov.in/hriday"
     },
     {
-      "name": "Pradhan Mantri Awas Yojana (Urban)",
-      "description": "Provides affordable housing for urban poor through subsidies and loans.",
-      "link": "https://pmaymis.gov.in"
+      "name": "National Mission on Libraries (NML)",
+      "description": "Modernizes public libraries to provide digital access and resources.",
+      "link": "https://culture.gov.in/national-mission-libraries"
     },
     {
-      "name": "Pradhan Mantri Awas Yojana (Gramin)",
-      "description": "Provides pucca houses to rural households living in kutcha houses.",
-      "link": "https://pmayg.nic.in"
+      "name": "Ek Bharat Shreshtha Bharat (EBSB)",
+      "description": "Promotes cultural exchange and national integration among states and union territories.",
+      "link": "https://ekbharat.gov.in"
     },
     {
-      "name": "Atal Pension Yojana (APY)",
-      "description": "Provides fixed pension to unorganized sector workers after retirement.",
-      "link": "https://www.npscra.nsdl.co.in/nsdl-atal-pension-yojana.php"
+      "name": "Khelo India Programme",
+      "description": "Promotes sports culture by identifying and nurturing young talent.",
+      "link": "https://kheloindia.gov.in"
     },
     {
-      "name": "Pradhan Mantri Ujjwala Yojana (PMUY)",
-      "description": "Provides free LPG connections to women from below poverty line households.",
-      "link": "https://www.pmuy.gov.in"
+      "name": "Fit India Movement",
+      "description": "Encourages citizens to adopt healthy lifestyles and fitness practices.",
+      "link": "https://fitindia.gov.in"
+    }
+  ],
+  "Digital & Infrastructure": [
+    {
+      "name": "Digital India Programme",
+      "description": "Transforms India into a digitally empowered society and knowledge economy.",
+      "link": "https://digitalindia.gov.in"
     },
     {
-      "name": "National Social Assistance Programme (NSAP)",
-      "description": "Provides financial assistance to elderly, widows, and disabled persons.",
-      "link": "https://nsap.nic.in"
+      "name": "National Supercomputing Mission (NSM)",
+      "description": "Establishes a network of supercomputers for scientific research and innovation.",
+      "link": "https://nsm.gov.in"
     },
     {
-      "name": "Pradhan Mantri Garib Kalyan Anna Yojana (PMGKAY)",
-      "description": "Provides free food grains to poor families under the National Food Security Act.",
-      "link": "https://dfpd.gov.in/pmgkay"
-    },
-    {
-      "name": "Pradhan Mantri Vaya Vandana Yojana (PMVVY)",
-      "description": "Provides pension benefits to senior citizens through LIC-managed scheme.",
-      "link": "https://licindia.in/Products/Pension-Plans/Pradhan-Mantri-Vaya-Vandana-Yojana"
-    },
-    {
-      "name": "National Family Benefit Scheme (NFBS)",
-      "description": "Provides lump sum assistance to families living below poverty line on the death of the breadwinner.",
-      "link": "https://nsap.nic.in"
-    },
-    {
-      "name": "Pradhan Mantri Shram Yogi Maan-Dhan (PM-SYM)",
-      "description": "Provides pension benefits to unorganized workers after retirement.",
-      "link": "https://maandhan.in/shramyogi"
+      "name": "National Mission on Quantum Technologies and Applications (NM-QTA)",
+      "description": "Promotes research and development in quantum computing and communication.",
+      "link": "https://dst.gov.in/national-mission-quantum-technologies-applications"
     },
     {
       "name": "Bharatmala Pariyojana",
@@ -301,112 +331,7 @@
       "name": "Dedicated Freight Corridor Project",
       "description": "Constructs freight-only railway corridors to improve goods transport efficiency.",
       "link": "https://dfccil.com"
-    },
-  
-    {
-      "name": "Beti Bachao Beti Padhao (BBBP)",
-      "description": "Promotes gender equality and education for girl children.",
-      "link": "https://wcd.nic.in/bbbp"
-    },
-    {
-      "name": "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
-      "description": "Provides financial assistance to pregnant and lactating women for wage loss compensation.",
-      "link": "https://pmmvy.wcd.gov.in"
-    },
-    {
-      "name": "Integrated Child Development Services (ICDS)",
-      "description": "Provides nutrition, health, and preschool education services to children under 6 years and mothers.",
-      "link": "https://icds-wcd.nic.in"
-    },
-    {
-      "name": "One Stop Centre Scheme",
-      "description": "Provides integrated support services to women affected by violence.",
-      "link": "https://wcd.nic.in/schemes/one-stop-centre-scheme"
-    },
-    {
-      "name": "Working Women Hostel Scheme",
-      "description": "Provides safe and affordable accommodation for working women.",
-      "link": "https://wcd.nic.in/schemes/working-women-hostel"
-    },
-    {
-      "name": "National Creche Scheme",
-      "description": "Provides daycare facilities for children of working mothers.",
-      "link": "https://wcd.nic.in/schemes/national-creche-scheme"
-    },
-    {
-      "name": "Mahila Shakti Kendra (MSK)",
-      "description": "Empowers rural women through community participation and skill development.",
-      "link": "https://wcd.nic.in/schemes/mahila-shakti-kendra"
-    },
-    {
-      "name": "Ujjawala Scheme",
-      "description": "Provides prevention, rescue, rehabilitation, and reintegration services for victims of trafficking.",
-      "link": "https://wcd.nic.in/schemes/ujjawala"
-    },
-    {
-      "name": "Child Protection Services Scheme",
-      "description": "Ensures care, protection, and rehabilitation of children in need.",
-      "link": "https://wcd.nic.in/schemes/child-protection-services"
-    },
-    {
-      "name": "National Nutrition Mission (POSHAN Abhiyaan)",
-      "description": "Improves nutritional outcomes for children, pregnant women, and lactating mothers.",
-      "link": "https://poshanabhiyaan.gov.in"
-    },
-  
-    {
-      "name": "Digital India Programme",
-      "description": "Transforms India into a digitally empowered society and knowledge economy.",
-      "link": "https://digitalindia.gov.in"
-    },
-    {
-      "name": "National Supercomputing Mission (NSM)",
-      "description": "Establishes a network of supercomputers for scientific research and innovation.",
-      "link": "https://nsm.gov.in"
-    },
-    {
-      "name": "National Mission on Quantum Technologies and Applications (NM-QTA)",
-      "description": "Promotes research and development in quantum computing and communication.",
-      "link": "https://dst.gov.in/national-mission-quantum-technologies-applications"
     }
   ]
 }
-{
-  "Tourism & Culture": [
-    {
-      "name": "Incredible India Tourism Campaign",
-      "description": "Promotes India as a global tourist destination through branding and marketing.",
-      "link": "https://incredibleindia.org"
-    },
-    {
-      "name": "PRASAD Scheme",
-      "description": "Pilgrimage Rejuvenation and Spiritual Augmentation Drive for developing pilgrimage sites.",
-      "link": "https://tourism.gov.in/prasad-scheme"
-    },
-    {
-      "name": "HRIDAY Scheme",
-      "description": "National Heritage City Development and Augmentation Yojana for preserving heritage cities.",
-      "link": "https://mohua.gov.in/hriday"
-    },
-    {
-      "name": "National Mission on Libraries (NML)",
-      "description": "Modernizes public libraries to provide digital access and resources.",
-      "link": "https://culture.gov.in/national-mission-libraries"
-    },
-    {
-      "name": "Ek Bharat Shreshtha Bharat (EBSB)",
-      "description": "Promotes cultural exchange and national integration among states and union territories.",
-      "link": "https://ekbharat.gov.in"
-    },
-  
-    {
-      "name": "Khelo India Programme",
-      "description": "Promotes sports culture by identifying and nurturing young talent.",
-      "link": "https://kheloindia.gov.in"
-    },
-    {
-      "name": "Fit India Movement",
-      "description": "Encourages citizens to adopt healthy lifestyles and fitness practices.",
-      "link": "https://fitindia.gov.in"
-    }
-  ]
+}
