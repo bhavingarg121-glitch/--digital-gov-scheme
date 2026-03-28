@@ -175,42 +175,31 @@ const perPage = 20;
 
 window.onload = function () {
   fetch("./schemes.json")
-    .then(res => {
-      console.log("STATUS:", res.status);
-      return res.json();
-    })
+    .then(res => res.json())
     .then(data => {
-      console.log("TOTAL SCHEMES:", data.length);
       allSchemes = data;
       displayPage();
     })
     .catch(err => {
-      console.error("ERROR:", err);
-      document.body.innerHTML = "<h1 style='color:red'>Error loading schemes</h1>";
+      console.error("Error loading schemes:", err);
+      document.getElementById("scheme-cards").innerHTML = "<p style='color:red'>Error loading schemes</p>";
     });
 };
 
 function displayPage() {
   const container = document.getElementById("scheme-cards");
-
-  if (!container) {
-    console.error("❌ scheme-cards not found");
-    return;
-  }
-
   container.innerHTML = "";
 
   const start = (currentPage - 1) * perPage;
   const end = start + perPage;
-
   const pageData = allSchemes.slice(start, end);
 
   pageData.forEach(s => {
     container.innerHTML += `
-      <div class="bg-white p-4 rounded shadow">
-        <h3 class="font-bold">${s.name}</h3>
-        <p>${s.description}</p>
-        <a href="${s.link}" target="_blank" class="text-blue-500">View</a>
+      <div class="scheme-card bg-white p-6 rounded shadow mb-4 hover-bounce hover-glow transition">
+        <h3 class="font-bold text-lg mb-2">${s.name}</h3>
+        <p class="mb-2">${s.description}</p>
+        <a href="${s.link}" target="_blank" class="text-blue-500 font-semibold">View</a>
       </div>
     `;
   });
