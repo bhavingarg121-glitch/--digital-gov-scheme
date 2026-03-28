@@ -66,18 +66,18 @@
     </div>
   </header>
 
-  <!-- Hero / Banner -->
+   <!-- Hero / Banner -->
   <section id="hero" class="py-24 relative overflow-hidden">
     <div class="container mx-auto px-4 text-center">
       <h1 class="text-5xl font-bold mb-4">Empowering Citizens with Government Schemes</h1>
       <p class="text-xl mb-8">Access scholarships, subsidies, pensions, and other benefits with ease.</p>
-      
-      <a href="#schemes-section" class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-100 transition">Explore Schemes</a>
-     <a href="schemes.html"
-   class="px-6 py-3 bg-white text-blue-600 rounded shadow">
-   Load Schemes
-</a>
+      <a href="#schemes-section" id="loadSchemesBtn" class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-100 transition">
+        Load Schemes
+      </a>
     </div>
+    <div class="absolute -top-16 -left-16 w-64 h-64 bg-blue-300 rounded-full opacity-30 animate-pulse"></div>
+    <div class="absolute -bottom-16 -right-16 w-64 h-64 bg-purple-300 rounded-full opacity-30 animate-pulse"></div>
+  </section>
     <!-- Optional decorative circles -->
     <div class="absolute -top-16 -left-16 w-64 h-64 bg-blue-300 rounded-full opacity-30 animate-pulse"></div>
     <div class="absolute -bottom-16 -right-16 w-64 h-64 bg-purple-300 rounded-full opacity-30 animate-pulse"></div>
@@ -104,22 +104,14 @@
       <!-- Scheme Cards Grid -->
       <div id="scheme-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
-<!-- PAGINATION -->
-<div class="flex justify-center items-center gap-4 mt-8">
-  
-  <button onclick="prevPage()" 
-    class="px-4 py-2 bg-gray-300 rounded">
-    Previous
-  </button>
-
-  <span id="pageNumber" class="font-bold text-lg">1</span>
-
-  <button onclick="nextPage()" 
-    class="px-4 py-2 bg-blue-500 text-white rounded">
-    Next
-  </button>
-
-</div>
+<!-- Pagination -->
+      <div class="flex justify-center items-center gap-4 mt-8">
+        <button onclick="prevPage()" class="px-4 py-2 bg-gray-300 rounded">Previous</button>
+        <span id="pageNumber" class="font-bold text-lg">1</span>
+        <button onclick="nextPage()" class="px-4 py-2 bg-blue-500 text-white rounded">Next</button>
+      </div>
+    </div>
+  </section>
         <!-- Example card -->
         <div class="scheme-card bg-white rounded-lg shadow p-6 hover-bounce hover-glow transition overflow-hidden">
           <div class="flex items-center mb-4">
@@ -167,57 +159,68 @@
           <li>Health</li>
           <li>Pension</li>
           <li>Employment</li>
-       
-<script>
-let allSchemes = [];
-let currentPage = 1;
-const perPage = 20;
-
-window.onload = function () {
-  fetch("./schemes.json")
-    .then(res => res.json())
-    .then(data => {
-      allSchemes = data;
-      displayPage();
-    })
-    .catch(err => {
-      console.error("Error loading schemes:", err);
-      document.getElementById("scheme-cards").innerHTML = "<p style='color:red'>Error loading schemes</p>";
-    });
-};
-
-function displayPage() {
-  const container = document.getElementById("scheme-cards");
-  container.innerHTML = "";
-
-  const start = (currentPage - 1) * perPage;
-  const end = start + perPage;
-  const pageData = allSchemes.slice(start, end);
-
-  pageData.forEach(s => {
-    container.innerHTML += `
-      <div class="scheme-card bg-white p-6 rounded shadow mb-4 hover-bounce hover-glow transition">
-        <h3 class="font-bold text-lg mb-2">${s.name}</h3>
-        <p class="mb-2">${s.description}</p>
-        <a href="${s.link}" target="_blank" class="text-blue-500 font-semibold">View</a>
+        </ul>
       </div>
-    `;
-  });
+    </div>
+    
 
-  document.getElementById("pageNumber").innerText = currentPage;
-}
 
-function nextPage() {
-  if (currentPage * perPage < allSchemes.length) {
-    currentPage++;
-    displayPage();
-  }
-}
+  </footer>
 
-function prevPage() {
-  if (currentPage > 1) {
-    currentPage--;
-    displayPage();
-  }
-}
-</script>
+  <!-- Scripts -->
+  <script>
+    let allSchemes = [];
+    let currentPage = 1;
+    const perPage = 20;
+
+    document.getElementById("loadSchemesBtn").addEventListener("click", function() {
+      fetch("./schemes.json")
+        .then(res => res.json())
+        .then(data => {
+          allSchemes = data;
+          currentPage = 1;
+          displayPage();
+        })
+        .catch(err => {
+          console.error("Error loading schemes:", err);
+          alert("Failed to load schemes. Please try again later.");
+        });
+    });
+
+    function displayPage() {
+      const container = document.getElementById("scheme-cards");
+      container.innerHTML = "";
+
+      const start = (currentPage - 1) * perPage;
+      const end = start + perPage;
+      const pageData = allSchemes.slice(start, end);
+
+      pageData.forEach(s => {
+        container.innerHTML += `
+          <div class="scheme-card bg-white p-6 rounded shadow mb-4 hover-bounce hover-glow transition">
+            <h3 class="font-bold text-lg mb-2">${s.name}</h3>
+            <p class="mb-2">${s.description}</p>
+            <a href="${s.link}" target="_blank" class="text-blue-500 font-semibold">Learn More</a>
+          </div>
+        `;
+      });
+
+      document.getElementById("pageNumber").innerText = currentPage;
+    }
+
+    function nextPage() {
+      if (currentPage * perPage < allSchemes.length) {
+        currentPage++;
+        displayPage();
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        displayPage();
+      }
+    }
+  </script>
+</body>
+</html>
