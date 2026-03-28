@@ -1,16 +1,4 @@
 [
-  {
-    "name": "National Scholarship Portal",
-    "description": "Centralized portal to apply for all government scholarships for students across India.",
-    "link": "https://scholarships.gov.in/"
-  },
-  {
-    "name": "Ayushman Bharat",
-    "description": "Health coverage for families, providing free treatment up to Rs. 5 lakh per year.",
-    "link": "https://pmjay.gov.in/"
-  },
-  {
-    "name": "Pradhan Mantri Awas Yojana","link": "https://pmay.gov.in/" }
   {"name":"Atal Pension Yojana","category":"Pension","link":""},
   {"name":"Pradhan Mantri Suraksha Bima Yojana","category":"Insurance","link":""},
   {"name":"Pradhan Mantri Jeevan Jyoti Bima Yojana","category":"Insurance","link":""},
