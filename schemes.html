@@ -1,62 +1,82 @@
-<script>
-let allSchemes = [];
-let currentPage = 1;
-const perPage = 20;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Central Schemes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
 
-window.onload = function () {
-  fetch("schemes.json")
-    .then(res => res.json())
-    .then(data => {
-      console.log("DATA LOADED:", data.length);
-      allSchemes = data;
-      displayPage();
-    })
-    .catch(err => {
-      console.error("FETCH ERROR:", err);
-      document.body.innerHTML = "<h1>Error loading data</h1>";
-    });
-};
+  <header class="bg-white shadow py-4 px-6">
+    <h1 class="text-3xl font-bold text-blue-600">Central Government Schemes</h1>
+  </header>
 
-function displayPage() {
-  const container = document.getElementById("scheme-cards");
+  <main class="container mx-auto px-4 py-8">
+    <div id="scheme-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
-  if (!container) {
-    console.error("scheme-cards div not found ❌");
-    return;
-  }
+    <!-- Pagination -->
+    <div class="flex justify-center items-center gap-4 mt-8">
+      <button onclick="prevPage()" class="px-4 py-2 bg-gray-300 rounded">Previous</button>
+      <span id="pageNumber" class="font-bold text-lg">1</span>
+      <button onclick="nextPage()" class="px-4 py-2 bg-blue-500 text-white rounded">Next</button>
+    </div>
+  </main>
 
-  container.innerHTML = "";
+  <script>
+    let allSchemes = [];
+    let currentPage = 1;
+    const perPage = 20;
 
-  const start = (currentPage - 1) * perPage;
-  const end = start + perPage;
+    // Fetch schemes JSON
+    window.onload = function() {
+      fetch("schemes.json")  // Or your API endpoint
+        .then(res => res.json())
+        .then(data => {
+          allSchemes = data;
+          displayPage();
+        })
+        .catch(err => {
+          console.error("Error loading schemes:", err);
+          document.getElementById("scheme-cards").innerHTML =
+            "<h2 class='text-red-500'>Failed to load schemes.</h2>";
+        });
+    };
 
-  const pageData = allSchemes.slice(start, end);
+    function displayPage() {
+      const container = document.getElementById("scheme-cards");
+      container.innerHTML = "";
 
-  pageData.forEach(s => {
-    container.innerHTML += `
-      <div style="background:white;padding:15px;margin:10px;border-radius:8px;">
-        <h3>${s.name}</h3>
-        <p>${s.description}</p>
-        <a href="${s.link}" target="_blank">View</a>
-      </div>
-    `;
-  });
+      const start = (currentPage - 1) * perPage;
+      const end = start + perPage;
+      const pageData = allSchemes.slice(start, end);
 
-  const pageNum = document.getElementById("pageNumber");
-  if (pageNum) pageNum.innerText = currentPage;
-}
+      pageData.forEach(s => {
+        container.innerHTML += `
+          <div class="bg-white p-6 rounded shadow hover:shadow-lg transition">
+            <h3 class="font-bold text-lg mb-2">${s.name}</h3>
+            <p class="text-gray-600 mb-2">${s.description || "No description available"}</p>
+            <a href="${s.link || '#'}" target="_blank" class="text-blue-500 font-semibold">View</a>
+          </div>
+        `;
+      });
 
-function nextPage() {
-  if (currentPage * perPage < allSchemes.length) {
-    currentPage++;
-    displayPage();
-  }
-}
+      document.getElementById("pageNumber").innerText = currentPage;
+    }
 
-function prevPage() {
-  if (currentPage > 1) {
-    currentPage--;
-    displayPage();
-  }
-}
-</script>
+    function nextPage() {
+      if (currentPage * perPage < allSchemes.length) {
+        currentPage++;
+        displayPage();
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        displayPage();
+      }
+    }
+  </script>
+
+</body>
+</html>
