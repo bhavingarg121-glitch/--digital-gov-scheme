@@ -1,4 +1,4 @@
-let allSchemes = [
+
   {
     name: "National Scholarship Portal",
     description: "Centralized portal to apply for all government scholarships for students across India.",
