@@ -1,5 +1,4 @@
-{
-  "Education": [
+[
     {
       "name": "Samagra Shiksha Abhiyan",
       "description": "Integrated scheme for school education covering pre-school to class 12.",
@@ -49,11 +48,9 @@
       "name": "Ishan Uday Scholarship (NER)",
       "description": "Scholarship for students from North Eastern Region pursuing higher education.",
       "link": "https://www.ugc.ac.in/ner"
-    }
-  ]
-}
-{
-  "Health": [
+    },
+  
+
     {
       "name": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (PM-JAY)",
       "description": "Provides free health coverage up to ₹5 lakh per family per year.",
@@ -103,11 +100,8 @@
       "name": "National Vector Borne Disease Control Programme (NVBDCP)",
       "description": "Prevention and control of malaria, dengue, chikungunya, and other vector-borne diseases.",
       "link": "https://nvbdcp.gov.in"
-    }
-  ]
-}
-{
-  "Agriculture": [
+    },
+ 
     {
       "name": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
       "description": "Provides income support of ₹6,000 per year to small and marginal farmers.",
@@ -157,11 +151,7 @@
       "name": "Pradhan Mantri Kisan Maan-Dhan Yojana (PM-KMY)",
       "description": "Provides pension benefits to small and marginal farmers after retirement.",
       "link": "https://maandhan.in"
-    }
-  ]
-}
-{
-  "Employment": [
+    },
     {
       "name": "Pradhan Mantri Kaushal Vikas Yojana (PMKVY)",
       "description": "Provides skill training to youth to enhance employability and entrepreneurship.",
@@ -211,11 +201,7 @@
       "name": "National Skill Development Mission",
       "description": "Coordinates skill development efforts across ministries and industries.",
       "link": "https://nsdcindia.org"
-    }
-  ]
-}
-{
-  "Social Welfare": [
+    },
     {
       "name": "Pradhan Mantri Jan Dhan Yojana (PMJDY)",
       "description": "Provides universal access to banking facilities with zero-balance accounts.",
@@ -265,11 +251,7 @@
       "name": "Pradhan Mantri Shram Yogi Maan-Dhan (PM-SYM)",
       "description": "Provides pension benefits to unorganized workers after retirement.",
       "link": "https://maandhan.in/shramyogi"
-    }
-  ]
-}
-{
-  "Infrastructure": [
+    },
     {
       "name": "Bharatmala Pariyojana",
       "description": "National highway development program to improve road connectivity across India.",
@@ -319,11 +301,8 @@
       "name": "Dedicated Freight Corridor Project",
       "description": "Constructs freight-only railway corridors to improve goods transport efficiency.",
       "link": "https://dfccil.com"
-    }
-  ]
-}
-{
-  "Women & Child": [
+    },
+  
     {
       "name": "Beti Bachao Beti Padhao (BBBP)",
       "description": "Promotes gender equality and education for girl children.",
@@ -373,11 +352,8 @@
       "name": "National Nutrition Mission (POSHAN Abhiyaan)",
       "description": "Improves nutritional outcomes for children, pregnant women, and lactating mothers.",
       "link": "https://poshanabhiyaan.gov.in"
-    }
-  ]
-}
-{
-  "Science & IT": [
+    },
+  
     {
       "name": "Digital India Programme",
       "description": "Transforms India into a digitally empowered society and knowledge economy.",
@@ -421,11 +397,8 @@
       "name": "Ek Bharat Shreshtha Bharat (EBSB)",
       "description": "Promotes cultural exchange and national integration among states and union territories.",
       "link": "https://ekbharat.gov.in"
-    }
-  ]
-}
-{
-  "Sports": [
+    },
+  
     {
       "name": "Khelo India Programme",
       "description": "Promotes sports culture by identifying and nurturing young talent.",
@@ -437,4 +410,3 @@
       "link": "https://fitindia.gov.in"
     }
   ]
-}
