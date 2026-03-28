@@ -37,7 +37,7 @@
 
     // Load schemes
     window.onload = function() {
-      fetch("schemes.json")
+      fetch("./schemes.json")
         .then(res => res.json())
         .then(data => {
           allSchemes = [];
