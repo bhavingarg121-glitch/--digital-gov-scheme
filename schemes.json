@@ -1,57 +1,17 @@
-
+[
   {
-    name: "National Scholarship Portal",
-    description: "Centralized portal to apply for all government scholarships for students across India.",
-    link: "https://scholarships.gov.in/"
+    "name": "National Scholarship Portal",
+    "description": "Centralized portal to apply for all government scholarships for students across India.",
+    "link": "https://scholarships.gov.in/"
   },
   {
-    name: "Ayushman Bharat",
-    description: "Health coverage for families, providing free treatment up to Rs. 5 lakh per year.",
-    link: "https://pmjay.gov.in/"
+    "name": "Ayushman Bharat",
+    "description": "Health coverage for families, providing free treatment up to Rs. 5 lakh per year.",
+    "link": "https://pmjay.gov.in/"
   },
   {
-    name: "Pradhan Mantri Awas Yojana",
-    description: "Affordable housing scheme for urban and rural citizens.",
-    link: "https://pmay.gov.in/"
+    "name": "Pradhan Mantri Awas Yojana",
+    "description": "Affordable housing scheme for urban and rural citizens.",
+    "link": "https://pmay.gov.in/"
   }
-];
-
-let currentPage = 1;
-const perPage = 20;
-
-window.onload = displayPage;
-
-function displayPage() {
-  const container = document.getElementById("scheme-cards");
-  container.innerHTML = "";
-
-  const start = (currentPage - 1) * perPage;
-  const end = start + perPage;
-  const pageData = allSchemes.slice(start, end);
-
-  pageData.forEach(s => {
-    container.innerHTML += `
-      <div class="scheme-card bg-white p-6 rounded shadow mb-4 hover-bounce hover-glow transition">
-        <h3 class="font-bold text-lg mb-2">${s.name}</h3>
-        <p class="mb-2">${s.description}</p>
-        <a href="${s.link}" target="_blank" class="text-blue-500 font-semibold">View</a>
-      </div>
-    `;
-  });
-
-  document.getElementById("pageNumber").innerText = currentPage;
-}
-
-function nextPage() {
-  if (currentPage * perPage < allSchemes.length) {
-    currentPage++;
-    displayPage();
-  }
-}
-
-function prevPage() {
-  if (currentPage > 1) {
-    currentPage--;
-    displayPage();
-  }
-}
+]
