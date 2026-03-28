@@ -1,5 +1,5 @@
 [
-// Education Entries 
+
 
   {
     "name": "Samagra Shiksha Abhiyan",
@@ -61,7 +61,11 @@
     "category": "Education",
     "description": "Scholarship for students from North Eastern Region pursuing higher education."
   }
-//Other sector
+
+
+
+
+  
   
   {
     "name": "Digital India Programme",
@@ -123,7 +127,7 @@
     "category": "Culture",
     "description": "Promotes cultural exchange and national integration among states and union territories."
   }
-//Women 
+
   
   {
     "name": "Beti Bachao Beti Padhao",
@@ -185,7 +189,7 @@
     "category": "Women & Child",
     "description": "Improves nutritional outcomes for children, pregnant women, and lactating mothers."
   }
-//Infrastructure 
+
   
   {
     "name": "Bharatmala Pariyojana",
@@ -247,7 +251,7 @@
     "category": "Infrastructure",
     "description": "Constructs freight-only railway corridors to improve goods transport efficiency."
   }
-//Social Welfare
+
   
   {
     "name": "Pradhan Mantri Jan Dhan Yojana",
