@@ -38,14 +38,20 @@
     // Load schemes
     window.onload = function() {
       fetch("./schemes.json")
-        .then(res => res.json())
-        .then(data => {
-          allSchemes = [];
-          Object.keys(data).forEach(category => {
-            data[category].forEach(scheme => {
-              scheme.category = category;
-              allSchemes.push(scheme);
-            });
+        .then(res => {
+    if (!res.ok) {
+      throw new Error("HTTP error " + res.status);
+    }
+    return res.json();
+  })
+  .then(data => {
+    // your code
+  })
+  .catch(err => {
+    console.error("FULL ERROR:", err);
+    document.getElementById("scheme-cards").innerHTML =
+      "<h2 class='text-red-500'>Failed to load schemes. Check console (F12)</h2>";
+  });
           });
           filteredSchemes = allSchemes;
           displayPage();
