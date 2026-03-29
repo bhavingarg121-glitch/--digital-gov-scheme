@@ -79,24 +79,28 @@
     const categoryFilter = document.getElementById("categoryFilter");
 
     // 🔹 AUTO LOAD ON PAGE OPEN
-    window.onload = () => {
+   
+   window.onload = () => {
+  const container = document.getElementById("scheme-cards");
+
+  container.innerHTML =
+    "<p class='text-blue-500 text-center col-span-3'>Loading schemes...</p>";
+
+  fetch("./schemes.json")
+    .then(res => res.json())
+    .then(data => {
+      allSchemes = data;
+      filteredSchemes = data;
+
+      loadCategories();
+      displayPage();
+    })
+    .catch(err => {
+      console.error(err);
       container.innerHTML =
-        "<p class='text-blue-500 text-center col-span-3'>Loading schemes...</p>";
-
-      fetch("./schemes.json")   // ✅ FIXED
-        .then(res => res.json())
-        .then(data => {
-          allSchemes = data;
-          filteredSchemes = data;
-
-          loadCategories();
-          displayPage();
-        })
-        .catch(() => {
-          container.innerHTML =
-            "<p class='text-red-500'>Failed to load schemes</p>";
-        });
-    };
+        "<p class='text-red-500 text-center col-span-3'>Failed to load schemes</p>";
+    });
+};
 
     // 🔹 LOAD CATEGORY DROPDOWN
     function loadCategories() {
