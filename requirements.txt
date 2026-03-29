@@ -5,3 +5,4 @@ feedparser
 gunicorn
 pip install selenium webdriver-manager pandas
 pip install flask selenium webdriver-manager
+pip install requests beautifulsoup4
