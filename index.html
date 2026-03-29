@@ -182,9 +182,6 @@ window.onload = () => {
   // ✅ FIX 1: Define container
   const container = document.getElementById("scheme-cards");
 
-  // Loading message
-  container.innerHTML =
-    "<p class='text-blue-500 text-center col-span-3'>Loading schemes...</p>";
 
   // Fetch data
   fetch("./schemes.json")
