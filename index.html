@@ -1,415 +1,134 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scheme Sathi Portal</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scheme Sathi</title>
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    body {
-      background: #eef3f9;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<style>
+body {
+  background: #eef2f7;
+}
 
-    #hero {
-      background: linear-gradient(135deg, #4f46e5, #3b82f6);
-      color: white;
-    }
+/* Card Hover */
+.scheme-card {
+  transition: all 0.3s ease;
+}
 
-    .scheme-card {
-      transition: all 0.3s ease;
-    }
+.scheme-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
 
-    .scheme-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.22);
-    }
+/* Icon Bounce */
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
 
-    @keyframes bounceIcon {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    .scheme-card:hover .icon-bounce {
-      animation: bounceIcon 0.5s ease;
-    }
-
-    .btn-glow:hover {
-      box-shadow: 0 0 14px rgba(59, 130, 246, 0.35);
-    }
-
-    .category-btn {
-      transition: all 0.25s ease;
-    }
-
-    .category-btn:hover {
-      transform: translateY(-2px);
-    }
-  </style>
+.scheme-card:hover .icon {
+  animation: bounce 0.5s;
+}
+</style>
 </head>
 
-<body class="text-gray-800">
+<body class="font-sans text-gray-800">
 
-  <!-- Header -->
-  <header class="bg-white shadow sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
-      <div class="text-2xl font-bold text-blue-600">Scheme Sathi</div>
+<!-- HEADER -->
+<header class="bg-white shadow">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    <h1 class="text-2xl font-bold text-blue-600">Scheme Sathi</h1>
 
-      <nav class="hidden md:flex items-center gap-6 text-gray-700">
-        <a href="#hero" class="hover:text-blue-500">Home</a>
-        <a href="#schemes-section" class="hover:text-blue-500">Schemes</a>
-        <a href="#news-section" class="hover:text-blue-500">News</a>
-        <a href="#contact-section" class="hover:text-blue-500">Contact</a>
+    <nav class="hidden md:flex items-center gap-6">
+      <a href="#" class="hover:text-blue-500">Home</a>
+      <a href="#" class="hover:text-blue-500">Schemes</a>
+      <a href="#" class="hover:text-blue-500">News</a>
+      <a href="#" class="hover:text-blue-500">Contact</a>
 
-        <input
-          id="searchInputTop"
-          type="text"
-          placeholder="Search schemes..."
-          class="ml-2 w-64 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+      <input placeholder="Search schemes..."
+        class="border px-3 py-1 rounded">
 
-        <select class="px-3 py-2 border rounded-md bg-white">
-          <option>EN</option>
-          <option>HI</option>
-        </select>
-      </nav>
+      <select class="border px-2 py-1 rounded">
+        <option>EN</option>
+        <option>HI</option>
+      </select>
+    </nav>
+  </div>
+</header>
 
-      <button class="md:hidden text-gray-700" id="mobile-menu-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-  </header>
+<!-- TITLE -->
+<section class="text-center mt-10">
+  <h2 class="text-4xl font-bold">Explore Government Schemes</h2>
+  <p class="text-gray-600 mt-2">
+    Access scholarships, subsidies, pensions, and other benefits easily
+  </p>
+</section>
 
-  <!-- Hero -->
-  <section id="hero" class="py-16 relative overflow-hidden">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">
-        Empowering Citizens with Government Schemes
-      </h1>
-      <p class="text-lg md:text-xl mb-8 text-blue-50">
-        Access scholarships, subsidies, pensions, and other benefits easily.
-      </p>
+<!-- CATEGORY BUTTONS -->
+<div class="flex justify-center gap-4 mt-6 flex-wrap">
+  <button class="bg-blue-500 text-white px-5 py-2 rounded">All</button>
+  <button class="bg-green-500 text-white px-5 py-2 rounded">Education</button>
+  <button class="bg-yellow-400 text-black px-5 py-2 rounded">Health</button>
+  <button class="bg-purple-400 text-white px-5 py-2 rounded">Pension</button>
+  <button class="bg-pink-400 text-white px-5 py-2 rounded">Women</button>
+  <button class="bg-indigo-400 text-white px-5 py-2 rounded">Employment</button>
+</div>
 
-      <button
-        id="loadSchemes"
-        class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-100 transition"
-      >
-        Load Schemes
-      </button>
-    </div>
+<!-- CARDS -->
+<div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 mt-10 px-6">
 
-    <div class="absolute -top-16 -left-16 w-64 h-64 bg-blue-300 rounded-full opacity-25 animate-pulse"></div>
-    <div class="absolute -bottom-16 -right-16 w-64 h-64 bg-purple-300 rounded-full opacity-25 animate-pulse"></div>
-  </section>
+  <!-- CARD 1 -->
+  <div class="scheme-card bg-white p-6 rounded-xl shadow">
 
-  <!-- Schemes Section -->
-  <section id="schemes-section" class="py-10">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
-          Explore Government Schemes
-        </h2>
-        <p class="mt-3 text-gray-600 text-lg">
-          Access scholarships, subsidies, pensions, and other benefits easily
-        </p>
+    <div class="flex items-center mb-4">
+      <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+        <span class="icon text-green-600 text-xl">🎓</span>
       </div>
-
-      <!-- Category Buttons -->
-      <div class="flex justify-center flex-wrap gap-4 mb-10">
-        <button class="category-btn px-5 py-3 rounded-md bg-blue-500 text-white shadow" data-cat="all">All</button>
-        <button class="category-btn px-5 py-3 rounded-md bg-green-500 text-white shadow" data-cat="Education">Education</button>
-        <button class="category-btn px-5 py-3 rounded-md bg-yellow-400 text-gray-900 shadow" data-cat="Health">Health</button>
-        <button class="category-btn px-5 py-3 rounded-md bg-purple-400 text-white shadow" data-cat="Pension">Pension</button>
-        <button class="category-btn px-5 py-3 rounded-md bg-pink-400 text-white shadow" data-cat="Women">Women</button>
-        <button class="category-btn px-5 py-3 rounded-md bg-indigo-400 text-white shadow" data-cat="Employment">Employment</button>
-      </div>
-
-      <!-- Search + dropdown -->
-      <div class="flex justify-center flex-wrap gap-4 mb-8">
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="Search schemes..."
-          class="w-72 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-
-        <select id="categoryFilter" class="px-3 py-2 border rounded-md bg-white">
-          <option value="all">All Categories</option>
-        </select>
-      </div>
-
-      <!-- Cards -->
-      <div id="scheme-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-        <!-- Static cards shown before load -->
-
-        <div class="scheme-card bg-white rounded-xl shadow p-6 border border-gray-100">
-          <div class="flex items-center mb-4">
-            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-100">
-              <span class="icon-bounce text-green-600 text-2xl">🎓</span>
-            </div>
-            <h3 class="ml-4 text-2xl font-semibold text-gray-900">
-              National Scholarship Portal
-            </h3>
-          </div>
-
-          <span class="inline-block px-3 py-1 rounded-md text-sm bg-green-100 text-green-700 mb-4">
-            Education
-          </span>
-
-          <p class="text-gray-700 leading-7 mb-6">
-            Centralized portal to apply for all government scholarships for students across India.
-          </p>
-
-          <a
-            href="https://scholarships.gov.in/"
-            target="_blank"
-            class="btn-glow inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-green-500 text-white font-medium hover:bg-green-600 transition"
-          >
-            Learn More <span>↗</span>
-          </a>
-        </div>
-
-        <div class="scheme-card bg-white rounded-xl shadow p-6 border border-gray-100">
-          <div class="flex items-center mb-4">
-            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-100">
-              <span class="icon-bounce text-blue-600 text-2xl">🏥</span>
-            </div>
-            <h3 class="ml-4 text-2xl font-semibold text-gray-900">
-              Ayushman Bharat
-            </h3>
-          </div>
-
-          <span class="inline-block px-3 py-1 rounded-md text-sm bg-blue-100 text-blue-700 mb-4">
-            Health
-          </span>
-
-          <p class="text-gray-700 leading-7 mb-6">
-            Health coverage for families, providing free treatment up to Rs. 5 lakh per year.
-          </p>
-
-          <a
-            href="https://pmjay.gov.in/"
-            target="_blank"
-            class="btn-glow inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 transition"
-          >
-            Learn More <span>↗</span>
-          </a>
-        </div>
-
-      </div>
-
-      <!-- Pagination -->
-      <div class="flex justify-center items-center gap-4 mt-10">
-        <button id="prevPageBtn" class="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400">Prev</button>
-        <span id="pageNumber" class="font-semibold text-gray-700">1 / 1</span>
-        <button id="nextPageBtn" class="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400">Next</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer id="footer" class="bg-white mt-12 border-t">
-    <div class="container mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <h4 class="font-bold text-lg mb-3 text-blue-600">Scheme Sathi</h4>
-        <p class="text-gray-600 leading-7">
-          A simple portal to discover government schemes, scholarships, and welfare benefits.
-        </p>
-      </div>
-
-      <div>
-        <h4 class="font-bold text-lg mb-3">Quick Links</h4>
-        <ul class="space-y-2 text-gray-600">
-          <li><a href="#hero" class="hover:text-blue-500">Home</a></li>
-          <li><a href="#schemes-section" class="hover:text-blue-500">Schemes</a></li>
-          <li><a href="#footer" class="hover:text-blue-500">Contact</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-bold text-lg mb-3">Categories</h4>
-        <ul class="space-y-2 text-gray-600">
-          <li>Education</li>
-          <li>Health</li>
-          <li>Pension</li>
-          <li>Employment</li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-bold text-lg mb-3">About</h4>
-        <p class="text-gray-600 leading-7">
-          This is an independent informational platform and is not affiliated with any government authority.
-        </p>
-      </div>
+      <h3 class="ml-4 text-xl font-semibold">
+        National Scholarship Portal
+      </h3>
     </div>
 
-    <div class="border-t py-4 text-center text-sm text-gray-500">
-      © 2026 Scheme Sathi. All rights reserved.
+    <span class="bg-green-100 text-green-700 text-sm px-2 py-1 rounded">
+      Education
+    </span>
+
+    <p class="text-gray-600 mt-3">
+      Centralized portal to apply for all government scholarships for students across India.
+    </p>
+
+    <button class="mt-5 bg-green-500 text-white px-5 py-2 rounded hover:bg-green-600">
+      Learn More
+    </button>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="scheme-card bg-white p-6 rounded-xl shadow">
+
+    <div class="flex items-center mb-4">
+      <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+        <span class="icon text-blue-600 text-xl">🏥</span>
+      </div>
+      <h3 class="ml-4 text-xl font-semibold">
+        Ayushman Bharat
+      </h3>
     </div>
-  </footer>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const loadBtn = document.getElementById("loadSchemes");
-      const container = document.getElementById("scheme-cards");
-      const searchInput = document.getElementById("searchInput");
-      const searchInputTop = document.getElementById("searchInputTop");
-      const categoryFilter = document.getElementById("categoryFilter");
-      const categoryBtns = document.querySelectorAll(".category-btn");
-      const prevBtn = document.getElementById("prevPageBtn");
-      const nextBtn = document.getElementById("nextPageBtn");
-      const pageNumber = document.getElementById("pageNumber");
+    <span class="bg-blue-100 text-blue-700 text-sm px-2 py-1 rounded">
+      Health
+    </span>
 
-      let allSchemes = [];
-      let filteredSchemes = [];
-      let currentPage = 1;
-      const perPage = 20;
+    <p class="text-gray-600 mt-3">
+      Health coverage for families, providing free treatment up to Rs. 5 lakh per year.
+    </p>
 
-      function getCategoryColor(category) {
-        switch ((category || "").toLowerCase()) {
-          case "education":
-            return "bg-green-100 text-green-700";
-          case "health":
-            return "bg-blue-100 text-blue-700";
-          case "pension":
-            return "bg-purple-100 text-purple-700";
-          case "women":
-            return "bg-pink-100 text-pink-700";
-          case "employment":
-            return "bg-indigo-100 text-indigo-700";
-          default:
-            return "bg-gray-100 text-gray-700";
-        }
-      }
+    <button class="mt-5 bg-blue-500 text-white px-5 py-2 rounded hover:bg-blue-600">
+      Learn More
+    </button>
+  </div>
 
-      function renderCards() {
-        container.innerHTML = "";
+</div>
 
-        const start = (currentPage - 1) * perPage;
-        const pageData = filteredSchemes.slice(start, start + perPage);
-
-        if (pageData.length === 0) {
-          container.innerHTML = "<p class='text-center text-gray-600 col-span-full'>No schemes found</p>";
-          pageNumber.textContent = "0 / 0";
-          prevBtn.disabled = true;
-          nextBtn.disabled = true;
-          return;
-        }
-
-        pageData.forEach(s => {
-          const catColor = getCategoryColor(s.category);
-
-          container.innerHTML += `
-            <div class="scheme-card bg-white rounded-xl shadow p-6 border border-gray-100">
-              <div class="flex items-center mb-4">
-                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-100">
-                  <span class="icon-bounce text-blue-600 text-2xl">📄</span>
-                </div>
-                <h3 class="ml-4 text-2xl font-semibold text-gray-900">${s.name}</h3>
-              </div>
-
-              <span class="inline-block px-3 py-1 rounded-md text-sm ${catColor} mb-4">
-                ${s.category || "Other"}
-              </span>
-
-              <p class="text-gray-700 leading-7 mb-6">
-                ${s.description || "No description available"}
-              </p>
-
-              <a
-                href="${s.link || '#'}"
-                target="_blank"
-                class="btn-glow inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 transition"
-              >
-                Learn More <span>↗</span>
-              </a>
-            </div>
-          `;
-        });
-
-        const totalPages = Math.max(1, Math.ceil(filteredSchemes.length / perPage));
-        pageNumber.textContent = `${currentPage} / ${totalPages}`;
-        prevBtn.disabled = currentPage === 1;
-        nextBtn.disabled = currentPage === totalPages;
-      }
-
-      function applyFilters() {
-        const keyword = (searchInput.value || searchInputTop.value || "").toLowerCase();
-        const selectedCategory = categoryFilter.value;
-
-        filteredSchemes = allSchemes.filter(s => {
-          const name = (s.name || "").toLowerCase();
-          const desc = (s.description || "").toLowerCase();
-          const matchesSearch = name.includes(keyword) || desc.includes(keyword);
-          const matchesCategory = selectedCategory === "all" || (s.category || "Other") === selectedCategory;
-          return matchesSearch && matchesCategory;
-        });
-
-        currentPage = 1;
-        renderCards();
-      }
-
-      loadBtn.addEventListener("click", () => {
-        fetch("http://127.0.0.1:5000/api/schemes")
-          .then(res => res.json())
-          .then(data => {
-            allSchemes = Array.isArray(data) ? data : [];
-            filteredSchemes = [...allSchemes];
-            currentPage = 1;
-
-            const categories = [...new Set(allSchemes.map(s => s.category || "Other"))];
-            categoryFilter.innerHTML = `<option value="all">All Categories</option>`;
-            categories.forEach(cat => {
-              categoryFilter.innerHTML += `<option value="${cat}">${cat}</option>`;
-            });
-
-            renderCards();
-
-            document.getElementById("schemes-section").scrollIntoView({ behavior: "smooth" });
-          })
-          .catch(err => {
-            console.error(err);
-            alert("Could not load schemes. Make sure backend is running.");
-          });
-      });
-
-      searchInput.addEventListener("input", applyFilters);
-      searchInputTop.addEventListener("input", () => {
-        searchInput.value = searchInputTop.value;
-        applyFilters();
-      });
-
-      categoryFilter.addEventListener("change", applyFilters);
-
-      categoryBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-          categoryFilter.value = btn.dataset.cat;
-          applyFilters();
-          document.getElementById("schemes-section").scrollIntoView({ behavior: "smooth" });
-        });
-      });
-
-      prevBtn.addEventListener("click", () => {
-        if (currentPage > 1) {
-          currentPage--;
-          renderCards();
-        }
-      });
-
-      nextBtn.addEventListener("click", () => {
-        const totalPages = Math.max(1, Math.ceil(filteredSchemes.length / perPage));
-        if (currentPage < totalPages) {
-          currentPage++;
-          renderCards();
-        }
-      });
-
-      renderCards();
-    });
-  </script>
 </body>
 </html>
