@@ -14,7 +14,12 @@
 
   <!-- Main content -->
   <main class="container mx-auto px-4 py-8">
-    
+
+    <!-- Load Schemes Button -->
+    <button id="loadSchemesBtn" class="mb-6 px-4 py-2 bg-green-500 text-white rounded">
+      Load Schemes
+    </button>
+
     <!-- Search -->
     <input type="text" id="search" placeholder="Search schemes..." class="mb-6 p-2 border rounded w-full">
 
@@ -33,35 +38,30 @@
     let allSchemes = [];
     let filteredSchemes = [];
     let currentPage = 1;
-    const perPage = 4; // show 4 cards per page
+    const perPage = 4;
 
-    // Load schemes
-    window.onload = function() {
+    // ✅ Attach to BUTTON instead of window.onload
+    document.getElementById("loadSchemesBtn").addEventListener("click", function () {
       fetch("./schemes.json")
         .then(res => {
-    if (!res.ok) {
-      throw new Error("HTTP error " + res.status);
-    }
-    return res.json();
-  })
-  .then(data => {
-    // your code
-  })
-  .catch(err => {
-    console.error("FULL ERROR:", err);
-    document.getElementById("scheme-cards").innerHTML =
-      "<h2 class='text-red-500'>Failed to load schemes. Check console (F12)</h2>";
-  });
-          });
-          filteredSchemes = allSchemes;
+          if (!res.ok) throw new Error("HTTP error " + res.status);
+          return res.json();
+        })
+        .then(data => {
+          allSchemes = data;            // ✅ Store the data
+          filteredSchemes = allSchemes; // ✅ Now runs AFTER data is loaded
+          currentPage = 1;
           displayPage();
+
+          // Hide the button after loading
+          document.getElementById("loadSchemesBtn").style.display = "none";
         })
         .catch(err => {
-          console.error("Error loading schemes:", err);
+          console.error("FULL ERROR:", err);
           document.getElementById("scheme-cards").innerHTML =
-            "<h2 class='text-red-500'>Failed to load schemes.</h2>";
+            "<p class='text-red-500'>Failed to load schemes. Check console (F12)</p>";
         });
-    };
+    });
 
     // Display schemes for current page
     function displayPage() {
