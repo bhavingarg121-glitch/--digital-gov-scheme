@@ -505,23 +505,26 @@
         "link": "https://education.gov.in"
     "category": "Education"
       }
-    ]
+    
   },
   {
-    "Education": [
+    "Education"
       {
         "name": "National Fellowship for Students with Disabilities (NFSWD)",
         "description": "Fellowship for students with disabilities pursuing higher education.",
         "link": "https://education.gov.in"
+        "category": 
+    "Education"
       }
     ]
   },
   {
-    "Education": [
-      {
+        {
         "name": "Vocational Education and Training (VET)",
         "description": "Provides vocational education in schools for skill development.",
         "link": "https://education.gov.in"
+    "category": 
+    "Education"
       }
     ]
   },
