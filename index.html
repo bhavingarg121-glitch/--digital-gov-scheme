@@ -183,90 +183,72 @@ body {
 
 <!-- SCRIPT -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+let allSchemes = [];
+let filteredSchemes = [];
+let currentPage = 1;
+const perPage = 24;
 
-  const loadBtn = document.getElementById("loadSchemes");
-  const container = document.getElementById("schemeContainer");
-  const searchInput = document.getElementById("searchInput");
-  const topSearch = document.getElementById("topSearch");
-  const catBtns = document.querySelectorAll(".catBtn");
+window.onload = () => {
 
-  let allSchemes = [];
-  let filtered = [];
-  let page = 1;
-  const perPage = 20;
+  // ✅ FIX 1: Define container
+  const container = document.getElementById("scheme-cards");
 
-  loadBtn.addEventListener("click", () => {
-    fetch("./schemes.json")
-      .then(res => res.json())
-      .then(data => {
-        allSchemes = data;
-        filtered = data;
-        page = 1;
-        render();
-        document.getElementById("schemes-section").scrollIntoView({behavior:"smooth"});
-      });
-  });
+  // Loading message
+  container.innerHTML =
+    "<p class='text-blue-500 text-center col-span-3'>Loading schemes...</p>";
 
-  function render() {
-    container.innerHTML = "";
+  // Fetch data
+  fetch("./schemes.json")
+    .then(res => res.json())
+    .then(data => {
+      allSchemes = data;
+      filteredSchemes = data;
 
-    const start = (page-1)*perPage;
-    const data = filtered.slice(start, start+perPage);
+      displayPage();
+    })
 
-    data.forEach(s => {
-      container.innerHTML += `
-        <div class="scheme-card bg-white p-6 rounded-xl shadow">
-          <h3 class="font-bold mb-2">${s.name}</h3>
-          <p class="text-gray-600 text-sm">${s.description || ""}</p>
-          <p class="text-sm mt-2">${s.category || ""}</p>
-          <a href="${s.link}" target="_blank"
-            class="btn block mt-3 bg-blue-500 text-white py-2 rounded text-center">
-            Learn More
-          </a>
-        </div>
-      `;
+    // ✅ FIX 2: Proper closing + error handling
+    .catch(err => {
+      console.error(err);
+      container.innerHTML =
+        "<p class='text-red-500 text-center col-span-3'>Failed to load schemes</p>";
     });
+};
 
-    document.getElementById("pageNum").innerText =
-      page + " / " + Math.ceil(filtered.length/perPage);
-  }
+// 📄 Display Page
+function displayPage() {
+  const container = document.getElementById("scheme-cards");
+  container.innerHTML = "";
 
-  searchInput.addEventListener("input", apply);
-  topSearch.addEventListener("input", () => {
-    searchInput.value = topSearch.value;
-    apply();
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+  const pageData = filteredSchemes.slice(start, end);
+
+  pageData.forEach(scheme => {
+    container.innerHTML += `
+      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+
+        <h3 class="text-lg font-bold text-blue-700 mb-2">
+          ${scheme.name}
+        </h3>
+
+        <p class="text-gray-600 mb-2">
+          ${scheme.description || "No description available"}
+        </p>
+
+        <p class="text-sm text-gray-500 mb-3">
+          Category: ${scheme.category || "Other"}
+        </p>
+
+        <a href="${scheme.link}" target="_blank"
+          class="text-blue-600 font-semibold hover:underline">
+          Learn More →
+        </a>
+
+      </div>
+    `;
   });
-
-  function apply() {
-    const key = searchInput.value.toLowerCase();
-    filtered = allSchemes.filter(s =>
-      s.name.toLowerCase().includes(key)
-    );
-    page = 1;
-    render();
-  }
-
-  catBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const cat = btn.dataset.cat;
-      filtered = cat==="all" ? allSchemes :
-        allSchemes.filter(s => s.category === cat);
-      page = 1;
-      render();
-    });
-  });
-
-  document.getElementById("nextBtn").onclick = () => {
-    page++;
-    render();
-  };
-
-  document.getElementById("prevBtn").onclick = () => {
-    if(page>1){ page--; render(); }
-  };
-
-});
+}
 </script>
 
 </body>
