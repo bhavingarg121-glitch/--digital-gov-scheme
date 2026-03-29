@@ -80,6 +80,10 @@ body {
   <button id="loadSchemes"
     class="btn px-6 py-3 bg-white text-blue-600 rounded shadow hover:bg-gray-100">
     Load Schemes
+    <a href="scheme.html"
+   class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-100 transition">
+   Load Schemes
+</a>
   </button>
 </section>
 
@@ -195,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const perPage = 20;
 
   loadBtn.addEventListener("click", () => {
-    fetch("http://127.0.0.1:5000/api/schemes")
+    fetch("./schemes.json")
       .then(res => res.json())
       .then(data => {
         allSchemes = data;
