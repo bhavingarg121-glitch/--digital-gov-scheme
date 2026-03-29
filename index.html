@@ -7,6 +7,14 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
+  html { scroll-behavior: smooth; }
+    .scheme-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+    body.dark { background-color: #121212; color: #f0f0f0; }
+    body.dark .bg-white { background-color: #1f1f1f; }
+    body.dark .text-gray-700 { color: #ccc; }
+    body.dark .text-gray-500 { color: #888; }
+    .bookmark { cursor: pointer; transition: transform 0.2s; }
+    .bookmarked { color: gold; transform: scale(1.2); }
 body {
   background: #eef2f7;
 }
@@ -67,7 +75,10 @@ body {
     </nav>
   </div>
 </header>
-
+<!-- Dark mode toggle -->
+  <div class="fixed top-4 right-4">
+    <button id="darkModeToggle" class="p-2 bg-gray-200 dark:bg-gray-700 rounded">🌙</button>
+  </div>
 <!-- HERO -->
 <section id="hero" class="py-20 text-center">
   <h1 class="text-5xl font-bold mb-4">
@@ -76,7 +87,9 @@ body {
   <p class="text-xl mb-6">
     Access scholarships, subsidies, pensions, and other benefits easily
   </p>
-
+<p class="text-lg md:text-xl mb-6">
+       Easy search • Updated schemes • All categories in one place
+    </p>
  
     <a href="schemes.html"
    class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-100 transition">
@@ -111,7 +124,12 @@ body {
   <!-- CARDS -->
   <div id="schemeContainer"
     class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 px-6">
-
+<!-- Trust Line -->
+  <section class="text-center my-8 px-4">
+    <p class="text-gray-700 md:text-lg">
+      ✔ Easy search • ✔ Updated schemes • ✔ All categories in one place in SchemeSathi
+    </p>
+  </section>
     <!-- DEFAULT CARD -->
     <div class="scheme-card bg-white p-6 rounded-xl shadow">
       <div class="flex items-center mb-4">
@@ -163,11 +181,44 @@ body {
 
   </div>
 
- 
+ <!-- Schemes Section -->
+  <section id="schemesSection" class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-20 mb-10">
+    <!-- Dynamic scheme cards will be inserted here -->
+  </section>
+
+  <div class="text-center mb-20">
+    <a href="#schemesSection" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+      Browse 500+ Schemes
+    </a>
+  </div>
 
 <!-- FOOTER -->
-<footer class="bg-white mt-10 py-6 text-center shadow">
-  <p>© 2026 Scheme Sathi</p>
+<footer class="bg-white dark:bg-gray-800 py-10 px-6 mt-20">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="font-bold mb-2">About</h3>
+        <p class="text-gray-500">Scheme Sathi helps citizens to access all government schemes easily.</p>
+      </div>
+      <div>
+        <h3 class="font-bold mb-2">Quick Links</h3>
+        <ul class="text-gray-500">
+          <li><a href="#schemesSection" class="hover:underline">Explore Schemes</a></li>
+          <li><a href="#schemesSection" class="hover:underline">All Schemes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold mb-2">Disclaimer</h3>
+        <p class="text-gray-500 text-sm">Information is for educational purposes only and may change.</p>
+      </div>
+      <div>
+        <h3 class="font-bold mb-2">Contact</h3>
+        <p class="text-gray-500 text-sm">Email: bhavingarg121@gmail.com</p>
+      </div>
+    </div>
+    <p class="text-center text-gray-500 mt-10 text-sm">&copy; ©2026 SchemeSathi. All rights reserved.</p>
+ 
+
+
 </footer>
 
 <!-- SCRIPT -->
@@ -177,33 +228,39 @@ let filteredSchemes = [];
 let currentPage = 1;
 const perPage = 24;
 
-window.onload = () => {
+const container = document.getElementById("scheme-cards"); // ✅ make sure this exists in HTML
+const searchInput = document.getElementById('searchInput'); // add this input in HTML
 
-  // ✅ FIX 1: Define container
-  const container = document.getElementById("scheme-cards");
+// Dark mode toggle
+const toggle = document.getElementById('darkModeToggle');
+toggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+});
 
+// Load schemes from JSON
+fetch("./schemes.json")
+  .then(res => res.json())
+  .then(data => {
+    allSchemes = data;
+    filteredSchemes = data;
+    displayPage();
+  })
+  .catch(err => {
+    console.error(err);
+    container.innerHTML =
+      "<p class='text-red-500 text-center col-span-3'>Failed to load schemes</p>";
+  });
 
-  // Fetch data
-  fetch("./schemes.json")
-    .then(res => res.json())
-    .then(data => {
-      allSchemes = data;
-      filteredSchemes = data;
+// Search filter
+searchInput.addEventListener('input', e => {
+  const filter = e.target.value.toLowerCase();
+  filteredSchemes = allSchemes.filter(s => s.name.toLowerCase().includes(filter));
+  currentPage = 1;
+  displayPage();
+});
 
-      displayPage();
-    })
-
-    // ✅ FIX 2: Proper closing + error handling
-    .catch(err => {
-      console.error(err);
-      container.innerHTML =
-        "<p class='text-red-500 text-center col-span-3'>Failed to load schemes</p>";
-    });
-};
-
-// 📄 Display Page
+// Display current page
 function displayPage() {
-  const container = document.getElementById("scheme-cards");
   container.innerHTML = "";
 
   const start = (currentPage - 1) * perPage;
@@ -211,28 +268,46 @@ function displayPage() {
   const pageData = filteredSchemes.slice(start, end);
 
   pageData.forEach(scheme => {
-    container.innerHTML += `
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+    const card = document.createElement('div');
+    card.className = "scheme-card bg-white p-6 rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1 relative";
+    card.innerHTML = `
+      <h3 class="text-lg font-bold text-blue-700 mb-2">
+        ${scheme.name}
+      </h3>
 
-        <h3 class="text-lg font-bold text-blue-700 mb-2">
-          ${scheme.name}
-        </h3>
+      <p class="text-gray-600 mb-2">
+        ${scheme.description || "No description available"}
+      </p>
 
-        <p class="text-gray-600 mb-2">
-          ${scheme.description || "No description available"}
-        </p>
+      <p class="text-sm text-gray-500 mb-3">
+        Category: ${scheme.category || "Other"}
+      </p>
 
-        <p class="text-sm text-gray-500 mb-3">
-          Category: ${scheme.category || "Other"}
-        </p>
+      <a href="${scheme.link}" target="_blank"
+        class="text-blue-600 font-semibold hover:underline">
+        Learn More →
+      </a>
 
-        <a href="${scheme.link}" target="_blank"
-          class="text-blue-600 font-semibold hover:underline">
-          Learn More →
-        </a>
-
-      </div>
+      <span class="bookmark absolute top-4 right-4 text-gray-400 text-xl cursor-pointer">★</span>
     `;
+
+    // Bookmark handling
+    const bookmark = card.querySelector('.bookmark');
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+    if(bookmarks.includes(scheme.name)) bookmark.classList.add('bookmarked');
+
+    bookmark.addEventListener('click', () => {
+      bookmark.classList.toggle('bookmarked');
+      let current = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+      if(bookmark.classList.contains('bookmarked')) {
+        current.push(scheme.name);
+      } else {
+        current = current.filter(n => n !== scheme.name);
+      }
+      localStorage.setItem('bookmarks', JSON.stringify(current));
+    });
+
+    container.appendChild(card);
   });
 }
 </script>
