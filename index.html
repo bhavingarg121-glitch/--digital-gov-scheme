@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scheme Sathi</title>
+  <title>Scheme Sathi Portal</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -29,28 +29,43 @@
 
 <!-- 🔷 HEADER -->
 <header class="bg-white shadow sticky top-0 z-50">
-  <div class="container mx-auto flex justify-between px-4 py-4">
-    <h1 class="text-2xl font-bold text-blue-600">Scheme Sathi</h1>
+  <div class="container mx-auto flex justify-between items-center px-4 py-4">
+    <div class="text-2xl font-bold text-blue-600">Scheme Sathi</div>
+
+    <nav class="hidden md:flex space-x-6 items-center">
+      <a href="#hero" class="hover:text-blue-500">Home</a>
+      <a href="#schemes-section" class="hover:text-blue-500">Schemes</a>
+
+      <input id="searchTop" type="text" placeholder="Search..."
+        class="ml-4 px-2 py-1 border rounded">
+
+      <select class="ml-2 border rounded px-2 py-1">
+        <option>EN</option>
+        <option>HI</option>
+      </select>
+    </nav>
   </div>
 </header>
 
 <!-- 🔥 HERO -->
-<section id="hero" class="py-24 text-center">
+<section id="hero" class="py-24 text-center relative">
   <h1 class="text-5xl font-bold mb-4">
     Empowering Citizens with Government Schemes
   </h1>
-  <p class="mb-6">Access benefits easily</p>
+  <p class="text-xl mb-8">
+    Access scholarships, subsidies, pensions, and benefits easily
+  </p>
 
   <button id="loadSchemes"
-    class="px-6 py-3 bg-white text-blue-600 rounded shadow hover:bg-gray-100">
+    class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-100">
     Load Schemes
   </button>
 </section>
 
-<!-- 📦 SCHEMES -->
-<section id="schemes-section" class="p-6">
+<!-- 📦 SCHEMES SECTION -->
+<section id="schemes-section" class="py-12 px-4">
 
-  <!-- 🔍 Search + Dropdown -->
+  <!-- 🔍 SEARCH + FILTER -->
   <div class="flex justify-center gap-4 mb-6 flex-wrap">
     <input id="searchInput" type="text" placeholder="Search schemes..."
       class="border p-2 rounded w-60">
@@ -60,22 +75,23 @@
     </select>
   </div>
 
-  <!-- 🎯 Category Buttons -->
-  <div class="flex justify-center gap-3 flex-wrap mb-6">
+  <!-- 🎯 CATEGORY BUTTONS -->
+  <div class="flex justify-center flex-wrap gap-3 mb-8">
     <button class="cat-btn bg-blue-500 text-white px-3 py-1 rounded" data-cat="all">All</button>
     <button class="cat-btn bg-green-500 text-white px-3 py-1 rounded" data-cat="Education">Education</button>
     <button class="cat-btn bg-yellow-400 text-black px-3 py-1 rounded" data-cat="Health">Health</button>
     <button class="cat-btn bg-purple-500 text-white px-3 py-1 rounded" data-cat="Pension">Pension</button>
     <button class="cat-btn bg-pink-500 text-white px-3 py-1 rounded" data-cat="Women">Women</button>
+    <button class="cat-btn bg-indigo-500 text-white px-3 py-1 rounded" data-cat="Employment">Employment</button>
   </div>
 
-  <!-- 🧾 Cards -->
+  <!-- 🧾 SCHEME CARDS -->
   <div id="scheme-cards" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-    <!-- 🌟 Example Cards (shown before load) -->
+    <!-- 🌟 DEFAULT CARDS -->
     <div class="scheme-card bg-white p-5 rounded shadow">
       <h3 class="font-bold text-blue-700">National Scholarship Portal</h3>
-      <p class="text-gray-600">Apply for scholarships easily.</p>
+      <p class="text-gray-600">Apply for scholarships easily across India.</p>
     </div>
 
     <div class="scheme-card bg-white p-5 rounded shadow">
@@ -83,22 +99,28 @@
       <p class="text-gray-600">Health coverage up to ₹5 lakh.</p>
     </div>
 
+    <div class="scheme-card bg-white p-5 rounded shadow">
+      <h3 class="font-bold text-blue-700">PM Awas Yojana</h3>
+      <p class="text-gray-600">Affordable housing for all citizens.</p>
+    </div>
+
   </div>
 
-  <!-- 📄 Pagination -->
-  <div class="flex justify-center gap-4 mt-6">
+  <!-- 📄 PAGINATION -->
+  <div class="flex justify-center gap-4 mt-8">
     <button id="prevPageBtn" class="bg-gray-300 px-4 py-2 rounded">Prev</button>
-    <span id="pageNumber"></span>
+    <span id="pageNumber" class="font-bold"></span>
     <button id="nextPageBtn" class="bg-gray-300 px-4 py-2 rounded">Next</button>
   </div>
 
 </section>
 
 <!-- 🔻 FOOTER -->
-<footer class="bg-white text-center py-6 mt-10 shadow">
-  © 2026 Scheme Sathi
+<footer class="bg-white mt-12 shadow py-10 text-center">
+  <p>© 2026 Scheme Sathi | Not affiliated with government</p>
 </footer>
 
+<!-- 🚀 SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -113,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPage = 1;
   const perPage = 20;
 
-  // 🚀 LOAD DATA
+  // LOAD DATA
   button.addEventListener("click", () => {
     fetch("http://127.0.0.1:5000/api/schemes")
       .then(res => res.json())
@@ -131,21 +153,32 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 
-  // 🏷 CATEGORY DROPDOWN
+  // LOAD CATEGORY DROPDOWN
   function loadCategories() {
     const categories = [...new Set(allSchemes.map(s => s.category || "Other"))];
-
     categoryFilter.innerHTML = `<option value="all">All</option>`;
     categories.forEach(cat => {
       categoryFilter.innerHTML += `<option value="${cat}">${cat}</option>`;
     });
   }
 
-  // 🔍 SEARCH + DROPDOWN FILTER
+  // FILTER LOGIC
+  function applyFilters() {
+    const keyword = searchInput.value.toLowerCase();
+    const selectedCategory = categoryFilter.value;
+
+    filteredSchemes = allSchemes.filter(s =>
+      s.name.toLowerCase().includes(keyword) &&
+      (selectedCategory === "all" || s.category === selectedCategory)
+    );
+
+    currentPage = 1;
+    displayPage();
+  }
+
   searchInput.addEventListener("input", applyFilters);
   categoryFilter.addEventListener("change", applyFilters);
 
-  // 🎯 BUTTON FILTER
   catButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       categoryFilter.value = btn.dataset.cat;
@@ -153,22 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  function applyFilters() {
-    const keyword = searchInput.value.toLowerCase();
-    const selectedCategory = categoryFilter.value;
-
-    filteredSchemes = allSchemes.filter(s => {
-      return (
-        s.name.toLowerCase().includes(keyword) &&
-        (selectedCategory === "all" || s.category === selectedCategory)
-      );
-    });
-
-    currentPage = 1;
-    displayPage();
-  }
-
-  // 📄 DISPLAY
+  // DISPLAY PAGE
   function displayPage() {
     container.innerHTML = "";
 
@@ -188,14 +206,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const totalPages = Math.ceil(filteredSchemes.length / perPage);
-    document.getElementById("pageNumber").innerText =
-      `${currentPage} / ${totalPages}`;
+    pageNumber.innerText = `${currentPage} / ${totalPages}`;
 
     prevPageBtn.disabled = currentPage === 1;
     nextPageBtn.disabled = currentPage === totalPages;
   }
 
-  // 🔁 PAGINATION
   nextPageBtn.onclick = () => {
     currentPage++;
     displayPage();
