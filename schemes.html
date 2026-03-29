@@ -2,122 +2,189 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>All Central Schemes</title>
+  <title>All Government Schemes</title>
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 font-sans">
 
-  <!-- Header -->
-  <header class="bg-white shadow py-4 px-6">
-    <h1 class="text-3xl font-bold text-blue-600">Central Government Schemes</h1>
+  <style>
+    body {
+      background: #f0f4f8;
+    }
+
+    .scheme-card {
+      transition: all 0.3s ease;
+    }
+
+    .scheme-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(59,130,246,0.3);
+    }
+  </style>
+</head>
+
+<body class="font-sans text-gray-800">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow py-4 px-6 sticky top-0 z-50">
+    <h1 class="text-3xl font-bold text-blue-600">
+      Government Schemes Portal
+    </h1>
   </header>
 
-  <!-- Main content -->
+  <!-- MAIN -->
   <main class="container mx-auto px-4 py-8">
 
-    <!-- Load Schemes Button -->
-    <button id="loadSchemesBtn" class="mb-6 px-4 py-2 bg-green-500 text-white rounded">
-      Load Schemes
-    </button>
+    <!-- SEARCH + CATEGORY -->
+    <div class="flex flex-wrap gap-4 justify-center mb-6">
+      <input id="searchInput"
+        type="text"
+        placeholder="Search schemes..."
+        class="border p-3 rounded w-60 focus:outline-none focus:ring-2 focus:ring-blue-400">
 
-    <!-- Search -->
-    <input type="text" id="search" placeholder="Search schemes..." class="mb-6 p-2 border rounded w-full">
-
-    <!-- Schemes Grid -->
-    <div id="scheme-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-
-    <!-- Pagination -->
-    <div class="flex justify-center items-center gap-4 mt-8">
-      <button id="prevBtn" onclick="prevPage()" class="px-4 py-2 bg-gray-300 rounded">Previous</button>
-      <span id="pageNumber" class="font-bold text-lg">1</span>
-      <button id="nextBtn" onclick="nextPage()" class="px-4 py-2 bg-blue-500 text-white rounded">Next</button>
+      <select id="categoryFilter"
+        class="border p-3 rounded">
+        <option value="all">All Categories</option>
+      </select>
     </div>
+
+    <!-- SCHEMES -->
+    <div id="scheme-cards"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="flex justify-center items-center gap-4 mt-8">
+      <button id="prevBtn"
+        class="px-4 py-2 bg-gray-300 rounded">
+        Previous
+      </button>
+
+      <span id="pageNumber" class="font-bold text-lg"></span>
+
+      <button id="nextBtn"
+        class="px-4 py-2 bg-blue-500 text-white rounded">
+        Next
+      </button>
+    </div>
+
   </main>
 
   <script>
     let allSchemes = [];
     let filteredSchemes = [];
     let currentPage = 1;
-    const perPage = 24;
+    const perPage = 20;
 
-    // ✅ Attach to BUTTON instead of window.onload
-    document.getElementById("loadSchemesBtn").addEventListener("click", function () {
-      fetch("./schemes.json")
-        .then(res => {
-          if (!res.ok) throw new Error("HTTP error " + res.status);
-          return res.json();
-        })
+    const container = document.getElementById("scheme-cards");
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+
+    // 🔹 AUTO LOAD ON PAGE OPEN
+    window.onload = () => {
+      container.innerHTML =
+        "<p class='text-blue-500 text-center col-span-3'>Loading schemes...</p>";
+
+      fetch("./schemes.json")   // ✅ FIXED
+        .then(res => res.json())
         .then(data => {
-          allSchemes = data;            // ✅ Store the data
-          filteredSchemes = allSchemes; // ✅ Now runs AFTER data is loaded
-          currentPage = 1;
+          allSchemes = data;
+          filteredSchemes = data;
+
+          loadCategories();
           displayPage();
-
-          // Hide the button after loading
-          document.getElementById("loadSchemesBtn").style.display = "none";
         })
-        .catch(err => {
-          console.error("FULL ERROR:", err);
-          document.getElementById("scheme-cards").innerHTML =
-            "<p class='text-red-500'>Failed to load schemes. Check console (F12)</p>";
+        .catch(() => {
+          container.innerHTML =
+            "<p class='text-red-500'>Failed to load schemes</p>";
         });
-    });
+    };
 
-    // Display schemes for current page
+    // 🔹 LOAD CATEGORY DROPDOWN
+    function loadCategories() {
+      const categories = [...new Set(allSchemes.map(s => s.category || "Other"))];
+
+      categories.forEach(cat => {
+        categoryFilter.innerHTML += `<option value="${cat}">${cat}</option>`;
+      });
+    }
+
+    // 🔍 SEARCH
+    searchInput.addEventListener("input", applyFilters);
+
+    // 🏷 FILTER
+    categoryFilter.addEventListener("change", applyFilters);
+
+    function applyFilters() {
+      const keyword = searchInput.value.toLowerCase();
+      const selectedCategory = categoryFilter.value;
+
+      filteredSchemes = allSchemes.filter(s => {
+        const matchesSearch = (s.name || "").toLowerCase().includes(keyword);
+        const matchesCategory =
+          selectedCategory === "all" || s.category === selectedCategory;
+
+        return matchesSearch && matchesCategory;
+      });
+
+      currentPage = 1;
+      displayPage();
+    }
+
+    // 📄 DISPLAY PAGE
     function displayPage() {
-      const container = document.getElementById("scheme-cards");
       container.innerHTML = "";
 
       const start = (currentPage - 1) * perPage;
       const end = start + perPage;
       const pageData = filteredSchemes.slice(start, end);
 
-      const fragment = document.createDocumentFragment();
       pageData.forEach(s => {
-        const card = document.createElement("div");
-        card.className = "bg-white p-6 rounded shadow hover:shadow-lg transition transform hover:scale-105";
-        card.innerHTML = `
-          <h3 class="font-bold text-lg mb-1">${s.name}</h3>
-          <span class="text-sm text-gray-500 mb-2 block">${s.category || ''}</span>
-          <p class="text-gray-600 mb-2">${s.description || "No description available"}</p>
-          <a href="${s.link || '#'}" target="_blank" class="text-blue-500 font-semibold">View</a>
+        container.innerHTML += `
+          <div class="scheme-card bg-white p-6 rounded-xl shadow">
+
+            <h3 class="text-xl font-bold text-blue-700 mb-2">
+              ${s.name || "No Name"}
+            </h3>
+
+            <span class="text-sm text-gray-500">
+              ${s.category || "General"}
+            </span>
+
+            <p class="text-gray-600 my-3">
+              ${s.description || "No description"}
+            </p>
+
+            <a href="${s.link || '#'}" target="_blank"
+              class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+              Learn More →
+            </a>
+
+          </div>
         `;
-        fragment.appendChild(card);
       });
-      container.appendChild(fragment);
 
       updatePagination();
     }
 
-    // Pagination controls
-    function nextPage() {
-      if (currentPage * perPage < filteredSchemes.length) {
-        currentPage++;
-        displayPage();
-      }
-    }
+    // 🔁 PAGINATION
+    document.getElementById("nextBtn").onclick = () => {
+      currentPage++;
+      displayPage();
+    };
 
-    function prevPage() {
-      if (currentPage > 1) {
-        currentPage--;
-        displayPage();
-      }
-    }
+    document.getElementById("prevBtn").onclick = () => {
+      currentPage--;
+      displayPage();
+    };
 
     function updatePagination() {
       const totalPages = Math.ceil(filteredSchemes.length / perPage);
-      document.getElementById("pageNumber").innerText = `${currentPage} / ${totalPages}`;
+
+      document.getElementById("pageNumber").innerText =
+        `${currentPage} / ${totalPages}`;
+
       document.getElementById("prevBtn").disabled = currentPage === 1;
       document.getElementById("nextBtn").disabled = currentPage === totalPages;
     }
-
-    // Search functionality
-    document.getElementById("search").addEventListener("input", e => {
-      const query = e.target.value.toLowerCase();
-      filteredSchemes = allSchemes.filter(s => s.name.toLowerCase().includes(query));
-      currentPage = 1;
-      displayPage();
-    });
   </script>
 
 </body>
