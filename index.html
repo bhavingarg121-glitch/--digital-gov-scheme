@@ -82,20 +82,18 @@ body {
 <!-- HERO -->
 <section id="hero" class="py-20 text-center">
   <h1 class="text-5xl font-bold mb-4">
-    Empowering Citizens with Government Schemes
+    Find 500+ Government Schemes in Seconds
   </h1>
   <p class="text-xl mb-6">
     Access scholarships, subsidies, pensions, and other benefits easily
   </p>
-<p class="text-lg md:text-xl mb-6">
-       Easy search • Updated schemes • All categories in one place
-    </p>
- 
-    <a href="schemes.html"
-   class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-100 transition">
-   Load Schemes
-</a>
-  </button>
+  <p class="text-lg md:text-xl mb-6">
+    ✔ Easy search • ✔ Updated schemes • ✔ All categories in one place
+  </p>
+  <a href="#schemes-section"
+     class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-100 transition">
+     Explore All Schemes
+  </a>
 </section>
 
 <!-- SCHEMES SECTION -->
@@ -131,8 +129,7 @@ body {
     </p>
   </section>
     <!-- DEFAULT CARD -->
-    <div id="scheme-cards" class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 px-6 mb-20"></div>
-    <input id="searchInput" placeholder="Search schemes..." class="border px-3 py-2 rounded w-full md:w-1/2 mx-auto mb-8">
+    
     <div class="scheme-card bg-white p-6 rounded-xl shadow">
       <div class="flex items-center mb-4">
         <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
@@ -196,32 +193,32 @@ body {
 
 <!-- FOOTER -->
 <footer class="bg-white dark:bg-gray-800 py-10 px-6 mt-20">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <h3 class="font-bold mb-2">About</h3>
-        <p class="text-gray-500">Scheme Sathi helps citizens to access all government schemes easily.</p>
-      </div>
-      <div>
-        <h3 class="font-bold mb-2">Quick Links</h3>
-        <ul class="text-gray-500">
-          <li><a href="#schemesSection" class="hover:underline">Explore Schemes</a></li>
-          <li><a href="#schemesSection" class="hover:underline">All Schemes</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="font-bold mb-2">Disclaimer</h3>
-        <p class="text-gray-500 text-sm">Information is for educational purposes only and may change.</p>
-      </div>
-      <div>
-        <h3 class="font-bold mb-2">Contact</h3>
-        <p class="text-gray-500 text-sm">Email: bhavingarg121@gmail.com</p>
-      </div>
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div>
+      <h3 class="font-bold mb-2">About</h3>
+      <p class="text-gray-500 dark:text-gray-400">Scheme Sathi helps citizens access all government schemes easily.</p>
     </div>
-    <p class="text-center text-gray-500 mt-10 text-sm">&copy; ©2026 SchemeSathi. All rights reserved.</p>
+    <div>
+      <h3 class="font-bold mb-2">Quick Links</h3>
+      <ul class="text-gray-500 dark:text-gray-400">
+        <li><a href="#schemesSection" class="hover:underline">Explore Schemes</a></li>
+        <li><a href="#schemesSection" class="hover:underline">All Schemes</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">Disclaimer</h3>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">Information is for educational purposes only and may change.</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">Contact</h3>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">Email: bhavingarg121@gmail.com</p>
+    </div>
+  </div>
+  <p class="text-center text-gray-500 dark:text-gray-400 mt-10 text-sm">&copy; 2026 SchemeSathi. All rights reserved.</p>
+</footer>
  
 
 
-</footer>
 
 <!-- SCRIPT -->
 <script>
@@ -230,16 +227,15 @@ let filteredSchemes = [];
 let currentPage = 1;
 const perPage = 24;
 
-const container = document.getElementById("scheme-cards"); // ✅ make sure this exists in HTML
-const searchInput = document.getElementById('searchInput'); // add this input in HTML
+const container = document.getElementById("scheme-cards");
+const searchInput = document.getElementById("searchInput");
 
 // Dark mode toggle
-const toggle = document.getElementById('darkModeToggle');
-toggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
+document.getElementById("darkModeToggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark");
 });
 
-// Load schemes from JSON
+// Load schemes
 fetch("./schemes.json")
   .then(res => res.json())
   .then(data => {
@@ -254,13 +250,12 @@ fetch("./schemes.json")
   });
 
 // Search filter
-searchInput.addEventListener('input', e => {
+searchInput.addEventListener("input", e => {
   const filter = e.target.value.toLowerCase();
   filteredSchemes = allSchemes.filter(s => s.name.toLowerCase().includes(filter));
   currentPage = 1;
   displayPage();
 });
-
 // Display current page
 function displayPage() {
   container.innerHTML = "";
