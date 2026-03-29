@@ -498,11 +498,12 @@
     "category": "Social Security & Welfare"
   },
   {
-    "Education": [
+   
       {
         "name": "National Programme for Education of Girls at Elementary Level (NPEGEL)",
         "description": "Promotes education of girls at elementary level.",
         "link": "https://education.gov.in"
+    "category": "Education"
       }
     ]
   },
