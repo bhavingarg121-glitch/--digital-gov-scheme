@@ -3,225 +3,211 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scheme Sathi Portal</title>
+  <title>Scheme Sathi</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Bright hover animations -->
   <style>
-    body {
-      background: #f0f4f8; /* soft light blue background */
-    }
-
-    @keyframes bounceIcon {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-
-    .hover-bounce:hover .icon-bounce {
-      animation: bounceIcon 0.5s ease-in-out;
-    }
-
-    .hover-glow:hover {
-      box-shadow: 0 12px 30px rgba(59,130,246,0.3);
-      transform: translateY(-3px);
-    }
+    body { background: #f0f4f8; }
 
     .scheme-card {
-      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      transition: all 0.3s ease;
     }
 
-    /* Hero background gradient */
+    .scheme-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(59,130,246,0.3);
+    }
+
     #hero {
       background: linear-gradient(135deg, #4f46e5, #3b82f6);
       color: white;
     }
   </style>
 </head>
+
 <body class="text-gray-800 font-sans">
 
-  <!-- Header -->
-  <header class="bg-white shadow sticky top-0 z-50">
-    <div class="container mx-auto flex justify-between items-center px-4 py-4">
-      <div class="text-2xl font-bold text-blue-600">Scheme Sathi</div>
-      <nav class="hidden md:flex space-x-6 items-center">
-        <a href="#hero" class="hover:text-blue-500">Home</a>
-        <a href="#schemes-section" class="hover:text-blue-500">Schemes</a>
-        <a href="#news-section" class="hover:text-blue-500">News</a>
-        <a href="#contact-section" class="hover:text-blue-500">Contact</a>
-        <input type="text" placeholder="Search schemes..." class="ml-4 px-2 py-1 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
-        <select class="ml-2 border rounded px-2 py-1">
-          <option>EN</option>
-          <option>HI</option>
-        </select>
-      </nav>
-      <div class="md:hidden">
-        <button id="mobile-menu-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-               viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-   <!-- Hero / Banner -->
-  <section id="hero" class="py-24 relative overflow-hidden">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-5xl font-bold mb-4">Empowering Citizens with Government Schemes</h1>
-      <p class="text-xl mb-8">Access scholarships, subsidies, pensions, and other benefits with ease.</p>
-     <a href="schemes.html"
-   class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-gray-100 transition">
-   Load Schemes
-</a>
-    </div>
-    <div class="absolute -top-16 -left-16 w-64 h-64 bg-blue-300 rounded-full opacity-30 animate-pulse"></div>
-    <div class="absolute -bottom-16 -right-16 w-64 h-64 bg-purple-300 rounded-full opacity-30 animate-pulse"></div>
-  </section>
-    <!-- Optional decorative circles -->
-    <div class="absolute -top-16 -left-16 w-64 h-64 bg-blue-300 rounded-full opacity-30 animate-pulse"></div>
-    <div class="absolute -bottom-16 -right-16 w-64 h-64 bg-purple-300 rounded-full opacity-30 animate-pulse"></div>
-  </section>
-
-  <!-- Schemes Section -->
-  <section id="schemes-section" class="py-12">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl font-bold">Explore Government Schemes</h2>
-        <p class="text-gray-600 mt-2">Access scholarships, subsidies, pensions, and other benefits easily</p>
-      </div>
-
-      <!-- Filter Buttons -->
-      <div class="flex justify-center space-x-4 mb-8 flex-wrap">
-        <button class="scheme-filter px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition" data-category="all">All</button>
-        <button class="scheme-filter px-4 py-2 bg-green-400 text-white rounded hover:bg-green-500 transition" data-category="Education">Education</button>
-        <button class="scheme-filter px-4 py-2 bg-yellow-300 text-gray-800 rounded hover:bg-yellow-400 transition" data-category="Health">Health</button>
-        <button class="scheme-filter px-4 py-2 bg-purple-400 text-white rounded hover:bg-purple-500 transition" data-category="Pension">Pension</button>
-        <button class="scheme-filter px-4 py-2 bg-pink-400 text-white rounded hover:bg-pink-500 transition" data-category="Women">Women</button>
-        <button class="scheme-filter px-4 py-2 bg-indigo-400 text-white rounded hover:bg-indigo-500 transition" data-category="Employment">Employment</button>
-      </div>
-
-      <!-- Scheme Cards Grid -->
-      <div id="scheme-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-
-
-        <!-- Example card -->
-        <div class="scheme-card bg-white rounded-lg shadow p-6 hover-bounce hover-glow transition overflow-hidden">
-          <div class="flex items-center mb-4">
-            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-green-100">
-              <span class="icon-bounce text-green-600 font-bold text-lg">🎓</span>
-            </div>
-            <h3 class="ml-4 text-xl font-semibold">National Scholarship Portal</h3>
-          </div>
-          <span class="inline-block px-2 py-1 text-xs rounded mb-2 bg-green-200 text-green-800">Education</span>
-          <p class="text-gray-600 mb-4">Centralized portal to apply for all government scholarships for students across India.</p>
-          <a href="https://scholarships.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-green-400 text-white rounded hover:bg-green-500 transition">Learn More</a>
-        </div>
-
-        <div class="scheme-card bg-white rounded-lg shadow p-6 hover-bounce hover-glow transition overflow-hidden">
-          <div class="flex items-center mb-4">
-            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100">
-              <span class="icon-bounce text-blue-600 font-bold text-lg">🏥</span>
-            </div>
-            <h3 class="ml-4 text-xl font-semibold">Ayushman Bharat</h3>
-          </div>
-          <span class="inline-block px-2 py-1 text-xs rounded mb-2 bg-blue-200 text-blue-800">Health</span>
-          <p class="text-gray-600 mb-4">Health coverage for families, providing free treatment up to Rs. 5 lakh per year.</p>
-          <a href="https://pmjay.gov.in/" target="_blank" class="inline-block px-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-500 transition">Learn More</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-white mt-12 shadow py-10">
-    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <h4 class="font-bold mb-4">Quick Links</h4>
-        <ul class="space-y-2">
-          <li><a href="#hero" class="hover:text-blue-500">Home</a></li>
-          <li><a href="#schemes-section" class="hover:text-blue-500">Schemes</a></li>
-          <li><a href="#news-section" class="hover:text-blue-500">News</a></li>
-          <li><a href="#contact-section" class="hover:text-blue-500">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-bold mb-4">Categories</h4>
-        <ul class="space-y-2">
-          <li>Education</li>
-          <li>Health</li>
-          <li>Pension</li>
-          <li>Employment</li>
-        </ul>
-      </div>
-    </div>
-    <!-- Bottom Bar -->
-  <div class="border-t border-gray-700 text-center py-4 text-sm">
-    <p>
-      © 2026 Scheme Sathi. All rights reserved. <br>
-      Scheme Sathi is an independent informational platform and is not affiliated with any government authority.
-    </p>
+<!-- 🔷 HEADER -->
+<header class="bg-white shadow sticky top-0 z-50">
+  <div class="container mx-auto flex justify-between px-4 py-4">
+    <h1 class="text-2xl font-bold text-blue-600">Scheme Sathi</h1>
   </div>
+</header>
+
+<!-- 🔥 HERO -->
+<section id="hero" class="py-24 text-center">
+  <h1 class="text-5xl font-bold mb-4">
+    Empowering Citizens with Government Schemes
+  </h1>
+  <p class="mb-6">Access benefits easily</p>
+
+  <button id="loadSchemes"
+    class="px-6 py-3 bg-white text-blue-600 rounded shadow hover:bg-gray-100">
+    Load Schemes
+  </button>
+</section>
+
+<!-- 📦 SCHEMES -->
+<section id="schemes-section" class="p-6">
+
+  <!-- 🔍 Search + Dropdown -->
+  <div class="flex justify-center gap-4 mb-6 flex-wrap">
+    <input id="searchInput" type="text" placeholder="Search schemes..."
+      class="border p-2 rounded w-60">
+
+    <select id="categoryFilter" class="border p-2 rounded">
+      <option value="all">All Categories</option>
+    </select>
+  </div>
+
+  <!-- 🎯 Category Buttons -->
+  <div class="flex justify-center gap-3 flex-wrap mb-6">
+    <button class="cat-btn bg-blue-500 text-white px-3 py-1 rounded" data-cat="all">All</button>
+    <button class="cat-btn bg-green-500 text-white px-3 py-1 rounded" data-cat="Education">Education</button>
+    <button class="cat-btn bg-yellow-400 text-black px-3 py-1 rounded" data-cat="Health">Health</button>
+    <button class="cat-btn bg-purple-500 text-white px-3 py-1 rounded" data-cat="Pension">Pension</button>
+    <button class="cat-btn bg-pink-500 text-white px-3 py-1 rounded" data-cat="Women">Women</button>
+  </div>
+
+  <!-- 🧾 Cards -->
+  <div id="scheme-cards" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <!-- 🌟 Example Cards (shown before load) -->
+    <div class="scheme-card bg-white p-5 rounded shadow">
+      <h3 class="font-bold text-blue-700">National Scholarship Portal</h3>
+      <p class="text-gray-600">Apply for scholarships easily.</p>
+    </div>
+
+    <div class="scheme-card bg-white p-5 rounded shadow">
+      <h3 class="font-bold text-blue-700">Ayushman Bharat</h3>
+      <p class="text-gray-600">Health coverage up to ₹5 lakh.</p>
+    </div>
+
+  </div>
+
+  <!-- 📄 Pagination -->
+  <div class="flex justify-center gap-4 mt-6">
+    <button id="prevPageBtn" class="bg-gray-300 px-4 py-2 rounded">Prev</button>
+    <span id="pageNumber"></span>
+    <button id="nextPageBtn" class="bg-gray-300 px-4 py-2 rounded">Next</button>
+  </div>
+
+</section>
+
+<!-- 🔻 FOOTER -->
+<footer class="bg-white text-center py-6 mt-10 shadow">
+  © 2026 Scheme Sathi
 </footer>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
- 
+  const button = document.getElementById("loadSchemes");
+  const container = document.getElementById("scheme-cards");
+  const searchInput = document.getElementById("searchInput");
+  const categoryFilter = document.getElementById("categoryFilter");
+  const catButtons = document.querySelectorAll(".cat-btn");
 
-  <!-- Scripts -->
-  <script>
-    let allSchemes = [];
-    let currentPage = 1;
-    const perPage = 20;
+  let allSchemes = [];
+  let filteredSchemes = [];
+  let currentPage = 1;
+  const perPage = 20;
 
-    document.getElementById("loadSchemesBtn").addEventListener("click", function() {
-      fetch("./schemes.json")
-        .then(res => res.json())
-        .then(data => {
-          allSchemes = data;
-          currentPage = 1;
-          displayPage();
-        })
-        .catch(err => {
-          console.error("Error loading schemes:", err);
-          alert("Failed to load schemes. Please try again later.");
+  // 🚀 LOAD DATA
+  button.addEventListener("click", () => {
+    fetch("http://127.0.0.1:5000/api/schemes")
+      .then(res => res.json())
+      .then(data => {
+        allSchemes = data;
+        filteredSchemes = data;
+        currentPage = 1;
+
+        loadCategories();
+        displayPage();
+
+        document.getElementById("schemes-section").scrollIntoView({
+          behavior: "smooth"
         });
+      });
+  });
+
+  // 🏷 CATEGORY DROPDOWN
+  function loadCategories() {
+    const categories = [...new Set(allSchemes.map(s => s.category || "Other"))];
+
+    categoryFilter.innerHTML = `<option value="all">All</option>`;
+    categories.forEach(cat => {
+      categoryFilter.innerHTML += `<option value="${cat}">${cat}</option>`;
+    });
+  }
+
+  // 🔍 SEARCH + DROPDOWN FILTER
+  searchInput.addEventListener("input", applyFilters);
+  categoryFilter.addEventListener("change", applyFilters);
+
+  // 🎯 BUTTON FILTER
+  catButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      categoryFilter.value = btn.dataset.cat;
+      applyFilters();
+    });
+  });
+
+  function applyFilters() {
+    const keyword = searchInput.value.toLowerCase();
+    const selectedCategory = categoryFilter.value;
+
+    filteredSchemes = allSchemes.filter(s => {
+      return (
+        s.name.toLowerCase().includes(keyword) &&
+        (selectedCategory === "all" || s.category === selectedCategory)
+      );
     });
 
-    function displayPage() {
-      const container = document.getElementById("scheme-cards");
-      container.innerHTML = "";
+    currentPage = 1;
+    displayPage();
+  }
 
-      const start = (currentPage - 1) * perPage;
-      const end = start + perPage;
-      const pageData = allSchemes.slice(start, end);
+  // 📄 DISPLAY
+  function displayPage() {
+    container.innerHTML = "";
 
-      pageData.forEach(s => {
-        container.innerHTML += `
-          <div class="scheme-card bg-white p-6 rounded shadow mb-4 hover-bounce hover-glow transition">
-            <h3 class="font-bold text-lg mb-2">${s.name}</h3>
-            <p class="mb-2">${s.description}</p>
-            <a href="${s.link}" target="_blank" class="text-blue-500 font-semibold">Learn More</a>
-          </div>
-        `;
-      });
+    const start = (currentPage - 1) * perPage;
+    const pageData = filteredSchemes.slice(start, start + perPage);
 
-      document.getElementById("pageNumber").innerText = currentPage;
-    }
+    pageData.forEach(s => {
+      container.innerHTML += `
+        <div class="scheme-card bg-white p-5 rounded shadow">
+          <h3 class="font-bold text-blue-700">${s.name}</h3>
+          <p class="text-gray-600">${s.description || "No description"}</p>
+          <p class="text-sm text-gray-400">${s.category || "Other"}</p>
+          <a href="${s.link}" target="_blank"
+            class="inline-block mt-2 text-blue-600">View</a>
+        </div>
+      `;
+    });
 
-    function nextPage() {
-      if (currentPage * perPage < allSchemes.length) {
-        currentPage++;
-        displayPage();
-      }
-    }
+    const totalPages = Math.ceil(filteredSchemes.length / perPage);
+    document.getElementById("pageNumber").innerText =
+      `${currentPage} / ${totalPages}`;
 
-    function prevPage() {
-      if (currentPage > 1) {
-        currentPage--;
-        displayPage();
-      }
-    }
-  </script>
+    prevPageBtn.disabled = currentPage === 1;
+    nextPageBtn.disabled = currentPage === totalPages;
+  }
+
+  // 🔁 PAGINATION
+  nextPageBtn.onclick = () => {
+    currentPage++;
+    displayPage();
+  };
+
+  prevPageBtn.onclick = () => {
+    currentPage--;
+    displayPage();
+  };
+
+});
+</script>
+
 </body>
 </html>
