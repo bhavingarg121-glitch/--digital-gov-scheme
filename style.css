@@ -1,151 +1,199 @@
-/* Reset & Base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* -------------------- BASE -------------------- */
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background-color: #f9fafb;
-  color: #222;
-  line-height: 1.6;
-}
-
-/* Header */
-header {
-  background: #003366;
-  color: #fff;
-  padding: 1rem 2rem;
-  text-align: center;
-}
-header h1 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-/* Banner */
-.banner {
-  background: linear-gradient(to right, #004080, #0059b3);
-  color: #fff;
-  padding: 3rem 2rem;
-  text-align: center;
-}
-.banner h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-.banner p {
-  font-size: 1.1rem;
-  opacity: 0.9;
-}
-
-/* Categories Section */
-.categories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  padding: 2rem;
-}
-.categories .category-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 1rem;
-  text-align: center;
-  border-radius: 6px;
-  transition: transform 0.3s ease;
-}
-.categories .category-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* Special Schemes */
-.special-schemes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  padding: 2rem;
-}
-.scheme-card {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  width: 300px;
-  padding: 1.5rem;
-  text-align: center;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.scheme-card:hover {
-  transform: scale(1.05) translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-.scheme-card h3 {
-  margin: 0.5rem 0;
-  font-size: 1.3rem;
-  color: #003366;
-}
-.scheme-card p {
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-}
-.scheme-card .learn-more {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: #0059b3;
-  color: #fff;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-.scheme-card .learn-more:hover {
-  background: #003366;
-}
-
-/* Load Schemes Section */
-.load-schemes {
   background: #f0f4f8;
-  padding: 2rem;
-  text-align: center;
+  scroll-behavior: smooth;
 }
-.load-schemes h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+
+/* -------------------- HERO -------------------- */
+#hero {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+  position: relative;
+  overflow: hidden;
 }
-.load-schemes button {
-  padding: 0.7rem 1.5rem;
-  background: #004080;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: transform 0.3s ease, background 0.3s ease;
+
+#hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
 }
-.load-schemes button:hover {
-  background: #0059b3;
+
+#hero p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+/* Floating glow circles */
+#hero::before,
+#hero::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+#hero::before {
+  top: -50px;
+  left: -50px;
+}
+
+#hero::after {
+  bottom: -50px;
+  right: -50px;
+}
+
+/* -------------------- BUTTON -------------------- */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  box-shadow: 0 0 20px rgba(59,130,246,0.4);
+  transform: translateY(-2px);
+}
+
+/* -------------------- SCHEME CARD -------------------- */
+.scheme-card {
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect */
+.scheme-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+/* Shine effect */
+.scheme-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: 0.5s;
+}
+
+.scheme-card:hover::before {
+  left: 100%;
+}
+
+/* -------------------- ICON ANIMATION -------------------- */
+@keyframes bounceIcon {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.scheme-card:hover .icon-bounce {
+  animation: bounceIcon 0.5s ease;
+}
+
+/* -------------------- FILTER BUTTONS -------------------- */
+.scheme-filter {
+  transition: all 0.25s ease;
+}
+
+.scheme-filter:hover {
   transform: scale(1.05);
 }
 
-/* Footer */
-footer {
-  background: #003366;
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-footer p {
-  font-size: 0.9rem;
+.scheme-filter.active {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .special-schemes {
-    flex-direction: column;
-    align-items: center;
+/* -------------------- LOADER -------------------- */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / -1;
+  height: 150px;
+}
+
+.spinner {
+  width: 45px;
+  height: 45px;
+  border: 5px solid #e5e7eb;
+  border-top: 5px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* -------------------- FADE-IN ANIMATION -------------------- */
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------- NAVBAR -------------------- */
+header {
+  backdrop-filter: blur(10px);
+}
+
+header a {
+  position: relative;
+}
+
+header a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background: #3b82f6;
+  transition: 0.3s;
+}
+
+header a:hover::after {
+  width: 100%;
+}
+
+/* -------------------- SEARCH INPUT -------------------- */
+input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(59,130,246,0.3);
+}
+
+/* -------------------- FOOTER -------------------- */
+footer {
+  background: #ffffff;
+}
+
+footer a:hover {
+  color: #3b82f6;
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+@media (max-width: 768px) {
+  #hero {
+    padding: 60px 20px;
+  }
+
+  #hero h1 {
+    font-size: 2rem;
+  }
+
   .scheme-card {
-    width: 90%;
+    margin: 0 auto;
   }
 }
