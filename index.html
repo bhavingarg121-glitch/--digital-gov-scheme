@@ -213,8 +213,18 @@
       </div>
       <div onclick="filterCategory('Women & Child')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-pink-100 hover:shadow-2xl">
         👩
+      
         <p class="mt-3 font-semibold text-pink-800">Women</p>
+      <div class="flex gap-4 justify-center my-6">
+  <button onclick="loadCategory('women')" class="btn">Women</button>
+  <button onclick="loadCategory('farmers')" class="btn">Farmers</button>
+  <button onclick="loadCategory('agriculture')" class="btn">Agriculture</button>
+  <button onclick="loadCategory('infrastructure')" class="btn">Infrastructure</button>
+</div>
+
+<div id="schemeContainer" class="grid grid-cols-3 gap-6 p-6"></div>
       </div>
+      
     </div>
   </div>
 
