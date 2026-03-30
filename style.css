@@ -1,199 +1,252 @@
-/* -------------------- BASE -------------------- */
+/* ===== Global Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background: #f0f4f8;
-  scroll-behavior: smooth;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+  line-height: 1.6;
 }
 
-/* -------------------- HERO -------------------- */
-#hero {
-  background: linear-gradient(135deg, #4f46e5, #3b82f6);
-  color: white;
-  position: relative;
-  overflow: hidden;
+/* ===== Header ===== */
+header {
+  background-color: #004080;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#hero h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-#hero p {
-  font-size: clamp(1rem, 2vw, 1.25rem);
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
 }
 
-/* Floating glow circles */
-#hero::before,
-#hero::after {
-  content: "";
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 50%;
-  filter: blur(60px);
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-#hero::before {
-  top: -50px;
-  left: -50px;
+header nav ul li a:hover {
+  text-decoration: underline;
 }
 
-#hero::after {
-  bottom: -50px;
-  right: -50px;
+header .search-lang {
+  display: flex;
+  gap: 1rem;
 }
 
-/* -------------------- BUTTON -------------------- */
-.btn {
-  transition: all 0.3s ease;
+header input[type="text"] {
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: none;
 }
 
-.btn:hover {
-  box-shadow: 0 0 20px rgba(59,130,246,0.4);
-  transform: translateY(-2px);
+header select {
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: none;
 }
 
-/* -------------------- SCHEME CARD -------------------- */
-.scheme-card {
-  transition: all 0.35s ease;
-  position: relative;
-  overflow: hidden;
+/* ===== Banner ===== */
+.banner {
+  background: linear-gradient(to right, #004080, #0066cc);
+  color: #fff;
+  text-align: center;
+  padding: 3rem 2rem;
 }
 
-/* Hover effect */
-.scheme-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+.banner h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Shine effect */
-.scheme-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
-  transition: 0.5s;
+.banner p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
 }
 
-.scheme-card:hover::before {
-  left: 100%;
-}
-
-/* -------------------- ICON ANIMATION -------------------- */
-@keyframes bounceIcon {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-.scheme-card:hover .icon-bounce {
-  animation: bounceIcon 0.5s ease;
-}
-
-/* -------------------- FILTER BUTTONS -------------------- */
-.scheme-filter {
-  transition: all 0.25s ease;
-}
-
-.scheme-filter:hover {
-  transform: scale(1.05);
-}
-
-.scheme-filter.active {
-  transform: scale(1.1);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* -------------------- LOADER -------------------- */
-.loader {
+.banner .btn-group {
   display: flex;
   justify-content: center;
-  align-items: center;
-  grid-column: 1 / -1;
-  height: 150px;
+  gap: 1rem;
 }
 
-.spinner {
-  width: 45px;
-  height: 45px;
-  border: 5px solid #e5e7eb;
-  border-top: 5px solid #3b82f6;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.banner button {
+  background-color: #fff;
+  color: #004080;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.banner button:hover {
+  background-color: #e6e6e6;
 }
 
-/* -------------------- FADE-IN ANIMATION -------------------- */
-.fade-in {
-  animation: fadeIn 0.5s ease forwards;
+/* ===== Categories ===== */
+.categories {
+  text-align: center;
+  margin: 2rem 0;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.categories h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-/* -------------------- NAVBAR -------------------- */
-header {
-  backdrop-filter: blur(10px);
+.categories p {
+  color: #555;
+  margin-bottom: 1rem;
 }
 
-header a {
-  position: relative;
+.category-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-header a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: -3px;
-  left: 0;
-  background: #3b82f6;
-  transition: 0.3s;
+.category-buttons button {
+  background-color: #004080;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
 }
 
-header a:hover::after {
-  width: 100%;
+.category-buttons button:hover {
+  background-color: #0066cc;
 }
 
-/* -------------------- SEARCH INPUT -------------------- */
-input:focus {
-  outline: none;
-  box-shadow: 0 0 10px rgba(59,130,246,0.3);
+/* ===== Scheme Cards ===== */
+.scheme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0 2rem;
 }
 
-/* -------------------- FOOTER -------------------- */
+.scheme-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.scheme-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #004080;
+}
+
+.scheme-card p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.scheme-card button {
+  background-color: #004080;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.scheme-card button:hover {
+  background-color: #0066cc;
+}
+
+/* ===== Footer ===== */
 footer {
-  background: #ffffff;
+  background-color: #004080;
+  color: #fff;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-footer a:hover {
-  color: #3b82f6;
+footer .footer-section {
+  margin-bottom: 1rem;
 }
 
-/* -------------------- RESPONSIVE -------------------- */
+footer h4 {
+  margin-bottom: 0.5rem;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer ul li a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Weather Widget ===== */
+.weather-widget {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weather-widget .icon {
+  font-size: 1.5rem;
+}
+
+.weather-widget .temp {
+  font-weight: bold;
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  #hero {
-    padding: 60px 20px;
+  header {
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  #hero h1 {
-    font-size: 2rem;
+  .banner h1 {
+    font-size: 1.6rem;
   }
 
-  .scheme-card {
-    margin: 0 auto;
+  .scheme-grid {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 1rem;
   }
 }
