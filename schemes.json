@@ -1228,5 +1228,211 @@
     "link": "https://rasci.in/",
     "description": "Provides skill training for retail sector jobs.",
     "category": "Employment"
-  }
+  },
+    {
+      "name": "Pradhan Mantri Shram Yogi Maandhan",
+      "description": "Voluntary pension scheme for unorganized workers with monthly contribution.",
+      "link": "https://maandhan.in/",
+      "category": "Unorganized Workers"
+    },
+    {
+      "name": "Atal Pension Yojana",
+      "description": "Guaranteed pension scheme for citizens aged 18–40 with contributions.",
+      "link": "https://npscra.nsdl.co.in/atal-pension-yojana.php",
+      "category": "General Citizens"
+    },
+    {
+      "name": "Indira Gandhi National Old Age Pension Scheme",
+      "description": "Monthly pension for senior citizens below poverty line.",
+      "link": "https://nsap.nic.in/",
+      "category": "Senior Citizens"
+    },
+    {
+      "name": "National Pension System (NPS)",
+      "description": "Retirement savings scheme with flexible investment options.",
+      "link": "https://npscra.nsdl.co.in/",
+      "category": "General Citizens"
+    },
+    {
+      "name": "Employees’ Pension Scheme (EPS)",
+      "description": "Mandatory pension scheme for organized sector employees under EPFO.",
+      "link": "https://www.epfindia.gov.in/",
+      "category": "Employees"
+    },
+    {
+      "name": "Pradhan Mantri Kisan Maandhan Yojana",
+      "description": "Pension scheme for small and marginal farmers.",
+      "link": "https://pmkmy.gov.in/",
+      "category": "Farmers"
+    },
+    {
+      "name": "Pradhan Mantri Laghu Vyapari Maandhan Yojana",
+      "description": "Pension scheme for small traders and shopkeepers.",
+      "link": "https://maandhan.in/",
+      "category": "Traders"
+    },
+    {
+      "name": "Indira Gandhi Widow Pension Scheme",
+      "description": "Monthly pension for widows below poverty line.",
+      "link": "https://nsap.nic.in/",
+      "category": "Widows"
+    },
+    {
+      "name": "Indira Gandhi Disability Pension Scheme",
+      "description": "Monthly pension for persons with severe disabilities.",
+      "link": "https://nsap.nic.in/",
+      "category": "Disabled Persons"
+    },
+    {
+      "name": "Freedom Fighters’ Pension Scheme",
+      "description": "Monthly pension for recognized freedom fighters.",
+      "link": "https://pensionersportal.gov.in/",
+      "category": "Special Category"
+    },
+
+    /* --- State Schemes (examples, continue for all states/UTs) --- */
+  { "name": "Rajasthan Old Age Pension Scheme", "description": "Monthly pension for senior citizens in Rajasthan.", "link": "https://raj.nic.in/", "category": "Senior Citizens" },
+    { "name": "Rajasthan Widow Pension Scheme", "description": "Financial assistance for widows in Rajasthan.", "link": "https://raj.nic.in/", "category": "Widows" },
+    { "name": "Maharashtra Old Age Pension Scheme", "description": "Monthly pension for senior citizens in Maharashtra.", "link": "https://maharashtra.gov.in/", "category": "Senior Citizens" },
+    { "name": "Maharashtra Widow Pension Scheme", "description": "Financial assistance for widows in Maharashtra.", "link": "https://maharashtra.gov.in/", "category": "Widows" },
+    { "name": "Tamil Nadu Social Security Pension", "description": "Pension for elderly, widows, and disabled persons in Tamil Nadu.", "link": "https://tn.gov.in/", "category": "Social Security" },
+    { "name": "Kerala Indira Gandhi National Old Age Pension", "description": "State implementation of IGNOAPS in Kerala.", "link": "https://kerala.gov.in/", "category": "Senior Citizens" },
+    { "name": "Uttar Pradesh Old Age Pension Scheme", "description": "Monthly pension for senior citizens in Uttar Pradesh.", "link": "https://up.gov.in/", "category": "Senior Citizens" },
+    { "name": "Uttar Pradesh Widow Pension Scheme", "description": "Financial assistance for widows in Uttar Pradesh.", "link": "https://up.gov.in/", "category": "Widows" },
+    { "name": "West Bengal Social Security Pension", "description": "Pension for elderly, widows, and disabled persons in West Bengal.", "link": "https://wb.gov.in/", "category": "Social Security" },
+    { "name": "Punjab Old Age Pension Scheme", "description": "Monthly pension for senior citizens in Punjab.", "link": "https://punjab.gov.in/", "category": "Senior Citizens" },
+    { "name": "Haryana Widow Pension Scheme", "description": "Financial assistance for widows in Haryana.", "link": "https://haryana.gov.in/", "category": "Widows" },
+    { "name": "Bihar Old Age Pension Scheme", "description": "Monthly pension for senior citizens in Bihar.", "link": "https://bihar.gov.in/", "category": "Senior Citizens" },
+    { "name": "Odisha Disability Pension Scheme", "description": "Monthly pension for persons with disabilities in Odisha.", "link": "https://odisha.gov.in/", "category": "Disabled Persons" },
+    { "name": "Assam Widow Pension Scheme", "description": "Financial assistance for widows in Assam.", "link": "https://assam.gov.in/", "category": "Widows" },
+    { "name": "Jharkhand Old Age Pension Scheme", "description": "Monthly pension for senior citizens in Jharkhand.", "link": "https://jharkhand.gov.in/", "category": "Senior Citizens" },
+    { "name": "Gujarat Social Security Pension", "description": "Pension for elderly, widows, and disabled persons in Gujarat.", "link": "https://gujarat.gov.in/", "category": "Social Security" },
+    { "name": "Karnataka Widow Pension Scheme", "description": "Financial assistance for widows in Karnataka.", "link": "https://karnataka.gov.in/", "category": "Widows" },
+    { "name": "Andhra Pradesh Old Age Pension Scheme", "description": "Monthly pension for senior citizens in Andhra Pradesh.", "link": "https://ap.gov.in/", "category": "Senior Citizens" },
+    { "name": "Telangana Widow Pension Scheme", "description": "Financial assistance for widows in Telangana.", "link": "https://telangana.gov.in/", "category": "Widows" },
+    { "name": "Madhya Pradesh Disability Pension Scheme", "description": "Monthly pension for persons with disabilities in Madhya Pradesh.", "link": "https://mp.gov.in/", "category": "Disabled Persons" },
+    { "name": "Chhattisgarh Old Age Pension Scheme", "description": "Monthly pension for senior citizens in Chhattisgarh.", "link": "https://cg.gov.in/", "category": "Senior Citizens" },
+    { "name": "Goa Social Security Pension", "description": "Pension for elderly, widows, and disabled persons in Goa.", "link": "https://goa.gov.in/", "category": "Social Security" },
+    { "name": "Delhi Old Age Assistance Scheme", "description": "Monthly pension for senior citizens in Delhi.", "link": "https://delhi.gov.in/", "category": "Senior Citizens" },
+    { "name": "Jammu & Kashmir Old Age Pension Scheme", "description": "Monthly pension for senior citizens in J&K.", "link": "https://jk.gov.in/", "category": "Senior Citizens" },
+    { "name": "Ladakh Social Security Pension", "description": "Pension for elderly and widows in Ladakh.", "link": "https://ladakh.gov.in/", "category": "Social Security" },
+    { "name": "Puducherry Old Age Pension Scheme", "description": "Monthly pension for senior citizens in Puducherry.", "link": "https://py.gov.in/", "category": "Senior Citizens" },
+    { "name": "Andaman & Nicobar Islands Social Security Pension", "description": "Pension for elderly and widows in Andaman & Nicobar Islands.", "link": "https://andaman.gov.in/", "category": "Social Security" },
+    { "name": "Lakshadweep Old Age Pension Scheme", "description": "Monthly pension for senior citizens in Lakshadweep.", "link": "https://lakshadweep.gov.in/", "category": "Senior Citizens" },
+    { "name": "Chandigarh Social Security Pension", "description": "Pension for elderly and widows in Chandigarh.", "link": "https://chandigarh.gov.in/", "category": "Social Security" },
+    { "name": "Dadra & Nagar Haveli Old Age Pension Scheme", "description": "Monthly pension for senior citizens in Dadra & Nagar Haveli.", "link": "https://dnh.gov.in/", "category": "Senior Citizens" },
+    {
+      "name": "Himachal Pradesh Old Age Pension Scheme",
+      "description": "Monthly pension for senior citizens in Himachal Pradesh.",
+      "link": "https://himachal.nic.in/",
+      "category": "Senior Citizens"
+    },
+    {
+      "name": "Himachal Pradesh Widow Pension Scheme",
+      "description": "Financial assistance for widows in Himachal Pradesh.",
+      "link": "https://himachal.nic.in/",
+      "category": "Widows"
+    },
+    {
+      "name": "Uttarakhand Old Age Pension Scheme",
+      "description": "Monthly pension for senior citizens in Uttarakhand.",
+      "link": "https://uk.gov.in/",
+      "category": "Senior Citizens"
+    },
+    {
+      "name": "Uttarakhand Widow Pension Scheme",
+      "description": "Financial assistance for widows in Uttarakhand.",
+      "link": "https://uk.gov.in/",
+      "category": "Widows"
+    },
+    {
+      "name": "Meghalaya Old Age Pension Scheme",
+      "description": "Monthly pension for senior citizens in Meghalaya.",
+      "link": "https://meghalaya.gov.in/",
+      "category": "Senior Citizens"
+    },
+    {
+      "name": "Meghalaya Widow Pension Scheme",
+      "description": "Financial assistance for widows in Meghalaya.",
+      "link": "https://meghalaya.gov.in/",
+      "category": "Widows"
+    },
+    {
+      "name": "Manipur Old Age Pension Scheme",
+      "description": "Monthly pension for senior citizens in Manipur.",
+      "link": "https://manipur.gov.in/",
+      "category": "Senior Citizens"
+    },
+    {
+      "name": "Mizoram Social Security Pension",
+      "description": "Pension for elderly and widows in Mizoram.",
+      "link": "https://mizoram.gov.in/",
+      "category": "Social Security"
+    },
+    {
+      "name": "Nagaland Disability Pension Scheme",
+      "description": "Monthly pension for persons with disabilities in Nagaland.",
+      "link": "https://nagaland.gov.in/",
+      "category": "Disabled Persons"
+    },
+    {
+      "name": "Tripura Old Age Pension Scheme",
+      "description": "Monthly pension for senior citizens in Tripura.",
+      "link": "https://tripura.gov.in/",
+      "category": "Senior Citizens"
+    },
+    {
+      "name": "Arunachal Pradesh Widow Pension Scheme",
+      "description": "Financial assistance for widows in Arunachal Pradesh.",
+      "link": "https://arunachalpradesh.gov.in/",
+      "category": "Widows"
+    },
+    {
+      "name": "Sikkim Old Age Pension Scheme",
+      "description": "Monthly pension for senior citizens in Sikkim.",
+      "link": "https://sikkim.gov.in/",
+      "category": "Senior Citizens"
+    },
+    {
+      "name": "Delhi Widow Pension Scheme",
+      "description": "Financial assistance for widows in Delhi.",
+      "link": "https://delhi.gov.in/",
+      "category": "Widows"
+    },
+    {
+      "name": "Chandigarh Old Age Pension Scheme",
+      "description": "Monthly pension for senior citizens in Chandigarh.",
+      "link": "https://chandigarh.gov.in/",
+      "category": "Senior Citizens"
+    },
+    {
+      "name": "Dadra & Nagar Haveli Widow Pension Scheme",
+      "description": "Financial assistance for widows in Dadra & Nagar Haveli.",
+      "link": "https://dnh.gov.in/",
+      "category": "Widows"
+    },
+    {
+      "name": "Daman & Diu Old Age Pension Scheme",
+      "description": "Monthly pension for senior citizens in Daman & Diu.",
+      "link": "https://daman.nic.in/",
+      "category": "Senior Citizens"
+    },
+    {
+      "name": "Andaman & Nicobar Widow Pension Scheme",
+      "description": "Financial assistance for widows in Andaman & Nicobar Islands.",
+      "link": "https://andaman.gov.in/",
+      "category": "Widows"
+    },
+    {
+      "name": "Lakshadweep Social Security Pension",
+      "description": "Pension for elderly and widows in Lakshadweep.",
+      "link": "https://lakshadweep.gov.in/",
+      "category": "Social Security"
+    },
+    {
+      "name": "Puducherry Widow Pension Scheme",
+      "description": "Financial assistance for widows in Puducherry.",
+      "link": "https://py.gov.in/",
+      "category": "Widows"
+    }
 ]
