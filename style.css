@@ -1,219 +1,151 @@
-/* -------------------- RESET & BASE -------------------- */
-body {
-  font-family: 'Inter', sans-serif;
+/* Reset & Base */
+* {
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
-  transition: background 0.3s, color 0.3s;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f9fafb;
+  color: #222;
+  line-height: 1.6;
 }
 
-body.dark {
-  background: #121212;
-  color: #f5f5f5;
-}
-
-h1, h2, h3 {
-  margin: 0;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* -------------------- HEADER -------------------- */
+/* Header */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background: rgba(255,255,255,0.8);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-body.dark header {
-  background: rgba(30,30,50,0.8);
-}
-
-header h1 {
-  font-size: 1.6rem;
-  color: #1d4ed8;
-}
-
-.header-buttons button {
-  margin-left: 0.5rem;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* -------------------- HERO / BANNER -------------------- */
-.banner {
+  background: #003366;
+  color: #fff;
+  padding: 1rem 2rem;
   text-align: center;
-  padding: 80px 20px;
+}
+header h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-.banner h1 {
-  font-size: clamp(1.8rem, 4vw + 1rem, 3.5rem);
-  font-weight: 800;
-  margin-bottom: 20px;
-  line-height: 1.2;
+/* Banner */
+.banner {
+  background: linear-gradient(to right, #004080, #0059b3);
+  color: #fff;
+  padding: 3rem 2rem;
+  text-align: center;
 }
-
+.banner h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
 .banner p {
-  font-size: clamp(1rem, 2vw + 0.5rem, 1.3rem);
-  margin-bottom: 30px;
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 
-.banner .btn {
-  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.2rem);
-  padding: clamp(10px, 2vw, 14px) clamp(24px, 4vw, 36px);
-}
-
-/* -------------------- BUTTON -------------------- */
-.btn {
-  background-color: #10B981;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: #059669;
-}
-
-/* -------------------- SECTION -------------------- */
-section {
-  padding: 60px 20px;
-}
-
-/* -------------------- SCHEMES GRID -------------------- */
-.schemes-container {
+/* Categories Section */
+.categories {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
   padding: 2rem;
 }
-
-/* -------------------- CARD -------------------- */
-.card-item {
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
+.categories .category-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
 }
-
-.card-item:hover {
+.categories .category-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-body.dark .card-item {
-  background: #1e1e1e;
-}
-
-/* -------------------- GLASS CARD -------------------- */
-.glass-card {
-  background: rgba(255,255,255,0.3);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 1.5rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  transition: 0.3s;
-}
-
-.glass-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
-}
-
-.glass-card h3 {
-  color: #1d4ed8;
-  margin-bottom: 10px;
-}
-
-.glass-card p {
-  margin-bottom: 15px;
-  color: #333;
-}
-
-body.dark .glass-card p {
-  color: #ddd;
-}
-
-/* -------------------- SIDEBAR -------------------- */
-.sidebar ul {
-  list-style: none;
-  padding: 0;
+/* Special Schemes */
+.special-schemes {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  margin: 1rem 0;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
 }
-
-.sidebar ul li a {
+.scheme-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 300px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.scheme-card:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+.scheme-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.3rem;
+  color: #003366;
+}
+.scheme-card p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.scheme-card .learn-more {
   display: inline-block;
   padding: 0.5rem 1rem;
-  margin: 0.3rem;
-  border-radius: 5px;
-  background: #e2e8f0;
-  color: #1e293b;
-  font-weight: 500;
+  background: #0059b3;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.scheme-card .learn-more:hover {
+  background: #003366;
 }
 
-.sidebar ul li a.active {
-  background: #1d4ed8;
-  color: white;
-}
-
-/* -------------------- NEWS -------------------- */
-#news-container {
+/* Load Schemes Section */
+.load-schemes {
+  background: #f0f4f8;
   padding: 2rem;
-  max-width: 1000px;
-  margin: auto;
-}
-
-#news-container li {
-  margin-bottom: 0.8rem;
-}
-
-#news-container a {
-  color: #1d4ed8;
-}
-
-/* -------------------- FOOTER -------------------- */
-footer {
-  margin-top: 60px;
-  padding: 40px 20px;
-  background: #f8f9fa;
   text-align: center;
 }
-
-body.dark footer {
-  background: #1e1e1e;
+.load-schemes h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.load-schemes button {
+  padding: 0.7rem 1.5rem;
+  background: #004080;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.load-schemes button:hover {
+  background: #0059b3;
+  transform: scale(1.05);
 }
 
-/* -------------------- RESPONSIVE -------------------- */
+/* Footer */
+footer {
+  background: #003366;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+footer p {
+  font-size: 0.9rem;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  header {
+  .special-schemes {
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
   }
-
-  .banner {
-    padding: 60px 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .banner {
-    padding: 50px 10px;
+  .scheme-card {
+    width: 90%;
   }
 }
