@@ -24,6 +24,11 @@
       <a href="#">Contact</a>
 <title>Login</title>
   <script src="https://cdn.tailwindcss.com"></script>
+      <button onclick="logout()"
+  class="bg-red-500 text-white px-3 py-1 rounded">
+  Logout
+</button>
+
 </head>
 
 <body class="flex items-center justify-center h-screen bg-gray-100">
@@ -159,7 +164,29 @@
 <!-- SCRIPT -->
 <script>
 let allSchemes = [];
+function skipLogin() {
+  // mark user as guest
+  localStorage.setItem("guest", "true");
 
+  // go to main app
+  window.location.href = "index.html";
+}
+  const token = localStorage.getItem("token");
+const guest = localStorage.getItem("guest");
+
+if (!token && !guest) {
+  window.location.href = "login.html";
+}
+  function bookmarkScheme(name) {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    alert("Login required to save schemes");
+    return;
+  }
+
+  // normal API call
+}
 // LOAD BUTTON
 document.getElementById("loadSchemes").addEventListener("click", () => {
   const container = document.getElementById("scheme-cards");
