@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Saved Schemes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-6">
+
+<h1 class="text-2xl font-bold mb-6">Saved Schemes</h1>
+
+<div id="savedList" class="grid md:grid-cols-3 gap-6"></div>
+
+<script>
+const token = localStorage.getItem("token");
+
+if (!token) {
+  window.location.href = "login.html";
+}
+
+fetch("http://127.0.0.1:5000/api/bookmarks", {
+  headers: {
+    "Authorization": "Bearer " + token
+  }
+})
+.then(res => res.json())
+.then(data => {
+  const container = document.getElementById("savedList");
+
+  data.forEach(name => {
+    container.innerHTML += `
+      <div class="bg-white p-4 rounded shadow">
+        <h3>${name}</h3>
+      </div>
+    `;
+  });
+});
+</script>
+
+</body>
+</html>
