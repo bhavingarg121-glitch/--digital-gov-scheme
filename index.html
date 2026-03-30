@@ -22,27 +22,30 @@
       <a href="#schemes-section">Schemes</a>
       <a href="#">News</a>
       <a href="#">Contact</a>
-<title>Login</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-      <button onclick="logout()"
-  class="bg-red-500 text-white px-3 py-1 rounded">
-  Logout
-</button>
+
 
 </head>
 
-<body class="flex items-center justify-center h-screen bg-gray-100">
+<<body class="flex items-center justify-center min-h-screen bg-gray-100">
 
-  <div class="bg-white p-6 rounded shadow w-80">
-    <h2 class="text-xl font-bold mb-4">Login</h2>
+<div class="bg-white p-6 rounded shadow w-80 text-center">
 
-    <input id="email" placeholder="Email" class="border p-2 w-full mb-2">
-    <input id="password" type="password" placeholder="Password" class="border p-2 w-full mb-4">
+  <h2 class="text-xl font-bold mb-4">Login</h2>
 
-    <button onclick="login()" class="bg-blue-500 text-white w-full py-2 rounded">
-      Login
-    </button>
-  </div>
+  <input id="email" placeholder="Email" class="border p-2 w-full mb-2">
+  <input id="password" type="password" placeholder="Password" class="border p-2 w-full mb-4">
+
+  <button onclick="login()" class="bg-blue-500 text-white w-full py-2 rounded">
+    Login
+  </button>
+
+  <!-- SKIP -->
+  <button onclick="skipLogin()" class="mt-4 text-gray-500 underline">
+    Skip for now →
+  </button>
+
+</div>
+ 
       <input id="topSearch" placeholder="Search schemes..."
         class="border px-3 py-1 rounded">
 
