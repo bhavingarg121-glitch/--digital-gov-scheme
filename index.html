@@ -6,8 +6,12 @@
   <title>Scheme Sathi</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    <body class="bg-blue-50 text-gray-800">
 
+
+  body {
+    background: #f1f5f9;
+    color: #1f2937;
+  }
 
     /* Sidebar */
     .sidebar {
@@ -270,36 +274,43 @@
   </div>
 
   <!-- Script -->
-  <script>
+<script>
 function loadCategory(category) {
   const container = document.getElementById("schemeContainer");
 
-  container.innerHTML = "<p>Loading...</p>";
+  container.innerHTML = "<p class='text-center'>Loading...</p>";
 
   fetch(`./data/${category}.json`)
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error("File not found");
+      return res.json();
+    })
     .then(data => {
       container.innerHTML = "";
 
-      if (data.length === 0) {
-        container.innerHTML = "<p>No schemes found</p>";
+      if (!data || data.length === 0) {
+        container.innerHTML = "<p class='text-gray-600 text-center'>No schemes found</p>";
         return;
       }
 
       data.forEach(scheme => {
         container.innerHTML += `
-          <div class="bg-white p-4 rounded shadow hover:scale-105 transition">
+          <div class="bg-white p-5 rounded-xl shadow hover:shadow-xl hover:scale-105 transition duration-300">
             <h2 class="text-lg font-bold">${scheme.name}</h2>
-            <p class="text-gray-600">${scheme.description}</p>
-            <a href="${scheme.link}" target="_blank" class="text-blue-500">Apply</a>
+            <p class="text-gray-600 mt-2">${scheme.description}</p>
+            <a href="${scheme.link}" target="_blank"
+               class="inline-block mt-3 text-blue-600 font-semibold hover:underline">
+               View Details →
+            </a>
           </div>
         `;
       });
     })
     .catch(err => {
       console.error(err);
-      container.innerHTML = "<p class='text-red-500'>Failed to load</p>";
+      container.innerHTML =
+        "<p class='text-red-500 text-center'>Failed to load (Check JSON path)</p>";
     });
 }
-</script>
+</script>>
 
