@@ -1,169 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scheme Sathi</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scheme Sathi</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="style.css">
+
 </head>
 
-<body class="bg-gray-100">
-
+<body class="bg-gray-100 text-gray-800 font-sans">
 
 <!-- HEADER -->
 <header class="bg-white shadow sticky top-0 z-50">
   <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+
     <h1 class="text-2xl font-bold text-blue-600">Scheme Sathi</h1>
 
     <nav class="hidden md:flex items-center gap-6">
-      <a href="#hero">Home</a>
-      <a href="#schemes-section">Schemes</a>
+      <a href="#">Home</a>
+      <a href="#schemes">Schemes</a>
       <a href="#">News</a>
       <a href="#">Contact</a>
-<input id="searchInput" placeholder="Search schemes..."
-        class="border px-3 py-1 rounded">
+
+      <input id="searchInput" placeholder="Search..."
+        class="border px-3 py-1 rounded focus:ring-2 focus:ring-blue-400">
+
+      <button onclick="logout()" class="text-red-500">Logout</button>
     </nav>
+
   </div>
 </header>
 
-
-
-
-<!-- Dark mode toggle -->
-  <div class="fixed top-4 right-4">
-    <button id="darkModeToggle" class="p-2 bg-gray-200 dark:bg-gray-700 rounded">🌙</button>
-  </div>
 <!-- HERO -->
-<section class="text-center py-12 bg-blue-50">
-  <h1 class="text-3xl font-bold">Discover Government Schemes</h1>
+<section class="text-center py-16 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+  <h1 class="text-4xl font-bold mb-4">
+    Discover Government Schemes Easily
+  </h1>
+
+  <p class="mb-6">
+    Find scholarships, subsidies, jobs & benefits in seconds
+  </p>
+
   <button id="loadSchemes"
-    class="mt-4 bg-blue-600 text-white px-6 py-2 rounded">
+    class="bg-white text-blue-600 px-6 py-3 rounded font-semibold hover:bg-gray-100">
     Load Schemes
   </button>
 </section>
+
+<!-- FILTERS -->
+<section class="py-6 text-center">
+  <div class="flex justify-center gap-3 flex-wrap">
+
+    <button class="filterBtn bg-blue-500 text-white px-4 py-2 rounded" data-cat="all">All</button>
+    <button class="filterBtn bg-green-500 text-white px-4 py-2 rounded" data-cat="Education">Education</button>
+    <button class="filterBtn bg-yellow-400 px-4 py-2 rounded" data-cat="Health">Health</button>
+    <button class="filterBtn bg-purple-500 text-white px-4 py-2 rounded" data-cat="Pension">Pension</button>
+    <button class="filterBtn bg-pink-500 text-white px-4 py-2 rounded" data-cat="Women">Women</button>
+    <button class="filterBtn bg-indigo-500 text-white px-4 py-2 rounded" data-cat="Employment">Jobs</button>
+
+  </div>
+</section>
+
 <!-- SCHEMES -->
-<section class="p-6">
+<section id="schemes" class="p-6">
   <div id="scheme-cards"
     class="grid md:grid-cols-3 gap-6"></div>
 </section>
-<!-- SCHEMES SECTION -->
-<section id="schemes-section" class="py-12">
 
-  <!-- TITLE -->
-  <div class="text-center mb-6">
-    <h2 class="text-4xl font-bold">Explore Government Schemes</h2>
-    <p class="text-gray-600 mt-2">
-      Access scholarships, subsidies, pensions, and other benefits easily
-    </p>
-  </div>
-
-  <!-- CATEGORY BUTTONS -->
-  <div class="flex justify-center gap-4 mb-8 flex-wrap">
-    <button class="catBtn bg-blue-500 text-white px-5 py-2 rounded" data-cat="all">All</button>
-    <button class="catBtn bg-green-500 text-white px-5 py-2 rounded" data-cat="Education">Education</button>
-    <button class="catBtn bg-yellow-400 text-black px-5 py-2 rounded" data-cat="Health">Health</button>
-    <button class="catBtn bg-purple-400 text-white px-5 py-2 rounded" data-cat="Pension">Pension</button>
-    <button class="catBtn bg-pink-400 text-white px-5 py-2 rounded" data-cat="Women">Women</button>
-    <button class="catBtn bg-indigo-400 text-white px-5 py-2 rounded" data-cat="Employment">Employment</button>
-  </div>
-
-
-
-  <!-- CARDS -->
-  <div id="schemeContainer"
-    class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 px-6">
-
-  <!-- Card 1 -->
-  <div class="scheme-card bg-white p-4 rounded shadow w-80">
-    <h3 class="font-bold text-lg">National Scholarship Portal</h3>
-    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Education</span>
-    <p class="mt-2 text-gray-700">Centralized portal to apply for all government scholarships.</p>
-    <button class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Learn More</button>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="scheme-card bg-white p-4 rounded shadow w-80">
-    <h3 class="font-bold text-lg">Ayushman Bharat</h3>
-    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Health</span>
-    <p class="mt-2 text-gray-700">Free treatment up to Rs. 5 lakh per family.</p>
-    <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Learn More</button>
-  </div>
-</div>
-    
- <!-- Schemes Section -->
-  <section class="p-6">
-  <div id="scheme-cards"
-    class="grid md:grid-cols-3 gap-6"></div>
-</section>px-20 mb-10">
-    <!-- Dynamic scheme cards will be inserted here -->
-  </section>
-
-  <div class="text-center mb-20">
-    <a href="#schemesSection" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-      Browse 500+ Schemes
-    </a>
-  </div>
-
+<!-- BOOKMARK SECTION -->
+<section class="p-6 bg-white">
+  <h2 class="text-2xl font-bold mb-4">Saved Schemes ⭐</h2>
+  <div id="bookmarkContainer" class="grid md:grid-cols-3 gap-6"></div>
+</section>
 
 <!-- FOOTER -->
-<footer class="bg-gray-800 text-white text-center p-6">
-  <p>© 2026 Scheme Sathi</p>
-</footer>
+<footer class="bg-gray-900 text-white mt-10">
+  <div class="max-w-7xl mx-auto p-6 grid md:grid-cols-3 gap-6">
 
-    <!-- Left: Logo / Name -->
-    <div class="flex flex-col items-center md:items-start">
-      <h2 class="text-2xl font-bold">Scheme Sathi</h2>
-      <span class="text-gray-400 mt-2">Empowering Citizens with Government Schemes</span>
+    <div>
+      <h2 class="text-xl font-bold">Scheme Sathi</h2>
+      <p class="text-gray-400 mt-2">
+        Empowering citizens with government schemes
+      </p>
     </div>
 
-    <!-- Middle: Links -->
-    <div class="flex flex-col items-center md:items-start">
+    <div>
       <h3 class="font-semibold mb-2">Quick Links</h3>
-      <ul class="space-y-1 text-gray-300">
-        <li><a href="#" class="hover:text-white">Home</a></li>
-        <li><a href="#" class="hover:text-white">Schemes</a></li>
-        <li><a href="#" class="hover:text-white">News</a></li>
-        <li><a href="#" class="hover:text-white">Contact</a></li>
+      <ul class="space-y-1 text-gray-400">
+        <li>Home</li>
+        <li>Schemes</li>
+        <li>News</li>
       </ul>
     </div>
 
-    <!-- Right: Info / Contact -->
-    <div class="flex flex-col items-center md:items-start">
+    <div>
       <h3 class="font-semibold mb-2">Contact</h3>
-      <p class="text-gray-300">Email: info@schemesathi.com</p>
-      <p class="text-gray-300">Phone: +91 12345 67890</p>
+      <p class="text-gray-400">info@schemesathi.com</p>
     </div>
-    
+
   </div>
 
-  <!-- Bottom line -->
-  <div class="border-t border-gray-700 mt-6 pt-4 text-center text-gray-500 text-sm">
-    &copy; 2026 Scheme Sathi. All rights reserved.
+  <div class="text-center text-gray-500 py-4 border-t border-gray-700">
+    © 2026 Scheme Sathi
   </div>
-</footer>
-
-<!-- SCHEMES -->
-<section class="p-6">
-  <div id="scheme-cards"
-    class="grid md:grid-cols-3 gap-6"></div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-gray-800 text-white text-center p-6">
-  <p>© 2026 Scheme Sathi</p>
 </footer>
 
 <!-- SCRIPT -->
 <script>
 let allSchemes = [];
+let filteredSchemes = [];
 
-/* AUTH CHECK */
+/* AUTH */
 const token = localStorage.getItem("token");
 const guest = localStorage.getItem("guest");
 
 if (!token && !guest) {
+  window.location.href = "login.html";
+}
+
+/* LOGOUT */
+function logout() {
+  localStorage.clear();
   window.location.href = "login.html";
 }
 
@@ -177,10 +136,8 @@ document.getElementById("loadSchemes").addEventListener("click", () => {
     .then(res => res.json())
     .then(data => {
       allSchemes = data;
+      filteredSchemes = data;
       displaySchemes(data);
-    })
-    .catch(() => {
-      container.innerHTML = "<p>Error loading data</p>";
     });
 });
 
@@ -191,25 +148,85 @@ function displaySchemes(data) {
 
   data.forEach(s => {
     container.innerHTML += `
-      <div class="bg-white p-4 rounded shadow">
-        <h3 class="font-bold">${s.name}</h3>
-        <p>${s.description}</p>
+      <div class="bg-white p-5 rounded-xl shadow hover:shadow-xl transition">
+
+        <h3 class="font-bold text-lg text-blue-600">${s.name}</h3>
+
+        <p class="text-gray-600 mt-2">${s.description}</p>
+
         <span class="text-sm text-gray-500">${s.category}</span>
+
+        <div class="flex justify-between mt-4">
+
+          <a href="${s.link}" target="_blank"
+            class="text-blue-500 font-semibold">View</a>
+
+          <button onclick="bookmark('${s.name}')"
+            class="text-yellow-500 text-xl">★</button>
+
+        </div>
+
       </div>
     `;
   });
 }
 
 /* SEARCH */
-document.getElementById("searchInput").addEventListener("input", (e) => {
+document.getElementById("searchInput").addEventListener("input", e => {
   const val = e.target.value.toLowerCase();
 
-  const filtered = allSchemes.filter(s =>
+  filteredSchemes = allSchemes.filter(s =>
     s.name.toLowerCase().includes(val)
   );
 
-  displaySchemes(filtered);
+  displaySchemes(filteredSchemes);
 });
+
+/* FILTER */
+document.querySelectorAll(".filterBtn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const cat = btn.dataset.cat;
+
+    if (cat === "all") {
+      displaySchemes(allSchemes);
+    } else {
+      const filtered = allSchemes.filter(s => s.category === cat);
+      displaySchemes(filtered);
+    }
+  });
+});
+
+/* BOOKMARK */
+function bookmark(name) {
+  let saved = JSON.parse(localStorage.getItem("bookmarks") || "[]");
+
+  if (!saved.includes(name)) {
+    saved.push(name);
+  }
+
+  localStorage.setItem("bookmarks", JSON.stringify(saved));
+  loadBookmarks();
+}
+
+/* LOAD BOOKMARKS */
+function loadBookmarks() {
+  const saved = JSON.parse(localStorage.getItem("bookmarks") || "[]");
+  const container = document.getElementById("bookmarkContainer");
+
+  container.innerHTML = "";
+
+  saved.forEach(name => {
+    container.innerHTML += `
+      <div class="bg-yellow-50 p-4 rounded shadow">
+        <h3 class="font-bold">${name}</h3>
+      </div>
+    `;
+  });
+}
+
+/* INIT */
+loadBookmarks();
+
 </script>
 
 </body>
