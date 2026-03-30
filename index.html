@@ -167,58 +167,52 @@
 <!-- SCRIPT -->
 <script>
 let allSchemes = [];
-function skipLogin() {
-  // mark user as guest
-  localStorage.setItem("guest", "true");
 
-  // go to main app
-  window.location.href = "index.html";
-}
-  const token = localStorage.getItem("token");
+/* ---------------- AUTH CHECK ---------------- */
+const token = localStorage.getItem("token");
 const guest = localStorage.getItem("guest");
 
+// allow guest OR logged in
 if (!token && !guest) {
   window.location.href = "login.html";
 }
-  function bookmarkScheme(name) {
-  const token = localStorage.getItem("token");
 
-  if (!token) {
-    alert("Login required to save schemes");
-    return;
-  }
+/* ---------------- LOAD SCHEMES ---------------- */
+const loadBtn = document.getElementById("loadSchemes");
 
-  // normal API call
+if (loadBtn) {
+  loadBtn.addEventListener("click", () => {
+    const container = document.getElementById("scheme-cards");
+
+    container.innerHTML = `
+      <div class="text-center col-span-3">
+        <p>Loading schemes...</p>
+      </div>
+    `;
+
+    fetch("schemes.json")
+      .then(res => res.json())
+      .then(data => {
+        allSchemes = data;
+        displaySchemes(data);
+      })
+      .catch(() => {
+        container.innerHTML = "<p class='text-red-500'>Error loading data</p>";
+      });
+  });
 }
-// LOAD BUTTON
-document.getElementById("loadSchemes").addEventListener("click", () => {
-  const container = document.getElementById("scheme-cards");
 
-  container.innerHTML = `
-    <div class="loader">
-      <div class="spinner"></div>
-    </div>
-  `;
-
-  fetch("schemes.json")
-    .then(res => res.json())
-    .then(data => {
-      allSchemes = data;
-      displaySchemes(data);
-    })
-    .catch(() => {
-      container.innerHTML = "<p>Error loading data</p>";
-    });
-});
-
-// DISPLAY
+/* ---------------- DISPLAY ---------------- */
 function displaySchemes(data) {
   const container = document.getElementById("scheme-cards");
+
+  if (!container) return;
+
   container.innerHTML = "";
 
   data.forEach(s => {
     container.innerHTML += `
-      <div class="scheme-card bg-white p-4 rounded shadow">
+      <div class="bg-white p-4 rounded shadow">
         <h3 class="font-bold">${s.name}</h3>
         <p>${s.description}</p>
         <span class="text-sm text-gray-500">${s.category}</span>
@@ -227,17 +221,18 @@ function displaySchemes(data) {
   });
 }
 
-// SEARCH
-document.getElementById("searchInput").addEventListener("input", (e) => {
-  const val = e.target.value.toLowerCase();
+/* ---------------- SEARCH ---------------- */
+const searchInput = document.getElementById("searchInput");
 
-  const filtered = allSchemes.filter(s =>
-    s.name.toLowerCase().includes(val)
-  );
+if (searchInput) {
+  searchInput.addEventListener("input", (e) => {
+    const val = e.target.value.toLowerCase();
 
-  displaySchemes(filtered);
-});
+    const filtered = allSchemes.filter(s =>
+      s.name.toLowerCase().includes(val)
+    );
+
+    displaySchemes(filtered);
+  });
+}
 </script>
-
-</body>
-</html>
