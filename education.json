@@ -1,0 +1,357 @@
+[
+  {
+    "name": "National Scholarship Portal (NSP)",
+    "link": "https://scholarships.gov.in/",
+    "description": "Centralized platform for students to apply for scholarships offered by central and state governments.",
+    "category": "Education"
+  },
+  {
+    "name": "Pradhan Mantri Vidyalakshmi Scheme",
+    "link": "https://www.vidyalakshmi.co.in/",
+    "description": "Provides students with access to education loans through a single window platform.",
+    "category": "Education"
+  },
+  {
+    "name": "Mid-Day Meal Scheme (PM Poshan)",
+    "link": "https://pmposhan.education.gov.in/",
+    "description": "Provides free nutritious meals to school children to improve enrollment, retention, and attendance.",
+    "category": "Education"
+  },
+  {
+    "name": "Samagra Shiksha Abhiyan",
+    "link": "https://dsel.education.gov.in/samagra-shiksha",
+    "description": "Integrated scheme for school education covering pre-school to class 12, focusing on quality and equity.",
+    "category": "Education"
+  },
+  {
+    "name": "PM eVIDYA",
+    "link": "https://www.education.gov.in/pm-evidya",
+    "description": "Digital education initiative providing multi-mode access to online learning resources for students.",
+    "category": "Education"
+  },
+  {
+    "name": "National Means-cum-Merit Scholarship Scheme (NMMSS)",
+    "link": "https://scholarships.gov.in/",
+    "description": "Scholarship support for meritorious students from economically weaker sections to reduce dropouts.",
+    "category": "Education"
+  },
+  {
+    "name": "National Overseas Scholarship",
+    "link": "https://socialjustice.gov.in/schemes/national-overseas-scholarship",
+    "description": "Financial assistance to students from marginalized communities to pursue higher studies abroad.",
+    "category": "Education"
+  },
+  {
+    "name": "Rashtriya Uchchatar Shiksha Abhiyan (RUSA)",
+    "link": "https://rusa.education.gov.in/",
+    "description": "Centrally sponsored scheme to improve access, equity, and quality in state higher education institutions.",
+    "category": "Education"
+  },
+  {
+    "name": "SWAYAM",
+    "link": "https://swayam.gov.in/",
+    "description": "Free online courses for students and teachers across India, covering school, college, and professional learning.",
+    "category": "Education"
+  },
+  {
+    "name": "GIAN (Global Initiative of Academic Networks)",
+    "link": "https://gian.iitkgp.ac.in/",
+    "description": "Brings international faculty to Indian institutions to enhance academic collaboration and research.",
+    "category": "Education"
+  },
+  {
+    "name": "IMPRINT",
+    "link": "https://imprint-india.org/",
+    "description": "Research initiative to address major engineering and science challenges in India.",
+    "category": "Education"
+  },
+  {
+    "name": "Unnat Bharat Abhiyan",
+    "link": "https://unnatbharatabhiyan.gov.in/",
+    "description": "Connects higher education institutions with rural communities to address development challenges.",
+    "category": "Education"
+  },
+  {
+    "name": "National Digital Library of India (NDLI)",
+    "link": "https://ndl.iitkgp.ac.in/",
+    "description": "Provides free access to millions of digital learning resources for students and researchers.",
+    "category": "Education"
+  },
+  {
+    "name": "AICTE Pragati Scholarship for Girls",
+    "link": "https://www.aicte-india.org/schemes/students-development-schemes/pragati-scholarship-scheme-girls",
+    "description": "Scholarship scheme for girl students pursuing technical education.",
+    "category": "Education"
+  },
+  {
+    "name": "AICTE Saksham Scholarship",
+    "link": "https://www.aicte-india.org/schemes/students-development-schemes/saksham-scholarship-scheme",
+    "description": "Scholarship for differently-abled students pursuing technical education.",
+    "category": "Education"
+  },
+  {
+    "name": "National Programme on Technology Enhanced Learning (NPTEL)",
+    "link": "https://nptel.ac.in/",
+    "description": "Online courses and certification in engineering, science, and humanities by IITs and IISc.",
+    "category": "Education"
+  },
+  {
+    "name": "INSPIRE Scholarship",
+    "link": "https://online-inspire.gov.in/",
+    "description": "Scholarship for students pursuing science education and research.",
+    "category": "Education"
+  },
+  {
+    "name": "Ishan Uday Scholarship",
+    "link": "https://scholarships.gov.in/",
+    "description": "Special scholarship scheme for students from the North Eastern Region.",
+    "category": "Education"
+  },
+  {
+    "name": "National Fellowship for SC Students",
+    "link": "https://socialjustice.gov.in/",
+    "description": "Fellowship for Scheduled Caste students pursuing higher education.",
+    "category": "Education"
+  },
+  {
+    "name": "National Fellowship for OBC Students",
+    "link": "https://socialjustice.gov.in/",
+    "description": "Fellowship scheme to support higher education for students belonging to Other Backward Classes.",
+    "category": "Education"
+  },
+  {
+    "name": "National Fellowship for ST Students",
+    "link": "https://tribal.nic.in/",
+    "description": "Scholarship and fellowship support for Scheduled Tribe students pursuing higher education.",
+    "category": "Education"
+  },
+  {
+    "name": "Post Matric Scholarship for SC Students",
+    "link": "https://scholarships.gov.in/",
+    "description": "Scholarship for Scheduled Caste students studying at post-matriculation level.",
+    "category": "Education"
+  },
+  {
+    "name": "Post Matric Scholarship for ST Students",
+    "link": "https://scholarships.gov.in/",
+    "description": "Scholarship for Scheduled Tribe students studying at post-matriculation level.",
+    "category": "Education"
+  },
+  {
+    "name": "Pre Matric Scholarship for SC Students",
+    "link": "https://scholarships.gov.in/",
+    "description": "Scholarship for Scheduled Caste students studying at pre-matriculation level.",
+    "category": "Education"
+  },
+  {
+    "name": "Pre Matric Scholarship for ST Students",
+    "link": "https://scholarships.gov.in/",
+    "description": "Scholarship for Scheduled Tribe students studying at pre-matriculation level.",
+    "category": "Education"
+  },
+  {
+    "name": "National Fellowship for Persons with Disabilities",
+    "link": "https://socialjustice.gov.in/",
+    "description": "Fellowship scheme for students with disabilities pursuing higher education.",
+    "category": "Education"
+  },
+  {
+    "name": "Maulana Azad National Fellowship",
+    "link": "https://scholarships.gov.in/",
+    "description": "Scholarship for students belonging to minority communities pursuing higher education.",
+    "category": "Education"
+  },
+  {
+    "name": "National Scheme of Incentive to Girls for Secondary Education (NSIGSE)",
+    "link": "https://dsel.education.gov.in/",
+    "description": "Financial incentive to promote enrollment of girls in secondary education.",
+    "category": "Education"
+  },
+  {
+    "name": "Kendriya Vidyalaya Sangathan (KVS) Initiatives",
+    "link": "https://kvsangathan.nic.in/",
+    "description": "Central government schools providing quality education across India.",
+    "category": "Education"
+  },
+  {
+    "name": "Navodaya Vidyalaya Samiti (NVS) Scheme",
+    "link": "https://navodaya.gov.in/",
+    "description": "Residential schools providing free quality education to talented rural children.",
+    "category": "Education"
+  },
+  {
+    "name": "National Bal Bhawan Scheme",
+    "link": "https://nbb.gov.in/",
+    "description": "Promotes creative activities and learning opportunities for children.",
+    "category": "Education"
+  },
+  {
+    "name": "National Book Trust Initiatives",
+    "link": "https://nbtindia.gov.in/",
+    "description": "Promotes reading culture and affordable educational books across India.",
+    "category": "Education"
+  },
+  {
+    "name": "National Council of Educational Research and Training (NCERT) Schemes",
+    "link": "https://ncert.nic.in/",
+    "description": "Curriculum development, teacher training, and educational research initiatives.",
+    "category": "Education"
+  },
+  {
+    "name": "National Institute of Open Schooling (NIOS)",
+    "link": "https://nios.ac.in/",
+    "description": "Provides flexible education opportunities for school dropouts and adult learners.",
+    "category": "Education"
+  },
+  {
+    "name": "PM Research Fellowship",
+    "link": "https://pmrf.in/",
+    "description": "Supports doctoral research in frontier areas of science and technology.",
+    "category": "Education"
+  },
+  {
+    "name": "National Apprenticeship Promotion Scheme (NAPS)",
+    "link": "https://apprenticeshipindia.gov.in/",
+    "description": "Encourages skill development through apprenticeship training.",
+    "category": "Education"
+  },
+  {
+    "name": "Skill India Mission",
+    "link": "https://skillindia.gov.in/",
+    "description": "Provides vocational training and skill development programs for youth.",
+    "category": "Education"
+  },
+  {
+    "name": "PM Kaushal Vikas Yojana (PMKVY)",
+    "link": "https://pmkvyofficial.org/",
+    "description": "Flagship skill development scheme offering free training and certification.",
+    "category": "Education"
+  },
+  {
+    "name": "National Institute Ranking Framework (NIRF)",
+    "link": "https://www.nirfindia.org/",
+    "description": "Framework to rank higher education institutions in India based on performance.",
+    "category": "Education"
+  },
+  {
+    "name": "National Mission on Education through ICT (NMEICT)",
+    "link": "https://www.education.gov.in/nmeict",
+    "description": "Promotes ICT-enabled learning and digital classrooms across India.",
+    "category": "Education"
+  },
+  {
+    "name": "National Innovation and Start-up Policy for Students",
+    "link": "https://www.aicte-india.org/",
+    "description": "Encourages innovation and entrepreneurship among students in higher education institutions.",
+    "category": "Education"
+  },
+  {
+    "name": "National Skill Development Mission",
+    "link": "https://nsdcindia.org/",
+    "description": "Coordinates skill development initiatives across ministries and industries.",
+    "category": "Education"
+  },
+  {
+    "name": "National Institute of Technical Teachers Training and Research (NITTTR)",
+    "link": "https://nitttrchd.ac.in/",
+    "description": "Provides training and development programs for technical teachers.",
+    "category": "Education"
+  },
+  {
+    "name": "National Institute of Educational Planning and Administration (NIEPA)",
+    "link": "https://niepa.ac.in/",
+    "description": "Focuses on educational planning, policy, and administration research.",
+    "category": "Education"
+  },
+  {
+    "name": "National Mission for Teachers and Teaching (NMTT)",
+    "link": "https://www.education.gov.in/nmtt",
+    "description": "Improves teacher education and professional development programs.",
+    "category": "Education"
+  },
+  {
+    "name": "National Programme for Mid-Day Meal in Schools",
+    "link": "https://pmposhan.education.gov.in/",
+    "description": "Provides nutritious meals to school children to enhance learning outcomes.",
+    "category": "Education"
+  },
+  {
+    "name": "National Institute of Open Learning Initiatives",
+    "link": "https://nios.ac.in/",
+    "description": "Supports lifelong learning opportunities through open schooling.",
+    "category": "Education"
+  },
+  {
+    "name": "National Literacy Mission",
+    "link": "https://nlm.gov.in/",
+    "description": "Promotes adult literacy and continuing education programs.",
+    "category": "Education"
+  },
+  {
+    "name": "National Adult Education Programme",
+    "link": "https://nlm.gov.in/",
+    "description": "Provides basic literacy and vocational training for adults.",
+    "category": "Education"
+  },
+  {
+    "name": "National Programme for Development of Sports in Schools",
+    "link": "https://yas.nic.in/",
+    "description": "Encourages sports and physical education in schools.",
+    "category": "Education"
+  },
+  {
+    "name": "National ICT Award for Teachers",
+    "link": "https://ictaward.in/",
+    "description": "Recognizes teachers who effectively use ICT in education.",
+    "category": "Education"
+  },
+  {
+    "name": "National Institute of Educational Technology",
+    "link": "https://ncert.nic.in/",
+    "description": "Develops educational technology tools and resources for schools.",
+    "category": "Education"
+  },
+  {
+    "name": "National Programme for Inclusive Education",
+    "link": "https://dsel.education.gov.in/",
+    "description": "Supports inclusive education for children with special needs.",
+    "category": "Education"
+  },
+  {
+    "name": "National Mission on Libraries",
+    "link": "https://nationallibrary.gov.in/",
+    "description": "Modernizes and digitizes libraries across India for better access.",
+    "category": "Education"
+  },
+  {
+    "name": "National Programme for Quality Education in Madrassas (NPQEM)",
+    "link": "https://minorityaffairs.gov.in/",
+    "description": "Provides modern subjects and quality education support in madrassas.",
+    "category": "Education"
+  },
+  {
+    "name": "National Fellowship for Higher Education of ST Students",
+    "link": "https://tribal.nic.in/",
+    "description": "Supports Scheduled Tribe students pursuing MPhil and PhD programs.",
+    "category": "Education"
+  },
+  {
+    "name": "National Fellowship for Higher Education of Minority Students",
+    "link": "https://minorityaffairs.gov.in/",
+    "description": "Scholarship support for minority students pursuing higher education.",
+    "category": "Education"
+  },
+  {
+    "name": "National Programme for Teacher Training",
+    "link": "https://ncert.nic.in/",
+    "description": "Provides training modules and workshops for school teachers.",
+    "category": "Education"
+  },
+  {
+    "name": "National Mission for Skill Development in Higher Education",
+    "link": "https://skillindia.gov.in/",
+    "description": "Integrates skill development with higher education curricula.",
+    "category": "Education"
+}
+]
+  
