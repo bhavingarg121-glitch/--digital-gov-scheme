@@ -6,113 +6,143 @@
 <title>Scheme Sathi</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="style.css">
 
+<style>
+
+/* ---------- GLOBAL ---------- */
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+  width: 230px;
+  background: #1e293b;
+  color: white;
+  position: fixed;
+  height: 100%;
+  padding: 20px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.sidebar a:hover {
+  background: #334155;
+}
+
+/* ---------- MAIN ---------- */
+.main {
+  margin-left: 230px;
+}
+
+/* ---------- CARD ---------- */
+.scheme-card {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.scheme-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* ---------- GRADIENT CARD ---------- */
+.glass {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
+  border-radius: 12px;
+}
+
+/* ---------- LOADER ---------- */
+.loader {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.spinner {
+  border: 4px solid #eee;
+  border-top: 4px solid #2563eb;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+</style>
 </head>
 
-<body class="bg-gray-100 text-gray-800 font-sans">
+<body class="bg-gray-100">
 
-<!-- HEADER -->
-<header class="bg-white shadow sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar">
+  <h2 class="text-xl font-bold mb-6">Scheme Sathi</h2>
 
-    <h1 class="text-2xl font-bold text-blue-600">Scheme Sathi</h1>
+  <a href="#">🏠 Dashboard</a>
+  <a href="#">📋 All Schemes</a>
+  <a href="#">⭐ Bookmarks</a>
+  <a href="#">👤 Profile</a>
+  <a href="#" onclick="logout()">🚪 Logout</a>
+</div>
 
-    <nav class="hidden md:flex items-center gap-6">
-      <a href="#">Home</a>
-      <a href="#schemes">Schemes</a>
-      <a href="#">News</a>
-      <a href="#">Contact</a>
+<!-- ================= MAIN ================= -->
+<div class="main">
 
-      <input id="searchInput" placeholder="Search..."
-        class="border px-3 py-1 rounded focus:ring-2 focus:ring-blue-400">
+<!-- NAVBAR -->
+<div class="bg-white shadow p-4 flex justify-between items-center">
 
-      <button onclick="logout()" class="text-red-500">Logout</button>
-    </nav>
+  <input id="searchInput"
+    placeholder="Search schemes..."
+    class="border px-3 py-2 rounded w-64">
 
-  </div>
-</header>
+  <div id="userArea"></div>
+
+</div>
 
 <!-- HERO -->
-<section class="text-center py-16 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
-  <h1 class="text-4xl font-bold mb-4">
-    Discover Government Schemes Easily
-  </h1>
+<div class="p-6">
 
-  <p class="mb-6">
-    Find scholarships, subsidies, jobs & benefits in seconds
-  </p>
+  <div class="glass p-6 mb-6">
+    <h1 class="text-3xl font-bold">Welcome to Scheme Sathi</h1>
+    <p class="opacity-90 mt-2">Explore 500+ government schemes easily</p>
 
-  <button id="loadSchemes"
-    class="bg-white text-blue-600 px-6 py-3 rounded font-semibold hover:bg-gray-100">
-    Load Schemes
-  </button>
-</section>
-
-<!-- FILTERS -->
-<section class="py-6 text-center">
-  <div class="flex justify-center gap-3 flex-wrap">
-
-    <button class="filterBtn bg-blue-500 text-white px-4 py-2 rounded" data-cat="all">All</button>
-    <button class="filterBtn bg-green-500 text-white px-4 py-2 rounded" data-cat="Education">Education</button>
-    <button class="filterBtn bg-yellow-400 px-4 py-2 rounded" data-cat="Health">Health</button>
-    <button class="filterBtn bg-purple-500 text-white px-4 py-2 rounded" data-cat="Pension">Pension</button>
-    <button class="filterBtn bg-pink-500 text-white px-4 py-2 rounded" data-cat="Women">Women</button>
-    <button class="filterBtn bg-indigo-500 text-white px-4 py-2 rounded" data-cat="Employment">Jobs</button>
-
-  </div>
-</section>
-
-<!-- SCHEMES -->
-<section id="schemes" class="p-6">
-  <div id="scheme-cards"
-    class="grid md:grid-cols-3 gap-6"></div>
-</section>
-
-<!-- BOOKMARK SECTION -->
-<section class="p-6 bg-white">
-  <h2 class="text-2xl font-bold mb-4">Saved Schemes ⭐</h2>
-  <div id="bookmarkContainer" class="grid md:grid-cols-3 gap-6"></div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-gray-900 text-white mt-10">
-  <div class="max-w-7xl mx-auto p-6 grid md:grid-cols-3 gap-6">
-
-    <div>
-      <h2 class="text-xl font-bold">Scheme Sathi</h2>
-      <p class="text-gray-400 mt-2">
-        Empowering citizens with government schemes
-      </p>
-    </div>
-
-    <div>
-      <h3 class="font-semibold mb-2">Quick Links</h3>
-      <ul class="space-y-1 text-gray-400">
-        <li>Home</li>
-        <li>Schemes</li>
-        <li>News</li>
-      </ul>
-    </div>
-
-    <div>
-      <h3 class="font-semibold mb-2">Contact</h3>
-      <p class="text-gray-400">info@schemesathi.com</p>
-    </div>
-
+    <button id="loadSchemes"
+      class="mt-4 bg-white text-blue-600 px-5 py-2 rounded">
+      Load Schemes
+    </button>
   </div>
 
-  <div class="text-center text-gray-500 py-4 border-t border-gray-700">
-    © 2026 Scheme Sathi
+  <!-- STATS -->
+  <div class="grid md:grid-cols-3 gap-4 mb-6">
+    <div class="scheme-card">📊 500+ Schemes</div>
+    <div class="scheme-card">👥 10K Users</div>
+    <div class="scheme-card">⭐ 4.8 Rating</div>
   </div>
-</footer>
 
-<!-- SCRIPT -->
+  <!-- SCHEMES -->
+  <div id="scheme-cards" class="grid md:grid-cols-3 gap-6"></div>
+
+</div>
+
+</div>
+
+<!-- ================= SCRIPT ================= -->
 <script>
-let allSchemes = [];
-let filteredSchemes = [];
 
-/* AUTH */
+let allSchemes = [];
+
+/* AUTH CHECK */
 const token = localStorage.getItem("token");
 const guest = localStorage.getItem("guest");
 
@@ -120,24 +150,48 @@ if (!token && !guest) {
   window.location.href = "login.html";
 }
 
+/* USER UI */
+const userArea = document.getElementById("userArea");
+
+if (token) {
+  userArea.innerHTML = `
+    <div class="flex items-center gap-3">
+      <span class="font-semibold">User</span>
+      <button onclick="logout()" class="text-red-500">Logout</button>
+    </div>
+  `;
+} else {
+  userArea.innerHTML = `
+    <span class="text-gray-500">Guest Mode</span>
+  `;
+}
+
 /* LOGOUT */
 function logout() {
-  localStorage.clear();
+  localStorage.removeItem("token");
+  localStorage.removeItem("guest");
   window.location.href = "login.html";
 }
 
-/* LOAD */
+/* LOAD SCHEMES */
 document.getElementById("loadSchemes").addEventListener("click", () => {
+
   const container = document.getElementById("scheme-cards");
 
-  container.innerHTML = "<p>Loading...</p>";
+  container.innerHTML = `
+    <div class="loader col-span-3">
+      <div class="spinner"></div>
+    </div>
+  `;
 
   fetch("schemes.json")
     .then(res => res.json())
     .then(data => {
       allSchemes = data;
-      filteredSchemes = data;
       displaySchemes(data);
+    })
+    .catch(() => {
+      container.innerHTML = "<p>Error loading data</p>";
     });
 });
 
@@ -148,84 +202,49 @@ function displaySchemes(data) {
 
   data.forEach(s => {
     container.innerHTML += `
-      <div class="bg-white p-5 rounded-xl shadow hover:shadow-xl transition">
-
-        <h3 class="font-bold text-lg text-blue-600">${s.name}</h3>
-
-        <p class="text-gray-600 mt-2">${s.description}</p>
-
+      <div class="scheme-card">
+        <h3 class="font-bold text-lg">${s.name}</h3>
+        <p class="text-gray-600">${s.description}</p>
         <span class="text-sm text-gray-500">${s.category}</span>
 
-        <div class="flex justify-between mt-4">
-
-          <a href="${s.link}" target="_blank"
-            class="text-blue-500 font-semibold">View</a>
-
-          <button onclick="bookmark('${s.name}')"
-            class="text-yellow-500 text-xl">★</button>
-
-        </div>
-
+        <button onclick="bookmark('${s.name}')"
+          class="mt-3 text-blue-600">
+          ⭐ Save
+        </button>
       </div>
     `;
   });
 }
 
 /* SEARCH */
-document.getElementById("searchInput").addEventListener("input", e => {
+document.getElementById("searchInput").addEventListener("input", (e) => {
+
   const val = e.target.value.toLowerCase();
 
-  filteredSchemes = allSchemes.filter(s =>
+  const filtered = allSchemes.filter(s =>
     s.name.toLowerCase().includes(val)
   );
 
-  displaySchemes(filteredSchemes);
-});
-
-/* FILTER */
-document.querySelectorAll(".filterBtn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const cat = btn.dataset.cat;
-
-    if (cat === "all") {
-      displaySchemes(allSchemes);
-    } else {
-      const filtered = allSchemes.filter(s => s.category === cat);
-      displaySchemes(filtered);
-    }
-  });
+  displaySchemes(filtered);
 });
 
 /* BOOKMARK */
 function bookmark(name) {
-  let saved = JSON.parse(localStorage.getItem("bookmarks") || "[]");
+  if (!token) {
+    alert("Login required to save");
+    return;
+  }
+
+  let saved = JSON.parse(localStorage.getItem("saved") || "[]");
 
   if (!saved.includes(name)) {
     saved.push(name);
   }
 
-  localStorage.setItem("bookmarks", JSON.stringify(saved));
-  loadBookmarks();
+  localStorage.setItem("saved", JSON.stringify(saved));
+
+  alert("Saved!");
 }
-
-/* LOAD BOOKMARKS */
-function loadBookmarks() {
-  const saved = JSON.parse(localStorage.getItem("bookmarks") || "[]");
-  const container = document.getElementById("bookmarkContainer");
-
-  container.innerHTML = "";
-
-  saved.forEach(name => {
-    container.innerHTML += `
-      <div class="bg-yellow-50 p-4 rounded shadow">
-        <h3 class="font-bold">${name}</h3>
-      </div>
-    `;
-  });
-}
-
-/* INIT */
-loadBookmarks();
 
 </script>
 
