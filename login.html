@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Scheme Sathi</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <!-- LOGIN CARD -->
+  <div class="bg-white p-8 rounded-xl shadow-lg w-96">
+
+    <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">
+      Scheme Sathi Login
+    </h2>
+
+    <!-- EMAIL -->
+    <input id="email"
+      type="email"
+      placeholder="Enter Email"
+      class="w-full border p-3 rounded mb-3 focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+    <!-- PASSWORD -->
+    <input id="password"
+      type="password"
+      placeholder="Enter Password"
+      class="w-full border p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+    <!-- LOGIN BUTTON -->
+    <button onclick="login()"
+      class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
+      Login
+    </button>
+
+    <!-- GOOGLE LOGIN -->
+    <a href="http://127.0.0.1:5000/login/google">
+      <button class="w-full mt-3 border py-3 rounded-lg hover:bg-gray-100">
+        Continue with Google
+      </button>
+    </a>
+
+    <!-- SIGNUP LINK -->
+    <p class="text-center mt-4 text-sm">
+      Don’t have an account?
+      <a href="register.html" class="text-blue-600">Sign up</a>
+    </p>
+<div class="text-center mt-4">
+  <button onclick="skipLogin()"
+    class="text-gray-500 hover:text-blue-600 text-sm underline">
+    Skip for now →
+  </button>
+</div>
+    <!-- ERROR -->
+    <p id="error" class="text-red-500 text-center mt-3"></p>
+
+  </div>
+
+<script>
+function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  fetch("http://127.0.0.1:5000/api/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ email, password })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.token) {
+      localStorage.setItem("token", data.token);
+
+      // redirect to main app
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("error").innerText = "Invalid login";
+    }
+  })
+  .catch(() => {
+    document.getElementById("error").innerText = "Server error";
+  });
+}
+</script>
+
+</body>
+</html>
