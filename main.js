@@ -1,61 +1,35 @@
-document.addEventListener("DOMContentLoaded", () => {
 
-  const button = document.getElementById("loadSchemes");
-  let allSchemes = [];
-  let currentPage = 1;
-  const perPage = 20;
+const btn = document.getElementById("loadSchemes");
+const container = document.getElementById("scheme-cards");
 
-  // Load schemes only on button click
-  button.addEventListener("click", () => {
-    fetch("http://127.0.0.1:5000/api/schemes")
-      .then(res => res.json())
-      .then(data => {
-        allSchemes = data;
-        currentPage = 1;
-        displayPage();
-      })
-      .catch(err => console.error("Error:", err));
-  });
+btn.addEventListener("click", () => {
 
-  // Pagination buttons
-  document.getElementById("nextPageBtn").addEventListener("click", () => {
-    if (currentPage * perPage < allSchemes.length) {
-      currentPage++;
-      displayPage();
-    }
-  });
+  // Loader
+  container.innerHTML = `
+    <div class="loader">
+      <div class="spinner"></div>
+    </div>
+  `;
 
-  document.getElementById("prevPageBtn").addEventListener("click", () => {
-    if (currentPage > 1) {
-      currentPage--;
-      displayPage();
-    }
-  });
+  fetch("http://127.0.0.1:5000/api/schemes")
+    .then(res => res.json())
+    .then(data => {
 
-  function displayPage() {
-    const container = document.getElementById("scheme-cards");
-    container.innerHTML = "";
+      container.innerHTML = "";
 
-    const start = (currentPage - 1) * perPage;
-    const end = start + perPage;
-    const pageData = allSchemes.slice(start, end);
+      data.forEach(s => {
+        container.innerHTML += `
+          <div class="scheme-card" data-category="${s.category}">
+            <h3>${s.name}</h3>
+            <p>${s.description}</p>
+            <span>${s.category}</span><br>
+            <a href="${s.link}" target="_blank">View →</a>
+          </div>
+        `;
+      });
 
-    if (pageData.length === 0) {
-      container.innerHTML = "<p class='text-red-500'>No schemes found</p>";
-      return;
-    }
-
-    pageData.forEach(scheme => {
-      container.innerHTML += `
-        <div class="scheme-card bg-white rounded-lg shadow p-6 mb-4 hover-bounce hover-glow transition">
-          <h3 class="text-xl font-bold mb-2">${scheme.name}</h3>
-          <p class="text-gray-600 mb-2">${scheme.description || "No description available"}</p>
-          <a href="${scheme.link}" target="_blank" class="text-blue-500 font-semibold">View</a>
-        </div>
-      `;
+    })
+    .catch(() => {
+      container.innerHTML = "<p>Error loading data</p>";
     });
-
-    document.getElementById("pageNumber").innerText = currentPage;
-  }
-
 });
