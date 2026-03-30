@@ -24,7 +24,28 @@ function displaySchemes(data) {
     `;
   });
 }
+function displaySchemes(data) {
+  const container = document.getElementById("scheme-cards");
+  container.innerHTML = "";
 
+  const token = localStorage.getItem("token");
+
+  data.forEach(s => {
+    container.innerHTML += `
+      <div class="scheme-card bg-white p-4 rounded shadow">
+        <h3>${s.name}</h3>
+        <p>${s.description}</p>
+
+        ${
+          token
+          ? `<button onclick="bookmarkScheme('${s.name}')"
+               class="text-blue-500 mt-2">Save ⭐</button>`
+          : `<p class="text-sm text-gray-400 mt-2">Login to save</p>`
+        }
+      </div>
+    `;
+  });
+}
 /* ---------------- RECOMMENDATION LOGIC ---------------- */
 function showRecommendations() {
 
