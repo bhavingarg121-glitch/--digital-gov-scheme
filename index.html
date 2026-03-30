@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scheme Sathi</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="style.css">
-  <link rel="preload" href="style.css" as="style">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheme Sathi</title>
 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="font-sans text-gray-800">
+<body class="bg-gray-100">
+
 
 <!-- HEADER -->
 <header class="bg-white shadow sticky top-0 z-50">
@@ -54,10 +53,12 @@
     <button id="darkModeToggle" class="p-2 bg-gray-200 dark:bg-gray-700 rounded">🌙</button>
   </div>
 <!-- HERO -->
-<section class="banner">
-  <h1>Discover 500+ Government Schemes Instantly</h1>
-  <p>Scholarships, subsidies, pensions, and benefits — all in one trusted portal.</p>
-  <a href="#schemes" class="btn">Explore Schemes Now</a>
+<section class="text-center py-12 bg-blue-50">
+  <h1 class="text-3xl font-bold">Discover Government Schemes</h1>
+  <button id="loadSchemes"
+    class="mt-4 bg-blue-600 text-white px-6 py-2 rounded">
+    Load Schemes
+  </button>
 </section>
 
 <!-- SCHEMES SECTION -->
@@ -105,7 +106,10 @@
 </div>
     
  <!-- Schemes Section -->
-  <section id="schemesSection" class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-20 mb-10">
+  <section class="p-6">
+  <div id="scheme-cards"
+    class="grid md:grid-cols-3 gap-6"></div>
+</section>px-20 mb-10">
     <!-- Dynamic scheme cards will be inserted here -->
   </section>
 
@@ -155,43 +159,11 @@
 <!-- SCRIPT -->
 <script>
 let allSchemes = [];
-let filteredSchemes = [];
-let currentPage = 1;
-const perPage = 24;
 
-const container = document.getElementById("scheme-cards");
-const searchInput = document.getElementById("searchInput");
-
-// Dark mode toggle
-document.getElementById("darkModeToggle").addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-});
-
-// Load schemes
-fetch("./schemes.json")
-  .then(res => res.json())
-  .then(data => {
-    allSchemes = data;
-    filteredSchemes = data;
-    displayPage();
-  })
-  .catch(err => {
-    console.error(err);
-    container.innerHTML =
-      "<p class='text-red-500 text-center col-span-3'>Failed to load schemes</p>";
-  });
-
-// Search filter
-searchInput.addEventListener("input", e => {
-  const filter = e.target.value.toLowerCase();
-  filteredSchemes = allSchemes.filter(s => s.name.toLowerCase().includes(filter));
-  currentPage = 1;
-  displayPage();
-  document.getElementById("loadSchemes").addEventListener("click", () => {
-
+// LOAD BUTTON
+document.getElementById("loadSchemes").addEventListener("click", () => {
   const container = document.getElementById("scheme-cards");
 
-  // 🔥 SHOW LOADER
   container.innerHTML = `
     <div class="loader">
       <div class="spinner"></div>
@@ -201,20 +173,41 @@ searchInput.addEventListener("input", e => {
   fetch("schemes.json")
     .then(res => res.json())
     .then(data => {
-      container.innerHTML = "";
+      allSchemes = data;
+      displaySchemes(data);
+    })
+    .catch(() => {
+      container.innerHTML = "<p>Error loading data</p>";
+    });
+});
 
-      data.forEach((s, i) => {
-        container.innerHTML += `
-          <div class="scheme-card fade-in bg-white p-6 rounded shadow">
-            <h3 class="text-xl font-bold">${s.name}</h3>
-            <p>${s.description}</p>
-            <span class="text-sm text-gray-500">${s.category}</span><br>
-            <a href="${s.link}" target="_blank" class="text-blue-500">View</a>
-          </div>
-        `;
-      });
-    }
+// DISPLAY
+function displaySchemes(data) {
+  const container = document.getElementById("scheme-cards");
+  container.innerHTML = "";
 
+  data.forEach(s => {
+    container.innerHTML += `
+      <div class="scheme-card bg-white p-4 rounded shadow">
+        <h3 class="font-bold">${s.name}</h3>
+        <p>${s.description}</p>
+        <span class="text-sm text-gray-500">${s.category}</span>
+      </div>
+    `;
+  });
+}
+
+// SEARCH
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  const val = e.target.value.toLowerCase();
+
+  const filtered = allSchemes.filter(s =>
+    s.name.toLowerCase().includes(val)
+  );
+
+  displaySchemes(filtered);
+});
+</script>
 
 </body>
 </html>
