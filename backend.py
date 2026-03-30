@@ -27,6 +27,16 @@ with app.app_context():
 # Load schemes
 with open("data/schemes.json", encoding="utf-8") as f:
     schemes = json.load(f)
+    @app.route("/api/profile")
+@jwt_required()
+def profile():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+
+    return jsonify({
+        "email": user.email,
+        "role": user.role
+    })
 
 # ---------------- REGISTER ----------------
 @app.route("/api/register", methods=["POST"])
