@@ -7,9 +7,14 @@ import json
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+import os
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['JWT_SECRET_KEY'] = 'super-secret-key'
+db_url = os.environ.get("DATABASE_URL")
+if db_url.startswith("postgres://"):
+    db_url = db_url.replace("postgres://", "postgresql://", 1)
 
+app.config['SQLALCHEMY_DATABASE_URI'] = db_url
 db.init_app(app)
 CORS(app)
 bcrypt = Bcrypt(app)
