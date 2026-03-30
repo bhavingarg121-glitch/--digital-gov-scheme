@@ -58,8 +58,9 @@
     <p id="error" class="text-red-500 text-center mt-3"></p>
 
   </div>
-
 <script>
+
+/* ---------------- LOGIN ---------------- */
 function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -75,12 +76,8 @@ function login() {
   .then(data => {
     if (data.token) {
       localStorage.setItem("token", data.token);
-      function skipLogin() {
-  localStorage.setItem("guest", "true");
-  window.location.href = "index.html";
-}
 
-      // redirect to main app
+      // redirect after login
       window.location.href = "index.html";
     } else {
       document.getElementById("error").innerText = "Invalid login";
@@ -90,7 +87,12 @@ function login() {
     document.getElementById("error").innerText = "Server error";
   });
 }
-</script>
 
-</body>
-</html>
+/* ---------------- SKIP LOGIN ---------------- */
+function skipLogin() {
+  localStorage.removeItem("token");
+  localStorage.setItem("guest", "true");
+  window.location.href = "index.html";
+}
+
+</script>
