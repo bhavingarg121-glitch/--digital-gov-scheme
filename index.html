@@ -114,8 +114,6 @@
         class="bg-white text-blue-600 px-8 py-4 rounded-lg text-xl font-semibold shadow hover:shadow-xl transition">
         Load Schemes
       </a>
-
-
     
   </div>
 </div>
@@ -309,14 +307,6 @@
       });
     }
 
-    /* Search */
-    document.getElementById("searchInput").addEventListener("input", (e) => {
-      const val = e.target.value.toLowerCase();
-      const filtered = allSchemes.filter(s =>
-        s.name.toLowerCase().includes(val)
-      );
-      displaySchemes(filtered);
-    });
 
     /* Bookmark */
     function bookmark(name) {
