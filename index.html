@@ -1,252 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scheme Sathi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheme Sathi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; }
 
-<script src="https://cdn.tailwindcss.com"></script>
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #1e293b;
+      color: white;
+      position: fixed;
+      height: 100%;
+      padding: 20px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+    .sidebar a:hover { background: #334155; }
 
-<style>
+    /* Main */
+    .main { margin-left: 240px; }
 
-/* ---------- GLOBAL ---------- */
-body {
-  font-family: 'Segoe UI', sans-serif;
-}
+    /* Cards */
+    .scheme-card {
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+    .scheme-card:hover {
+      animation: soft-bounce 0.6s ease;
+      box-shadow: 0 0 20px rgba(59,130,246,0.4); /* glow */
+    }
 
-/* ---------- SIDEBAR ---------- */
-.sidebar {
-  width: 230px;
-  background: #1e293b;
-  color: white;
-  position: fixed;
-  height: 100%;
-  padding: 20px;
-}
+    /* Custom bounce */
+    @keyframes soft-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
 
-.sidebar a {
-  display: block;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 8px;
-}
+    /* Gradient Hero */
+    .glass {
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      color: white;
+      border-radius: 12px;
+    }
 
-.sidebar a:hover {
-  background: #334155;
-}
+    /* Loader */
+    .loader { display: flex; justify-content: center; padding: 30px; }
+    .spinner {
+      border: 4px solid #eee;
+      border-top: 4px solid #2563eb;
+      border-radius: 50%;
+      width: 40px; height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
 
-/* ---------- MAIN ---------- */
-.main {
-  margin-left: 230px;
-}
-
-/* ---------- CARD ---------- */
-.scheme-card {
-  background: white;
-  padding: 16px;
-  border-radius: 12px;
-  transition: 0.3s;
-}
-
-.scheme-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-}
-
-/* ---------- GRADIENT CARD ---------- */
-.glass {
-  background: linear-gradient(135deg, #3b82f6, #6366f1);
-  color: white;
-  border-radius: 12px;
-}
-
-/* ---------- LOADER ---------- */
-.loader {
-  display: flex;
-  justify-content: center;
-  padding: 30px;
-}
-
-.spinner {
-  border: 4px solid #eee;
-  border-top: 4px solid #2563eb;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  100% { transform: rotate(360deg); }
-}
-
-</style>
+    /* Footer */
+    .footer {
+      background: #1e293b;
+      color: white;
+      padding: 30px;
+      margin-top: 40px;
+    }
+    .footer h3 { font-weight: bold; margin-bottom: 10px; }
+    .footer a { display: block; color: #cbd5e1; margin-bottom: 6px; }
+    .footer a:hover { color: white; }
+  </style>
 </head>
-
 <body class="bg-gray-100">
 
-<!-- ================= SIDEBAR ================= -->
-<div class="sidebar">
-  <h2 class="text-xl font-bold mb-6">Scheme Sathi</h2>
-
-  <a href="#">🏠 Dashboard</a>
-  <a href="#">📋 All Schemes</a>
-  <a href="#">⭐ Bookmarks</a>
-  <a href="#">👤 Profile</a>
-  <a href="#" onclick="logout()">🚪 Logout</a>
-</div>
-
-<!-- ================= MAIN ================= -->
-<div class="main">
-
-<!-- NAVBAR -->
-<div class="bg-white shadow p-4 flex justify-between items-center">
-
-  <input id="searchInput"
-    placeholder="Search schemes..."
-    class="border px-3 py-2 rounded w-64">
-
-  <div id="userArea"></div>
-
-</div>
-
-<!-- HERO -->
-<div class="p-6">
-
-  <div class="glass p-6 mb-6">
-    <h1 class="text-3xl font-bold">Welcome to Scheme Sathi</h1>
-    <p class="opacity-90 mt-2">Explore 500+ government schemes easily</p>
-
-    <button id="loadSchemes"
-      class="mt-4 bg-white text-blue-600 px-5 py-2 rounded">
-      Load Schemes
-    </button>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2 class="text-xl font-bold mb-6">Scheme Sathi</h2>
+    <a href="#">🏠 Dashboard</a>
+    <a href="#">📋 All Schemes</a>
+    <a href="#">⭐ Bookmarks</a>
+    <a href="#">👤 Profile</a>
+    <a href="#" onclick="logout()">🚪 Logout</a>
   </div>
 
-  <!-- STATS -->
-  <div class="grid md:grid-cols-3 gap-4 mb-6">
-    <div class="scheme-card">📊 500+ Schemes</div>
-    <div class="scheme-card">👥 10K Users</div>
-    <div class="scheme-card">⭐ 4.8 Rating</div>
-  </div>
+  <!-- Main -->
+  <div class="main">
 
-  <!-- SCHEMES -->
-  <div id="scheme-cards" class="grid md:grid-cols-3 gap-6"></div>
-
-</div>
-
-</div>
-
-<!-- ================= SCRIPT ================= -->
-<script>
-
-let allSchemes = [];
-
-/* AUTH CHECK */
-const token = localStorage.getItem("token");
-const guest = localStorage.getItem("guest");
-
-if (!token && !guest) {
-  window.location.href = "login.html";
-}
-
-/* USER UI */
-const userArea = document.getElementById("userArea");
-
-if (token) {
-  userArea.innerHTML = `
-    <div class="flex items-center gap-3">
-      <span class="font-semibold">User</span>
-      <button onclick="logout()" class="text-red-500">Logout</button>
+    <!-- Navbar -->
+    <div class="bg-white shadow p-4 flex justify-between items-center">
+      <input id="searchInput"
+        placeholder="Search schemes..."
+        class="border px-3 py-2 rounded w-64">
+      <div id="userArea"></div>
     </div>
-  `;
-} else {
-  userArea.innerHTML = `
-    <span class="text-gray-500">Guest Mode</span>
-  `;
-}
 
-/* LOGOUT */
-function logout() {
-  localStorage.removeItem("token");
-  localStorage.removeItem("guest");
-  window.location.href = "login.html";
-}
-
-/* LOAD SCHEMES */
-document.getElementById("loadSchemes").addEventListener("click", () => {
-
-  const container = document.getElementById("scheme-cards");
-
-  container.innerHTML = `
-    <div class="loader col-span-3">
-      <div class="spinner"></div>
-    </div>
-  `;
-
-  fetch("schemes.json")
-    .then(res => res.json())
-    .then(data => {
-      allSchemes = data;
-      displaySchemes(data);
-    })
-    .catch(() => {
-      container.innerHTML = "<p>Error loading data</p>";
-    });
-});
-
-/* DISPLAY */
-function displaySchemes(data) {
-  const container = document.getElementById("scheme-cards");
-  container.innerHTML = "";
-
-  data.forEach(s => {
-    container.innerHTML += `
-      <div class="scheme-card">
-        <h3 class="font-bold text-lg">${s.name}</h3>
-        <p class="text-gray-600">${s.description}</p>
-        <span class="text-sm text-gray-500">${s.category}</span>
-
-        <button onclick="bookmark('${s.name}')"
-          class="mt-3 text-blue-600">
-          ⭐ Save
+    <!-- Hero -->
+    <div class="p-6">
+      <div class="glass p-6 mb-6">
+        <h1 class="text-3xl font-bold">Welcome to Scheme Sathi</h1>
+        <p class="opacity-90 mt-2">Explore 500+ government schemes easily</p>
+        <button id="loadSchemes"
+          class="mt-4 bg-white text-blue-600 px-5 py-2 rounded">
+          Load Schemes
         </button>
       </div>
-    `;
-  });
-}
 
-/* SEARCH */
-document.getElementById("searchInput").addEventListener("input", (e) => {
+      <!-- Static Scheme Cards -->
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="scheme-card">
+          <h3 class="font-bold text-lg">National Scholarship Portal</h3>
+          <p class="text-gray-600">Centralized portal to apply for all government scholarships for students across India.</p>
+          <span class="text-sm text-gray-500">Education</span>
+          <button class="mt-3 text-blue-600">⭐ Save</button>
+        </div>
 
-  const val = e.target.value.toLowerCase();
+        <div class="scheme-card">
+          <h3 class="font-bold text-lg">Ayushman Bharat</h3>
+          <p class="text-gray-600">Health coverage for families, providing free treatment up to Rs. 5 lakh per year.</p>
+          <span class="text-sm text-gray-500">Health</span>
+          <button class="mt-3 text-blue-600">⭐ Save</button>
+        </div>
+      </div>
 
-  const filtered = allSchemes.filter(s =>
-    s.name.toLowerCase().includes(val)
-  );
+      <!-- Dynamic Schemes -->
+      <div id="scheme-cards" class="grid md:grid-cols-3 gap-6"></div>
+    </div>
 
-  displaySchemes(filtered);
-});
+    <!-- Footer -->
+    <div class="footer grid md:grid-cols-3 gap-6">
+      <div>
+        <h3>About</h3>
+        <p>Scheme Sathi is a citizen-friendly portal to explore government schemes, scholarships, pensions, and subsidies with ease.</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <a href="mailto:info@schemesathi.in">info@schemesathi.in</a>
+        <a href="#">Help Center</a>
+        <a href="#">Feedback</a>
+      </div>
+      <div>
+        <h3>Categories</h3>
+        <a href="#">Education</a>
+        <a href="#">Health</a>
+        <a href="#">Pension</a>
+        <a href="#">Employment</a>
+        <a href="#">Women & Child</a>
+      </div>
+    </div>
+    <div class="bg-gray-900 text-gray-400 text-center py-3">
+      © 2026 Scheme Sathi. All rights reserved.
+    </div>
+  </div>
 
-/* BOOKMARK */
-function bookmark(name) {
-  if (!token) {
-    alert("Login required to save");
-    return;
-  }
+  <!-- Script -->
+  <script>
+    let allSchemes = [];
 
-  let saved = JSON.parse(localStorage.getItem("saved") || "[]");
+    /* Auth Check */
+    const token = localStorage.getItem("token");
+    const guest = localStorage.getItem("guest");
+    if (!token && !guest) { window.location.href = "login.html"; }
 
-  if (!saved.includes(name)) {
-    saved.push(name);
-  }
+    /* User UI */
+    const userArea = document.getElementById("userArea");
+    if (token) {
+      userArea.innerHTML = `
+        <div class="flex items-center gap-3">
+          <span class="font-semibold">User</span>
+          <button onclick="logout()" class="text-red-500">Logout</button>
+        </div>`;
+    } else {
+      userArea.innerHTML = `<span class="text-gray-500">Guest Mode</span>`;
+    }
 
-  localStorage.setItem("saved", JSON.stringify(saved));
+    /* Logout */
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("guest");
+      window.location.href = "login.html";
+    }
 
-  alert("Saved!");
-}
+    /* Load Schemes */
+    document.getElementById("loadSchemes").addEventListener("click", () => {
+      const container = document.getElementById("scheme-cards");
+      container.innerHTML = `
+        <div class="loader col-span-3">
+          <div class="spinner"></div>
+        </div>`;
+      fetch("schemes.json")
+        .then(res => res.json())
+        .then(data => { allSchemes = data; displaySchemes(data); })
+        .catch(() => { container.innerHTML = "<p>Error loading data</p>"; });
+    });
 
-</script>
+    /* Display Schemes */
+    function displaySchemes(data) {
+      const container = document.getElementById("scheme-cards");
+      container.innerHTML = "";
+      data.forEach(s => {
+        container.innerHTML += `
+          <div class="scheme-card">
+            <h3 class="font-bold text-lg">${s.name}</h3>
+            <p class="text-gray-600">${s.description}</p>
+            <span class="text-sm text-gray-500">${s.category}</span>
+            <button onclick="bookmark('${s.name}')"
+              class="mt-3 text-blue-600">⭐ Save</button>
+          </div>`;
+      });
+    }
 
+    /* Search */
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      const val = e.target.value.toLowerCase();
+      const filtered = allSchemes.filter(s =>
+        s.name.toLowerCase().includes(val)
+      );
+      displaySchemes(filtered);
+    });
+
+    /* Bookmark */
+    function bookmark(name) {
+      if (!token) { alert("Login required to save"); return; }
+      let saved = JSON.parse(localStorage.getItem("saved") || "[]");
+      if (!saved.includes(name)) { saved.push(name); }
+      localStorage.setItem("saved", JSON.stringify(saved));
+      alert("Saved!");
+    }
+  </script>
 </body>
 </html>
+
+
