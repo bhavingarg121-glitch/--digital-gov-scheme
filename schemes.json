@@ -112,7 +112,7 @@
     "link": "https://socialjustice.gov.in/",
     "description": "Fellowship for Scheduled Caste students pursuing higher education.",
     "category": "Education"
-  }
+  },
   {
     "name": "National Fellowship for OBC Students",
     "link": "https://socialjustice.gov.in/",
@@ -232,8 +232,7 @@
     "link": "https://www.nirfindia.org/",
     "description": "Framework to rank higher education institutions in India based on performance.",
     "category": "Education"
-  }
-
+  },
   {
     "name": "National Mission on Education through ICT (NMEICT)",
     "link": "https://www.education.gov.in/nmeict",
@@ -353,7 +352,7 @@
     "link": "https://skillindia.gov.in/",
     "description": "Integrates skill development with higher education curricula.",
     "category": "Education"
-  }
+  },
   {
     "name": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (PM-JAY)",
     "link": "https://pmjay.gov.in/",
@@ -473,8 +472,7 @@
     "link": "https://janaushadhi.gov.in/",
     "description": "Provides affordable generic medicines through Jan Aushadhi Kendras across India.",
     "category": "Health"
-  }
-
+  },
   {
     "name": "National Programme for Prevention and Control of Fluorosis (NPPCF)",
     "link": "https://nhm.gov.in/",
@@ -594,7 +592,7 @@
     "link": "https://nhm.gov.in/",
     "description": "Provides neonatal care and awareness to reduce infant deaths.",
     "category": "Health"
-  }
+  },
   {
     "name": "National Programme for Prevention and Control of Occupational Lung Diseases",
     "link": "https://nhm.gov.in/",
@@ -1015,7 +1013,6 @@
     "description": "Coordinates skill development initiatives in Odisha.",
     "category": "Employment"
   },
-
   {
     "name": "Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA)",
     "link": "https://nrega.nic.in/",
@@ -1231,5 +1228,5 @@
     "link": "https://rasci.in/",
     "description": "Provides skill training for retail sector jobs.",
     "category": "Employment"
-  },
   }
+]
