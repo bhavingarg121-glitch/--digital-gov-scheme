@@ -263,6 +263,30 @@
   <!-- Script -->
   <script>
     let allSchemes = [];
+    function loadCategory(category) {
+  const container = document.getElementById("schemeContainer");
+
+  container.innerHTML = "<p>Loading...</p>";
+
+  fetch(`./data/${category}.json`)
+    .then(res => res.json())
+    .then(data => {
+      container.innerHTML = "";
+
+      data.forEach(scheme => {
+        container.innerHTML += `
+          <div class="bg-white p-4 rounded shadow hover:scale-105 transition">
+            <h2 class="text-lg font-bold">${scheme.name}</h2>
+            <p class="text-gray-600">${scheme.description}</p>
+            <a href="${scheme.link}" target="_blank" class="text-blue-500">Apply</a>
+          </div>
+        `;
+      });
+    })
+    .catch(() => {
+      container.innerHTML = "<p class='text-red-500'>Failed to load</p>";
+    });
+}
 
     /* Auth Check */
     const token = localStorage.getItem("token");
