@@ -63,6 +63,22 @@ def login():
         return jsonify({"token": token})
 
     return jsonify({"error": "Invalid credentials"}), 401
+    #-------------ADMIN API-----------
+@app.route("/api/admin/add-scheme", methods=["POST"])
+@admin_required
+def add_scheme():
+    data = request.json
+
+    new_scheme = {
+        "name": data["name"],
+        "description": data["description"],
+        "category": data["category"],
+        "link": data["link"]
+    }
+
+    schemes.append(new_scheme)
+
+    return jsonify({"message": "Scheme added"})
 
 # ---------------- GET SCHEMES ----------------
 @app.route("/api/schemes")
