@@ -110,7 +110,7 @@
       Access scholarships, subsidies, pensions, and other benefits with ease.
     </p>
     <div class="mt-8 flex gap-6">
-      <a href="scheme.html"
+      <a href="schemes.html"
         class="bg-white text-blue-600 px-8 py-4 rounded-lg text-xl font-semibold shadow hover:shadow-xl transition">
         Load Schemes
       </a>
@@ -290,6 +290,38 @@
         .then(data => { allSchemes = data; displaySchemes(data); })
         .catch(() => { container.innerHTML = "<p>Error loading data</p>"; });
     });
+// Load and filter schemes from schemes.json
+  async function filterCategory(category) {
+    try {
+      const response = await fetch('schemes.json');
+      const schemes = await response.json();
+
+      // Filter schemes by category
+      const filtered = schemes.filter(scheme => scheme.category === category);
+
+      // Render schemes
+      const container = document.getElementById('schemes-container');
+      container.innerHTML = '';
+      filtered.forEach(scheme => {
+        const card = `
+          <div class="scheme-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl hover:animate-bounce transition">
+            <h3 class="font-bold text-lg">${scheme.name}</h3>
+            <p class="text-gray-600 mt-2">${scheme.description}</p>
+            <span class="inline-block mt-3 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
+              ${scheme.category}
+            </span>
+            <a href="${scheme.link}" target="_blank" class="mt-4 inline-block text-blue-600 font-semibold hover:underline">
+              View Details
+            </a>
+          </div>
+        `;
+        container.innerHTML += card;
+      });
+    } catch (error) {
+      console.error('Error loading schemes:', error);
+    }
+  }
+
 
     /* Display Schemes */
     function displaySchemes(data) {
