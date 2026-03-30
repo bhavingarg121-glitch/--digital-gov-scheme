@@ -22,40 +22,15 @@
       <a href="#schemes-section">Schemes</a>
       <a href="#">News</a>
       <a href="#">Contact</a>
-
-
-</head>
-
-<<body class="flex items-center justify-center min-h-screen bg-gray-100">
-
-<div class="bg-white p-6 rounded shadow w-80 text-center">
-
-  <h2 class="text-xl font-bold mb-4">Login</h2>
-
-  <input id="email" placeholder="Email" class="border p-2 w-full mb-2">
-  <input id="password" type="password" placeholder="Password" class="border p-2 w-full mb-4">
-
-  <button onclick="login()" class="bg-blue-500 text-white w-full py-2 rounded">
-    Login
-  </button>
-
-  <!-- SKIP -->
-  <button onclick="skipLogin()" class="mt-4 text-gray-500 underline">
-    Skip for now →
-  </button>
-
-</div>
- 
-      <input id="topSearch" placeholder="Search schemes..."
+<input id="searchInput" placeholder="Search schemes..."
         class="border px-3 py-1 rounded">
-
-      <select class="border px-2 py-1 rounded">
-        <option>EN</option>
-        <option>HI</option>
-      </select>
     </nav>
   </div>
 </header>
+
+
+
+
 <!-- Dark mode toggle -->
   <div class="fixed top-4 right-4">
     <button id="darkModeToggle" class="p-2 bg-gray-200 dark:bg-gray-700 rounded">🌙</button>
@@ -68,7 +43,11 @@
     Load Schemes
   </button>
 </section>
-
+<!-- SCHEMES -->
+<section class="p-6">
+  <div id="scheme-cards"
+    class="grid md:grid-cols-3 gap-6"></div>
+</section>
 <!-- SCHEMES SECTION -->
 <section id="schemes-section" class="py-12">
 
@@ -127,11 +106,12 @@
     </a>
   </div>
 
-<!-- FOOTER -->
 
-<footer class="bg-gray-800 text-white">
-  <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
-    
+<!-- FOOTER -->
+<footer class="bg-gray-800 text-white text-center p-6">
+  <p>© 2026 Scheme Sathi</p>
+</footer>
+
     <!-- Left: Logo / Name -->
     <div class="flex flex-col items-center md:items-start">
       <h2 class="text-2xl font-bold">Scheme Sathi</h2>
@@ -164,50 +144,49 @@
   </div>
 </footer>
 
+<!-- SCHEMES -->
+<section class="p-6">
+  <div id="scheme-cards"
+    class="grid md:grid-cols-3 gap-6"></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-800 text-white text-center p-6">
+  <p>© 2026 Scheme Sathi</p>
+</footer>
+
 <!-- SCRIPT -->
 <script>
 let allSchemes = [];
 
-/* ---------------- AUTH CHECK ---------------- */
+/* AUTH CHECK */
 const token = localStorage.getItem("token");
 const guest = localStorage.getItem("guest");
 
-// allow guest OR logged in
 if (!token && !guest) {
   window.location.href = "login.html";
 }
 
-/* ---------------- LOAD SCHEMES ---------------- */
-const loadBtn = document.getElementById("loadSchemes");
-
-if (loadBtn) {
-  loadBtn.addEventListener("click", () => {
-    const container = document.getElementById("scheme-cards");
-
-    container.innerHTML = `
-      <div class="text-center col-span-3">
-        <p>Loading schemes...</p>
-      </div>
-    `;
-
-    fetch("schemes.json")
-      .then(res => res.json())
-      .then(data => {
-        allSchemes = data;
-        displaySchemes(data);
-      })
-      .catch(() => {
-        container.innerHTML = "<p class='text-red-500'>Error loading data</p>";
-      });
-  });
-}
-
-/* ---------------- DISPLAY ---------------- */
-function displaySchemes(data) {
+/* LOAD */
+document.getElementById("loadSchemes").addEventListener("click", () => {
   const container = document.getElementById("scheme-cards");
 
-  if (!container) return;
+  container.innerHTML = "<p>Loading...</p>";
 
+  fetch("schemes.json")
+    .then(res => res.json())
+    .then(data => {
+      allSchemes = data;
+      displaySchemes(data);
+    })
+    .catch(() => {
+      container.innerHTML = "<p>Error loading data</p>";
+    });
+});
+
+/* DISPLAY */
+function displaySchemes(data) {
+  const container = document.getElementById("scheme-cards");
   container.innerHTML = "";
 
   data.forEach(s => {
@@ -221,18 +200,17 @@ function displaySchemes(data) {
   });
 }
 
-/* ---------------- SEARCH ---------------- */
-const searchInput = document.getElementById("searchInput");
+/* SEARCH */
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  const val = e.target.value.toLowerCase();
 
-if (searchInput) {
-  searchInput.addEventListener("input", (e) => {
-    const val = e.target.value.toLowerCase();
+  const filtered = allSchemes.filter(s =>
+    s.name.toLowerCase().includes(val)
+  );
 
-    const filtered = allSchemes.filter(s =>
-      s.name.toLowerCase().includes(val)
-    );
-
-    displaySchemes(filtered);
-  });
-}
+  displaySchemes(filtered);
+});
 </script>
+
+</body>
+</html>
