@@ -195,3 +195,10 @@ header nav.hidden { display: none; }
   header { flex-direction: column; }
   .header-buttons { margin-top: 0.5rem; }
 }
+/* Footer */
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background: #f8f9fa;
+  text-align: center;
+}
