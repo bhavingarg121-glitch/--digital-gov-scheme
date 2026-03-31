@@ -191,74 +191,173 @@
 
    
     <!-- First Row -->
+<!-- Categories Grid -->
 <div class="grid md:grid-cols-3 gap-6 mb-6">
-  <div onclick="filterCategory('Education')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-blue-100 hover:shadow-2xl">
+
+  <!-- Education -->
+  <div onclick="filterCategory('Education')" 
+       class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-blue-100 hover:shadow-2xl">
     🎓
-    <a href="education.html" class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
+    <a href="education.html" 
+       class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
       Education
     </a>
-
-  </div>
-
-  <div onclick="filterCategory('Employment')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-teal-100 hover:shadow-2xl">
-    💼
-   <a href="employment.html" class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
-    Employment
-  </div>
-  <!-- employment.html -->
-<script>
-fetch("./employment.json") ...
-</script>
-
-  <div onclick="filterCategory('Infrastructure')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-green-100 hover:shadow-2xl">
-    🏗️
-     <a href="infrastructure.html" class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
-    Infratructure
   </div>
 </div>
-    <!-- infrastructure.html -->
+
+<!-- education.html -->
 <script>
-fetch("./infrastructure.json") ...
+fetch("./education.json")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Education data:", data);
+    renderSchemes(data, "schemeContainer");
+  })
+  .catch(err => console.error("Failed to load Education JSON", err));
 </script>
 
-<!-- Second Row -->
-<div class="grid md:grid-cols-3 gap-6">
-  <div onclick="filterCategory('Farmers')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-yellow-100 hover:shadow-2xl">
-    🚜
-      <a href="farmers.html" class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
-    Farmers
-  </div><!-- farmers.html -->
-<script>
-fetch("./farmers.json") ...
-</script>
 
-  <div onclick="filterCategory('Health')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-lime-100 hover:shadow-2xl">
-    🌾
-    <a href="health.html" class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
-    Health
+<div class="grid md:grid-cols-3 gap-6 mb-6">
+
+  <!-- Employment -->
+  <div onclick="filterCategory('Employment')" 
+       class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-teal-100 hover:shadow-2xl">
+    💼
+    <a href="employment.html" 
+       class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
+      Employment
+    </a>
   </div>
-  
+</div>
+
+<!-- employment.html -->
+<script>
+fetch("./employment.json")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Employment data:", data);
+    renderSchemes(data, "schemeContainer");
+  })
+  .catch(err => console.error("Failed to load Employment JSON", err));
+</script>
+
+
+<div class="grid md:grid-cols-3 gap-6 mb-6">
+
+  <!-- Infrastructure -->
+  <div onclick="filterCategory('Infrastructure')" 
+       class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-green-100 hover:shadow-2xl">
+    🏗️
+    <a href="infrastructure.html" 
+       class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
+      Infrastructure
+    </a>
+  </div>
+</div>
+
+<!-- infrastructure.html -->
+<script>
+fetch("./infrastructure.json")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Infrastructure data:", data);
+    renderSchemes(data, "schemeContainer");
+  })
+  .catch(err => console.error("Failed to load Infrastructure JSON", err));
+</script>
+
+
+<div class="grid md:grid-cols-3 gap-6 mb-6">
+
+  <!-- Farmers -->
+  <div onclick="filterCategory('Farmers')" 
+       class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-yellow-100 hover:shadow-2xl">
+    🚜
+    <a href="farmers.html" 
+       class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
+      Farmers
+    </a>
+  </div>
+</div>
+
+<!-- farmers.html -->
+<script>
+fetch("./farmers.json")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Farmers data:", data);
+    renderSchemes(data, "schemeContainer");
+  })
+  .catch(err => console.error("Failed to load Farmers JSON", err));
+</script>
+
+
+<div class="grid md:grid-cols-3 gap-6 mb-6">
+
+  <!-- Health -->
+  <div onclick="filterCategory('Health')" 
+       class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-lime-100 hover:shadow-2xl">
+    🏥
+    <a href="health.html" 
+       class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
+      Health
+    </a>
+  </div>
+</div>
+
 <!-- health.html -->
 <script>
-fetch("./health.json") ...
+fetch("./health.json")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Health data:", data);
+    renderSchemes(data, "schemeContainer");
+  })
+  .catch(err => console.error("Failed to load Health JSON", err));
 </script>
-  <!-- ✅ FIXED -->
-  <div onclick="loadCategory('women')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-pink-100 hover:shadow-2xl">
+
+
+<div class="grid md:grid-cols-3 gap-6 mb-6">
+
+  <!-- Women -->
+  <div onclick="filterCategory('Women')" 
+       class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-pink-100 hover:shadow-2xl">
     👩
-      <a href="women.html" class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
-    Women
+    <a href="women.html" 
+       class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
+      Women
+    </a>
   </div>
-</div><!-- women.html -->
+</div>
+
+<!-- women.html -->
 <script>
-fetch("./women.json") ...
+fetch("./women.json")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Women data:", data);
+    renderSchemes(data, "schemeContainer");
+  })
+  .catch(err => console.error("Failed to load Women JSON", err));
 </script>
 
 
-<!-- Output -->
+<!-- Output Container -->
 <div id="schemeContainer" class="grid grid-cols-3 gap-6 p-6"></div>
-      
-    </div>
-  </div>
+
+<script>
+function renderSchemes(data, containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+  data.forEach(scheme => {
+    const card = document.createElement("div");
+    card.className = "p-4 bg-white shadow rounded";
+    card.innerHTML = `<h3 class="font-bold">${scheme.name}</h3>
+                      <p>${scheme.description}</p>`;
+    container.appendChild(card);
+  });
+}
+</script>
 
       <!-- Dynamic Schemes -->
       <div id="scheme-cards" class="grid md:grid-cols-3 gap-6"></div>
