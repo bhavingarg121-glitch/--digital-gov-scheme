@@ -2,110 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <!-- ✅ SEO META -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore 500+ Central Government Schemes including scholarships, pensions, health and employment benefits in India.">
-  <meta name="keywords" content="government schemes, India schemes, scholarships, pension, Ayushman Bharat, PM Yojana">
-  <meta name="author" content="Scheme Sathi">
-
-  <title>All Government Schemes | Scheme Sathi</title>
-
+  <title>All Central Schemes</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    body {
-      background: #f0f4f8;
-    }
-
-    .scheme-card {
-      transition: all 0.3s ease;
-    }
-
-    .scheme-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(59,130,246,0.25);
-    }
-  </style>
 </head>
+<body class="bg-gray-100 font-sans">
 
-<body class="font-sans text-gray-800">
-
-  <!-- 🔵 HEADER -->
-  <header class="bg-white shadow p-4 sticky top-0 z-50">
-    <h1 class="text-2xl font-bold text-blue-600 text-center">
-      Scheme Sathi - Government Schemes Portal
-    </h1>
+  <header class="bg-blue-600 text-white py-4 px-6 mb-6 shadow">
+    <h1 class="text-3xl font-bold">Scheme Sathi - Central Schemes</h1>
   </header>
 
-  <!-- 🔍 SEARCH -->
-  <div class="container mx-auto px-4 mt-6">
-    <input type="text" id="search" placeholder="Search schemes..."
-      class="w-full p-3 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
-  </div>
+  <main class="max-w-7xl mx-auto px-4">
 
-  <!-- 📦 SCHEMES -->
-  <main class="container mx-auto px-4 py-8">
+    <!-- Search Bar -->
+    <input id="search" type="text" placeholder="Search schemes..." class="border p-2 rounded mb-4 w-full">
 
-    <!-- Cards -->
-    <div id="scheme-cards"
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <!-- Scheme Cards Container -->
+    <div id="scheme-cards" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
-    <!-- Pagination -->
-    <div class="flex justify-center items-center gap-4 mt-10">
-      <button id="prevBtn"
-        class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">
-        Previous
-      </button>
-
-      <span id="pageNumber" class="font-bold text-lg">1</span>
-
-      <button id="nextBtn"
-        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-        Next
-      </button>
+    <!-- Pagination Controls -->
+    <div class="flex justify-center items-center mt-6 gap-4">
+      <button id="prevBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Prev</button>
+      <span id="pageNumber">1 / 1</span>
+      <button id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Next</button>
     </div>
 
   </main>
 
-  <!-- 🔻 FOOTER -->
-  <footer class="bg-white shadow mt-10">
-    <div class="container mx-auto px-4 py-8 grid md:grid-cols-3 gap-6">
-
-      <!-- About -->
-      <div>
-        <h3 class="font-bold text-lg mb-2 text-blue-600">Scheme Sathi</h3>
-        <p class="text-sm text-gray-600">
-          Helping citizens discover government schemes easily including scholarships,
-          pensions, subsidies and benefits across India.
-        </p>
-      </div>
-
-      <!-- Links -->
-      <div>
-        <h3 class="font-bold mb-2">Quick Links</h3>
-        <ul class="space-y-1 text-sm">
-          <li><a href="index.html" class="hover:text-blue-500">Home</a></li>
-          <li><a href="#" class="hover:text-blue-500">Schemes</a></li>
-        </ul>
-      </div>
-
-      <!-- Info -->
-      <div>
-        <h3 class="font-bold mb-2">Disclaimer</h3>
-        <p class="text-sm text-gray-600">
-          This is an independent platform and not affiliated with any government authority.
-        </p>
-      </div>
-
-    </div>
-
-    <div class="border-t text-center py-3 text-sm text-gray-500">
-      © 2026 Scheme Sathi. All rights reserved.
-    </div>
-  </footer>
-
-  <!-- ⚙️ SCRIPT -->
+  <!-- JS Script -->
   <script>
     let allSchemes = [];
     let filteredSchemes = [];
@@ -114,9 +38,7 @@
 
     window.onload = () => {
       const container = document.getElementById("scheme-cards");
-
-      container.innerHTML =
-        "<p class='text-blue-500 text-center col-span-3'>Loading schemes...</p>";
+      container.innerHTML = "<p class='text-blue-500 text-center col-span-3'>Loading schemes...</p>";
 
       fetch("./schemes.json")
         .then(res => res.json())
@@ -124,10 +46,11 @@
           allSchemes = data;
           filteredSchemes = data;
           displayPage();
+          updateButtons();
         })
-        .catch(() => {
-          container.innerHTML =
-            "<p class='text-red-500 text-center'>Failed to load schemes</p>";
+        .catch(err => {
+          container.innerHTML = "<p class='text-red-500 text-center'>Failed to load schemes</p>";
+          console.error(err);
         });
     };
 
@@ -139,38 +62,43 @@
       const end = start + perPage;
       const pageData = filteredSchemes.slice(start, end);
 
+      if (pageData.length === 0) {
+        container.innerHTML = `<p class="text-gray-500 col-span-3 text-center">No schemes found</p>`;
+        document.getElementById("pageNumber").innerText = `0 / 0`;
+        return;
+      }
+
+      let cardsHTML = "";
       pageData.forEach(s => {
-        container.innerHTML += `
-          <div class="scheme-card bg-white p-6 rounded-xl shadow">
-
-            <h3 class="text-lg font-bold text-blue-700 mb-2">
-              ${s.name}
-            </h3>
-
-            <p class="text-gray-600 mb-2">
-              ${s.description || "No description available"}
-            </p>
-
-            <p class="text-sm text-gray-500 mb-3">
-              ${s.category || "General"}
-            </p>
-
-            <a href="${s.link || '#'}" target="_blank"
-              class="text-blue-600 font-semibold hover:underline">
+        cardsHTML += `
+          <div class="scheme-card bg-white p-6 rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+            <h3 class="text-lg font-bold text-blue-700 mb-2">${s.name}</h3>
+            <p class="text-gray-600 mb-2">${s.description || "No description available"}</p>
+            <p class="text-sm text-gray-500 mb-3">${s.category || "General"}</p>
+            <a href="${s.link || '#'}" target="_blank" class="text-blue-600 font-semibold hover:underline">
               Learn More →
             </a>
-
           </div>
         `;
       });
 
+      container.innerHTML = cardsHTML;
+
       const totalPages = Math.ceil(filteredSchemes.length / perPage);
-      document.getElementById("pageNumber").innerText =
-        `${currentPage} / ${totalPages}`;
+      document.getElementById("pageNumber").innerText = `${currentPage} / ${totalPages}`;
+
+      updateButtons();
+    }
+
+    function updateButtons() {
+      const totalPages = Math.ceil(filteredSchemes.length / perPage);
+      document.getElementById("prevBtn").disabled = currentPage === 1;
+      document.getElementById("nextBtn").disabled = currentPage === totalPages || totalPages === 0;
     }
 
     document.getElementById("nextBtn").onclick = () => {
-      if (currentPage * perPage < filteredSchemes.length) {
+      const totalPages = Math.ceil(filteredSchemes.length / perPage);
+      if (currentPage < totalPages) {
         currentPage++;
         displayPage();
       }
@@ -183,12 +111,13 @@
       }
     };
 
-    // 🔍 Search
     document.getElementById("search").addEventListener("input", e => {
       const query = e.target.value.toLowerCase();
 
       filteredSchemes = allSchemes.filter(s =>
-        s.name.toLowerCase().includes(query)
+        s.name.toLowerCase().includes(query) ||
+        (s.description && s.description.toLowerCase().includes(query)) ||
+        (s.category && s.category.toLowerCase().includes(query))
       );
 
       currentPage = 1;
