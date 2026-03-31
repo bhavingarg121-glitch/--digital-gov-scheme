@@ -40,12 +40,7 @@
 
   <!-- JS Script -->
   <script>
-    let allSchemes = [];
-    let filteredSchemes = [];
-    let currentPage = 1;
-    const perPage = 24;
-    // Display logged-in user
-const userArea = document.getElementById('userArea');
+   const userArea = document.getElementById('userArea');
 const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
 if (loggedInUser) {
@@ -74,7 +69,20 @@ fetch('schemes.json')
   .then(data => {
     const container = document.getElementById('schemeContainer');
     container.innerHTML = "";
-    data.forEach(scheme => {
+
+    let filteredData = data;
+    if (categoryFilter) {
+      filteredData = data.filter(s => s.category.toLowerCase() === categoryFilter.toLowerCase());
+    }
+
+    if (filteredData.length === 0) {
+      container.innerHTML = `<p class="text-center text-red-500 col-span-3">
+        No schemes found${categoryFilter ? " for " + categoryFilter : ""}.
+      </p>`;
+      return;
+    }
+
+    filteredData.forEach(scheme => {
       const card = document.createElement('div');
       card.className = "p-4 bg-white shadow rounded hover:shadow-lg transition";
       card.innerHTML = `
@@ -91,7 +99,6 @@ fetch('schemes.json')
       '<p class="text-red-500 text-center col-span-3">Failed to load schemes.</p>';
     console.error(err);
   });
-
     // Load schemes JSON for selected category
     function loadCategory(file) {
       const container = document.getElementById("scheme-cards");
@@ -185,8 +192,8 @@ fetch('schemes.json')
 
     <script>
     // Get the category from URL
-    const params = new URLSearchParams(window.location.search);
-    const category = params.get('category');
+const params = new URLSearchParams(window.location.search);
+const categoryFilter = params.get('category');
 
     // Set category title
     const titleEl = document.getElementById('categoryTitle');
