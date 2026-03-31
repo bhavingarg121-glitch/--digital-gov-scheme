@@ -47,16 +47,7 @@
       50% { transform: translateY(-8px); }
     }
 
-    /* Loader */
-    .loader { display: flex; justify-content: center; padding: 30px; }
-    .spinner {
-      border: 4px solid #eee;
-      border-top: 4px solid #2563eb;
-      border-radius: 50%;
-      width: 40px; height: 40px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
+
 
     /* Footer */
     .footer {
@@ -177,6 +168,74 @@
 <div id="schemeContainer" class="grid grid-cols-3 gap-6 p-6"></div>
 
 <script>
+  // Show logged-in user
+const userArea = document.getElementById('userArea');
+const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+if (loggedInUser) {
+  userArea.innerHTML = `
+    <p class="text-gray-700">Hello, <span class="font-bold">${loggedInUser.name}</span></p>
+    <button onclick="logout()" 
+      class="ml-4 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">
+      Logout
+    </button>
+  `;
+} else {
+  userArea.innerHTML = `
+    <a href="login.html" class="text-blue-600 font-semibold hover:underline">Login</a>
+    <a href="register.html" class="text-blue-600 font-semibold hover:underline">Sign Up</a>
+  `;
+}
+
+function logout() {
+  localStorage.removeItem('loggedInUser');
+  window.location.reload();
+}
+
+// Load categories dynamically
+fetch('categories.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('categories-container');
+    container.innerHTML = '';
+
+    if (!data || data.length === 0) {
+      container.innerHTML = '<p class="text-center text-red-500 col-span-2">No categories found.</p>';
+      return;
+    }
+
+    const half = Math.ceil(data.length / 2);
+    const leftCategories = data.slice(0, half);
+    const rightCategories = data.slice(half);
+
+    const leftDiv = document.createElement('div');
+    leftDiv.className = 'flex flex-col space-y-4 md:w-1/2';
+    leftCategories.forEach(cat => {
+      const a = document.createElement('a');
+      a.href = `schemes.html?category=${encodeURIComponent(cat.name)}`;
+      a.className = 'bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold';
+      a.textContent = cat.name;
+      leftDiv.appendChild(a);
+    });
+
+    const rightDiv = document.createElement('div');
+    rightDiv.className = 'flex flex-col space-y-4 md:w-1/2';
+    rightCategories.forEach(cat => {
+      const a = document.createElement('a');
+      a.href = `schemes.html?category=${encodeURIComponent(cat.name)}`;
+      a.className = 'bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold';
+      a.textContent = cat.name;
+      rightDiv.appendChild(a);
+    });
+
+    container.appendChild(leftDiv);
+    container.appendChild(rightDiv);
+  })
+  .catch(err => {
+    const container = document.getElementById('categories-container');
+    container.innerHTML = '<p class="text-center text-red-500">Failed to load categories.</p>';
+    console.error(err);
+  });
 function renderSchemes(data, containerId) {
   const container = document.getElementById(containerId);
   container.innerHTML = "";
@@ -224,9 +283,7 @@ function renderSchemes(data, containerId) {
 
   <!-- Script -->
   <script>
-    const loginForm = document.getElementById('loginForm');
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+    
   // redirect instead of alert
   window.location.href = "index.html";
 });
