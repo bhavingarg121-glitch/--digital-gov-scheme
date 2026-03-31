@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scheme Sathi - Multi Category</title>
+  <title>Scheme Sathi - Schemes</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-blue-50 min-h-screen flex flex-col items-center p-6">
 
-  <header class="bg-blue-600 text-white py-4 px-6 mb-6 shadow">
-    <h1 class="text-3xl font-bold">Scheme Sathi</h1>
-    <p class="mt-1 text-sm text-blue-200">Select a category to view schemes</p>
+  <!-- Header -->
+  <header class="text-center mb-12">
+    <h1 class="text-4xl font-bold text-blue-900">Scheme Sathi</h1>
+    <p class="text-gray-700 mt-2" id="categoryTitle">Loading schemes...</p>
   </header>
-
+  
   <main class="max-w-7xl mx-auto px-4">
 
     <!-- Category Selector -->
@@ -136,45 +137,46 @@
     });
 
     <script>
-    // Get category from URL
+    // Get the category from URL
     const params = new URLSearchParams(window.location.search);
-    const category = params.get('category') || 'Education';
-    document.getElementById('page-title').textContent = `${category} Schemes`;
+    const category = params.get('category');
 
-    // Load JSON
+    // Set category title
+    const titleEl = document.getElementById('categoryTitle');
+    titleEl.textContent = category ? `Schemes for ${category}` : 'All Schemes';
+
+    const container = document.getElementById('schemeContainer');
+
+    // Fetch schemes.json
     fetch('schemes.json')
       .then(res => res.json())
       .then(data => {
-        const container = document.getElementById('schemes-container');
+        // Get schemes of this category
+        const schemes = category ? data[category] || [] : [];
         container.innerHTML = '';
-        const schemes = data[category] || [];
-        if(schemes.length === 0) {
-          container.innerHTML = '<p class="col-span-3 text-center text-red-500">No schemes found.</p>';
+
+        if (schemes.length === 0) {
+          container.innerHTML = '<p class="text-center text-red-500 col-span-full">No schemes found for this category.</p>';
+          return;
         }
+
         schemes.forEach(scheme => {
-          const card = document.createElement('a');
-          card.href = scheme.link;
-          card.target = "_blank";
-          card.className = 'bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105';
-          card.innerHTML = `<h2 class="font-bold text-lg mb-2">${scheme.name}</h2>
-                            <p class="text-gray-700">${scheme.description}</p>`;
+          const card = document.createElement('div');
+          card.className = 'scheme-card bg-white p-6 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-2';
+
+          card.innerHTML = `
+            <h3 class="text-xl font-bold mb-2">${scheme.name}</h3>
+            <p class="text-gray-700 mb-4">${scheme.description}</p>
+            ${scheme.link ? `<a href="${scheme.link}" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">Learn More</a>` : ''}
+          `;
+
           container.appendChild(card);
         });
       })
       .catch(err => {
-        document.getElementById('schemes-container').innerHTML = '<p class="col-span-3 text-center text-red-500">Failed to load schemes.</p>';
+        container.innerHTML = '<p class="text-center text-red-500 col-span-full">Failed to load schemes.</p>';
         console.error(err);
       });
-  
-    // Category button click events
-    document.querySelectorAll(".category-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        loadCategory(btn.dataset.file);
-      });
-    });
-
-    // Load default category on page load
-    window.onload = () => loadCategory('education.json');
   </script>
 
 </body>
