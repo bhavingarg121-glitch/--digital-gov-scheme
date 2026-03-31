@@ -392,43 +392,45 @@ function renderSchemes(data, containerId) {
   </div>
 
   <!-- Script -->
-<script>
-function loadCategory(category) {
-  const container = document.getElementById("schemeContainer");
+  <script>
+fetch('categories.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('categories-container');
+        container.innerHTML = ''; // clear loading text
 
-  container.innerHTML = "<p class='text-center'>Loading...</p>";
+        // Split categories into left and right columns
+        const half = Math.ceil(data.length / 2);
+        const leftCategories = data.slice(0, half);
+        const rightCategories = data.slice(half);
 
-  fetch(`./data/${category}.json`)
-    .then(res => {
-      if (!res.ok) throw new Error("File not found");
-      return res.json();
-    })
-    .then(data => {
-      container.innerHTML = "";
+        // Create left column
+        const leftDiv = document.createElement('div');
+        leftDiv.className = 'flex flex-col space-y-4 md:w-1/2';
+        leftCategories.forEach(cat => {
+          const a = document.createElement('a');
+          a.href = `schemes.html?category=${encodeURIComponent(cat.name)}`;
+          a.className = 'bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold';
+          a.textContent = cat.name;
+          leftDiv.appendChild(a);
+        });
 
-      if (!data || data.length === 0) {
-        container.innerHTML = "<p class='text-gray-600 text-center'>No schemes found</p>";
-        return;
-      }
+        // Create right column
+        const rightDiv = document.createElement('div');
+        rightDiv.className = 'flex flex-col space-y-4 md:w-1/2';
+        rightCategories.forEach(cat => {
+          const a = document.createElement('a');
+          a.href = `schemes.html?category=${encodeURIComponent(cat.name)}`;
+          a.className = 'bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold';
+          a.textContent = cat.name;
+          rightDiv.appendChild(a);
+        });
 
-      data.forEach(scheme => {
-        container.innerHTML += `
-          <div class="bg-white p-5 rounded-xl shadow hover:shadow-xl hover:scale-105 transition duration-300">
-            <h2 class="text-lg font-bold">${scheme.name}</h2>
-            <p class="text-gray-600 mt-2">${scheme.description}</p>
-            <a href="${scheme.link}" target="_blank"
-               class="inline-block mt-3 text-blue-600 font-semibold hover:underline">
-               View Details →
-            </a>
-          </div>
-        `;
+        container.appendChild(leftDiv);
+        container.appendChild(rightDiv);
+      })
+      .catch(err => {
+        document.getElementById('categories-container').innerHTML = '<p class="text-center text-red-500">Failed to load categories.</p>';
+        console.error(err);
       });
-    })
-    .catch(err => {
-      console.error(err);
-      container.innerHTML =
-        "<p class='text-red-500 text-center'>Failed to load (Check JSON path)</p>";
-    });
-}
-</script>>
-
+  </script>
