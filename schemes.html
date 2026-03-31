@@ -3,16 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Central Schemes</title>
+  <title>Scheme Sathi - Multi Category</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
 
   <header class="bg-blue-600 text-white py-4 px-6 mb-6 shadow">
-    <h1 class="text-3xl font-bold">Scheme Sathi - Central Schemes</h1>
+    <h1 class="text-3xl font-bold">Scheme Sathi</h1>
+    <p class="mt-1 text-sm text-blue-200">Select a category to view schemes</p>
   </header>
 
   <main class="max-w-7xl mx-auto px-4">
+
+    <!-- Category Selector -->
+    <div class="flex gap-4 mb-4">
+      <button class="category-btn px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" data-file="education.json">Education</button>
+      <button class="category-btn px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" data-file="health.json">Health</button>
+      <button class="category-btn px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600" data-file="employment.json">Employment</button>
+    </div>
 
     <!-- Search Bar -->
     <input id="search" type="text" placeholder="Search schemes..." class="border p-2 rounded mb-4 w-full">
@@ -36,11 +44,14 @@
     let currentPage = 1;
     const perPage = 24;
 
-    window.onload = () => {
+    // Load schemes JSON for selected category
+    function loadCategory(file) {
       const container = document.getElementById("scheme-cards");
       container.innerHTML = "<p class='text-blue-500 text-center col-span-3'>Loading schemes...</p>";
+      currentPage = 1;
+      document.getElementById("search").value = ""; // Reset search
 
-      fetch("./schemes.json")
+      fetch(`./${file}`)
         .then(res => res.json())
         .then(data => {
           allSchemes = data;
@@ -52,7 +63,7 @@
           container.innerHTML = "<p class='text-red-500 text-center'>Failed to load schemes</p>";
           console.error(err);
         });
-    };
+    }
 
     function displayPage() {
       const container = document.getElementById("scheme-cards");
@@ -123,6 +134,16 @@
       currentPage = 1;
       displayPage();
     });
+
+    // Category button click events
+    document.querySelectorAll(".category-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        loadCategory(btn.dataset.file);
+      });
+    });
+
+    // Load default category on page load
+    window.onload = () => loadCategory('education.json');
   </script>
 
 </body>
