@@ -194,17 +194,26 @@
 <div class="grid md:grid-cols-3 gap-6 mb-6">
   <div onclick="filterCategory('Education')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-blue-100 hover:shadow-2xl">
     🎓
-    <p class="mt-3 font-semibold text-blue-800">Education</p>
+    <a href="education.html" class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
+      Education
+    </a>
+
   </div>
 
   <div onclick="filterCategory('Employment')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-teal-100 hover:shadow-2xl">
     💼
-    <p class="mt-3 font-semibold text-teal-800">Employment</p>
+   <a href="employment.html" class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
+    Employment
   </div>
+  <!-- employment.html -->
+<script>
+fetch("./employment.json") ...
+</script>
 
   <div onclick="filterCategory('Infrastructure')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-green-100 hover:shadow-2xl">
     🏗️
-    <p class="mt-3 font-semibold text-green-800">Infrastructure</p>
+     <a href="infrastructure.html" class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
+    Infratructure
   </div>
 </div>
 
@@ -212,28 +221,27 @@
 <div class="grid md:grid-cols-3 gap-6">
   <div onclick="filterCategory('Farmers')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-yellow-100 hover:shadow-2xl">
     🚜
-    <p class="mt-3 font-semibold text-yellow-800">Farmers</p>
+      <a href="farmers.html" class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
+    Farmers
   </div>
 
-  <div onclick="filterCategory('Agriculture')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-lime-100 hover:shadow-2xl">
+  <div onclick="filterCategory('Health')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-lime-100 hover:shadow-2xl">
     🌾
-    <p class="mt-3 font-semibold text-lime-800">Agriculture</p>
+    <a href="health.html" class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
+    Health
   </div>
-
+<!-- health.html -->
+<script>
+fetch("./health.json") ...
+</script>
   <!-- ✅ FIXED -->
   <div onclick="loadCategory('women')" class="rounded-lg shadow-lg p-6 text-center cursor-pointer transition transform hover:scale-105 hover:animate-bounce bg-pink-100 hover:shadow-2xl">
     👩
-    <p class="mt-3 font-semibold text-pink-800">Women</p>
+      <a href="women.html" class="block p-6 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 text-center font-bold text-lg">
+    Women
   </div>
 </div>
 
-<!-- Buttons (optional) -->
-<div class="flex gap-4 justify-center my-6">
-  <button onclick="loadCategory('employment.json')" class="bg-pink-500 text-white px-4 py-2 rounded">Employment</button>
-  <button onclick="loadCategory('education.json')" class="bg-yellow-500 text-white px-4 py-2 rounded">Education</button>
-  <button onclick="loadCategory('health.json')" class="bg-green-500 text-white px-4 py-2 rounded">Health</button>
-  <button onclick="loadCategory('infrastructure')" class="bg-blue-500 text-white px-4 py-2 rounded">Infrastructure</button>
-</div>
 
 <!-- Output -->
 <div id="schemeContainer" class="grid grid-cols-3 gap-6 p-6"></div>
