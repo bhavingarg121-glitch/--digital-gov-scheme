@@ -190,36 +190,6 @@
     <h2 class="text-2xl font-bold mb-6 text-center">Categories</h2>
 
    
-    <!-- First Row -->
-<!-- Left side categories -->
-    <div class="flex flex-col space-y-4 md:w-1/2">
-      <a href="schemes.html?category=Education" class="category-card bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold">
-        Education
-      </a>
-      <a href="schemes.html?category=Health" class="category-card bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold">
-        Health
-      </a>
-      <a href="schemes.html?category=Employment" class="category-card bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold">
-        Employment
-      </a>
-    </div>
-
-    <!-- Right side categories -->
-    <div class="flex flex-col space-y-4 md:w-1/2">
-      <a href="schemes.html?category=Infrastructure" class="category-card bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold">
-        Infrastructure
-      </a>
-      <a href="schemes.html?category=Agriculture" class="category-card bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold">
-        Agriculture
-      </a>
-      <a href="schemes.html?category=Social Welfare" class="category-card bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold">
-        Social Welfare
-      </a>
-    </div>
-
-  </div>
-
-
 
 <!-- Output Container -->
 <div id="schemeContainer" class="grid grid-cols-3 gap-6 p-6"></div>
@@ -272,44 +242,52 @@ function renderSchemes(data, containerId) {
 
   <!-- Script -->
   <script>
-fetch('categories.json')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('categories-container');
-        container.innerHTML = ''; // clear loading text
+  // Fetch categories dynamically
+  fetch('categories.json')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('categories-container');
+      container.innerHTML = ''; // clear loading text
 
-        // Split categories into left and right columns
-        const half = Math.ceil(data.length / 2);
-        const leftCategories = data.slice(0, half);
-        const rightCategories = data.slice(half);
+      if (!data || data.length === 0) {
+        container.innerHTML = '<p class="text-center text-red-500">No categories found.</p>';
+        return;
+      }
 
-        // Create left column
-        const leftDiv = document.createElement('div');
-        leftDiv.className = 'flex flex-col space-y-4 md:w-1/2';
-        leftCategories.forEach(cat => {
-          const a = document.createElement('a');
-          a.href = `schemes.html?category=${encodeURIComponent(cat.name)}`;
-          a.className = 'bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold';
-          a.textContent = cat.name;
-          leftDiv.appendChild(a);
-        });
+      // Split categories into two columns
+      const half = Math.ceil(data.length / 2);
+      const leftCategories = data.slice(0, half);
+      const rightCategories = data.slice(half);
 
-        // Create right column
-        const rightDiv = document.createElement('div');
-        rightDiv.className = 'flex flex-col space-y-4 md:w-1/2';
-        rightCategories.forEach(cat => {
-          const a = document.createElement('a');
-          a.href = `schemes.html?category=${encodeURIComponent(cat.name)}`;
-          a.className = 'bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold';
-          a.textContent = cat.name;
-          rightDiv.appendChild(a);
-        });
-
-        container.appendChild(leftDiv);
-        container.appendChild(rightDiv);
-      })
-      .catch(err => {
-        document.getElementById('categories-container').innerHTML = '<p class="text-center text-red-500">Failed to load categories.</p>';
-        console.error(err);
+      // Create left column
+      const leftDiv = document.createElement('div');
+      leftDiv.className = 'flex flex-col space-y-4 md:w-1/2';
+      leftCategories.forEach(cat => {
+        const a = document.createElement('a');
+        a.href = `schemes.html?category=${encodeURIComponent(cat.name)}`;
+        a.className = 'bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold';
+        a.textContent = cat.name;
+        leftDiv.appendChild(a);
       });
-  </script>
+
+      // Create right column
+      const rightDiv = document.createElement('div');
+      rightDiv.className = 'flex flex-col space-y-4 md:w-1/2';
+      rightCategories.forEach(cat => {
+        const a = document.createElement('a');
+        a.href = `schemes.html?category=${encodeURIComponent(cat.name)}`;
+        a.className = 'bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold';
+        a.textContent = cat.name;
+        rightDiv.appendChild(a);
+      });
+
+      // Append both columns to container
+      container.appendChild(leftDiv);
+      container.appendChild(rightDiv);
+    })
+    .catch(err => {
+      const container = document.getElementById('categories-container');
+      container.innerHTML = '<p class="text-center text-red-500">Failed to load categories.</p>';
+      console.error(err);
+    });
+</script>
