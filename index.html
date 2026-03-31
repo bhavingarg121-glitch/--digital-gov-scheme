@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scheme Sathi</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Optional custom CSS -->
   <style>
-
-
-  body {
-    background: #f1f5f9;
-    color: #1f2937;
-  }
-
     /* Sidebar */
     .sidebar {
       width: 240px;
@@ -30,7 +26,7 @@
     }
     .sidebar a:hover { background: #334155; }
 
-    /* Main */
+    /* Main content margin for sidebar */
     .main { margin-left: 240px; }
 
     /* Cards */
@@ -49,13 +45,6 @@
     @keyframes soft-bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
-    }
-
-    /* Gradient Hero */
-    .glass {
-      background: linear-gradient(135deg, #3b82f6, #6366f1);
-      color: white;
-      border-radius: 12px;
     }
 
     /* Loader */
@@ -81,7 +70,7 @@
     .footer a:hover { color: white; }
   </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-blue-50 min-h-screen flex flex-col items-center p-6">
 
   <!-- Sidebar -->
   <div class="sidebar">
@@ -240,52 +229,56 @@ function renderSchemes(data, containerId) {
 
   <!-- Script -->
   <script>
-  // Fetch categories dynamically
-  fetch('categories.json')
-    .then(res => res.json())
-    .then(data => {
-      const container = document.getElementById('categories-container');
-      container.innerHTML = ''; // clear loading text
+    const loadBtn = document.getElementById('loadBtn');
+    const container = document.getElementById('categories-container');
 
-      if (!data || data.length === 0) {
-        container.innerHTML = '<p class="text-center text-red-500">No categories found.</p>';
-        return;
-      }
+    loadBtn.addEventListener('click', () => {
+      loadBtn.classList.add('hidden');
+      container.classList.remove('hidden');
 
-      // Split categories into two columns
-      const half = Math.ceil(data.length / 2);
-      const leftCategories = data.slice(0, half);
-      const rightCategories = data.slice(half);
+      fetch('categories.json')
+        .then(res => res.json())
+        .then(data => {
+          container.innerHTML = '';
+          if (!data || data.length === 0) {
+            container.innerHTML = '<p class="text-center text-red-500">No categories found.</p>';
+            return;
+          }
 
-      // Create left column
-      const leftDiv = document.createElement('div');
-      leftDiv.className = 'flex flex-col space-y-4 md:w-1/2';
-      leftCategories.forEach(cat => {
-        const a = document.createElement('a');
-        a.href = `schemes.html?category=${encodeURIComponent(cat.name)}`;
-        a.className = 'bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold';
-        a.textContent = cat.name;
-        leftDiv.appendChild(a);
-      });
+          const half = Math.ceil(data.length / 2);
+          const leftCategories = data.slice(0, half);
+          const rightCategories = data.slice(half);
 
-      // Create right column
-      const rightDiv = document.createElement('div');
-      rightDiv.className = 'flex flex-col space-y-4 md:w-1/2';
-      rightCategories.forEach(cat => {
-        const a = document.createElement('a');
-        a.href = `schemes.html?category=${encodeURIComponent(cat.name)}`;
-        a.className = 'bg-white p-4 rounded shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold';
-        a.textContent = cat.name;
-        rightDiv.appendChild(a);
-      });
+          const leftDiv = document.createElement('div');
+          leftDiv.className = 'flex flex-col space-y-4 md:w-1/2';
+          leftCategories.forEach(cat => {
+            const a = document.createElement('a');
+            a.href = `schemes.html?category=${encodeURIComponent(cat.name)}`;
+            a.className = 'bg-white p-6 rounded-lg shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold text-blue-900';
+            a.textContent = cat.name;
+            leftDiv.appendChild(a);
+          });
 
-      // Append both columns to container
-      container.appendChild(leftDiv);
-      container.appendChild(rightDiv);
-    })
-    .catch(err => {
-      const container = document.getElementById('categories-container');
-      container.innerHTML = '<p class="text-center text-red-500">Failed to load categories.</p>';
-      console.error(err);
+          const rightDiv = document.createElement('div');
+          rightDiv.className = 'flex flex-col space-y-4 md:w-1/2';
+          rightCategories.forEach(cat => {
+            const a = document.createElement('a');
+            a.href = `schemes.html?category=${encodeURIComponent(cat.name)}`;
+            a.className = 'bg-white p-6 rounded-lg shadow hover:shadow-lg transition hover:scale-105 text-center font-semibold text-blue-900';
+            a.textContent = cat.name;
+            rightDiv.appendChild(a);
+          });
+
+          container.appendChild(leftDiv);
+          container.appendChild(rightDiv);
+        })
+        .catch(err => {
+          container.innerHTML = '<p class="text-center text-red-500">Failed to load categories.</p>';
+          console.error(err);
+        });
     });
-</script>
+  </script>
+
+</body>
+</html>
+ 
