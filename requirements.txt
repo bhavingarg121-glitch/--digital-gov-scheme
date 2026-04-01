@@ -4,3 +4,4 @@ requests
 beautifulsoup4
 lxml
 gunicorn
+npm install express body-parser twilio jsonwebtoken dotenv
