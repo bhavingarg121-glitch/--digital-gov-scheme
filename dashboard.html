@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - SchemeSathi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <!-- Top Navigation -->
+  <header class="bg-blue-600 text-white px-6 py-4 flex justify-between items-center shadow">
+    <h1 class="text-xl font-bold">SchemeSathi Dashboard</h1>
+    <nav class="space-x-4 flex items-center">
+      <a href="#schemes" class="hover:underline">Schemes</a>
+      <a href="#pensions" class="hover:underline">Pensions</a>
+      <a href="#news" class="hover:underline">News</a>
+      <button
+        onclick="logout()"
+        class="ml-4 bg-red-600 px-3 py-1 rounded hover:bg-red-700 transition"
+      >
+        Logout
+      </button>
+    </nav>
+  </header>
+
+  <!-- Guest Banner -->
+  <div id="guestBanner" class="hidden bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4">
+    <p class="font-semibold">Guest Mode:</p>
+    <p>You are browsing in guest mode. Some features are restricted 🔒</p>
+  </div>
+
+  <!-- Main Content -->
+  <main class="p-6">
+    <!-- Schemes Section -->
+    <section id="schemes" class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Featured Schemes</h2>
+      <div id="schemesList" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+    </section>
+
+    <!-- Pension Section -->
+    <section id="pensions" class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Pension Schemes</h2>
+      <div id="pensionsList" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news">
+      <h2 class="text-2xl font-semibold mb-4">Latest News</h2>
+      <div id="newsList" class="space-y-4"></div>
+    </section>
+  </main>
+
+  <script>
+    // Check guest mode
+    const guestMode = sessionStorage.getItem("guestMode") === "true";
+    if (guestMode) {
+      document.getElementById("guestBanner").classList.remove("hidden");
+    }
+
+    // Fetch dashboard data
+    async function loadDashboard() {
+      try {
+        const res = await fetch("/api/dashboard-data");
+        const data = await res.json();
+
+        // Schemes
+        const schemesList = document.getElementById("schemesList");
+        data.schemes.forEach((scheme) => {
+          const card = document.createElement("div");
+          card.className = "bg-white p-4 rounded shadow hover:shadow-lg transition";
+          card.innerHTML = `
+            <h3 class="font-bold">${scheme.title}</h3>
+            <p class="text-sm text-gray-600">${scheme.description}</p>
+            ${
+              guestMode && scheme.restricted
+                ? '<p class="text-xs text-red-600 mt-2">🔒 Login required to access details</p>'
+                : ""
+            }
+          `;
+          schemesList.appendChild(card);
+        });
+
+        // Pensions
+        const pensionsList = document.getElementById("pensionsList");
+        data.pensions.forEach((pension) => {
+          const card = document.createElement("div");
+          card.className = "bg-white p-4 rounded shadow hover:shadow-lg transition";
+          card.innerHTML = `
+            <h3 class="font-bold">${pension.title}</h3>
+            <p class="text-sm text-gray-600">${pension.description}</p>
+            ${
+              guestMode && pension.restricted
+                ? '<p class="text-xs text-red-600 mt-2">🔒 Login required to view eligibility</p>'
+                : ""
+            }
+          `;
+          pensionsList.appendChild(card);
+        });
+
+        // News
+        const newsList = document.getElementById("newsList");
+        data.news.forEach((item) => {
+          const card = document.createElement("div");
+          card.className = "bg-white p-4 rounded shadow hover:shadow-lg transition";
+          card.innerHTML = `
+            <h3 class="font-bold">${item.headline}</h3>
+            <p class="text-sm text-gray-600">${item.summary}</p>
+          `;
+          newsList.appendChild(card);
+        });
+      } catch (err) {
+        console.error("Error loading dashboard data", err);
+      }
+    }
+
+    loadDashboard();
+
+    // Logout
+    function logout() {
+      sessionStorage.removeItem("guestMode");
+      sessionStorage.removeItem("authToken");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
