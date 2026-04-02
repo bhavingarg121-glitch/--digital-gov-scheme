@@ -11,3 +11,6 @@ CREATE TABLE otps (
   otp VARCHAR(6) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+-- seed.sql
+INSERT INTO users (phone) VALUES ('9876543210'), ('user@example.com');
+INSERT INTO otps (phone, otp) VALUES ('9876543210', '123456');
