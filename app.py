@@ -1,0 +1,13 @@
+from flask import Flask, jsonify
+import json
+
+app = Flask(__name__)
+
+@app.route('/schemes')
+def get_schemes():
+    with open('schemes.json') as f:
+        data = json.load(f)
+    return jsonify(data)
+
+if __name__ == '__main__':
+    app.run(debug=True)
