@@ -40,3 +40,38 @@ export default function ApplicationCard({ application }) {
     </div>
   );
 }
+const express = require("express");
+const router = express.Router();
+const db = require("../db");
+
+// Get user applications
+router.get("/:userId", async (req, res) => {
+  try {
+    const result = await db.query(
+      `SELECT a.application_id, a.status, a.applied_at, s.title AS scheme_title, s.official_link
+       FROM applications a 
+       JOIN schemes s ON a.scheme_id = s.scheme_id 
+       WHERE a.user_id = $1`,
+      [req.params.userId]
+    );
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Apply for a scheme
+router.post("/", async (req, res) => {
+  const { user_id, scheme_id } = req.body;
+  try {
+    await db.query(
+      "INSERT INTO applications (user_id, scheme_id) VALUES ($1, $2)",
+      [user_id, scheme_id]
+    );
+    res.json({ message: "Application submitted" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+module.exports = router;
