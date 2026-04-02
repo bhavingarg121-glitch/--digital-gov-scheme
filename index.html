@@ -6,6 +6,45 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-900">
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
+  <!-- Utility Bar -->
+  <div class="flex justify-end items-center bg-gray-100 px-4 py-2 text-sm">
+    <button class="mr-4">English</button>
+    <a href="/login" class="mr-2">Login</a>
+    <a href="/register">Register</a>
+    <span class="ml-4">🔔</span>
+  </div>
+
+  <!-- Main Header -->
+  <div class="flex justify-between items-center px-6 py-4">
+    <h1 class="text-xl font-bold text-blue-900">SchemeSathi</h1>
+    <p class="hidden md:block italic text-gray-600">Your trusted guide to government schemes</p>
+
+    <!-- Hamburger Button -->
+    <button @click="open = !open" class="md:hidden text-2xl">
+      ☰
+    </button>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex space-x-6">
+      <a href="/" class="hover:text-blue-600">Home</a>
+      <a href="/schemes" class="hover:text-blue-600">Schemes</a>
+      <a href="/scholarships" class="hover:text-blue-600">Scholarships</a>
+      <a href="/pension" class="hover:text-blue-600">Pension</a>
+      <a href="/news" class="hover:text-blue-600">News</a>
+      <a href="/contact" class="hover:text-blue-600">Contact</a>
+    </nav>
+  </div>
+   <!-- Mobile Navigation -->
+  <div x-show="open" class="md:hidden bg-gray-50 px-6 py-4 space-y-4">
+    <a href="/" class="block hover:text-blue-600">Home</a>
+    <a href="/schemes" class="block hover:text-blue-600">Schemes</a>
+    <a href="/scholarships" class="block hover:text-blue-600">Scholarships</a>
+    <a href="/pension" class="block hover:text-blue-600">Pension</a>
+    <a href="/news" class="block hover:text-blue-600">News</a>
+    <a href="/contact" class="block hover:text-blue-600">Contact</a>
+  </div>
+
 
   <!-- Banner / Hero -->
   <header class="bg-blue-700 text-white py-12 text-center shadow-md">
@@ -40,11 +79,7 @@
     </div>
   </section>
 
-  <!-- Available Schemes -->
-  <main class="p-8">
-    <h2 class="text-2xl font-semibold mb-6 text-center">Available Schemes</h2>
-    <div id="schemes" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
-  </main>
+ 
 
   <!-- Footer -->
   <footer class="bg-blue-700 text-white text-center p-6 mt-12">
