@@ -1,58 +1,44 @@
-const { Pool } = require("pg");
-const bcrypt = require("bcrypt");
+import express from "express";
+import bodyParser from "body-parser";
 
-// Database connection
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASS,
-  port: 5432,
-});
-
-// Save user after OTP verification
-app.post("/register", async (req, res) => {
-  const { phone, name, email, password } = req.body;
-  try {
-    const passwordHash = await bcrypt.hash(password, 10);
-
-    const result = await pool.query(
-      "INSERT INTO users (phone, name, email, password_hash) VALUES ($1, $2, $3, $4) RETURNING user_id",
-      [phone, name, email, passwordHash]
-    );
-
-    res.json({ message: "User registered successfully", userId: result.rows[0].user_id });
-  } catch (err) {
-    res.status(500).json({ error: "Failed to register user" });
-  }
-});
-
-// Fetch user profile (after login)
-app.get("/profile/:phone", async (req, res) => {
-  const { phone } = req.params;
-  try {
-    const result = await pool.query("SELECT * FROM users WHERE phone=$1", [phone]);
-    if (result.rows.length === 0) return res.status(404).json({ error: "User not found" });
-    res.json(result.rows[0]);
-  } catch (err) {
-    res.status(500).json({ error: "Failed to fetch profile" });
-  }
-});
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
-
-dotenv.config();
 const app = express();
+app.use(bodyParser.json());
 
-app.use(cors());
-app.use(express.json());
+// Temporary in-memory store (replace with DB later)
+let otpStore = {};
+let users = [];
 
-// Routes
-app.use("/api/schemes", require("./routes/schemes"));
-app.use("/api/favorites", require("./routes/favorites"));
-app.use("/api/applications", require("./routes/applications"));
-app.use("/api/notifications", require("./routes/notifications"));
+// Send OTP
+app.post("/api/send-otp", (req, res) => {
+  const { phone } = req.body;
+  const otp = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit OTP
+  otpStore[phone] = otp;
+  console.log(`OTP for ${phone}: ${otp}`); // In real app, send via SMS/email
+  res.json({ success: true, message: "OTP sent!" });
+});
 
+// Verify OTP
+app.post("/api/verify-otp", (req, res) => {
+  const { phone, otp } = req.body;
+  if (otpStore[phone] && otpStore[phone] === otp) {
+    delete otpStore[phone]; // clear after use
+    res.json({ success: true, message: "Login successful!" });
+  } else {
+    res.json({ success: false, message: "Invalid OTP." });
+  }
+});
+
+// Register new user
+app.post("/api/register", (req, res) => {
+  const { phone } = req.body;
+  if (users.includes(phone)) {
+    res.json({ success: false, message: "User already exists." });
+  } else {
+    users.push(phone);
+    res.json({ success: true, message: "Registration successful!" });
+  }
+});
+
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
