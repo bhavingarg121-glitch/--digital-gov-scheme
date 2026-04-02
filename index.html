@@ -6,16 +6,52 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-900">
-  <header class="bg-blue-600 text-white p-4">
-    <h1 class="text-2xl font-bold">SchemeSathi</h1>
-    <p class="text-sm">Explore government schemes easily</p>
+
+  <!-- Banner / Hero -->
+  <header class="bg-blue-700 text-white py-12 text-center shadow-md">
+    <h1 class="text-4xl font-bold">SchemeSathi</h1>
+    <p class="mt-2 text-lg">Explore Government Schemes Easily</p>
+    <div class="mt-6">
+      <a href="#schemes" class="bg-white text-blue-700 px-6 py-2 rounded font-semibold shadow hover:bg-gray-100">
+        Browse Schemes
+      </a>
+    </div>
   </header>
 
-  <main class="p-6">
-    <h2 class="text-xl font-semibold mb-4">Available Schemes</h2>
-    <div id="schemes" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3"></div>
+  <!-- Featured Schemes -->
+  <section class="p-8 bg-white shadow-md">
+    <h2 class="text-2xl font-semibold mb-6 text-center">Featured Schemes</h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div class="bg-blue-50 p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-lg font-bold mb-2">Pradhan Mantri Jan Dhan Yojana</h3>
+        <p class="text-sm mb-3">Financial inclusion program offering bank accounts and insurance.</p>
+        <a href="https://pmjdy.gov.in/" target="_blank" class="text-blue-600 underline">Learn More</a>
+      </div>
+      <div class="bg-blue-50 p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-lg font-bold mb-2">Ayushman Bharat</h3>
+        <p class="text-sm mb-3">Health insurance scheme for economically weaker sections.</p>
+        <a href="https://pmjay.gov.in/" target="_blank" class="text-blue-600 underline">Learn More</a>
+      </div>
+      <div class="bg-blue-50 p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-lg font-bold mb-2">National Pension Scheme</h3>
+        <p class="text-sm mb-3">Retirement savings scheme for all citizens.</p>
+        <a href="https://npscra.nsdl.co.in/" target="_blank" class="text-blue-600 underline">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Available Schemes -->
+  <main class="p-8">
+    <h2 class="text-2xl font-semibold mb-6 text-center">Available Schemes</h2>
+    <div id="schemes" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
   </main>
 
+  <!-- Footer -->
+  <footer class="bg-blue-700 text-white text-center p-6 mt-12">
+    <p class="text-sm">© 2026 SchemeSathi. Built to make government schemes accessible.</p>
+  </footer>
+
+  <!-- Script -->
   <script>
     fetch("http://127.0.0.1:5000/schemes")
       .then(res => res.json())
@@ -24,15 +60,19 @@
         container.innerHTML = "";
         data.forEach(scheme => {
           container.innerHTML += `
-            <div class="bg-white shadow-md rounded p-4">
-              <h3 class="text-lg font-bold">${scheme.name}</h3>
-              <p class="text-sm mb-2">${scheme.description}</p>
+            <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
+              <h3 class="text-lg font-bold mb-2">${scheme.name}</h3>
+              <p class="text-sm mb-3">${scheme.description}</p>
               <a href="${scheme.link}" target="_blank" class="text-blue-600 underline">Learn More</a>
             </div>
           `;
         });
       })
-      .catch(err => console.error("Error loading schemes:", err));
+      .catch(err => {
+        document.getElementById("schemes").innerHTML =
+          "<p class='text-red-600'>Error loading schemes. Make sure backend is running.</p>";
+        console.error("Error:", err);
+      });
   </script>
 </body>
 </html>
