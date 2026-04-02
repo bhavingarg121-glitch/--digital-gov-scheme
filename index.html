@@ -3,69 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SchemeSathi - Your trusted guide to government schemes</title>
+  <title>SchemeSathi</title>
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Hero background overlay */
+    .hero-bg {
+      background: linear-gradient(rgba(20,40,90,0.8), rgba(20,40,90,0.9)),
+                  url('./Background.png') center/cover no-repeat;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
 
-  <!-- Top Header -->
-  <header class="bg-white shadow-md">
-    <div class="max-w-7xl mx-auto flex justify-between items-center py-3 px-6">
-      <!-- Logo -->
-      <div class="text-xl font-bold text-blue-700">SchemeSathi</div>
+<body class="bg-gray-100">
 
-      <!-- Navigation -->
-      <nav class="hidden md:flex space-x-6 font-medium">
-        <a href="#" class="hover:text-blue-600">Home</a>
-        <a href="#" class="hover:text-blue-600">Schemes</a>
-        <a href="#" class="hover:text-blue-600">Scholarships</a>
-        <a href="#" class="hover:text-blue-600">Pension</a>
-        <a href="#" class="hover:text-blue-600">News & Updates</a>
-        <a href="#" class="hover:text-blue-600">Contact</a>
-      </nav>
-
-      <!-- Actions -->
-      <div class="flex space-x-3">
-        <button class="px-3 py-1 border rounded hover:bg-gray-100">English</button>
-        <button class="px-3 py-1 border rounded hover:bg-gray-100">Login</button>
-        <button class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">Register</button>
-      </div>
+  <!-- Top Bar -->
+  <div class="bg-gray-200 text-sm px-6 py-2 flex justify-between items-center">
+    <div class="flex gap-6">
+      <span>🌐 English</span>
+      <span>👤 Login</span>
+      <span>📝 Register</span>
     </div>
+    <div class="flex gap-4">
+      <span>🔔</span>
+      <span>⚙️</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white text-center py-6 shadow-md">
+    <h1 class="text-4xl font-bold">
+      Scheme<span class="text-orange-400">Sathi</span>
+    </h1>
+    <p class="text-sm mt-2">Your trusted guide to government schemes</p>
   </header>
 
-  <!-- Announcement Banner -->
-  <div class="bg-yellow-100 text-yellow-900 text-center py-2 font-medium">
+  <!-- Navbar -->
+  <nav class="bg-blue-700 text-white">
+    <ul class="flex justify-center gap-10 py-4 text-lg font-medium">
+      <li class="hover:text-orange-300 cursor-pointer">Home</li>
+      <li class="hover:text-orange-300 cursor-pointer">Schemes</li>
+      <li class="hover:text-orange-300 cursor-pointer">Scholarships</li>
+      <li class="hover:text-orange-300 cursor-pointer">Pension</li>
+      <li class="hover:text-orange-300 cursor-pointer">News & Updates</li>
+      <li class="hover:text-orange-300 cursor-pointer">Contact</li>
+    </ul>
+  </nav>
+
+  <!-- Announcement -->
+  <div class="bg-gray-100 text-center py-3 text-blue-800 font-medium">
     📢 New scholarship applications open for 2026!
   </div>
 
-  <!-- Hero Section with Full Background -->
-  <section class="relative bg-[url('Background.png')] bg-cover bg-center py-24">
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-black/40"></div>
+  <!-- Hero Section -->
+  <section class="hero-bg text-white py-24 px-6 text-center">
 
-    <!-- Content -->
-    <div class="relative max-w-4xl mx-auto text-center text-white">
-      <h1 class="text-4xl md:text-5xl font-bold">
-        Empowering Citizens with Trusted Schemes
-      </h1>
-      <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
-        SchemeSathi brings clarity, accessibility, and trust to government programs—your gateway to opportunities.
-      </p>
-      <div class="mt-6">
-        <a href="#"
-           class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">
-           Explore Schemes
-        </a>
-      </div>
-    </div>
+    <h2 class="text-5xl font-bold leading-tight drop-shadow-lg">
+      Empowering Citizens <br>
+      <span class="italic font-semibold">with Trusted Schemes</span>
+    </h2>
+
+    <p class="mt-6 text-lg max-w-2xl mx-auto text-gray-200">
+      <strong>SchemeSathi</strong> brings clarity, accessibility, and trust to
+      government programs—your gateway to opportunities
+    </p>
+
+    <button class="mt-8 bg-white text-blue-700 px-8 py-3 rounded-lg text-lg font-semibold shadow-md hover:bg-gray-200 transition">
+      Explore Schemes
+    </button>
+
   </section>
 
 </body>
 </html>
- 
-    
-
-
  
 
 
