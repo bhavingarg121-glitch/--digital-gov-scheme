@@ -12,6 +12,18 @@ export default function LoginPage() {
   };
 
   const handleVerifyOtp = () => {
+    import Notification from './Notification.js';
+
+function LoginPage() {
+  const [message, setMessage] = useState('');
+
+  return (
+    <Layout>
+      <Notification message={message} />
+      {/* Login form */}
+    </Layout>
+  );
+}
     // Call backend API to verify OTP
     alert("Login successful!");
   };
