@@ -1,13 +1,39 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "./Layout.js";
 import Notification from "./Notification.js";
 
 export default function LoginPage() {
+  const [activeTab, setActiveTab] = useState("email"); // "email" or "otp"
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
-  const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
+  // Email/Password login
+  const handleEmailLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      setMessage(data.message);
+      if (data.success) {
+        sessionStorage.removeItem("guestMode");
+        navigate("/dashboard");
+      }
+    } catch {
+      setMessage("Error logging in. Please try again.");
+    }
+  };
+
+  // OTP flow
   const handleSendOtp = async () => {
     try {
       const res = await fetch("/api/send-otp", {
@@ -33,30 +59,18 @@ export default function LoginPage() {
       const data = await res.json();
       setMessage(data.message);
       if (data.success) {
-        window.location.href = "dashboard.html";
+        sessionStorage.removeItem("guestMode");
+        navigate("/dashboard");
       }
     } catch {
       setMessage("Error verifying OTP. Please try again.");
     }
   };
 
-  const handleRegister = async () => {
-    try {
-      const res = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone }),
-      });
-      const data = await res.json();
-      setMessage(data.message);
-    } catch {
-      setMessage("Error registering. Please try again.");
-    }
-  };
-
   const skipLogin = () => {
+    sessionStorage.setItem("guestMode", "true");
     setMessage("Guest mode activated.");
-    window.location.href = "dashboard.html"; // limited access interface
+    navigate("/dashboard");
   };
 
   return (
@@ -66,57 +80,104 @@ export default function LoginPage() {
           <h1 className="text-2xl font-bold mb-6 text-center">Login</h1>
           <Notification message={message} />
 
-          {!otpSent ? (
-            <>
+          {/* Tabs */}
+          <div className="flex mb-6 border-b">
+            <button
+              className={`flex-1 py-2 ${
+                activeTab === "email"
+                  ? "border-b-2 border-blue-600 font-semibold"
+                  : "text-gray-500"
+              }`}
+              onClick={() => setActiveTab("email")}
+            >
+              Email Login
+            </button>
+            <button
+              className={`flex-1 py-2 ${
+                activeTab === "otp"
+                  ? "border-b-2 border-blue-600 font-semibold"
+                  : "text-gray-500"
+              }`}
+              onClick={() => setActiveTab("otp")}
+            >
+              Phone OTP
+            </button>
+          </div>
+
+          {/* Email/Password Form */}
+          {activeTab === "email" && (
+            <form onSubmit={handleEmailLogin}>
               <input
-                type="text"
-                placeholder="Enter phone"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full mb-4 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full mb-4 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
               <button
-                onClick={handleSendOtp}
-                className="w-full py-2 mb-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-              >
-                Send OTP
-              </button>
-              <button
-                onClick={handleRegister}
-                className="w-full py-2 mb-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
-              >
-                Register
-              </button>
-              <button
-                onClick={skipLogin}
-                className="w-full py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition"
-              >
-                Skip Login (Guest Mode)
-              </button>
-            </>
-          ) : (
-            <>
-              <input
-                type="text"
-                placeholder="Enter OTP"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-                className="w-full mb-4 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button
-                onClick={handleVerifyOtp}
+                type="submit"
                 className="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
               >
-                Verify OTP
+                Login
               </button>
-              <button
-                onClick={skipLogin}
-                className="w-full py-2 mt-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition"
-              >
-                Skip Login (Guest Mode)
-              </button>
+            </form>
+          )}
+
+          {/* OTP Form */}
+          {activeTab === "otp" && (
+            <>
+              {!otpSent ? (
+                <>
+                  <input
+                    type="text"
+                    placeholder="Enter phone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full mb-4 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <button
+                    onClick={handleSendOtp}
+                    className="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                  >
+                    Send OTP
+                  </button>
+                </>
+              ) : (
+                <>
+                  <input
+                    type="text"
+                    placeholder="Enter OTP"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    className="w-full mb-4 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <button
+                    onClick={handleVerifyOtp}
+                    className="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                  >
+                    Verify OTP
+                  </button>
+                </>
+              )}
             </>
           )}
+
+          {/* Guest Mode */}
+          <button
+            onClick={skipLogin}
+            className="w-full mt-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition"
+          >
+            Skip Login (Guest Mode)
+          </button>
         </div>
       </div>
     </Layout>
