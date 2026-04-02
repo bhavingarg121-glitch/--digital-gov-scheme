@@ -94,3 +94,45 @@ export default function LoginPage() {
     </div>
   );
 }
+import axios from "axios";
+
+const API_BASE = "http://localhost:5000/api"; // adjust if deployed
+
+// Schemes
+export const getSchemes = async () => {
+  const res = await axios.get(`${API_BASE}/schemes`);
+  return res.data;
+};
+
+// Favorites
+export const getFavorites = async (userId) => {
+  const res = await axios.get(`${API_BASE}/favorites/${userId}`);
+  return res.data;
+};
+
+export const addFavorite = async (userId, schemeId) => {
+  const res = await axios.post(`${API_BASE}/favorites`, { user_id: userId, scheme_id: schemeId });
+  return res.data;
+};
+
+// Applications
+export const getApplications = async (userId) => {
+  const res = await axios.get(`${API_BASE}/applications/${userId}`);
+  return res.data;
+};
+
+export const applyScheme = async (userId, schemeId) => {
+  const res = await axios.post(`${API_BASE}/applications`, { user_id: userId, scheme_id: schemeId });
+  return res.data;
+};
+
+// Notifications
+export const getNotifications = async (userId) => {
+  const res = await axios.get(`${API_BASE}/notifications/${userId}`);
+  return res.data;
+};
+
+export const markNotificationRead = async (notificationId) => {
+  const res = await axios.put(`${API_BASE}/notifications/${notificationId}/read`);
+  return res.data;
+};
