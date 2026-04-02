@@ -32,3 +32,33 @@ export default function NotificationCard({ notification, onMarkRead }) {
     </div>
   );
 }
+const express = require("express");
+const router = express.Router();
+const db = require("../db");
+
+// Get user notifications
+router.get("/:userId", async (req, res) => {
+  try {
+    const result = await db.query(
+      "SELECT * FROM notifications WHERE user_id = $1 ORDER BY created_at DESC",
+      [req.params.userId]
+    );
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Mark notification as read
+router.put("/:id/read", async (req, res) => {
+  try {
+    await db.query("UPDATE notifications SET is_read = TRUE WHERE notification_id = $1", [
+      req.params.id,
+    ]);
+    res.json({ message: "Notification marked as read" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+module.exports = router;
