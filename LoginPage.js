@@ -20,6 +20,15 @@ function LoginPage() {
   return (
     <Layout>
       <Notification message={message} />
+    import Layout from './Layout.js';
+
+function LoginPage() {
+  return (
+    <Layout>
+      {/* Login form and logic here */}
+    </Layout>
+  );
+}
       {/* Login form */}
     </Layout>
   );
