@@ -4,9 +4,7 @@ import bodyParser from "body-parser";
 const app = express();
 app.use(bodyParser.json());
 
-// Temporary in-memory store (replace with DB later)
-let otpStore = {};
-let users = [];
+
 
 // Send OTP
 app.post("/api/send-otp", (req, res) => {
