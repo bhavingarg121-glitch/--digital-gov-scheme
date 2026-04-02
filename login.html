@@ -3,48 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SchemeSathi - Login</title>
+  <title>Login - SchemeSathi</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-100 via-blue-50 to-indigo-200">
-
-  <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
-    <h2 class="text-2xl font-bold text-center text-indigo-700 mb-6">
-      SchemeSathi Login
-    </h2>
-
-    <!-- Phone/Email Input -->
-    <input
-      type="text"
-      id="phone"
-      placeholder="Enter phone/email"
-      class="w-full px-4 py-2 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-400"
-    />
-
-    <!-- OTP Input -->
-    <input
-      type="text"
-      id="otp"
-      placeholder="Enter OTP"
-      class="w-full px-4 py-2 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-400"
-    />
-
-    <!-- Buttons -->
-    <div class="space-y-3">
-      <button onclick="sendOtp()" class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
-        Send OTP
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-center">Login</h1>
+    <form>
+      <input type="email" placeholder="Email" class="w-full mb-4 px-3 py-2 border rounded">
+      <input type="password" placeholder="Password" class="w-full mb-4 px-3 py-2 border rounded">
+      <button type="submit" class="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        Login
       </button>
-      <button onclick="verifyOtp()" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
-        Verify OTP
-      </button>
-      <button onclick="registerUser()" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-        Register
-      </button>
-      <button onclick="skipLogin()" class="w-full text-gray-600 underline hover:text-indigo-600">
-        Skip for now
-      </button>
-    </div>
+    </form>
   </div>
+</body>
+</html>
 
   <script>
     async function sendOtp() {
