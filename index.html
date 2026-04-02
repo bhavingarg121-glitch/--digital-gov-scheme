@@ -3,147 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SchemeSathi - Your trusted guide to government schemes</title>
+  <title>SchemeSathi</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .hero-bg {
+      background: linear-gradient(to right, rgba(10,40,100,0.9), rgba(10,40,100,0.7)),
+                  url('./Banner.png') center/cover no-repeat;
+      min-height: 100vh;
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+  </style>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50 text-gray-900">
 
-  <!-- Top Header -->
-  <header class="bg-white shadow-md">
-    <div class="max-w-7xl mx-auto flex justify-between items-center py-3 px-6">
-      <!-- Logo -->
-      <div class="text-xl font-bold text-blue-700">SchemeSathi</div>
+<body class="bg-gray-100 overflow-x-hidden">
 
-      <!-- Navigation -->
-      <nav class="hidden md:flex space-x-6 font-medium">
-        <a href="#" class="hover:text-blue-600">Home</a>
-        <a href="#" class="hover:text-blue-600">Schemes</a>
-        <a href="#" class="hover:text-blue-600">Scholarships</a>
-        <a href="#" class="hover:text-blue-600">Pension</a>
-        <a href="#" class="hover:text-blue-600">News & Updates</a>
-        <a href="#" class="hover:text-blue-600">Contact</a>
-      </nav>
+<!-- 🔝 Top Bar -->
+<div class="glass text-white px-4 md:px-10 py-3 flex justify-between items-center w-full fixed top-0 z-50">
+  <div class="flex gap-4 md:gap-6 text-xs md:text-sm">
+    <span class="hover:text-orange-300 cursor-pointer">🌐 English</span>
+    <span class="hover:text-orange-300 cursor-pointer">👤 Login</span>
+    <span class="hover:text-orange-300 cursor-pointer">📝 Register</span>
+  </div>
 
-      <!-- Actions -->
-      <div class="flex space-x-3">
-        <button class="px-3 py-1 border rounded hover:bg-gray-100">English</button>
-        <button class="px-3 py-1 border rounded hover:bg-gray-100">Login</button>
-        <button class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">Register</button>
-      </div>
-    </div>
-  </header>
+  <div class="flex gap-4 md:gap-5 text-base md:text-lg">
+    <span>🔔</span>
+    <span>⚙️</span>
+  </div>
+</div>
 
-  <!-- Announcement Banner -->
-  <div class="bg-yellow-100 text-yellow-900 text-center py-2 font-medium">
+<!-- 🎯 Hero Section -->
+<section class="hero-bg flex flex-col pt-16">
+
+  <!-- Logo -->
+  <div class="text-center pt-10 md:pt-16 text-white px-4">
+    <h1 class="text-3xl md:text-5xl font-bold">
+      Scheme<span class="text-orange-400">Sathi</span>
+    </h1>
+    <p class="mt-2 text-sm md:text-base text-gray-200">
+      Your trusted guide to government schemes
+    </p>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="mt-6 overflow-x-auto">
+    <ul class="flex justify-start md:justify-center gap-6 md:gap-12 text-white text-sm md:text-lg font-medium px-4">
+      <li class="whitespace-nowrap hover:text-orange-300 cursor-pointer">Home</li>
+      <li class="whitespace-nowrap hover:text-orange-300 cursor-pointer">Schemes</li>
+      <li class="whitespace-nowrap hover:text-orange-300 cursor-pointer">Scholarships</li>
+      <li class="whitespace-nowrap hover:text-orange-300 cursor-pointer">Pension</li>
+      <li class="whitespace-nowrap hover:text-orange-300 cursor-pointer">News & Updates</li>
+      <li class="whitespace-nowrap hover:text-orange-300 cursor-pointer">Contact</li>
+    </ul>
+  </nav>
+
+  <!-- Announcement -->
+  <div class="mt-4 mx-auto bg-white/20 backdrop-blur-md px-4 md:px-6 py-2 rounded-full text-white text-xs md:text-sm text-center">
     📢 New scholarship applications open for 2026!
   </div>
 
-  <!-- Hero Section with Full Background -->
-  <section class="relative bg-[url('Background.png')] bg-cover bg-center flex items-center justify-center flex-1">
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-black/40"></div>
+  <!-- Hero Content -->
+  <div class="flex-1 flex flex-col justify-center items-center text-center px-4 text-white">
 
-    <!-- Content -->
-    <div class="relative max-w-4xl mx-auto text-center text-white px-6">
-      <h1 class="text-4xl md:text-5xl font-bold">
-        Empowering Citizens with Trusted Schemes
-      </h1>
-      <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
-        SchemeSathi brings clarity, accessibility, and trust to government programs—your gateway to opportunities.
-      </p>
-      <div class="mt-6">
-        <a href="#"
-           class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">
-           Explore Schemes
-        </a>
-      </div>
-    </div>
-  </section>
+    <h2 class="text-2xl md:text-6xl font-bold leading-tight">
+      Empowering Citizens <br>
+      <span class="italic font-semibold">with Trusted Schemes</span>
+    </h2>
 
-  <!-- Featured Schemes Section -->
-  <section class="relative py-16 bg-[url('Background.png')] bg-cover bg-center">
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="relative max-w-7xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-white text-center mb-10">
-        Featured Schemes
-      </h2>
+    <p class="mt-4 md:mt-6 text-sm md:text-lg max-w-2xl text-gray-200">
+      <strong>SchemeSathi</strong> brings clarity, accessibility, and trust to government programs—your gateway to opportunities
+    </p>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Card 1 -->
-        <div class="bg-white/20 backdrop-blur-md rounded-lg p-6 shadow-lg">
-          <h3 class="text-xl font-semibold text-yellow-200">Scholarship Program</h3>
-          <p class="mt-3 text-white">
-            Financial aid opportunities for students across India.
-          </p>
-          <a href="#" class="mt-4 inline-block text-blue-200 font-medium hover:underline">
-            Learn More →
-          </a>
-        </div>
+    <button class="mt-6 md:mt-10 bg-white text-blue-800 px-6 md:px-10 py-3 md:py-4 rounded-xl text-sm md:text-lg font-semibold shadow-lg hover:scale-105 hover:bg-gray-200 transition">
+      Explore Schemes
+    </button>
 
-        <!-- Card 2 -->
-        <div class="bg-white/20 backdrop-blur-md rounded-lg p-6 shadow-lg">
-          <h3 class="text-xl font-semibold text-yellow-200">Pension Scheme</h3>
-          <p class="mt-3 text-white">
-            Secure retirement benefits for senior citizens.
-          </p>
-          <a href="#" class="mt-4 inline-block text-blue-200 font-medium hover:underline">
-            Learn More →
-          </a>
-        </div>
+  </div>
 
-        <!-- Card 3 -->
-        <div class="bg-white/20 backdrop-blur-md rounded-lg p-6 shadow-lg">
-          <h3 class="text-xl font-semibold text-yellow-200">Healthcare Support</h3>
-          <p class="mt-3 text-white">
-            Accessible medical coverage for families in need.
-          </p>
-          <a href="#" class="mt-4 inline-block text-blue-200 font-medium hover:underline">
-            Learn More →
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-8 mt-auto">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
-      <div>
-        <h3 class="text-lg font-semibold text-white">SchemeSathi</h3>
-        <p class="mt-2 text-sm">Your trusted guide to government schemes.</p>
-      </div>
-      <div>
-        <h3 class="text-lg font-semibold text-white">Quick Links</h3>
-        <ul class="mt-2 space-y-2 text-sm">
-          <li><a href="#" class="hover:text-white">Schemes</a></li>
-          <li><a href="#" class="hover:text-white">Scholarships</a></li>
-          <li><a href="#" class="hover:text-white">Pension</a></li>
-          <li><a href="#" class="hover:text-white">News & Updates</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-lg font-semibold text-white">Contact</h3>
-        <p class="mt-2 text-sm">Email: info@schemesathi.in</p>
-        <p class="text-sm">Phone: +91-123-456-7890</p>
-      </div>
-    </div>
-    <div class="text-center text-sm mt-6 border-t border-gray-700 pt-4">
-      © 2026 SchemeSathi. All rights reserved.
-    </div>
-  </footer>
+</section>
 
 </body>
 </html>
-  
-
- 
-
-  <!-- Footer -->
- <footer class="bg-gray-100 text-center py-6 text-sm text-gray-600">
-
-    <p class="text-sm">© 2026 SchemeSathi. Built to make government schemes accessible.</p>
-  </footer>
-
   <!-- Script -->
   <script>
    async function loadSchemes() {
