@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Pradhan Mantri Jan Dhan Yojana",
+    "description": "Financial inclusion program offering bank accounts and insurance.",
+    "link": "https://pmjdy.gov.in/"
+  },
+  {
+    "name": "Ayushman Bharat",
+    "description": "Health insurance scheme for economically weaker sections.",
+    "link": "https://pmjay.gov.in/"
+  },
+  {
+    "name": "National Pension Scheme",
+    "description": "Retirement savings scheme for all citizens.",
+    "link": "https://npscra.nsdl.co.in/"
+  }
+]
