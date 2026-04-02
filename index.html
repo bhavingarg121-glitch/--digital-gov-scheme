@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>SchemeSathi</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
 </head>
 <body class="bg-gray-100 text-gray-900">
 <header class="bg-white shadow-md fixed w-full top-0 z-50">
@@ -18,11 +20,13 @@
 
 
   <!-- Main Header -->
-  <header class="bg-white shadow-md sticky top-0 z-50">
-  <div class="flex justify-between items-center px-6 py-4">
+  <header class="bg-white shadow-md sticky top-0 z-50" x-data="{ open: false }">
+    <div class="flex justify-between items-center px-6 py-4">
     <h1 class="text-2xl font-bold text-blue-900">SchemeSathi</h1>
     <p class="italic text-gray-600 hidden md:block">Your trusted guide to government schemes</p>
-    <button class="md:hidden text-2xl">☰</button>
+            <button @click="open = !open" class="md:hidden text-2xl">☰</button>
+
+  
     <nav class="hidden md:flex space-x-6">
       <a href="/" class="hover:text-blue-600">Home</a>
       <a href="/schemes" class="hover:text-blue-600">Schemes</a>
@@ -32,6 +36,16 @@
       <a href="/contact" class="hover:text-blue-600">Contact</a>
     </nav>
   </div>
+<!-- Mobile Menu -->
+    <div x-show="open" class="md:hidden bg-gray-50 px-6 py-4 space-y-4">
+      <a href="/" class="block hover:text-blue-600">Home</a>
+      <a href="/schemes" class="block hover:text-blue-600">Schemes</a>
+      <a href="/scholarships" class="block hover:text-blue-600">Scholarships</a>
+      <a href="/pension" class="block hover:text-blue-600">Pension</a>
+      <a href="/news" class="block hover:text-blue-600">News & Updates</a>
+      <a href="/contact" class="block hover:text-blue-600">Contact</a>
+    </div>
+
 
 <!-- Big Banner with Cultural Background -->
 <section class="relative bg-blue-900 text-white py-20 text-center overflow-hidden">
@@ -65,56 +79,71 @@
 
 
   <!-- Featured Schemes -->
-  <section class="p-8 bg-white shadow-md">
-    <h2 class="text-2xl font-semibold mb-6 text-center">Featured Schemes</h2>
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <div class="bg-blue-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="text-lg font-bold mb-2">Pradhan Mantri Jan Dhan Yojana</h3>
-        <p class="text-sm mb-3">Financial inclusion program offering bank accounts and insurance.</p>
-        <a href="https://pmjdy.gov.in/" target="_blank" class="text-blue-600 underline">Learn More</a>
+     <section class="py-16 px-6 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-blue-900 text-center mb-12">Featured Schemes</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Card -->
+      <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
+        <h3 class="text-xl font-bold text-blue-900">Pradhan Mantri Jan Dhan Yojana</h3>
+        <p class="mt-2 text-gray-700">Financial inclusion program offering bank accounts and insurance.</p>
+        <a href="#" class="mt-4 inline-block text-blue-600 font-semibold hover:underline">Learn More</a>
       </div>
-      <div class="bg-blue-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="text-lg font-bold mb-2">Ayushman Bharat</h3>
-        <p class="text-sm mb-3">Health insurance scheme for economically weaker sections.</p>
-        <a href="https://pmjay.gov.in/" target="_blank" class="text-blue-600 underline">Learn More</a>
+      <!-- Card -->
+      <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
+        <h3 class="text-xl font-bold text-blue-900">Ayushman Bharat</h3>
+        <p class="mt-2 text-gray-700">Health insurance scheme for economically weaker sections.</p>
+        <a href="#" class="mt-4 inline-block text-blue-600 font-semibold hover:underline">Learn More</a>
       </div>
-      <div class="bg-blue-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="text-lg font-bold mb-2">National Pension Scheme</h3>
-        <p class="text-sm mb-3">Retirement savings scheme for all citizens.</p>
-        <a href="https://npscra.nsdl.co.in/" target="_blank" class="text-blue-600 underline">Learn More</a>
+      <!-- Card -->
+      <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
+        <h3 class="text-xl font-bold text-blue-900">National Pension Scheme</h3>
+        <p class="mt-2 text-gray-700">Retirement savings scheme for all citizens.</p>
+        <a href="#" class="mt-4 inline-block text-blue-600 font-semibold hover:underline">Learn More</a>
       </div>
     </div>
   </section>
 
+
+  
+
  
 
   <!-- Footer -->
-  <footer class="bg-blue-700 text-white text-center p-6 mt-12">
+ <footer class="bg-gray-100 text-center py-6 text-sm text-gray-600">
+
     <p class="text-sm">© 2026 SchemeSathi. Built to make government schemes accessible.</p>
   </footer>
 
   <!-- Script -->
   <script>
-    fetch("http://127.0.0.1:5000/schemes")
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("schemes");
-        container.innerHTML = "";
-        data.forEach(scheme => {
-          container.innerHTML += `
-            <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
-              <h3 class="text-lg font-bold mb-2">${scheme.name}</h3>
-              <p class="text-sm mb-3">${scheme.description}</p>
-              <a href="${scheme.link}" target="_blank" class="text-blue-600 underline">Learn More</a>
-            </div>
-          `;
-        });
-      })
-      .catch(err => {
-        document.getElementById("schemes").innerHTML =
-          "<p class='text-red-600'>Error loading schemes. Make sure backend is running.</p>";
-        console.error("Error:", err);
+   async function loadSchemes() {
+    try {
+      // Fetch schemes from a static JSON file in /public/data/schemes.json
+      const response = await fetch('/data/schemes.json');
+      const schemes = await response.json();
+
+      const container = document.getElementById('schemes-container');
+      container.innerHTML = ""; // clear any existing content
+
+      schemes.forEach(scheme => {
+        const card = document.createElement('div');
+        card.className = "bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition";
+        card.innerHTML = `
+          <h3 class="text-xl font-bold text-blue-900">${scheme.title}</h3>
+          <p class="mt-2 text-gray-700">${scheme.description}</p>
+          <a href="${scheme.link}" class="mt-4 inline-block text-blue-600 font-semibold hover:underline">Learn More</a>
+        `;
+        container.appendChild(card);
       });
-  </script>
-</body>
-</html>
+    } catch (error) {
+      console.error("Error loading schemes:", error);
+      document.getElementById('schemes-container').innerHTML =
+        "<p class='text-red-600'>Error loading schemes. Make sure JSON file is available.</p>";
+    }
+  }
+
+  loadSchemes();
+</script>
+
+  </body>
+  </html>
