@@ -1,17 +1,22 @@
-import React, { useState } from "react";
-import LoginPage from "./LoginPage.js";
-import Dashboard from "./Dashboard.js";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoginPage from "./LoginPage";
+import Dashboard from "./Dashboard";
+import ProtectedRoute from "./ProtectedRoute";
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
-    <>
-      {isLoggedIn ? (
-        <Dashboard />
-      ) : (
-        <LoginPage onLoginSuccess={() => setIsLoggedIn(true)} />
-      )}
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
