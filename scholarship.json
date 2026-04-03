@@ -1,52 +1,63 @@
- [
-    {
-      "title": "National Scholarship Portal (NSP)",
-      "description": "Central platform hosting 650+ scholarships for students from school to university.",
-      "link": "https://scholarships.gov.in/"
-    },
-    {
-      "title": "Central Sector Scheme of Scholarships for College and University Students",
-      "description": "Merit-based scholarships for undergraduate/postgraduate students via Direct Benefit Transfer.",
-      "link": "https://scholarships.gov.in/"
-    },
-    {
-      "title": "National Means-cum-Merit Scholarship (NMMS)",
-      "description": "₹12,000/year for meritorious students from economically weaker sections in classes IX–XII.",
-      "link": "https://scholarships.gov.in/"
-    },
-    {
-      "title": "Post-Matric Scholarship for SC/ST/OBC Students",
-      "description": "Financial aid for higher education of disadvantaged groups.",
-      "link": "https://scholarships.gov.in/"
-    },
-    {
-      "title": "Top Class Education Scheme for SC Students",
-      "description": "Covers tuition, living expenses, and books for SC students in top institutions.",
-      "link": "https://scholarships.gov.in/"
-    },
-    {
-      "title": "AICTE Pragati Scholarship",
-      "description": "Support for girl students pursuing technical education.",
-      "link": "https://www.aicte-india.org/"
-    },
-    {
-      "title": "AICTE Saksham Scholarship",
-      "description": "Support for differently-abled students in technical education.",
-      "link": "https://www.aicte-india.org/"
-    },
-    {
-      "title": "ISHAN UDAY Special Scholarship Scheme",
-      "description": "Scholarships for students from the North Eastern Region.",
-      "link": "https://scholarships.gov.in/"
-    },
-    {
-      "title": "National Fellowship and Scholarship for Higher Education of ST Students",
-      "description": "Financial support for ST students pursuing MPhil/PhD.",
-      "link": "https://scholarships.gov.in/"
-    },
-    {
-      "title": "Maulana Azad National Fellowship",
-      "description": "Scholarships for minority students pursuing higher education.",
-      "link": "https://scholarships.gov.in/"
-    }
-  ]
+[
+  { "name": "Jagananna Vidya Deevena", "description": "Fee reimbursement scheme for students in Andhra Pradesh.", "link": "https://jagananna.ap.gov.in/" },
+  { "name": "APST Scholarship", "description": "Scholarship for Scheduled Tribe students of Arunachal Pradesh.", "link": "https://scholarships.gov.in/" },
+  { "name": "Assam OBC Scholarship", "description": "Scholarship for OBC/MOBC students in Assam.", "link": "https://scholarships.gov.in/" },
+  { "name": "Mukhyamantri Kanya Utthan Yojana", "description": "Financial aid for girl students in Bihar.", "link": "https://ekalyan.bih.nic.in/" },
+  { "name": "CG Post Matric Scholarship", "description": "Scholarship for Chhattisgarh students pursuing higher education.", "link": "https://postmatric-scholarship.cg.nic.in/" },
+  { "name": "Dayanand Bandodkar Scholarship", "description": "Scholarship for students in Goa.", "link": "https://scholarship.goa.gov.in/" },
+  { "name": "MYSY Scholarship", "description": "Financial assistance for students in Gujarat.", "link": "https://mysy.guj.nic.in/" },
+  { "name": "Haryana Scholarship Portal", "description": "Unified portal for Haryana scholarships.", "link": "https://harchhatravratti.haryana.gov.in/" },
+  { "name": "Kalpana Chawla Scholarship", "description": "Scholarship for meritorious girls in Himachal Pradesh.", "link": "https://scholarships.gov.in/" },
+  { "name": "E-Kalyan Jharkhand", "description": "Scholarship portal for Jharkhand students.", "link": "https://ekalyan.cgg.gov.in/" },
+  { "name": "SSP Karnataka", "description": "State Scholarship Portal for Karnataka.", "link": "https://ssp.postmatric.karnataka.gov.in/" },
+  { "name": "Suvarna Jubilee Merit Scholarship", "description": "Merit scholarship for Kerala students.", "link": "https://dcescholarship.kerala.gov.in/" },
+  { "name": "MP Scholarship Portal", "description": "Scholarships for students in Madhya Pradesh.", "link": "https://scholarshipportal.mp.nic.in/" },
+  { "name": "MahaDBT Scholarship", "description": "Scholarship portal for Maharashtra.", "link": "https://mahadbt.maharashtra.gov.in/" },
+  { "name": "Manipur State Scholarship", "description": "Scholarship schemes for students in Manipur.", "link": "https://scholarships.gov.in/" },
+  { "name": "Meghalaya Scholarship", "description": "Scholarship schemes for Meghalaya students.", "link": "https://scholarships.gov.in/" },
+  { "name": "Mizoram Scholarship", "description": "Financial aid for Mizoram students.", "link": "https://scholarships.gov.in/" },
+  { "name": "Nagaland Scholarship", "description": "Scholarship for students in Nagaland.", "link": "https://scholarships.gov.in/" },
+  { "name": "e-Medhabruti", "description": "Merit scholarship for Odisha students.", "link": "https://scholarship.odisha.gov.in/" },
+  { "name": "Punjab Scholarship Portal", "description": "Scholarship schemes for Punjab students.", "link": "https://scholarships.punjab.gov.in/" },
+  { "name": "Rajasthan Scholarship Portal", "description": "Unified scholarship portal for Rajasthan.", "link": "https://sso.rajasthan.gov.in/" },
+  { "name": "Sikkim Scholarship", "description": "Scholarship schemes for Sikkim students.", "link": "https://scholarships.gov.in/" },
+  { "name": "TN Scholarship Portal", "description": "Scholarships for Tamil Nadu students.", "link": "https://www.tn.gov.in/" },
+  { "name": "ePASS Telangana", "description": "Scholarship system for Telangana students.", "link": "https://telanganaepass.cgg.gov.in/" },
+  { "name": "Tripura Scholarship", "description": "Scholarship schemes for Tripura students.", "link": "https://scholarships.gov.in/" },
+  { "name": "UP Scholarship Portal", "description": "Scholarships for Uttar Pradesh students.", "link": "https://scholarship.up.gov.in/" },
+  { "name": "UK Scholarship", "description": "Scholarships for Uttarakhand students.", "link": "https://scholarships.gov.in/" },
+  { "name": "Swami Vivekananda Scholarship", "description": "Merit scholarship in West Bengal.", "link": "https://svmcm.wb.gov.in/" },
+
+  { "name": "Delhi Scholarship Scheme", "description": "Scholarship programs for students in Delhi.", "link": "https://edistrict.delhigovt.nic.in/" },
+  { "name": "Jammu & Kashmir Scholarship", "description": "Scholarship schemes for J&K students.", "link": "https://jk.gov.in/" },
+  { "name": "Ladakh Scholarship", "description": "Educational financial support for Ladakh students.", "link": "https://ladakh.nic.in/" },
+  { "name": "Puducherry Scholarship", "description": "Scholarships for students in Puducherry.", "link": "https://scholarships.gov.in/" },
+  { "name": "Chandigarh Scholarship", "description": "Scholarship schemes for Chandigarh students.", "link": "https://chandigarh.gov.in/" },
+  { "name": "Andaman & Nicobar Scholarship", "description": "Scholarships for island students.", "link": "https://andaman.gov.in/" },
+  { "name": "DNHDD Scholarship", "description": "Scholarships for Dadra & Nagar Haveli and Daman & Diu.", "link": "https://dnhdd.gov.in/" },
+  { "name": "Lakshadweep Scholarship", "description": "Scholarship schemes for Lakshadweep students.", "link": "https://lakshadweep.gov.in/" },
+
+  { "name": "Post Matric Scholarship (SC/ST/OBC)", "description": "Central government scholarship for reserved category students.", "link": "https://scholarships.gov.in/" },
+  { "name": "Pre-Matric Scholarship", "description": "Scholarship for school students from weaker sections.", "link": "https://scholarships.gov.in/" },
+  { "name": "National Means Cum Merit Scholarship", "description": "Scholarship for meritorious students from low-income families.", "link": "https://nmmss.mhrd.gov.in/" },
+  { "name": "INSPIRE Scholarship", "description": "Scholarship for science students pursuing higher education.", "link": "https://online-inspire.gov.in/" },
+  { "name": "Central Sector Scholarship", "description": "Financial support for college and university students.", "link": "https://scholarships.gov.in/" },
+  { "name": "AICTE Pragati Scholarship", "description": "Scholarship for girl students in technical education.", "link": "https://www.aicte-india.org/" },
+  { "name": "AICTE Saksham Scholarship", "description": "Scholarship for differently-abled students.", "link": "https://www.aicte-india.org/" },
+  { "name": "Begum Hazrat Mahal Scholarship", "description": "Scholarship for minority girls.", "link": "https://maef.nic.in/" },
+  { "name": "National Fellowship for SC Students", "description": "Fellowship for higher education.", "link": "https://scholarships.gov.in/" },
+  { "name": "UGC NET JRF", "description": "Junior Research Fellowship for postgraduate students.", "link": "https://ugcnet.nta.nic.in/" },
+
+  { "name": "Vidyasiri Scholarship", "description": "Karnataka backward class welfare scholarship.", "link": "https://bcwd.karnataka.gov.in/" },
+  { "name": "Gaon Ki Beti Yojana", "description": "Scholarship for rural girls in MP.", "link": "https://scholarshipportal.mp.nic.in/" },
+  { "name": "Rajarshi Shahu Maharaj Scholarship", "description": "Financial aid for Maharashtra students.", "link": "https://mahadbt.maharashtra.gov.in/" },
+  { "name": "Digital Gujarat Scholarship", "description": "Multiple scholarships via Gujarat portal.", "link": "https://www.digitalgujarat.gov.in/" },
+  { "name": "Kanyashree Prakalpa", "description": "Scholarship for girls in West Bengal.", "link": "https://wbkanyashree.gov.in/" },
+  { "name": "Oasis Scholarship", "description": "Scholarship for SC/ST/OBC in West Bengal.", "link": "https://oasis.gov.in/" },
+  { "name": "Sudakshya Scheme", "description": "Scholarship for girls in Odisha.", "link": "https://scholarship.odisha.gov.in/" },
+  { "name": "Medhavi Chhatra Yojana", "description": "Merit scholarship in Chhattisgarh.", "link": "https://medhavichhatra.cg.nic.in/" },
+  { "name": "HP Merit Scholarship", "description": "Scholarship for Himachal students.", "link": "https://scholarships.gov.in/" },
+
+  { "name": "Minority Pre-Matric Scholarship", "description": "Scholarship for minority students at school level.", "link": "https://scholarships.gov.in/" },
+  { "name": "Minority Post-Matric Scholarship", "description": "Scholarship for minority students at higher level.", "link": "https://scholarships.gov.in/" },
+  { "name": "Merit Cum Means Scholarship", "description": "Financial support for professional courses.", "link": "https://scholarships.gov.in/" }]
