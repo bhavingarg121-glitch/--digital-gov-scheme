@@ -1,22 +1,27 @@
-[
+ [
     {
       "title": "National Scholarship Portal (NSP)",
       "description": "Central platform hosting 650+ scholarships for students from school to university.",
       "link": "https://scholarships.gov.in/"
     },
     {
-      "title": "Post-Matric Scholarship for SC/ST/OBC",
-      "description": "Financial aid for higher education of disadvantaged groups.",
+      "title": "Central Sector Scheme of Scholarships for College and University Students",
+      "description": "Merit-based scholarships for undergraduate/postgraduate students via Direct Benefit Transfer.",
       "link": "https://scholarships.gov.in/"
     },
     {
       "title": "National Means-cum-Merit Scholarship (NMMS)",
-      "description": "₹12,000/year for meritorious students from economically weaker sections.",
+      "description": "₹12,000/year for meritorious students from economically weaker sections in classes IX–XII.",
       "link": "https://scholarships.gov.in/"
     },
     {
-      "title": "Central Sector Scheme of Scholarships",
-      "description": "Scholarships for college and university students via Direct Benefit Transfer.",
+      "title": "Post-Matric Scholarship for SC/ST/OBC Students",
+      "description": "Financial aid for higher education of disadvantaged groups.",
+      "link": "https://scholarships.gov.in/"
+    },
+    {
+      "title": "Top Class Education Scheme for SC Students",
+      "description": "Covers tuition, living expenses, and books for SC students in top institutions.",
       "link": "https://scholarships.gov.in/"
     },
     {
@@ -28,6 +33,20 @@
       "title": "AICTE Saksham Scholarship",
       "description": "Support for differently-abled students in technical education.",
       "link": "https://www.aicte-india.org/"
+    },
+    {
+      "title": "ISHAN UDAY Special Scholarship Scheme",
+      "description": "Scholarships for students from the North Eastern Region.",
+      "link": "https://scholarships.gov.in/"
+    },
+    {
+      "title": "National Fellowship and Scholarship for Higher Education of ST Students",
+      "description": "Financial support for ST students pursuing MPhil/PhD.",
+      "link": "https://scholarships.gov.in/"
+    },
+    {
+      "title": "Maulana Azad National Fellowship",
+      "description": "Scholarships for minority students pursuing higher education.",
+      "link": "https://scholarships.gov.in/"
     }
   ]
-
