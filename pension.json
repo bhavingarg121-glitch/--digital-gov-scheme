@@ -1,7 +1,101 @@
 [
   {
-    "title": "Test Pension Scheme",
-    "description": "This is a sample entry to confirm that pension.json loads correctly.",
-    "link": "#"
-  }
+    "name": "Indira Gandhi National Old Age Pension Scheme (IGNOAPS)",
+    "state": "Central",
+    "category": "Old Age",
+    "description": "Monthly pension for senior citizens below poverty line.",
+    "eligibility": "Age 60+, BPL",
+    "amount": "₹200–₹500/month",
+    "link": "https://nsap.nic.in/"
+  },
+  {
+    "name": "Indira Gandhi National Widow Pension Scheme (IGNWPS)",
+    "state": "Central",
+    "category": "Widow",
+    "description": "Financial support for widows.",
+    "eligibility": "Widows aged 40–79",
+    "amount": "₹300/month",
+    "link": "https://nsap.nic.in/"
+  },
+  {
+    "name": "Indira Gandhi National Disability Pension Scheme (IGNDPS)",
+    "state": "Central",
+    "category": "Disability",
+    "description": "Pension for persons with severe disabilities.",
+    "eligibility": "Disability ≥80%",
+    "amount": "₹300/month",
+    "link": "https://nsap.nic.in/"
+  },
+  {
+    "name": "National Social Assistance Programme (NSAP)",
+    "state": "Central",
+    "category": "Mixed",
+    "description": "Umbrella scheme covering multiple pension schemes.",
+    "eligibility": "BPL families",
+    "amount": "Varies",
+    "link": "https://nsap.nic.in/"
+  },
+  {
+    "name": "Atal Pension Yojana (APY)",
+    "state": "Central",
+    "category": "Unorganized",
+    "description": "Guaranteed pension scheme for workers.",
+    "eligibility": "Age 18–40",
+    "amount": "₹1000–₹5000/month",
+    "link": "https://www.npscra.nsdl.co.in/"
+  },
+  {
+    "name": "Pradhan Mantri Shram Yogi Maandhan (PM-SYM)",
+    "state": "Central",
+    "category": "Unorganized",
+    "description": "Pension for workers earning below ₹15,000.",
+    "eligibility": "Income < ₹15,000",
+    "amount": "₹3000/month",
+    "link": "https://maandhan.in/"
+  },
+  {
+    "name": "National Pension System (NPS)",
+    "state": "Central",
+    "category": "Retirement",
+    "description": "Voluntary retirement savings scheme.",
+    "eligibility": "All citizens",
+    "amount": "Market-linked",
+    "link": "https://www.npscra.nsdl.co.in/"
+  },
+
+  { "name": "YSR Pension Kanuka", "state": "Andhra Pradesh", "category": "Mixed", "description": "Pension for elderly, widows, disabled.", "eligibility": "Varies", "amount": "₹2500+", "link": "https://spandana.ap.gov.in/" },
+  { "name": "Arunachal Pradesh Old Age Pension", "state": "Arunachal Pradesh", "category": "Old Age", "description": "Support for elderly.", "eligibility": "Age 60+", "amount": "₹1000+", "link": "https://arunachal.gov.in/" },
+  { "name": "Assam Old Age Pension", "state": "Assam", "category": "Old Age", "description": "Financial aid.", "eligibility": "Age 60+", "amount": "₹250+", "link": "https://assam.gov.in/" },
+  { "name": "Mukhyamantri Vridhjan Pension", "state": "Bihar", "category": "Old Age", "description": "Pension scheme.", "eligibility": "Age 60+", "amount": "₹400", "link": "https://serviceonline.bihar.gov.in/" },
+  { "name": "Chhattisgarh Social Security Pension", "state": "Chhattisgarh", "category": "Mixed", "description": "Support scheme.", "eligibility": "Varies", "amount": "₹350+", "link": "https://cg.nic.in/" },
+  { "name": "Delhi Old Age Pension", "state": "Delhi", "category": "Old Age", "description": "Monthly pension.", "eligibility": "Age 60+", "amount": "₹2000+", "link": "https://delhi.gov.in/" },
+  { "name": "Goa Dayanand Social Security Scheme", "state": "Goa", "category": "Mixed", "description": "Support for elderly & widows.", "eligibility": "Varies", "amount": "₹2000+", "link": "https://goa.gov.in/" },
+  { "name": "Gujarat Vrudh Pension Yojana", "state": "Gujarat", "category": "Old Age", "description": "Pension scheme.", "eligibility": "Age 60+", "amount": "₹750+", "link": "https://digitalgujarat.gov.in/" },
+  { "name": "Haryana Old Age Samman Allowance", "state": "Haryana", "category": "Old Age", "description": "Monthly pension.", "eligibility": "Age 60+", "amount": "₹2750", "link": "https://haryana.gov.in/" },
+  { "name": "Himachal Pradesh Old Age Pension", "state": "Himachal Pradesh", "category": "Old Age", "description": "Support scheme.", "eligibility": "Age 60+", "amount": "₹1000+", "link": "https://himachal.nic.in/" },
+  { "name": "Jharkhand Mukhyamantri Pension", "state": "Jharkhand", "category": "Mixed", "description": "Pension scheme.", "eligibility": "Varies", "amount": "₹600+", "link": "https://jharkhand.gov.in/" },
+  { "name": "Sandhya Suraksha Yojana", "state": "Karnataka", "category": "Mixed", "description": "Pension for elderly & disabled.", "eligibility": "BPL", "amount": "₹800–₹1200", "link": "https://karnataka.gov.in/" },
+  { "name": "Kerala Social Security Pension", "state": "Kerala", "category": "Mixed", "description": "Unified pension scheme.", "eligibility": "Varies", "amount": "₹1600", "link": "https://welfarepension.lsgkerala.gov.in/" },
+  { "name": "MP Social Security Pension", "state": "Madhya Pradesh", "category": "Mixed", "description": "Support scheme.", "eligibility": "Varies", "amount": "₹600+", "link": "https://mp.gov.in/" },
+  { "name": "Shravan Bal Seva Pension", "state": "Maharashtra", "category": "Old Age", "description": "Pension for senior citizens.", "eligibility": "Age 65+", "amount": "₹600", "link": "https://mahadbt.maharashtra.gov.in/" },
+  { "name": "Manipur Old Age Pension", "state": "Manipur", "category": "Old Age", "description": "Financial aid.", "eligibility": "Age 60+", "amount": "₹500+", "link": "https://manipur.gov.in/" },
+  { "name": "Meghalaya Social Security Pension", "state": "Meghalaya", "category": "Mixed", "description": "Pension scheme.", "eligibility": "Varies", "amount": "₹500+", "link": "https://meghalaya.gov.in/" },
+  { "name": "Mizoram Old Age Pension", "state": "Mizoram", "category": "Old Age", "description": "Support scheme.", "eligibility": "Age 60+", "amount": "₹500+", "link": "https://mizoram.gov.in/" },
+  { "name": "Nagaland Old Age Pension", "state": "Nagaland", "category": "Old Age", "description": "Financial aid.", "eligibility": "Age 60+", "amount": "₹500+", "link": "https://nagaland.gov.in/" },
+  { "name": "Madhu Babu Pension Yojana", "state": "Odisha", "category": "Mixed", "description": "Pension scheme.", "eligibility": "Varies", "amount": "₹500–₹700", "link": "https://ssepd.odisha.gov.in/" },
+  { "name": "Punjab Old Age Pension", "state": "Punjab", "category": "Old Age", "description": "Monthly pension.", "eligibility": "Age 60+", "amount": "₹1500+", "link": "https://punjab.gov.in/" },
+  { "name": "Rajasthan Social Security Pension", "state": "Rajasthan", "category": "Mixed", "description": "Pension scheme.", "eligibility": "Varies", "amount": "₹750–₹1000", "link": "https://rajssp.raj.nic.in/" },
+  { "name": "Sikkim Old Age Pension", "state": "Sikkim", "category": "Old Age", "description": "Support scheme.", "eligibility": "Age 60+", "amount": "₹700+", "link": "https://sikkim.gov.in/" },
+  { "name": "Tamil Nadu Old Age Pension", "state": "Tamil Nadu", "category": "Old Age", "description": "Monthly pension.", "eligibility": "Age 60+", "amount": "₹1000+", "link": "https://tn.gov.in/" },
+  { "name": "Telangana Aasara Pension", "state": "Telangana", "category": "Mixed", "description": "Pension scheme.", "eligibility": "Low income", "amount": "₹2000+", "link": "https://telangana.gov.in/" },
+  { "name": "Tripura Old Age Pension", "state": "Tripura", "category": "Old Age", "description": "Financial aid.", "eligibility": "Age 60+", "amount": "₹500+", "link": "https://tripura.gov.in/" },
+  { "name": "UP Old Age Pension", "state": "Uttar Pradesh", "category": "Old Age", "description": "Monthly pension.", "eligibility": "Age 60+", "amount": "₹500", "link": "https://sspy-up.gov.in/" },
+  { "name": "Uttarakhand Old Age Pension", "state": "Uttarakhand", "category": "Old Age", "description": "Support scheme.", "eligibility": "Age 60+", "amount": "₹1000+", "link": "https://uk.gov.in/" },
+  { "name": "Jai Bangla Pension Scheme", "state": "West Bengal", "category": "Mixed", "description": "Social pension scheme.", "eligibility": "Varies", "amount": "₹1000", "link": "https://wb.gov.in/" },
+
+  { "name": "Andaman & Nicobar Pension Scheme", "state": "Andaman & Nicobar", "category": "Old Age", "description": "Pension for elderly.", "eligibility": "Age 60+", "amount": "₹1000+", "link": "https://andaman.gov.in/" },
+  { "name": "Chandigarh Old Age Pension", "state": "Chandigarh", "category": "Old Age", "description": "Monthly pension.", "eligibility": "Age 60+", "amount": "₹2000+", "link": "https://chandigarh.gov.in/" },
+  { "name": "Dadra & Nagar Haveli Pension", "state": "Dadra & Nagar Haveli", "category": "Old Age", "description": "Support scheme.", "eligibility": "Age 60+", "amount": "₹1000+", "link": "https://dnh.gov.in/" },
+  { "name": "Lakshadweep Pension Scheme", "state": "Lakshadweep", "category": "Old Age", "description": "Financial aid.", "eligibility": "Age 60+", "amount": "₹1000+", "link": "https://lakshadweep.gov.in/" },
+  { "name": "Puducherry Old Age Pension", "state": "Puducherry", "category": "Old Age", "description": "Monthly pension.", "eligibility": "Age 60+", "amount": "₹2000+", "link": "https://py.gov.in/" }
 ]
