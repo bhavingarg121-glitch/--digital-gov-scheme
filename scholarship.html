@@ -35,24 +35,24 @@
 
   <script>
     fetch("data/scholarship.json")
-      .then(response => response.json())
-      .then(data => {
-        const container = document.getElementById("schemes");
-        data.schemes.forEach(scheme => {
-          const card = document.createElement("div");
-          card.className = "scheme-card";
-          card.innerHTML = `
-            <h2>${scheme.title}</h2>
-            <p>${scheme.description}</p>
-            <a href="${scheme.link}" target="_blank">Learn More</a>
-          `;
-          container.appendChild(card);
-        });
-      })
-      .catch(err => {
-        document.getElementById("schemes").innerText = "Failed to load schemes.";
-        console.error(err);
-      });
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById("schemes");
+    data.forEach(scheme => {   // <-- no .schemes
+      const card = document.createElement("div");
+      card.className = "scheme-card";
+      card.innerHTML = `
+        <h2>${scheme.title}</h2>
+        <p>${scheme.description}</p>
+        <a href="${scheme.link}" target="_blank">Learn More</a>
+      `;
+      container.appendChild(card);
+    });
+  })
+  .catch(err => {
+    document.getElementById("schemes").innerText = "Failed to load schemes.";
+    console.error(err);
+  });
   </script>
 </body>
 </html>
