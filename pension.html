@@ -34,25 +34,33 @@
   <a href="index.html" class="back-link">← Back to Home</a>
 
   <script>
-    fetch("pension.json")
-      .then(response => response.json())
-      .then(data => {
-        const container = document.getElementById("schemes");
-        data.forEach(scheme => {   // <-- changed here
-          const card = document.createElement("div");
-          card.className = "scheme-card";
-          card.innerHTML = `
-            <h2>${scheme.title}</h2>
-            <p>${scheme.description}</p>
-            <a href="${scheme.link}" target="_blank">Learn More</a>
-          `;
-          container.appendChild(card);
-        });
-      })
-      .catch(err => {
-        document.getElementById("schemes").innerText = "Failed to load schemes.";
-        console.error(err);
-      });
+   fetch("pension.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("schemes");
+    container.innerHTML = "";
+
+    data.forEach(scheme => {
+      const card = document.createElement("div");
+      card.className = "scheme-card";
+
+      card.innerHTML = `
+        <h2>${scheme.name || "No Title"}</h2>
+        <p><strong>State:</strong> ${scheme.state || "N/A"}</p>
+        <p><strong>Category:</strong> ${scheme.category || "N/A"}</p>
+        <p>${scheme.description || "No description"}</p>
+        <p><strong>Eligibility:</strong> ${scheme.eligibility || "N/A"}</p>
+        <p><strong>Amount:</strong> ${scheme.amount || "N/A"}</p>
+        <a href="${scheme.link || "#"}" target="_blank">Learn More</a>
+      `;
+
+      container.appendChild(card);
+    });
+  })
+  .catch(err => {
+    document.getElementById("schemes").innerText = "Failed to load.";
+    console.error(err);
+  });
   </script>
 </body>
 </html>
