@@ -1,12 +1,38 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Layout from "./Layout.js";
 import Notification from "./Notification.js";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
+  // Handle normal login
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:5000/api/login", {
+        email,
+        password,
+      });
+
+      if (res.data.success) {
+        localStorage.setItem("token", res.data.token);
+        setMessage("Login successful!");
+        navigate("/dashboard");
+      } else {
+        setMessage(res.data.message || "Login failed");
+      }
+    } catch (err) {
+      console.error(err);
+      setMessage(err.response?.data?.message || "Something went wrong");
+    }
+  };
+
+  // Guest mode
   const skipLogin = () => {
     sessionStorage.setItem("guestMode", "true");
     setMessage("Guest mode activated.");
@@ -20,17 +46,21 @@ export default function LoginPage() {
           <h1 className="text-2xl font-bold mb-6 text-center">Login</h1>
           <Notification message={message} />
 
-          {/* Example: Email login form */}
-          <form>
+          {/* Email + Password login form */}
+          <form onSubmit={handleLogin}>
             <input
               type="email"
               placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full mb-4 px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500"
               required
             />
             <input
               type="password"
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full mb-4 px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500"
               required
             />
@@ -58,10 +88,4 @@ export default function LoginPage() {
               className="text-blue-600 hover:underline font-medium"
             >
               Register here
-            </button>
-          </p>
-        </div>
-      </div>
-    </Layout>
-  );
-}
+           
