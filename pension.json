@@ -1,28 +1,7 @@
- [
-    {
-      "title": "Pradhan Mantri Shram Yogi Maandhan (PM-SYM)",
-      "description": "Unorganised workers contribute small amounts to receive ₹3,000 monthly pension after age 60.",
-      "link": "https://labour.gov.in/pm-sym"
-    },
-    {
-      "title": "Atal Pension Yojana (APY)",
-      "description": "Voluntary pension scheme offering ₹1,000–₹5,000 monthly pension depending on contributions.",
-      "link": "https://www.npscra.nsdl.co.in/nsdl-atal-pension-yojana.php"
-    },
-    {
-      "title": "Indira Gandhi National Old Age Pension Scheme (IGNOAPS)",
-      "description": "Monthly pension for senior citizens below poverty line.",
-      "link": "https://nsap.nic.in/"
-    },
-    {
-      "title": "Indira Gandhi National Widow Pension Scheme (IGNWPS)",
-      "description": "Monthly pension for widows aged 40–79 years.",
-      "link": "https://nsap.nic.in/"
-    },
-    {
-      "title": "National Pension System (NPS)",
-      "description": "Retirement savings scheme with tax benefits for all citizens.",
-      "link": "https://www.npscra.nsdl.co.in/"
-    }
-  ]
-
+[
+  {
+    "title": "Test Pension Scheme",
+    "description": "This is a sample entry to confirm that pension.json loads correctly.",
+    "link": "#"
+  }
+]
