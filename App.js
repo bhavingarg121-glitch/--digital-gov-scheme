@@ -1,22 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LoginPage from "./LoginPage";
+import ScholarshipPage from "./ScholarshipPage";
+import PensionPage from "./PensionPage";
 import Dashboard from "./Dashboard";
-import ProtectedRoute from "./ProtectedRoute";
+import LoginPage from "./LoginPage";
+import RegisterPage from "./RegisterPage";
 
-export default function App() {
+function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/scholarship" element={<ScholarshipPage />} />
+        <Route path="/pension" element={<PensionPage />} />
       </Routes>
     </Router>
   );
 }
+
+export default App;
