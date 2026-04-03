@@ -38,7 +38,7 @@
       .then(response => response.json())
       .then(data => {
         const container = document.getElementById("schemes");
-        data.schemes.forEach(scheme => {
+        data.forEach(scheme => {   // <-- changed here
           const card = document.createElement("div");
           card.className = "scheme-card";
           card.innerHTML = `
