@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scholarship Schemes</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .scheme-card {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+    }
+    .scheme-card h2 { margin: 0 0 10px; }
+    .scheme-card a { color: blue; text-decoration: none; }
+    .scheme-card a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h1>Scholarship Schemes</h1>
+  <div id="schemes"></div>
+
+  <script>
+    // Load JSON file and render schemes
+    fetch("data/scholarship.json")
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById("schemes");
+        data.schemes.forEach(scheme => {
+          const card = document.createElement("div");
+          card.className = "scheme-card";
+          card.innerHTML = `
+            <h2>${scheme.title}</h2>
+            <p>${scheme.description}</p>
+            <a href="${scheme.link}" target="_blank">Learn More</a>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        document.getElementById("schemes").innerText = "Failed to load schemes.";
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
