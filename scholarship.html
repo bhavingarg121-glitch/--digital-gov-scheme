@@ -38,14 +38,17 @@
   .then(response => response.json())
   .then(data => {
     const container = document.getElementById("schemes");
-    data.forEach(scheme => {   // <-- no .schemes
+
+    data.forEach(scheme => {
       const card = document.createElement("div");
       card.className = "scheme-card";
+
       card.innerHTML = `
-        <h2>${scheme.title}</h2>
-        <p>${scheme.description}</p>
-        <a href="${scheme.link}" target="_blank">Learn More</a>
+        <h2>${scheme.name || "No Title"}</h2>
+        <p>${scheme.description || "No description available"}</p>
+        <a href="${scheme.link || "#"}" target="_blank">Learn More</a>
       `;
+
       container.appendChild(card);
     });
   })
