@@ -1,5 +1,4 @@
-{
-  "schemes": [
+[
     {
       "title": "National Scholarship Portal (NSP)",
       "description": "Central platform hosting 650+ scholarships for students from school to university.",
@@ -31,4 +30,4 @@
       "link": "https://www.aicte-india.org/"
     }
   ]
-}
+
