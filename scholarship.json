@@ -1,0 +1,34 @@
+{
+  "schemes": [
+    {
+      "title": "National Scholarship Portal (NSP)",
+      "description": "Central platform hosting 650+ scholarships for students from school to university.",
+      "link": "https://scholarships.gov.in/"
+    },
+    {
+      "title": "Post-Matric Scholarship for SC/ST/OBC",
+      "description": "Financial aid for higher education of disadvantaged groups.",
+      "link": "https://scholarships.gov.in/"
+    },
+    {
+      "title": "National Means-cum-Merit Scholarship (NMMS)",
+      "description": "₹12,000/year for meritorious students from economically weaker sections.",
+      "link": "https://scholarships.gov.in/"
+    },
+    {
+      "title": "Central Sector Scheme of Scholarships",
+      "description": "Scholarships for college and university students via Direct Benefit Transfer.",
+      "link": "https://scholarships.gov.in/"
+    },
+    {
+      "title": "AICTE Pragati Scholarship",
+      "description": "Support for girl students pursuing technical education.",
+      "link": "https://www.aicte-india.org/"
+    },
+    {
+      "title": "AICTE Saksham Scholarship",
+      "description": "Support for differently-abled students in technical education.",
+      "link": "https://www.aicte-india.org/"
+    }
+  ]
+}
