@@ -94,3 +94,28 @@ export default function RegisterPage() {
     </Layout>
   );
 }
+// Register
+app.post("/api/register", async (req, res) => {
+  try {
+    const { phone } = req.body;
+
+    const exists = await pool.query("SELECT * FROM users WHERE phone=$1", [phone]);
+
+    if (exists.rows.length > 0) {
+      return res.json({ success: false, message: "User already exists." });
+    }
+
+    await pool.query("INSERT INTO users (phone, created_at) VALUES ($1, NOW())", [phone]);
+
+    res.json({ success: true, message: "Registration successful!" });
+  } catch (err) {
+    console.error("Error in register:", err);
+
+    // Handle duplicate key error explicitly
+    if (err.code === "23505") {
+      return res.status(400).json({ success: false, message: "Phone already registered." });
+    }
+
+    res.status(500).json({ success: false, message: "Server error during registration" });
+  }
+});
