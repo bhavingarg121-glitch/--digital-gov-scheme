@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Schemes - SchemeSathi</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-pink-50 via-purple-50 to-blue-50 min-h-screen">
+
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-indigo-700">SchemeSathi</h1>
+    <div class="space-x-6">
+      <a href="exploreschemes.html" class="text-gray-700 hover:text-indigo-700">Explore Schemes</a>
+      <a href="bestSchemes.html" class="text-gray-700 hover:text-indigo-700">Best Schemes</a>
+      <a href="contact.html" class="text-gray-700 hover:text-indigo-700">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="text-center py-10">
+    <h2 class="text-4xl font-bold text-gray-800">🔎 Explore Government Schemes</h2>
+    <p class="mt-2 text-gray-600">Browse schemes by category, type, and state</p>
+  </header>
+
+  <!-- Search Bar -->
+  <div class="flex justify-center mb-8 px-6">
+    <input id="searchInput" type="text" placeholder="Search schemes..."
+      class="w-full max-w-xl px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+  </div>
+
+  <!-- Category Sections -->
+  <main id="categoriesContainer" class="space-y-12 px-6">
+    <!-- Categories will be injected here -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 mt-10 bg-gray-100">
+    <p class="text-gray-600">SchemeSathi © 2026 | Connecting citizens with verified government schemes</p>
+  </footer>
+
+  <!-- Script to Fetch JSON and Render -->
+  <script>
+    let allSchemes = [];
+
+    async function loadSchemes() {
+      try {
+        const response = await fetch('bestSchemes.json'); // Path to your JSON file
+        const data = await response.json();
+        allSchemes = data.bestSchemes;
+        renderSchemes(allSchemes);
+      } catch (error) {
+        console.error('Error loading schemes:', error);
+      }
+    }
+
+    function renderSchemes(schemes) {
+      const categoriesContainer = document.getElementById('categoriesContainer');
+      categoriesContainer.innerHTML = '';
+
+      // Group schemes by category
+      const schemesByCategory = {};
+      schemes.forEach(scheme => {
+        if (!schemesByCategory[scheme.category]) {
+          schemesByCategory[scheme.category] = [];
+        }
+        schemesByCategory[scheme.category].push(scheme);
+      });
+
+      // Render each category section
+      Object.keys(schemesByCategory).forEach(category => {
+        const section = document.createElement('section');
+        section.innerHTML = `
+          <h2 class="text-2xl font-semibold text-indigo-700 mb-6">${category} Schemes</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            ${schemesByCategory[category].map(scheme => `
+              <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition">
+                <h3 class="text-xl font-semibold text-indigo-700">${scheme.name}</h3>
+                <p class="text-sm text-gray-600 mt-2">${scheme.type}</p>
+                <p class="mt-3 text-gray-700">${scheme.description}</p>
+                <p class="mt-2 text-sm text-gray-500"><strong>Eligibility:</strong> ${scheme.eligibility}</p>
+                <p class="mt-2 text-sm text-gray-500"><strong>Benefits:</strong> ${scheme.benefits}</p>
+                <a href="scheme-details.html?id=${scheme.id}" class="mt-4 inline-block px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">View Details</a>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        categoriesContainer.appendChild(section);
+      });
+    }
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase();
+      const filteredSchemes = allSchemes.filter(scheme =>
+        scheme.name.toLowerCase().includes(query) ||
+        scheme.category.toLowerCase().includes(query) ||
+        scheme.description.toLowerCase().includes(query)
+      );
+      renderSchemes(filteredSchemes);
+    });
+
+    loadSchemes();
+  </script>
+
+</body>
+</html>
+
