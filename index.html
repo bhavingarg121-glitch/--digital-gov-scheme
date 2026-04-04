@@ -6,10 +6,17 @@
   <title>SchemeSathi</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800">
+
+  <!-- Background -->
+  <div class="fixed inset-0 -z-10">
+    <img src="Background.png" alt="India landmarks background" 
+         class="w-full h-full object-cover brightness-110 contrast-125" />
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-900/50 to-orange-500/40"></div>
+  </div>
 
   <!-- Header -->
-  <header class="flex justify-between items-center px-8 py-4 bg-blue-900 shadow-md">
+  <header class="flex justify-between items-center px-8 py-4 bg-white/20 backdrop-blur-md shadow-md">
     <div class="text-3xl font-bold text-white">SchemeSathi</div>
     <nav class="flex space-x-8 text-lg font-semibold text-white">
       <a href="index.html" class="hover:text-blue-300">Home</a>
@@ -24,21 +31,9 @@
     </div>
   </header>
 
-  <!-- Hero Section with Background -->
- <section class="relative text-center py-20 text-white">
-<!-- Background image -->
-  <div class="absolute inset-0">
-    <img src="Background.png" alt="India landmarks" 
-         class="w-full h-full object-cover brightness-110 contrast-125" />
-    <!-- Gradient overlay -->
-    <div class="absolute inset-0 bg-gradient-to-r from-blue-900/50 to-orange-500/40"></div>
-  </div>
-
-  <!-- Content -->
-  <div class="relative z-10">
-    <h1 class="text-5xl font-bold mb-4 drop-shadow-lg">
-      Empowering Citizens with Trusted Schemes
-    </h1>
+  <!-- Hero Section -->
+  <section class="text-center py-20 text-white">
+    <h1 class="text-5xl font-bold mb-4 drop-shadow-lg">Empowering Citizens with Trusted Schemes</h1>
     <p class="text-lg mb-6 drop-shadow-md">
       SchemeSathi brings clarity, accessibility, and trust to government programs—your gateway to opportunities.
     </p>
@@ -46,49 +41,39 @@
        class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-blue-700">
        Explore Schemes
     </a>
-  </div>
-</section>
+  </section>
 
-  <!-- Main Content with Featured Schemes + Sidebar -->
-  <section class="py-12 bg-gray-100 grid grid-cols-1 md:grid-cols-4 gap-8 px-8">
-    
-    <!-- Featured Schemes (3 cards) -->
-    <div class="md:col-span-3">
-      <h2 class="text-center text-3xl font-bold text-blue-900 mb-8">Featured Schemes</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-pink-200 bg-opacity-60 shadow-lg rounded-lg p-8 hover:scale-105 transition-transform">
-          <h3 class="text-2xl font-bold mb-2 text-pink-800">Scholarship Program</h3>
-          <p class="mb-4 text-gray-700">Financial aid opportunities for students across India.</p>
-          <a href="scholarship.html" class="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600">Apply Now →</a>
-        </div>
-        <div class="bg-orange-200 bg-opacity-60 shadow-lg rounded-lg p-8 hover:scale-105 transition-transform">
-          <h3 class="text-2xl font-bold mb-2 text-orange-800">Pension Scheme</h3>
-          <p class="mb-4 text-gray-700">Secure retirement benefits for senior citizens.</p>
-          <a href="pension.html" class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600">Apply Now →</a>
-        </div>
-        <div class="bg-blue-200 bg-opacity-60 shadow-lg rounded-lg p-8 hover:scale-105 transition-transform">
-          <h3 class="text-2xl font-bold mb-2 text-blue-800">Healthcare Support</h3>
-          <p class="mb-4 text-gray-700">Accessible medical coverage for families in need.</p>
-          <a href="healthcare.html" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Apply Now →</a>
-        </div>
+  <!-- Featured Schemes -->
+  <section class="py-12 px-8">
+    <h2 class="text-center text-3xl font-bold text-white mb-8 drop-shadow-lg">Featured Schemes</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Scholarship -->
+      <div class="bg-white/30 backdrop-blur-md shadow-lg rounded-lg p-8 hover:scale-105 transition-transform">
+        <h3 class="text-2xl font-bold mb-2 text-pink-800">Scholarship Program</h3>
+        <p class="mb-4 text-gray-700">Financial aid opportunities for students across India.</p>
+        <a href="scholarship.html" class="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600">Apply Now →</a>
       </div>
-    </div>
 
-    <!-- Sidebar Quick Links + Contact -->
-    <aside class="bg-blue-50 shadow-lg rounded-lg p-6">
-      <h3 class="text-2xl font-bold text-blue-900 mb-4">SchemeSathi</h3>
-      <p class="mb-6">Your trusted guide to government schemes.</p>
-      <h4 class="font-semibold text-blue-800 mb-2">Quick Links</h4>
-      <a href="schemes.html" class="block hover:text-blue-600">Schemes</a>
-      <a href="pension.html" class="block hover:text-blue-600 mb-6">Pension</a>
-      <h4 class="font-semibold text-blue-800 mb-2">Contact</h4>
-      <p>Email: schemesathi@gmail.com</p>
-      <p>Phone: +91 6001 0025</p>
-    </aside>
+      <!-- Pension -->
+      <div class="bg-white/30 backdrop-blur-md shadow-lg rounded-lg p-8 hover:scale-105 transition-transform">
+        <h3 class="text-2xl font-bold mb-2 text-orange-800">Pension Scheme</h3>
+        <p class="mb-4 text-gray-700">Secure retirement benefits for senior citizens.</p>
+        <a href="pension.html" class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600">Apply Now →</a>
+      </div>
+
+      <!-- Healthcare -->
+      <div class="bg-white/30 backdrop-blur-md shadow-lg rounded-lg p-8 hover:scale-105 transition-transform">
+        <h3 class="text-2xl font-bold mb-2 text-blue-800">Healthcare Support</h3>
+        <p class="mb-4 text-gray-700">Accessible medical coverage for families in need.</p>
+        <a href="healthcare.html" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Apply Now →</a>
+      </div>
+
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-blue-900 text-white p-8 text-lg">
+  <footer class="bg-white/20 backdrop-blur-md text-white p-8 text-lg">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div>
         <h3 class="text-2xl font-bold">SchemeSathi</h3>
