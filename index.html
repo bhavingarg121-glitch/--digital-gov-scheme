@@ -25,13 +25,29 @@
   </header>
 
   <!-- Hero Section with Background -->
-  <section class="relative text-center py-20 text-white">
-    <img src="Background.ppg" alt="India landmarks" class="absolute inset-0 w-full h-full object-cover brightness-110 contrast-125 -z-10">
+ <section class="relative text-center py-20 text-white">
+<!-- Background image -->
+  <div class="absolute inset-0">
+    <img src="Background.png" alt="India landmarks" 
+         class="w-full h-full object-cover brightness-110 contrast-125" />
+    <!-- Gradient overlay -->
     <div class="absolute inset-0 bg-gradient-to-r from-blue-900/50 to-orange-500/40"></div>
-    <h1 class="text-5xl font-bold mb-4 drop-shadow-lg">Empowering Citizens with Trusted Schemes</h1>
-    <p class="text-lg mb-6 drop-shadow-md">SchemeSathi brings clarity, accessibility, and trust to government programs—your gateway to opportunities.</p>
-    <a href="bestschemes.html" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-blue-700">Explore Schemes</a>
-  </section>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10">
+    <h1 class="text-5xl font-bold mb-4 drop-shadow-lg">
+      Empowering Citizens with Trusted Schemes
+    </h1>
+    <p class="text-lg mb-6 drop-shadow-md">
+      SchemeSathi brings clarity, accessibility, and trust to government programs—your gateway to opportunities.
+    </p>
+    <a href="bestschemes.html" 
+       class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-blue-700">
+       Explore Schemes
+    </a>
+  </div>
+</section>
 
   <!-- Main Content with Featured Schemes + Sidebar -->
   <section class="py-12 bg-gray-100 grid grid-cols-1 md:grid-cols-4 gap-8 px-8">
