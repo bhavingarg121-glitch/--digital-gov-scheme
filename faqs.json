@@ -1,0 +1,192 @@
+[
+  {
+    "question": "What is SchemeSathi?",
+    "answer": "SchemeSathi is a citizen-friendly portal that helps you discover, understand, and apply for government schemes by linking directly to official sources."
+  },
+  {
+    "question": "How do I apply for a health scheme?",
+    "answer": "Click on the “Learn More” button under each scheme card. You’ll be redirected to the official government portal where you can register and apply."
+  },
+  {
+    "question": "Do I need to pay to use SchemeSathi?",
+    "answer": "No. SchemeSathi is completely free and does not charge any fees."
+  },
+  {
+    "question": "Is SchemeSathi an official government website?",
+    "answer": "No. It is an informational platform that connects users to official government portals."
+  },
+  {
+    "question": "Can I search schemes by category?",
+    "answer": "Yes. You can browse schemes by categories like health, education, employment, and more."
+  },
+  {
+    "question": "Can I search schemes by state?",
+    "answer": "Yes. You can filter or search schemes based on your state."
+  },
+  {
+    "question": "How often is the data updated?",
+    "answer": "SchemeSathi is regularly updated to reflect the latest schemes and official links."
+  },
+  {
+    "question": "What documents are required for schemes?",
+    "answer": "Common documents include Aadhaar card, income certificate, domicile certificate, bank details, and passport-size photos."
+  },
+  {
+    "question": "What is Aadhaar and why is it required?",
+    "answer": "Aadhaar is a unique identification number issued by the Government of India and is used for identity verification in most schemes."
+  },
+  {
+    "question": "What is Direct Benefit Transfer (DBT)?",
+    "answer": "DBT is a system where government benefits are directly transferred to your bank account."
+  },
+
+
+  {
+    "question": "Can I apply without Aadhaar card?",
+    "answer": "Some schemes may allow alternative ID proof, but most require Aadhaar for verification."
+  },
+  {
+    "question": "Do I need a bank account?",
+    "answer": "Yes. Most schemes require a bank account to receive benefits via DBT."
+  },
+  {
+    "question": "What is eligibility criteria?",
+    "answer": "Eligibility criteria define who can apply for a scheme based on income, age, category, or other conditions."
+  },
+  {
+    "question": "Can I edit my application after submission?",
+    "answer": "Some portals allow editing before final submission, while others may not. Check the official site."
+  },
+  {
+    "question": "What happens after I apply?",
+    "answer": "Your application is verified by authorities. Once approved, benefits are provided."
+  },
+  {
+    "question": "Will I get a confirmation after applying?",
+    "answer": "Yes. Most portals provide a confirmation message or application ID."
+  },
+  {
+    "question": "What is an application ID?",
+    "answer": "It is a unique number used to track your application status."
+  },
+  {
+    "question": "How do I track my application?",
+    "answer": "Visit the official scheme portal and enter your application ID."
+  },
+  {
+    "question": "What if I forget my login details?",
+    "answer": "Use the 'Forgot Password' option on the official portal."
+  },
+  {
+    "question": "Can I apply from mobile?",
+    "answer": "Yes. Most portals are mobile-friendly and allow applications via smartphone."
+  },
+  {
+    "question": "Are schemes available in regional languages?",
+    "answer": "Many government portals support multiple Indian languages."
+  },
+  {
+    "question": "Do I need internet access to apply?",
+    "answer": "Yes. Online applications require internet, but some schemes allow offline submission."
+  },
+  {
+    "question": "Where can I apply offline?",
+    "answer": "You can visit government offices, CSC centers, or local पंचायत offices."
+  },
+  {
+    "question": "What is a CSC center?",
+    "answer": "Common Service Centers (CSC) help citizens apply for government services online."
+  },
+  {
+    "question": "Are there schemes for farmers?",
+    "answer": "Yes. There are many schemes related to agriculture, subsidies, and insurance."
+  },
+  {
+    "question": "Are there schemes for women?",
+    "answer": "Yes. Many schemes focus on women empowerment, health, and financial support."
+  },
+  {
+    "question": "Are there schemes for disabled persons?",
+    "answer": "Yes. Several schemes provide financial aid and support for persons with disabilities."
+  },
+  {
+    "question": "Can senior citizens apply?",
+    "answer": "Yes. There are pension and healthcare schemes specifically for senior citizens."
+  },
+  {
+    "question": "Can students apply?",
+    "answer": "Yes. Many scholarship and education schemes are available."
+  },
+  {
+    "question": "Can unemployed individuals apply?",
+    "answer": "Yes. Employment and skill development schemes are available."
+  },
+  {
+    "question": "What is income certificate?",
+    "answer": "It is an official document that shows your annual income, required for eligibility."
+  },
+  {
+    "question": "What is domicile certificate?",
+    "answer": "It proves your residence in a particular state."
+  },
+  {
+    "question": "Do I need passport size photos?",
+    "answer": "Yes. Most applications require recent passport-size photographs."
+  },
+  {
+    "question": "Are schemes safe to use?",
+    "answer": "Yes, if accessed through official government portals."
+  },
+  {
+    "question": "How to avoid fraud schemes?",
+    "answer": "Always apply through official websites and avoid paying fees to agents."
+  },
+  {
+    "question": "Does SchemeSathi store my data?",
+    "answer": "No. It only redirects users to official portals."
+  },
+  {
+    "question": "Can I share schemes with others?",
+    "answer": "Yes. You can share scheme links with friends and family."
+  },
+  {
+    "question": "Can I bookmark schemes?",
+    "answer": "Yes. Use your browser bookmarks to save schemes."
+  },
+  {
+    "question": "Do schemes expire?",
+    "answer": "Yes. Some schemes have deadlines or limited-time availability."
+  },
+  {
+    "question": "What if scheme details change?",
+    "answer": "Always verify from the official website for the latest updates."
+  },
+  {
+    "question": "Can I get help filling forms?",
+    "answer": "Yes. CSC centers or local offices can assist you."
+  },
+  {
+    "question": "Are helpline numbers available?",
+    "answer": "Yes. Most schemes provide official helpline numbers."
+  },
+  {
+    "question": "What is e-KYC?",
+    "answer": "Electronic Know Your Customer (e-KYC) is a digital identity verification process."
+  },
+  {
+    "question": "What is OTP verification?",
+    "answer": "One-Time Password (OTP) is used to verify your mobile number during application."
+  },
+  {
+    "question": "Do I need email ID?",
+    "answer": "Yes. Many portals require an email ID for registration and communication."
+  },
+  {
+    "question": "Can I update my bank details?",
+    "answer": "Yes, most portals allow updating bank information."
+  },
+  {
+    "question": "What if my bank account is not linked?",
+    "answer": "You should link your Aadhaar with your bank account to receive benefits."
+  }
+]
