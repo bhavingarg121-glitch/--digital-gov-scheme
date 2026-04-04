@@ -1,0 +1,193 @@
+[
+  {
+    "name": "Ayushman Bharat PM-JAY",
+    "description": "Provides free health coverage up to ₹5 lakh per family per year for hospitalization.",
+    "link": "https://pmjay.gov.in"
+  },
+  {
+    "name": "National Health Mission",
+    "description": "Strengthens healthcare delivery systems across rural and urban India.",
+    "link": "https://nhm.gov.in"
+  },
+
+  // ---------- STATES ----------
+
+  {
+    "name": "Mahatma Jyotiba Phule Jan Arogya Yojana (Maharashtra)",
+    "description": "Health insurance scheme covering major surgeries and treatments.",
+    "link": "https://www.jeevandayee.gov.in"
+  },
+  {
+    "name": "Chief Minister's Comprehensive Health Insurance Scheme (Tamil Nadu)",
+    "description": "Free medical treatment for low-income families.",
+    "link": "https://cmchis.com"
+  },
+  {
+    "name": "Aarogyasri Scheme (Telangana)",
+    "description": "Financial protection for major illnesses requiring hospitalization.",
+    "link": "https://aarogyasri.telangana.gov.in"
+  },
+  {
+    "name": "Dr. YSR Aarogyasri (Andhra Pradesh)",
+    "description": "Covers hospitalization expenses for poor families.",
+    "link": "https://www.ysraarogyasri.ap.gov.in"
+  },
+  {
+    "name": "Karunya Health Scheme (Kerala)",
+    "description": "Provides financial assistance for critical illnesses.",
+    "link": "https://karunya.kerala.gov.in"
+  },
+  {
+    "name": "Ayushman Bharat - Sarbat Sehat Bima Yojana (Punjab)",
+    "description": "Cashless health insurance scheme for residents.",
+    "link": "https://sha.punjab.gov.in"
+  },
+  {
+    "name": "Mukhyamantri Amrutam Yojana (Gujarat)",
+    "description": "Health insurance for economically weaker sections.",
+    "link": "https://magujarat.com"
+  },
+  {
+    "name": "Biju Swasthya Kalyan Yojana (Odisha)",
+    "description": "Provides free healthcare services.",
+    "link": "https://bsky.odisha.gov.in"
+  },
+  {
+    "name": "Swasthya Sathi (West Bengal)",
+    "description": "Smart card based cashless health insurance.",
+    "link": "https://swasthyasathi.gov.in"
+  },
+  {
+    "name": "Mukhyamantri Chiranjeevi Yojana (Rajasthan)",
+    "description": "Health insurance scheme covering families for hospitalization.",
+    "link": "https://chiranjeevi.rajasthan.gov.in"
+  },
+  {
+    "name": "Himcare Scheme (Himachal Pradesh)",
+    "description": "Health insurance scheme for families not covered under PM-JAY.",
+    "link": "https://himcare.hp.gov.in"
+  },
+  {
+    "name": "Atal Amrit Abhiyan (Assam)",
+    "description": "Health insurance for critical diseases.",
+    "link": "https://aaa.assam.gov.in"
+  },
+  {
+    "name": "Chief Minister Jan Arogya Yojana (Uttar Pradesh)",
+    "description": "Health coverage for poor families.",
+    "link": "https://upsha.up.gov.in"
+  },
+  {
+    "name": "Mukhyamantri Sehat Bima Yojana (Jharkhand)",
+    "description": "Provides financial assistance for treatment.",
+    "link": "https://sha.jharkhand.gov.in"
+  },
+  {
+    "name": "Niramaya Health Insurance Scheme (Goa)",
+    "description": "Universal health coverage for residents.",
+    "link": "https://dhsgoa.gov.in"
+  },
+  {
+    "name": "Bhamashah Swasthya Bima Yojana (Rajasthan)",
+    "description": "Health insurance for families.",
+    "link": "https://rajswasthya.nic.in"
+  },
+  {
+    "name": "Mukhyamantri Jan Arogya Abhiyan (Madhya Pradesh)",
+    "description": "Free treatment for economically weaker sections.",
+    "link": "https://www.sha.mp.gov.in"
+  },
+  {
+    "name": "Chief Minister Health Insurance Scheme (Chhattisgarh)",
+    "description": "Provides health coverage for families.",
+    "link": "https://cg.nic.in"
+  },
+  {
+    "name": "Arogya Karnataka Scheme (Karnataka)",
+    "description": "Comprehensive health coverage for residents.",
+    "link": "https://arogya.karnataka.gov.in"
+  },
+  {
+    "name": "Mukhyamantri Swasthya Bima Yojana (Bihar)",
+    "description": "Health insurance for low-income families.",
+    "link": "https://state.bihar.gov.in"
+  },
+  {
+    "name": "Megha Health Insurance Scheme (Meghalaya)",
+    "description": "Covers medical expenses for residents.",
+    "link": "https://meghealth.gov.in"
+  },
+  {
+    "name": "Chief Minister Health Scheme (Sikkim)",
+    "description": "Provides health coverage benefits.",
+    "link": "https://sikkim.gov.in"
+  },
+  {
+    "name": "Universal Health Insurance Scheme (Tripura)",
+    "description": "Affordable health insurance coverage.",
+    "link": "https://tripura.gov.in"
+  },
+  {
+    "name": "Chief Minister Health Insurance Scheme (Arunachal Pradesh)",
+    "description": "Health insurance for residents.",
+    "link": "https://arunachal.gov.in"
+  },
+  {
+    "name": "Mizoram State Health Care Scheme",
+    "description": "Financial protection for treatment.",
+    "link": "https://mizoram.gov.in"
+  },
+  {
+    "name": "Manipur Health Assurance Scheme",
+    "description": "Health coverage scheme for residents.",
+    "link": "https://manipur.gov.in"
+  },
+  {
+    "name": "Nagaland Health Protection Scheme",
+    "description": "Provides healthcare benefits.",
+    "link": "https://nagaland.gov.in"
+  },
+
+  // ---------- UNION TERRITORIES ----------
+
+  {
+    "name": "Delhi Arogya Kosh (Delhi)",
+    "description": "Financial assistance for medical treatment.",
+    "link": "https://delhi.gov.in"
+  },
+  {
+    "name": "Ayushman Bharat (Jammu & Kashmir)",
+    "description": "Free health insurance for all residents.",
+    "link": "https://jk.gov.in"
+  },
+  {
+    "name": "Ayushman Bharat (Ladakh)",
+    "description": "Health coverage scheme for residents.",
+    "link": "https://ladakh.gov.in"
+  },
+  {
+    "name": "Puducherry Health Scheme",
+    "description": "Government-supported healthcare benefits.",
+    "link": "https://py.gov.in"
+  },
+  {
+    "name": "Chandigarh Health Scheme",
+    "description": "Medical support scheme for residents.",
+    "link": "https://chandigarh.gov.in"
+  },
+  {
+    "name": "Dadra & Nagar Haveli and Daman & Diu Health Scheme",
+    "description": "Healthcare support initiative.",
+    "link": "https://dnh.gov.in"
+  },
+  {
+    "name": "Lakshadweep Health Scheme",
+    "description": "Medical assistance for island residents.",
+    "link": "https://lakshadweep.gov.in"
+  },
+  {
+    "name": "Andaman & Nicobar Health Scheme",
+    "description": "Healthcare services for residents.",
+    "link": "https://andaman.gov.in"
+  }
+]
