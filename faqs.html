@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - SchemeSathi</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-blue-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white p-4 shadow-md">
+    <h1 class="text-2xl font-bold text-center">Frequently Asked Questions</h1>
+  </header>
+
+  <!-- Search -->
+  <div class="max-w-3xl mx-auto p-4">
+    <input 
+      id="search"
+      type="text"
+      placeholder="Search FAQs..."
+      class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+    >
+  </div>
+
+  <!-- FAQ Container -->
+  <div id="faq-container" class="max-w-3xl mx-auto p-4 space-y-3">
+    <!-- FAQs load here -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white text-center p-3 mt-6">
+    <p>© 2026 Scheme Sathi | FAQ</p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    let faqs = [];
+
+    // Fetch FAQ JSON
+    fetch("faq.json")
+      .then(res => res.json())
+      .then(data => {
+        faqs = data;
+        displayFAQs(faqs);
+      })
+      .catch(() => {
+        document.getElementById("faq-container").innerHTML =
+          "<p class='text-red-500'>Failed to load FAQ data.</p>";
+      });
+
+    // Display FAQs
+    function displayFAQs(data) {
+      const container = document.getElementById("faq-container");
+      container.innerHTML = "";
+
+      if (data.length === 0) {
+        container.innerHTML = "<p>No FAQs found.</p>";
+        return;
+      }
+
+      data.forEach((faq, index) => {
+        const item = `
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            
+            <button onclick="toggleFAQ(${index})"
+              class="w-full text-left p-4 font-semibold text-blue-700 flex justify-between items-center hover:bg-blue-50 transition">
+              
+              ${faq.question}
+              <span id="icon-${index}">+</span>
+            </button>
+
+            <div id="answer-${index}" class="hidden p-4 border-t text-gray-600">
+              ${faq.answer}
+            </div>
+          </div>
+        `;
+        container.innerHTML += item;
+      });
+    }
+
+    // Toggle FAQ
+    function toggleFAQ(index) {
+      const answer = document.getElementById(`answer-${index}`);
+      const icon = document.getElementById(`icon-${index}`);
+
+      if (answer.classList.contains("hidden")) {
+        answer.classList.remove("hidden");
+        icon.textContent = "-";
+      } else {
+        answer.classList.add("hidden");
+        icon.textContent = "+";
+      }
+    }
+
+    // Search Function
+    document.getElementById("search").addEventListener("input", function () {
+      const value = this.value.toLowerCase();
+
+      const filtered = faqs.filter(faq =>
+        faq.question.toLowerCase().includes(value) ||
+        faq.answer.toLowerCase().includes(value)
+      );
+
+      displayFAQs(filtered);
+    });
+  </script>
+
+</body>
+</html>
