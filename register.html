@@ -64,7 +64,6 @@ Already have an account?
 </div>
 
 <script>
-
 document.getElementById("registerForm").addEventListener("submit", function(e){
   e.preventDefault();
 
@@ -72,23 +71,16 @@ document.getElementById("registerForm").addEventListener("submit", function(e){
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const error = document.getElementById("error");
+  // Generate OTP
+  const otp = Math.floor(100000 + Math.random() * 900000);
 
-  if(password.length < 6){
-    error.textContent = "Password must be at least 6 characters";
-    error.classList.remove("hidden");
-    return;
-  }
+  localStorage.setItem("tempUser", JSON.stringify({name,email,password}));
+  localStorage.setItem("otp", otp);
 
-  const user = { name, email, password };
+  alert("Your OTP is: " + otp); // simulate email
 
-  localStorage.setItem("user", JSON.stringify(user));
-
-  alert("Registration successful!");
-  window.location.href = "login.html";
-
+  window.location.href = "verify.html";
 });
-
 </script>
 
 </body>
