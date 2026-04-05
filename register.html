@@ -1,192 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SchemeSathi Register</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #00c6ff, #0072ff, #8e2de2, #ff6a00);
-      background-size: 400% 400%;
-      animation: gradientShift 10s ease infinite;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - SchemeSathi</title>
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+<script src="https://cdn.tailwindcss.com"></script>
 
-    .glass-card {
-      backdrop-filter: blur(15px);
-      background: rgba(255, 255, 255, 0.25);
-      border-radius: 1.5rem;
-      padding: 3rem;
-      width: 90%;
-      max-width: 800px;
-      text-align: center;
-      color: #fff;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      border: 1px solid rgba(255,255,255,0.4);
-      animation: fadeIn 1s ease-in-out;
-    }
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,#ff6a00,#ee0979,#667eea);
+  background-size: 300% 300%;
+  animation: gradient 8s ease infinite;
+}
 
-    .glass-card h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      background: linear-gradient(to right, #ff6a00, #ee0979);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+@keyframes gradient {
+  0% {background-position:0%}
+  50% {background-position:100%}
+  100% {background-position:0%}
+}
 
-    .glass-card p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-
-    .form-label {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      display: block;
-      text-align: left;
-      color: #fff;
-    }
-
-    .form-input {
-      font-size: 1.1rem;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      width: 100%;
-      background: rgba(255,255,255,0.9);
-      color: #333;
-      border: none;
-      margin-bottom: 1.5rem;
-      outline: none;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .form-input:focus {
-      box-shadow: 0 0 10px rgba(255,255,255,0.6);
-    }
-
-    .btn {
-      font-size: 1.3rem;
-      padding: 1rem 2rem;
-      border-radius: 999px;
-      font-weight: 600;
-      background: linear-gradient(135deg, #00c6ff, #0072ff);
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      width: 100%;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    #successToast {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #22c55e;
-      color: #fff;
-      padding: 1rem 1.5rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      font-size: 1.1rem;
-      display: none;
-    }
-  </style>
+.glass {
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.2);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+</style>
 </head>
-<body>
 
-  <div class="glass-card">
-    <h1>Create Account</h1>
-    <p>Join us and access government schemes</p>
+<body class="flex items-center justify-center min-h-screen">
 
-    <form id="registerForm" action="/register" method="POST">
-      <label class="form-label">Email</label>
-      <input type="email" name="email" required class="form-input">
+<div class="glass w-full max-w-md text-white">
 
-      <label class="form-label">Password</label>
-      <input type="password" id="password" name="password" required class="form-input">
+<h1 class="text-3xl font-bold mb-2 text-center">Create Account</h1>
 
-      <label class="form-label">Confirm Password</label>
-      <input type="password" id="confirm_password" name="confirm_password" required class="form-input">
+<form id="registerForm">
 
-      <p id="errorMessage" class="text-red-500 text-lg hidden"></p>
+<input type="text" id="name" placeholder="Full Name"
+class="w-full p-3 rounded mb-4 text-black" required>
 
-      <button type="submit" class="btn">Register</button>
-    </form>
+<input type="email" id="email" placeholder="Email"
+class="w-full p-3 rounded mb-4 text-black" required>
 
-    <p class="mt-6 text-lg">
-      Already have an account?
-      <a href="/login" class="text-blue-700 font-semibold hover:underline">Login</a>
-    </p>
-  </div>
+<input type="password" id="password" placeholder="Password"
+class="w-full p-3 rounded mb-4 text-black" required>
 
-  <div id="successToast">🎉 Registration successful! Redirecting...</div>
+<p id="error" class="text-red-300 mb-2 hidden"></p>
 
-  <script>
-    const form = document.getElementById("registerForm");
-    const password = document.getElementById("password");
-    const confirmPassword = document.getElementById("confirm_password");
-    const errorMessage = document.getElementById("errorMessage");
-    const successToast = document.getElementById("successToast");
+<button class="w-full bg-pink-600 p-3 rounded hover:bg-pink-700">
+Register
+</button>
 
-    form.addEventListener("submit", async function(event) {
-      event.preventDefault();
+</form>
 
-      errorMessage.classList.add("hidden");
-      errorMessage.textContent = "";
+<p class="mt-4 text-center">
+Already have an account?
+<a href="login.html" class="underline font-semibold">Login</a>
+</p>
 
-      if (password.value.length < 6) {
-        errorMessage.textContent = "Password must be at least 6 characters long.";
-        errorMessage.classList.remove("hidden");
-        return;
-      }
+</div>
 
-      if (password.value !== confirmPassword.value) {
-        errorMessage.textContent = "Passwords do not match.";
-        errorMessage.classList.remove("hidden");
-        return;
-      }
+<script>
 
-      const formData = new FormData(form);
-      const response = await fetch("/register", {
-        method: "POST",
-        body: formData
-      });
+document.getElementById("registerForm").addEventListener("submit", function(e){
+  e.preventDefault();
 
-      const result = await response.text();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-      if (result.includes("successful")) {
-        successToast.style.display = "block";
-        setTimeout(() => {
-          successToast.style.display = "none";
-          window.location.href = "/login";
-        }, 2000);
-      } else {
-        errorMessage.textContent = result;
-        errorMessage.classList.remove("hidden");
-      }
-    });
-  </script>
+  const error = document.getElementById("error");
+
+  if(password.length < 6){
+    error.textContent = "Password must be at least 6 characters";
+    error.classList.remove("hidden");
+    return;
+  }
+
+  const user = { name, email, password };
+
+  localStorage.setItem("user", JSON.stringify(user));
+
+  alert("Registration successful!");
+  window.location.href = "login.html";
+
+});
+
+</script>
+
 </body>
 </html>
