@@ -6,44 +6,64 @@
   <title>Contact Us - SchemeSathi</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-r from-pink-50 via-purple-50 to-blue-50 min-h-screen">
+<body class="bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 min-h-screen font-sans">
 
   <!-- Hero Section -->
-  <header class="text-center py-10">
-    <h1 class="text-4xl font-bold text-gray-800">Contact SchemeSathi</h1>
-    <p class="mt-2 text-gray-600">We’re here to help you with government schemes</p>
+  <header class="text-center py-12 bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg">
+    <h1 class="text-5xl font-extrabold">Contact SchemeSathi</h1>
+    <p class="mt-3 text-lg">We’re here to help you with government schemes</p>
   </header>
 
   <!-- Contact Form -->
-  <main class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8">
+  <main class="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-10 mt-10">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Send Us a Message</h2>
     <form action="https://formspree.io/f/mnjoowzv" method="POST" id="contactForm" class="space-y-6">
       <div>
-        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+        <label for="name" class="block text-sm font-semibold text-gray-700">Full Name</label>
         <input type="text" id="name" name="name" required
-          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          class="mt-2 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition">
       </div>
 
       <div>
-        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+        <label for="email" class="block text-sm font-semibold text-gray-700">Email Address</label>
         <input type="email" id="email" name="_replyto" required
-          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          class="mt-2 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition">
       </div>
 
       <div>
-        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+        <label for="message" class="block text-sm font-semibold text-gray-700">Message</label>
         <textarea id="message" name="message" rows="5" required
-          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+          class="mt-2 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
       </div>
+
+      <!-- Hidden field for auto-reply -->
+      <input type="hidden" name="_subject" value="Thank you for contacting SchemeSathi!">
+      <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
 
       <button type="submit"
-        class="w-full bg-indigo-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
-        Send Message
+        class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold px-6 py-3 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 transition">
+         Send Message
       </button>
     </form>
 
     <!-- Success Message -->
-    <p id="successMessage" class="hidden mt-4 text-green-600 font-medium">Your message has been sent successfully!</p>
+    <p id="successMessage" class="hidden mt-6 text-green-600 font-semibold text-center">
+      ✅ Your message has been sent successfully!
+    </p>
   </main>
+
+  <!-- Contact Info -->
+  <section class="max-w-3xl mx-auto mt-12 text-center">
+    <h2 class="text-2xl font-bold text-gray-800">Reach Us</h2>
+    <p class="mt-2 text-gray-600">📧 Email: support@schemesathi.gov.in</p>
+    <p class="mt-1 text-gray-600">📞 Helpline: 6006103292</p>
+    <p class="mt-1 text-gray-600">🏢 Address: Ward No. 3 Samba, J&K</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 mt-12 bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-inner">
+    <p>SchemeSathi © 2026 | Connecting citizens with verified government schemes</p>
+  </footer>
 
   <!-- Script to show success -->
   <script>
