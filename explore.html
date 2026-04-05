@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Schemes - SchemeSathi</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body { font-family: 'Poppins', sans-serif; background:#f9fafb; }
+
+.scheme-card {
+  background:#fff;
+  border-radius:1rem;
+  padding:1.5rem;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+.scheme-card:hover {
+  transform: translateY(-5px);
+}
+
+.tab {
+  cursor:pointer;
+  padding:0.5rem 1rem;
+  border-radius:0.5rem;
+}
+.tab.active {
+  background:#6c5ce7;
+  color:#fff;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="bg-purple-900 p-4 flex justify-between text-white">
+  <div class="text-xl font-bold">🏛️ SchemeSathi</div>
+  <div>
+    <a href="dashboard.html" class="mx-4">Dashboard</a>
+    <a href="#" class="bg-red-500 px-4 py-2 rounded-lg">Logout</a>
+  </div>
+</nav>
+
+<!-- Header -->
+<header class="text-center py-10">
+  <h1 class="text-4xl font-bold">Explore Government Schemes</h1>
+  <p class="text-lg">Find schemes easily across India</p>
+</header>
+
+<!-- Search + Filter -->
+<section class="container mx-auto px-6 mb-8 flex flex-col md:flex-row gap-4 justify-center">
+  
+  <input id="searchInput" type="text" placeholder="Search schemes..."
+    class="w-full md:w-1/2 p-3 border rounded-lg">
+
+  <select id="categorySelect" class="p-3 border rounded-lg">
+    <option value="all">All Categories</option>
+    <option value="housing">Housing</option>
+    <option value="employment">Employment</option>
+    <option value="agriculture">Agriculture</option>
+    <option value="women">Women</option>
+    <option value="energy">Energy</option>
+    <option value="infrastructure">Infrastructure</option>
+    <option value="digital">Digital</option>
+    <option value="business">Business</option>
+    <option value="rural">Rural</option>
+    <option value="food">Food</option>
+  </select>
+
+</section>
+
+<!-- Tabs -->
+<div class="flex justify-center gap-3 mb-8 flex-wrap">
+  <div class="tab active" data-tab="all">All</div>
+  <div class="tab" data-tab="housing">Housing</div>
+  <div class="tab" data-tab="employment">Employment</div>
+  <div class="tab" data-tab="agriculture">Agriculture</div>
+  <div class="tab" data-tab="women">Women</div>
+  <div class="tab" data-tab="energy">Energy</div>
+  <div class="tab" data-tab="infrastructure">Infra</div>
+</div>
+
+<!-- Schemes Container -->
+<div id="schemesContainer"
+  class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+</div>
+
+<!-- JS -->
+<script>
+
+let allSchemes = [];
+
+// Load JSON
+fetch("schemes.json")
+.then(res => res.json())
+.then(data => {
+  allSchemes = data;
+  displaySchemes(allSchemes);
+});
+
+// Display function
+function displaySchemes(data){
+  const container = document.getElementById("schemesContainer");
+  container.innerHTML = "";
+
+  data.forEach(scheme => {
+    container.innerHTML += `
+      <div class="scheme-card">
+        <h3 class="text-lg font-semibold mb-2">${scheme.name}</h3>
+        <p class="text-sm mb-3">${scheme.description}</p>
+        <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">${scheme.category}</span>
+        <br><br>
+        <a href="${scheme.link}" target="_blank"
+          class="bg-purple-600 text-white px-3 py-2 rounded-lg text-sm">
+          Learn More
+        </a>
+      </div>
+    `;
+  });
+}
+
+// Search
+document.getElementById("searchInput").addEventListener("input", function(){
+  filterSchemes();
+});
+
+// Dropdown filter
+document.getElementById("categorySelect").addEventListener("change", function(){
+  filterSchemes();
+});
+
+function filterSchemes(){
+  let search = document.getElementById("searchInput").value.toLowerCase();
+  let category = document.getElementById("categorySelect").value;
+
+  let filtered = allSchemes.filter(scheme => {
+    return (
+      scheme.name.toLowerCase().includes(search) &&
+      (category === "all" || scheme.category === category)
+    );
+  });
+
+  displaySchemes(filtered);
+}
+
+// Tabs
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+
+    document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+    tab.classList.add("active");
+
+    let category = tab.dataset.tab;
+
+    let filtered = category === "all"
+      ? allSchemes
+      : allSchemes.filter(s => s.category === category);
+
+    displaySchemes(filtered);
+  });
+});
+
+</script>
+
+</body>
+</html>
