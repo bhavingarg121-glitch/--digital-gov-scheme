@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Forgot Password</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+
+<div class="bg-white p-8 rounded shadow w-80 text-center">
+
+<h2 class="text-xl font-bold mb-4">Reset Password</h2>
+
+<input id="email" placeholder="Enter your email"
+class="border p-2 w-full mb-4">
+
+<button onclick="sendOTP()"
+class="bg-blue-600 text-white px-4 py-2 rounded w-full">
+Send OTP
+</button>
+
+</div>
+
+<script>
+function sendOTP(){
+  const email = document.getElementById("email").value;
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if(!user || user.email !== email){
+    alert("Email not found");
+    return;
+  }
+
+  const otp = Math.floor(100000 + Math.random() * 900000);
+
+  localStorage.setItem("resetOTP", otp);
+  alert("Your OTP is: " + otp);
+
+  window.location.href = "reset.html";
+}
+</script>
+
+</body>
+</html>
