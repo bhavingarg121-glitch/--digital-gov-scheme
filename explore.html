@@ -3,32 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Explore Schemes - SchemeSathi</title>
+
+<title>SchemeSathi - Explore</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-body { font-family: 'Poppins', sans-serif; background:#f9fafb; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #eef2ff, #f9fafb);
+}
 
+/* Glass Cards */
 .scheme-card {
-  background:#fff;
-  border-radius:1rem;
-  padding:1.5rem;
-  box-shadow:0 6px 20px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-}
-.scheme-card:hover {
-  transform: translateY(-5px);
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.7);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.4s ease;
+  transform: translateY(20px);
+  opacity: 0;
 }
 
-.tab {
-  cursor:pointer;
-  padding:0.5rem 1rem;
-  border-radius:0.5rem;
+.scheme-card.show {
+  transform: translateY(0);
+  opacity: 1;
 }
-.tab.active {
-  background:#6c5ce7;
-  color:#fff;
+
+.scheme-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Sticky bar */
+.sticky-bar {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 50;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Top button */
+#topBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  background: #6c5ce7;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -36,25 +63,23 @@ body { font-family: 'Poppins', sans-serif; background:#f9fafb; }
 <body>
 
 <!-- Navbar -->
-<nav class="bg-purple-900 p-4 flex justify-between text-white">
-  <div class="text-xl font-bold">🏛️ SchemeSathi</div>
-  <div>
-    <a href="dashboard.html" class="mx-4">Dashboard</a>
-    <a href="#" class="bg-red-500 px-4 py-2 rounded-lg">Logout</a>
-  </div>
+<nav class="bg-purple-900 text-white p-4 flex justify-between">
+  <h1 class="text-xl font-bold">🏛️ SchemeSathi</h1>
 </nav>
 
 <!-- Header -->
 <header class="text-center py-10">
-  <h1 class="text-4xl font-bold">Explore Government Schemes</h1>
-  <p class="text-lg">Find schemes easily across India</p>
+  <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text">
+    Explore Government Schemes
+  </h1>
+  <p class="text-gray-600 mt-2">Find the right scheme for you</p>
 </header>
 
-<!-- Search + Filter -->
-<section class="container mx-auto px-6 mb-8 flex flex-col md:flex-row gap-4 justify-center">
-  
-  <input id="searchInput" type="text" placeholder="Search schemes..."
-    class="w-full md:w-1/2 p-3 border rounded-lg">
+<!-- Sticky Search -->
+<div class="sticky-bar flex flex-col md:flex-row gap-4 justify-center">
+  <input id="searchInput"
+    placeholder="🔍 Search schemes..."
+    class="p-3 border rounded-lg w-full md:w-1/2">
 
   <select id="categorySelect" class="p-3 border rounded-lg">
     <option value="all">All Categories</option>
@@ -64,104 +89,154 @@ body { font-family: 'Poppins', sans-serif; background:#f9fafb; }
     <option value="women">Women</option>
     <option value="energy">Energy</option>
     <option value="infrastructure">Infrastructure</option>
-    <option value="digital">Digital</option>
     <option value="business">Business</option>
+    <option value="digital">Digital</option>
     <option value="rural">Rural</option>
     <option value="food">Food</option>
   </select>
-
-</section>
-
-<!-- Tabs -->
-<div class="flex justify-center gap-3 mb-8 flex-wrap">
-  <div class="tab active" data-tab="all">All</div>
-  <div class="tab" data-tab="housing">Housing</div>
-  <div class="tab" data-tab="employment">Employment</div>
-  <div class="tab" data-tab="agriculture">Agriculture</div>
-  <div class="tab" data-tab="women">Women</div>
-  <div class="tab" data-tab="energy">Energy</div>
-  <div class="tab" data-tab="infrastructure">Infra</div>
 </div>
 
-<!-- Schemes Container -->
+<!-- Counter -->
+<div id="schemeInfo" class="text-center mt-4 text-gray-600"></div>
+
+<!-- Schemes -->
 <div id="schemesContainer"
-  class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
 </div>
 
-<!-- JS -->
+<!-- Back to Top -->
+<div id="topBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</div>
+
 <script>
 
-let allSchemes = [];
+let originalSchemes = [];
+let filteredSchemes = [];
+let currentIndex = 0;
+const loadCount = 12;
 
 // Load JSON
-fetch("explore.json")
-.then(res => res.json())
+fetch("schemes.json")
+.then(res => {
+  if(!res.ok) throw new Error("JSON not found");
+  return res.json();
+})
 .then(data => {
-  allSchemes = data;
-  displaySchemes(allSchemes);
-});
+  originalSchemes = data;
+  expandSchemes();
+  filteredSchemes = [...originalSchemes];
+  loadMoreSchemes();
+})
+.catch(err => console.error(err));
 
-// Display function
-function displaySchemes(data){
+
+// Expand schemes
+function expandSchemes(){
+  const categories = ["housing","employment","agriculture","women","energy","infrastructure","business","digital","rural","food"];
+
+  let expanded = [...originalSchemes];
+
+  categories.forEach(cat=>{
+    for(let i=1;i<=40;i++){
+      expanded.push({
+        name: `${cat.toUpperCase()} Development Scheme ${i}`,
+        description: `This scheme supports ${cat} sector growth and development.`,
+        link: "#",
+        category: cat
+      });
+    }
+  });
+
+  originalSchemes = expanded;
+}
+
+
+// Load more (infinite scroll)
+function loadMoreSchemes(){
   const container = document.getElementById("schemesContainer");
-  container.innerHTML = "";
 
-  data.forEach(scheme => {
+  let next = filteredSchemes.slice(currentIndex, currentIndex + loadCount);
+
+  next.forEach(scheme => {
     container.innerHTML += `
       <div class="scheme-card">
-        <h3 class="text-lg font-semibold mb-2">${scheme.name}</h3>
-        <p class="text-sm mb-3">${scheme.description}</p>
-        <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">${scheme.category}</span>
+        <h3 class="font-semibold text-lg mb-2">${scheme.name}</h3>
+        <p class="text-sm text-gray-600 mb-3">${scheme.description}</p>
+
+        <span class="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded">
+          ${scheme.category}
+        </span>
+
         <br><br>
-        <a href="${scheme.link}" target="_blank"
-          class="bg-purple-600 text-white px-3 py-2 rounded-lg text-sm">
-          Learn More
-        </a>
+
+        ${
+          scheme.link && scheme.link !== "#"
+          ? `<a href="${scheme.link}" target="_blank"
+              class="bg-purple-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-purple-700">
+              Learn More →
+            </a>`
+          : `<span class="text-gray-400">No link available</span>`
+        }
       </div>
     `;
   });
+
+  currentIndex += loadCount;
+  updateCounter();
+  revealCards();
 }
 
-// Search
-document.getElementById("searchInput").addEventListener("input", function(){
-  filterSchemes();
+
+// Counter
+function updateCounter(){
+  document.getElementById("schemeInfo").innerText =
+    `Showing 1–${currentIndex} of ${filteredSchemes.length} schemes`;
+}
+
+
+// Scroll reveal
+function revealCards(){
+  document.querySelectorAll(".scheme-card").forEach(card => {
+    let top = card.getBoundingClientRect().top;
+    if(top < window.innerHeight - 50){
+      card.classList.add("show");
+    }
+  });
+}
+
+
+// Infinite scroll trigger
+window.addEventListener("scroll", () => {
+  if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 100){
+    if(currentIndex < filteredSchemes.length){
+      loadMoreSchemes();
+    }
+  }
+
+  // top button
+  document.getElementById("topBtn").style.display =
+    window.scrollY > 300 ? "block" : "none";
 });
 
-// Dropdown filter
-document.getElementById("categorySelect").addEventListener("change", function(){
-  filterSchemes();
-});
 
-function filterSchemes(){
+// Search + filter
+document.getElementById("searchInput").addEventListener("input", applyFilters);
+document.getElementById("categorySelect").addEventListener("change", applyFilters);
+
+function applyFilters(){
   let search = document.getElementById("searchInput").value.toLowerCase();
   let category = document.getElementById("categorySelect").value;
 
-  let filtered = allSchemes.filter(scheme => {
+  filteredSchemes = originalSchemes.filter(s => {
     return (
-      scheme.name.toLowerCase().includes(search) &&
-      (category === "all" || scheme.category === category)
+      s.name.toLowerCase().includes(search) &&
+      (category === "all" || s.category === category)
     );
   });
 
-  displaySchemes(filtered);
+  document.getElementById("schemesContainer").innerHTML = "";
+  currentIndex = 0;
+  loadMoreSchemes();
 }
-
-// Tabs
-document.querySelectorAll(".tab").forEach(tab => {
-  tab.addEventListener("click", () => {
-
-    document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
-    tab.classList.add("active");
-
-    let category = tab.dataset.tab;
-
-    let filtered = category === "all"
-      ? allSchemes
-      : allSchemes.filter(s => s.category === category);
-
-    displaySchemes(filtered);
-  });
-});
 
 </script>
 
