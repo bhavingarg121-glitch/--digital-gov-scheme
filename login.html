@@ -5,36 +5,171 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SchemeSathi Login</title>
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #00c6ff, #0072ff, #8e2de2, #ff6a00);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  <!-- Glassmorphic Login Card -->
-  <div class="backdrop-blur-lg bg-white/20 p-10 rounded-2xl shadow-xl w-full max-w-md">
-    <h1 class="text-3xl font-bold text-center text-white mb-6">Welcome Back</h1>
-    
-    <form action="/login" method="POST" class="space-y-6">
-      <div>
-        <label class="block text-white font-medium mb-2">Email</label>
-        <input type="email" name="email" required
-          class="w-full px-4 py-2 rounded-lg bg-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-300">
-      </div>
-      
-      <div>
-        <label class="block text-white font-medium mb-2">Password</label>
-        <input type="password" name="password" required
-          class="w-full px-4 py-2 rounded-lg bg-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-300">
-      </div>
-      
-      <button type="submit"
-        class="w-full py-3 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition">
-        Login
-      </button>
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glass-card {
+      backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 1.5rem;
+      padding: 3rem;
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.4);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .glass-card h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass-card p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-label {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+      text-align: left;
+      color: #fff;
+    }
+
+    .form-input {
+      font-size: 1.1rem;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      width: 100%;
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      border: none;
+      margin-bottom: 1.5rem;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .form-input:focus {
+      box-shadow: 0 0 10px rgba(255,255,255,0.6);
+    }
+
+    .btn {
+      font-size: 1.3rem;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #successToast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #22c55e;
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      font-size: 1.1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glass-card">
+    <h1>Welcome Back</h1>
+    <p>Login to access your personalized government schemes</p>
+
+    <form id="loginForm" action="/login" method="POST">
+      <label class="form-label">Email</label>
+      <input type="email" name="email" required class="form-input">
+
+      <label class="form-label">Password</label>
+      <input type="password" name="password" required class="form-input">
+
+      <p id="errorMessage" class="text-red-500 text-lg hidden"></p>
+
+      <button type="submit" class="btn">Login</button>
     </form>
 
-    <p class="text-center text-gray-200 mt-6">
-      Don’t have an account? 
-      <a href="/register" class="text-yellow-300 font-semibold hover:underline">Register</a>
+    <p class="mt-6 text-lg">
+      Don’t have an account?
+      <a href="/register" class="text-blue-700 font-semibold hover:underline">Register</a>
     </p>
   </div>
+
+  <div id="successToast">✅ Login successful! Redirecting...</div>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const errorMessage = document.getElementById("errorMessage");
+    const successToast = document.getElementById("successToast");
+
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      errorMessage.classList.add("hidden");
+      errorMessage.textContent = "";
+
+      const formData = new FormData(form);
+      const response = await fetch("/login", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await response.text();
+
+      if (result.includes("successful")) {
+        successToast.style.display = "block";
+        setTimeout(() => {
+          successToast.style.display = "none";
+          window.location.href = "/dashboard";
+        }, 2000);
+      } else {
+        errorMessage.textContent = result;
+        errorMessage.classList.remove("hidden");
+      }
+    });
+  </script>
 </body>
 </html>
