@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scheme Finder - SchemeSathi</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #eef2ff, #f9fafb);
+}
+
+/* Form card */
+.glass {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Scheme cards */
+.scheme-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.scheme-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Fade animation */
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(10px);}
+  to {opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="bg-purple-900 text-white p-4 flex justify-between">
+  <h1 class="font-bold text-xl">🏛️ SchemeSathi</h1>
+  <a href="explore.html" class="hover:underline">Explore</a>
+</nav>
+
+<!-- Header -->
+<div class="text-center py-10">
+  <h1 class="text-3xl font-bold text-purple-700">
+    Smart Scheme Finder
+  </h1>
+  <p class="text-gray-600 mt-2">
+    Get the most relevant schemes based on your profile
+  </p>
+</div>
+
+<!-- Form -->
+<div class="max-w-2xl mx-auto glass">
+
+  <div class="grid md:grid-cols-2 gap-4">
+
+    <input id="age" type="number" placeholder="Age"
+    class="p-3 border rounded">
+
+    <input id="income" type="number" placeholder="Annual Income (₹)"
+    class="p-3 border rounded">
+
+    <select id="state" class="p-3 border rounded">
+      <option value="">Select State</option>
+      <option value="maharashtra">Maharashtra</option>
+      <option value="delhi">Delhi</option>
+      <option value="karnataka">Karnataka</option>
+      <option value="uttar pradesh">Uttar Pradesh</option>
+    </select>
+
+    <select id="category" class="p-3 border rounded">
+      <option value="">Select Category</option>
+      <option value="housing">Housing</option>
+      <option value="employment">Employment</option>
+      <option value="agriculture">Agriculture</option>
+      <option value="women">Women</option>
+      <option value="business">Business</option>
+      <option value="energy">Energy</option>
+    </select>
+
+  </div>
+
+  <button onclick="findSchemes()"
+  class="mt-6 w-full bg-purple-600 text-white p-3 rounded-lg hover:bg-purple-700">
+  Find Schemes
+  </button>
+
+</div>
+
+<!-- Results -->
+<div id="results"
+class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 p-4">
+</div>
+
+<script>
+
+// 🔐 Protect page
+if(!localStorage.getItem("loggedIn")){
+  window.location.href = "login.html";
+}
+
+// Load schemes
+let schemes = [];
+
+fetch("schemes.json")
+.then(res => res.json())
+.then(data => schemes = data)
+.catch(() => {
+  document.getElementById("results").innerHTML =
+    "<p class='text-center col-span-3 text-red-500'>Failed to load schemes.json</p>";
+});
+
+
+// AI-style finder
+function findSchemes(){
+
+  const age = parseInt(document.getElementById("age").value) || 0;
+  const income = parseInt(document.getElementById("income").value) || 0;
+  const state = document.getElementById("state").value;
+  const category = document.getElementById("category").value;
+
+  let scored = schemes.map(s => {
+
+    let score = 0;
+
+    // Category match
+    if(category && s.category?.includes(category)) score += 5;
+
+    // State match
+    if(state && s.state && s.state.includes(state)) score += 3;
+
+    // Income logic
+    if(income){
+      if(income < 200000 && s.category?.includes("housing")) score += 2;
+      if(income < 300000 && s.category?.includes("food")) score += 2;
+      if(income > 500000 && s.category?.includes("business")) score += 2;
+    }
+
+    // Age logic
+    if(age){
+      if(age < 25 && s.category?.includes("employment")) score += 2;
+      if(age > 50 && s.category?.includes("pension")) score += 2;
+    }
+
+    // Tags (optional)
+    if(s.tags){
+      if(income < 200000 && s.tags.includes("low-income")) score += 3;
+      if(age < 30 && s.tags.includes("youth")) score += 2;
+    }
+
+    return { ...s, score };
+  });
+
+  // Sort
+  scored.sort((a,b) => b.score - a.score);
+
+  let results = scored.filter(s => s.score > 0);
+
+  displayResults(results, age, income, state, category);
+}
+
+
+// Display results
+function displayResults(list, age, income, state, category){
+
+  const container = document.getElementById("results");
+
+  container.innerHTML = `
+    <p class="col-span-3 text-center text-purple-700 font-semibold fade-in">
+      Showing best matches for your profile
+    </p>
+  `;
+
+  if(list.length === 0){
+    container.innerHTML += `
+      <p class="col-span-3 text-center text-gray-500">
+        No matching schemes found
+      </p>
+    `;
+    return;
+  }
+
+  list.slice(0,20).forEach(s => {
+
+    container.innerHTML += `
+      <div class="scheme-card fade-in">
+
+        <h3 class="font-bold text-lg mb-2">${s.name}</h3>
+
+        <p class="text-sm text-gray-600 mb-3">
+          ${s.description}
+        </p>
+
+        <div class="flex justify-between mb-2">
+
+          <span class="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded">
+            ${s.category}
+          </span>
+
+          <span class="text-xs text-green-600 font-semibold">
+            Score: ${s.score}
+          </span>
+
+        </div>
+
+        ${
+          s.link && s.link !== "#"
+          ? `<a href="${s.link}" target="_blank"
+              class="bg-purple-600 text-white px-3 py-2 rounded text-sm">
+              Learn More
+            </a>`
+          : `<span class="text-gray-400">No link</span>`
+        }
+
+      </div>
+    `;
+  });
+}
+
+</script>
+
+</body>
+</html>
