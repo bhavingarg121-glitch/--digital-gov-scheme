@@ -1,92 +1,41 @@
-import express from "express";
-import bodyParser from "body-parser";
-import cors from "cors";
-import jwt from "jsonwebtoken";
-import pool from "./db.js";
+// server.js
+const express = require("express");
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const bodyParser = require("body-parser");
 
 const app = express();
-app.use(bodyParser.json());
-app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Secret key for JWT
-const JWT_SECRET = "yourSecretKeyHere";
+// MongoDB connection
+mongoose.connect("mongodb://localhost:27017/schemesathi", { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Send OTP
-app.post("/api/send-otp", async (req, res) => {
-  try {
-    const { phone } = req.body;
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+// User schema
+const userSchema = new mongoose.Schema({
+  email: String,
+  password: String
+});
+const User = mongoose.model("User", userSchema);
 
-    await pool.query("INSERT INTO otps (phone, otp, created_at) VALUES ($1, $2, NOW())", [phone, otp]);
+// Login route
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
 
-    res.json({ success: true, message: "OTP sent!" });
-  } catch (err) {
-    console.error("Error in send-otp:", err);
-    res.status(500).json({ success: false, message: "Server error" });
+  if (user && await bcrypt.compare(password, user.password)) {
+    res.send("Login successful!");
+  } else {
+    res.send("Invalid credentials.");
   }
 });
 
-// Verify OTP
-app.post("/api/verify-otp", async (req, res) => {
-  try {
-    const { phone, otp } = req.body;
-
-    const result = await pool.query(
-      "SELECT * FROM otps WHERE phone=$1 AND otp=$2 ORDER BY created_at DESC LIMIT 1",
-      [phone, otp]
-    );
-
-    if (result.rows.length > 0) {
-      await pool.query("DELETE FROM otps WHERE phone=$1", [phone]);
-
-      // Generate JWT token
-      const token = jwt.sign({ phone }, JWT_SECRET, { expiresIn: "1h" });
-
-      res.json({ success: true, message: "Login successful!", token });
-    } else {
-      res.status(401).json({ success: false, message: "Invalid OTP." });
-    }
-  } catch (err) {
-    console.error("Error in verify-otp:", err);
-    res.status(500).json({ success: false, message: "Server error" });
-  }
+// Register route
+app.post("/register", async (req, res) => {
+  const { email, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const newUser = new User({ email, password: hashedPassword });
+  await newUser.save();
+  res.send("Registration successful!");
 });
 
-// Register
-app.post("/api/register", async (req, res) => {
-  try {
-    const { phone } = req.body;
-
-    const exists = await pool.query("SELECT * FROM users WHERE phone=$1", [phone]);
-
-    if (exists.rows.length > 0) {
-      res.json({ success: false, message: "User already exists." });
-    } else {
-      await pool.query("INSERT INTO users (phone) VALUES ($1)", [phone]);
-      res.json({ success: true, message: "Registration successful!" });
-    }
-  } catch (err) {
-    console.error("Error in register:", err);
-    res.status(500).json({ success: false, message: "Server error" });
-  }
-});
-
-// Protected route example
-app.get("/api/dashboard", async (req, res) => {
-  try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader) return res.status(401).json({ success: false, message: "No token provided" });
-
-    const token = authHeader.split(" ")[1];
-    jwt.verify(token, JWT_SECRET, (err, decoded) => {
-      if (err) return res.status(403).json({ success: false, message: "Invalid token" });
-
-      res.json({ success: true, message: `Welcome, user ${decoded.phone}` });
-    });
-  } catch (err) {
-    console.error("Error in dashboard:", err);
-    res.status(500).json({ success: false, message: "Server error" });
-  }
-});
-
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.listen(3000, () => console.log("Server running on http://localhost:3000"));
