@@ -118,7 +118,7 @@ if(!localStorage.getItem("loggedIn")){
 // Load schemes
 let schemes = [];
 
-fetch("schemes.json")
+fetch("explore.json")
 .then(res => res.json())
 .then(data => schemes = data)
 .catch(() => {
