@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Verify Email</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+
+<div class="bg-white p-8 rounded shadow w-80 text-center">
+
+<h2 class="text-xl font-bold mb-4">Verify Email</h2>
+
+<input id="otpInput" placeholder="Enter OTP"
+class="border p-2 w-full mb-4">
+
+<p id="error" class="text-red-500 hidden"></p>
+
+<button onclick="verifyOTP()"
+class="bg-green-600 text-white px-4 py-2 rounded w-full">
+Verify
+</button>
+
+</div>
+
+<script>
+function verifyOTP(){
+  const entered = document.getElementById("otpInput").value;
+  const savedOTP = localStorage.getItem("otp");
+
+  if(entered === savedOTP){
+    const user = JSON.parse(localStorage.getItem("tempUser"));
+    localStorage.setItem("user", JSON.stringify(user));
+
+    localStorage.removeItem("otp");
+    localStorage.removeItem("tempUser");
+
+    alert("Email verified successfully!");
+    window.location.href = "login.html";
+  } else {
+    document.getElementById("error").textContent = "Invalid OTP";
+    document.getElementById("error").classList.remove("hidden");
+  }
+}
+</script>
+
+</body>
+</html>
