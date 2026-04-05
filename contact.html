@@ -10,13 +10,13 @@
 
   <!-- Hero Section -->
   <header class="text-center py-10">
-    <h1 class="text-4xl font-bold text-gray-800"> Contact SchemeSathi</h1>
+    <h1 class="text-4xl font-bold text-gray-800">Contact SchemeSathi</h1>
     <p class="mt-2 text-gray-600">We’re here to help you with government schemes</p>
   </header>
 
   <!-- Contact Form -->
   <main class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8">
-    <form id="contactForm" class="space-y-6">
+    <form action="https://formspree.io/f/mnjoowzv" method="POST" id="contactForm" class="space-y-6">
       <div>
         <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
         <input type="text" id="name" name="name" required
@@ -25,7 +25,7 @@
 
       <div>
         <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-        <input type="email" id="email" name="email" required
+        <input type="email" id="email" name="_replyto" required
           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
       </div>
 
@@ -40,28 +40,15 @@
         Send Message
       </button>
     </form>
+
+    <!-- Success Message -->
     <p id="successMessage" class="hidden mt-4 text-green-600 font-medium">Your message has been sent successfully!</p>
   </main>
 
-  <!-- Contact Info -->
-  <section class="max-w-3xl mx-auto mt-10 text-center">
-    <h2 class="text-2xl font-semibold text-gray-800"> Reach Us</h2>
-    <p class="mt-2 text-gray-600">Email: support@schemesathi.gov.in</p>
-    <p class="mt-1 text-gray-600">Helpline: 6006103292</p>
-    <p class="mt-1 text-gray-600">Address: Ward No. 3 Samba,J&K</p>
-  </section>
-
-  <!-- Footer -->
-  <footer class="text-center py-6 mt-10 bg-gray-100">
-    <p class="text-gray-600">SchemeSathi © 2026 | Connecting citizens with verified government schemes</p>
-  </footer>
-
-  <!-- Simple JS Validation + Success Message -->
+  <!-- Script to show success -->
   <script>
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // prevent default form submission
+    document.getElementById('contactForm').addEventListener('submit', function() {
       document.getElementById('successMessage').classList.remove('hidden');
-      this.reset(); // clear form fields
     });
   </script>
 
