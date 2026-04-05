@@ -115,7 +115,7 @@ let currentIndex = 0;
 const loadCount = 12;
 
 // Load JSON
-fetch("schemes.json")
+fetch("explore.json")
 .then(res => {
   if(!res.ok) throw new Error("JSON not found");
   return res.json();
