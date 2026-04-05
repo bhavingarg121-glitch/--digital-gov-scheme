@@ -5,53 +5,144 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SchemeSathi Register</title>
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 min-h-screen flex items-center justify-center">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #00c6ff, #0072ff, #8e2de2, #ff6a00);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  <!-- Glassmorphic Register Card -->
-  <div class="backdrop-blur-lg bg-white/20 p-10 rounded-2xl shadow-xl w-full max-w-md">
-    <h1 class="text-3xl font-bold text-center text-white mb-6">Create Account</h1>
-    
-    <form id="registerForm" action="/register" method="POST" class="space-y-6">
-      <div>
-        <label class="block text-white font-medium mb-2">Email</label>
-        <input type="email" name="email" required
-          class="w-full px-4 py-2 rounded-lg bg-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-green-300">
-      </div>
-      
-      <div>
-        <label class="block text-white font-medium mb-2">Password</label>
-        <input type="password" id="password" name="password" required
-          class="w-full px-4 py-2 rounded-lg bg-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-green-300">
-      </div>
-      
-      <div>
-        <label class="block text-white font-medium mb-2">Confirm Password</label>
-        <input type="password" id="confirm_password" name="confirm_password" required
-          class="w-full px-4 py-2 rounded-lg bg-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-green-300">
-      </div>
-      
-      <!-- Error Message -->
-      <p id="errorMessage" class="text-red-300 text-sm hidden"></p>
-      
-      <button type="submit"
-        class="w-full py-3 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition">
-        Register
-      </button>
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glass-card {
+      backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 1.5rem;
+      padding: 3rem;
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.4);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .glass-card h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #ff6a00, #ee0979);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass-card p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-label {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+      text-align: left;
+      color: #fff;
+    }
+
+    .form-input {
+      font-size: 1.1rem;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      width: 100%;
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      border: none;
+      margin-bottom: 1.5rem;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .form-input:focus {
+      box-shadow: 0 0 10px rgba(255,255,255,0.6);
+    }
+
+    .btn {
+      font-size: 1.3rem;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #successToast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #22c55e;
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      font-size: 1.1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glass-card">
+    <h1>Create Account</h1>
+    <p>Join us and access government schemes</p>
+
+    <form id="registerForm" action="/register" method="POST">
+      <label class="form-label">Email</label>
+      <input type="email" name="email" required class="form-input">
+
+      <label class="form-label">Password</label>
+      <input type="password" id="password" name="password" required class="form-input">
+
+      <label class="form-label">Confirm Password</label>
+      <input type="password" id="confirm_password" name="confirm_password" required class="form-input">
+
+      <p id="errorMessage" class="text-red-500 text-lg hidden"></p>
+
+      <button type="submit" class="btn">Register</button>
     </form>
 
-    <p class="text-center text-gray-200 mt-6">
-      Already have an account? 
-      <a href="/login" class="text-yellow-300 font-semibold hover:underline">Login</a>
+    <p class="mt-6 text-lg">
+      Already have an account?
+      <a href="/login" class="text-blue-700 font-semibold hover:underline">Login</a>
     </p>
   </div>
 
-  <!-- Success Toast -->
-  <div id="successToast" class="fixed bottom-5 right-5 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg hidden">
-    🎉 Registration successful! Redirecting...
-  </div>
+  <div id="successToast">🎉 Registration successful! Redirecting...</div>
 
-  <!-- JavaScript Validation + Success Popup -->
   <script>
     const form = document.getElementById("registerForm");
     const password = document.getElementById("password");
@@ -59,33 +150,42 @@
     const errorMessage = document.getElementById("errorMessage");
     const successToast = document.getElementById("successToast");
 
-    form.addEventListener("submit", function(event) {
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
       errorMessage.classList.add("hidden");
       errorMessage.textContent = "";
 
       if (password.value.length < 6) {
-        event.preventDefault();
         errorMessage.textContent = "Password must be at least 6 characters long.";
         errorMessage.classList.remove("hidden");
         return;
       }
 
       if (password.value !== confirmPassword.value) {
-        event.preventDefault();
         errorMessage.textContent = "Passwords do not match.";
         errorMessage.classList.remove("hidden");
         return;
       }
 
-      // Show success toast
-      event.preventDefault(); // prevent actual submission for demo
-      successToast.classList.remove("hidden");
+      const formData = new FormData(form);
+      const response = await fetch("/register", {
+        method: "POST",
+        body: formData
+      });
 
-      // Hide after 3 seconds and redirect
-      setTimeout(() => {
-        successToast.classList.add("hidden");
-        window.location.href = "/login"; // redirect to login page
-      }, 3000);
+      const result = await response.text();
+
+      if (result.includes("successful")) {
+        successToast.style.display = "block";
+        setTimeout(() => {
+          successToast.style.display = "none";
+          window.location.href = "/login";
+        }, 2000);
+      } else {
+        errorMessage.textContent = result;
+        errorMessage.classList.remove("hidden");
+      }
     });
   </script>
 </body>
