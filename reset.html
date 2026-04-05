@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reset Password</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+
+<div class="bg-white p-8 rounded shadow w-80 text-center">
+
+<h2 class="text-xl font-bold mb-4">Enter OTP & New Password</h2>
+
+<input id="otp" placeholder="OTP"
+class="border p-2 w-full mb-2">
+
+<input id="newPass" type="password" placeholder="New Password"
+class="border p-2 w-full mb-4">
+
+<button onclick="resetPassword()"
+class="bg-green-600 text-white px-4 py-2 rounded w-full">
+Reset Password
+</button>
+
+</div>
+
+<script>
+function resetPassword(){
+  const otp = document.getElementById("otp").value;
+  const newPass = document.getElementById("newPass").value;
+
+  const savedOTP = localStorage.getItem("resetOTP");
+
+  if(otp !== savedOTP){
+    alert("Invalid OTP");
+    return;
+  }
+
+  let user = JSON.parse(localStorage.getItem("user"));
+  user.password = newPass;
+
+  localStorage.setItem("user", JSON.stringify(user));
+
+  localStorage.removeItem("resetOTP");
+
+  alert("Password updated!");
+  window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
