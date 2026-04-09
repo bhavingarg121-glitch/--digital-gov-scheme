@@ -1,7 +1,7 @@
 [
   {
     "name": "Pradhan Mantri Awas Yojana (PMAY)",
-    "description": "Affordable housing for urban and rural poor.",
+    "description": "Affordable housing scheme for urban and rural poor with subsidies and housing support.",
     "link": "https://pmaymis.gov.in/",
     "category": "housing"
   },
@@ -11,123 +11,52 @@
     "link": "https://pmayg.nic.in/netiay/home.aspx",
     "category": "housing"
   },
-
-  {
-    "name": "MGNREGA",
-    "description": "Guarantees 100 days of wage employment per year.",
-    "link": "https://nrega.nic.in/",
-    "category": "employment"
-  },
-  {
-    "name": "Pradhan Mantri Kaushal Vikas Yojana (PMKVY)",
-    "description": "Skill development and training for youth.",
-    "link": "https://www.pmkvyofficial.org/",
-    "category": "employment"
-  },
-
-  {
-    "name": "Pradhan Mantri Fasal Bima Yojana",
-    "description": "Crop insurance for farmers against natural calamities.",
-    "link": "https://pmfby.gov.in/",
-    "category": "agriculture"
-  },
-  {
-    "name": "Kisan Credit Card Scheme",
-    "description": "Provides farmers with timely credit for agriculture needs.",
-    "link": "https://www.nabard.org/",
-    "category": "agriculture"
-  },
-
-  {
-    "name": "Beti Bachao Beti Padhao",
-    "description": "Promotes education and welfare of girl children.",
-    "link": "https://wcd.nic.in/bbbp-schemes",
-    "category": "women"
-  },
-  {
-    "name": "Mahila Shakti Kendra",
-    "description": "Empowers rural women through community support.",
-    "link": "https://wcd.nic.in/schemes/mahila-shakti-kendra",
-    "category": "women"
-  },
-
-  {
-    "name": "National Solar Mission",
-    "description": "Promotes renewable energy and solar power adoption.",
-    "link": "https://mnre.gov.in/national-solar-mission",
-    "category": "energy"
-  },
-  {
-    "name": "Ujjwala Yojana",
-    "description": "Provides LPG connections to women from BPL households.",
-    "link": "https://www.pmuy.gov.in/",
-    "category": "energy"
-  },
-
-  {
-    "name": "Smart Cities Mission",
-    "description": "Urban renewal and retrofitting for sustainable cities.",
-    "link": "https://smartcities.gov.in/",
-    "category": "infrastructure"
-  },
-  {
-    "name": "Bharatmala Pariyojana",
-    "description": "Highway development program for better connectivity.",
-    "link": "https://morth.nic.in/bharatmala-pariyojana",
-    "category": "infrastructure"
-  },
-  {
-    "name": "Pradhan Mantri Awas Yojana",
-    "description": "Provides affordable housing to urban and rural poor families across India.",
-    "link": "https://pmaymis.gov.in/",
-    "category": "housing"
-  },
   {
     "name": "Affordable Rental Housing Complexes",
-    "description": "Ensures affordable rental housing for migrant workers and urban poor.",
+    "description": "Rental housing for migrant workers and urban poor.",
     "link": "https://mohua.gov.in/",
     "category": "housing"
   },
   {
     "name": "Credit Linked Subsidy Scheme",
-    "description": "Offers interest subsidy on home loans for economically weaker sections.",
+    "description": "Interest subsidy on home loans for weaker sections.",
     "link": "https://pmaymis.gov.in/",
     "category": "housing"
   },
 
   {
     "name": "MGNREGA",
-    "description": "Guarantees 100 days of wage employment to rural households.",
+    "description": "Provides 100 days of guaranteed wage employment to rural households.",
     "link": "https://nrega.nic.in/",
     "category": "employment"
   },
   {
-    "name": "PM Kaushal Vikas Yojana",
-    "description": "Skill development initiative for youth employment and training.",
+    "name": "Pradhan Mantri Kaushal Vikas Yojana (PMKVY)",
+    "description": "Skill development and training for youth employment.",
     "link": "https://www.pmkvyofficial.org/",
     "category": "employment"
   },
   {
     "name": "National Career Service",
-    "description": "Online platform connecting job seekers and employers.",
+    "description": "Platform connecting job seekers and employers.",
     "link": "https://www.ncs.gov.in/",
     "category": "employment"
   },
   {
     "name": "Prime Minister Employment Generation Programme",
-    "description": "Provides financial assistance to set up micro-enterprises.",
+    "description": "Financial assistance for micro-enterprises.",
     "link": "https://www.kviconline.gov.in/",
     "category": "employment"
   },
   {
     "name": "Deen Dayal Upadhyaya Grameen Kaushalya Yojana",
-    "description": "Enhances employability of rural youth through skill training.",
+    "description": "Skill training for rural youth.",
     "link": "https://ddugky.gov.in/",
     "category": "employment"
   },
   {
     "name": "Startup India",
-    "description": "Supports startups with funding, mentorship, and tax benefits.",
+    "description": "Supports startups with funding and mentorship.",
     "link": "https://www.startupindia.gov.in/",
     "category": "employment"
   },
@@ -137,209 +66,215 @@
     "link": "https://www.standupmitra.in/",
     "category": "employment"
   },
-
   {
-    "name": "PM Kisan Samman Nidhi",
-    "description": "Provides financial support to farmers annually.",
-    "link": "https://pmkisan.gov.in/",
-    "category": "agriculture"
+    "name": "Delhi Rozgar Bazaar",
+    "description": "Job portal for employment opportunities.",
+    "link": "https://jobs.delhi.gov.in/",
+    "category": "employment"
   },
   {
-    "name": "PM Fasal Bima Yojana",
-    "description": "Crop insurance scheme protecting farmers from losses.",
+    "name": "Mukhyamantri Yuva Swabhiman Yojana",
+    "description": "Employment opportunities for youth.",
+    "link": "https://mp.gov.in/",
+    "category": "employment"
+  },
+
+  {
+    "name": "Pradhan Mantri Fasal Bima Yojana",
+    "description": "Crop insurance against natural disasters.",
     "link": "https://pmfby.gov.in/",
     "category": "agriculture"
   },
   {
+    "name": "Kisan Credit Card Scheme",
+    "description": "Provides credit support to farmers.",
+    "link": "https://www.nabard.org/",
+    "category": "agriculture"
+  },
+  {
+    "name": "PM Kisan Samman Nidhi",
+    "description": "Direct income support for farmers.",
+    "link": "https://pmkisan.gov.in/",
+    "category": "agriculture"
+  },
+  {
     "name": "PM Krishi Sinchai Yojana",
-    "description": "Improves irrigation and water use efficiency.",
+    "description": "Improves irrigation facilities.",
     "link": "https://pmksy.gov.in/",
     "category": "agriculture"
   },
   {
     "name": "Soil Health Card Scheme",
-    "description": "Promotes balanced fertilizer use through soil testing.",
+    "description": "Promotes soil testing and balanced fertilizer use.",
     "link": "https://soilhealth.dac.gov.in/",
     "category": "agriculture"
   },
   {
     "name": "e-NAM",
-    "description": "Online trading platform for agricultural commodities.",
+    "description": "Online agricultural trading platform.",
     "link": "https://www.enam.gov.in/",
+    "category": "agriculture"
+  },
+  {
+    "name": "Rythu Bandhu",
+    "description": "Financial aid to farmers in Telangana.",
+    "link": "https://rythubandhu.telangana.gov.in/",
+    "category": "agriculture"
+  },
+  {
+    "name": "KALIA Scheme",
+    "description": "Support for farmers and laborers in Odisha.",
+    "link": "https://kalia.odisha.gov.in/",
+    "category": "agriculture"
+  },
+  {
+    "name": "YSR Rythu Bharosa",
+    "description": "Financial support to Andhra farmers.",
+    "link": "https://ysrrythubharosa.ap.gov.in/",
+    "category": "agriculture"
+  },
+  {
+    "name": "Krishi Samruddhi Yojana",
+    "description": "Agriculture development in Maharashtra.",
+    "link": "https://krishi.maharashtra.gov.in/",
     "category": "agriculture"
   },
 
   {
     "name": "Beti Bachao Beti Padhao",
-    "description": "Promotes education and welfare of the girl child.",
+    "description": "Promotes education and welfare of girls.",
     "link": "https://wcd.nic.in/",
     "category": "women"
   },
   {
     "name": "Mission Shakti",
-    "description": "Empowers women through safety, protection, and support services.",
+    "description": "Women empowerment and safety.",
     "link": "https://wcd.nic.in/",
     "category": "women"
   },
   {
     "name": "Mahila Shakti Kendra",
-    "description": "Provides support and services to rural women.",
+    "description": "Support for rural women empowerment.",
     "link": "https://wcd.nic.in/",
     "category": "women"
   },
   {
-    "name": "Ujjwala Yojana",
-    "description": "Provides free LPG connections to women from poor households.",
-    "link": "https://www.pmuy.gov.in/",
+    "name": "Ladli Laxmi Yojana",
+    "description": "Financial assistance for girl children.",
+    "link": "https://ladlilaxmi.mp.gov.in/",
+    "category": "women"
+  },
+  {
+    "name": "Kanyashree Prakalpa",
+    "description": "Promotes girls' education in West Bengal.",
+    "link": "https://wbkanyashree.gov.in/",
     "category": "women"
   },
 
   {
+    "name": "Ujjwala Yojana",
+    "description": "Free LPG connections for poor households.",
+    "link": "https://www.pmuy.gov.in/",
+    "category": "energy"
+  },
+  {
+    "name": "National Solar Mission",
+    "description": "Promotes solar energy adoption.",
+    "link": "https://mnre.gov.in/national-solar-mission",
+    "category": "energy"
+  },
+  {
     "name": "UJALA Scheme",
-    "description": "Promotes energy efficiency through LED bulb distribution.",
+    "description": "Energy-efficient LED distribution.",
     "link": "https://www.ujala.gov.in/",
     "category": "energy"
   },
   {
     "name": "Solar Rooftop Programme",
-    "description": "Encourages installation of solar panels in homes and industries.",
+    "description": "Encourages solar panel installations.",
     "link": "https://mnre.gov.in/",
     "category": "energy"
   },
   {
     "name": "KUSUM Scheme",
-    "description": "Supports farmers with solar-powered irrigation pumps.",
+    "description": "Solar-powered irrigation for farmers.",
     "link": "https://mnre.gov.in/",
     "category": "energy"
   },
 
   {
     "name": "Smart Cities Mission",
-    "description": "Develops sustainable and citizen-friendly urban areas.",
+    "description": "Urban development with smart infrastructure.",
     "link": "https://smartcities.gov.in/",
     "category": "infrastructure"
   },
   {
     "name": "AMRUT",
-    "description": "Improves urban infrastructure like water supply and sewerage.",
+    "description": "Improves water supply and sewerage systems.",
     "link": "https://amrut.gov.in/",
     "category": "infrastructure"
   },
   {
     "name": "Bharatmala Pariyojana",
-    "description": "Enhances highway infrastructure across India.",
+    "description": "Highway development program.",
     "link": "https://morth.nic.in/",
     "category": "infrastructure"
   },
   {
     "name": "Sagarmala Programme",
-    "description": "Port-led development initiative for coastal areas.",
+    "description": "Port-led development initiative.",
     "link": "https://sagarmala.gov.in/",
     "category": "infrastructure"
   },
   {
     "name": "Swachh Bharat Mission",
-    "description": "Promotes cleanliness and sanitation across India.",
+    "description": "Cleanliness and sanitation initiative.",
     "link": "https://swachhbharatmission.gov.in/",
     "category": "infrastructure"
   },
 
   {
     "name": "Digital India",
-    "description": "Transforms India into a digitally empowered society.",
+    "description": "Digital transformation of India.",
     "link": "https://digitalindia.gov.in/",
     "category": "digital"
   },
 
   {
     "name": "Make in India",
-    "description": "Encourages manufacturing and investment in India.",
+    "description": "Boosts manufacturing sector.",
     "link": "https://www.makeinindia.com/",
     "category": "business"
   },
   {
     "name": "Atmanirbhar Bharat Abhiyan",
-    "description": "Promotes self-reliance and economic growth.",
+    "description": "Promotes self-reliance.",
     "link": "https://www.india.gov.in/",
     "category": "business"
   },
 
   {
     "name": "DAY-NRLM",
-    "description": "Promotes self-employment and organization of rural poor.",
+    "description": "Supports rural livelihoods and SHGs.",
     "link": "https://nrlm.gov.in/",
     "category": "rural"
   },
   {
     "name": "Sansad Adarsh Gram Yojana",
-    "description": "Develops model villages through MP-led initiatives.",
+    "description": "Develops model villages.",
     "link": "https://saanjhi.gov.in/",
     "category": "rural"
   },
 
   {
-    "name": "Rythu Bandhu",
-    "description": "Provides financial support to farmers in Telangana.",
-    "link": "https://rythubandhu.telangana.gov.in/",
-    "category": "agriculture"
-  },
-  {
-    "name": "KALIA Scheme",
-    "description": "Supports farmers and landless laborers in Odisha.",
-    "link": "https://kalia.odisha.gov.in/",
-    "category": "agriculture"
-  },
-  {
-    "name": "YSR Rythu Bharosa",
-    "description": "Financial aid for farmers in Andhra Pradesh.",
-    "link": "https://ysrrythubharosa.ap.gov.in/",
-    "category": "agriculture"
-  },
-  {
-    "name": "Krishi Samruddhi Yojana",
-    "description": "Promotes agricultural productivity in Maharashtra.",
-    "link": "https://krishi.maharashtra.gov.in/",
-    "category": "agriculture"
-  },
-
-  {
-    "name": "Delhi Rozgar Bazaar",
-    "description": "Job portal connecting employers and job seekers.",
-    "link": "https://jobs.delhi.gov.in/",
-    "category": "employment"
-  },
-
-  {
-    "name": "Mukhyamantri Yuva Swabhiman Yojana",
-    "description": "Provides employment opportunities to youth.",
-    "link": "https://mp.gov.in/",
-    "category": "employment"
-  },
-
-  {
-    "name": "Ladli Laxmi Yojana",
-    "description": "Financial assistance scheme for girl children.",
-    "link": "https://ladlilaxmi.mp.gov.in/",
-    "category": "women"
-  },
-  {
-    "name": "Kanyashree Prakalpa",
-    "description": "Encourages education among girls.",
-    "link": "https://wbkanyashree.gov.in/",
-    "category": "women"
-  },
-
-  {
     "name": "Amma Canteen",
-    "description": "Provides affordable food to the public.",
+    "description": "Affordable food for the public.",
     "link": "https://tn.gov.in/",
     "category": "food"
   },
   {
     "name": "Anna Bhagya",
-    "description": "Food security scheme for low-income families.",
+    "description": "Food security scheme.",
     "link": "https://ahara.kar.nic.in/",
     "category": "food"
-  }
-]
-
+  },
