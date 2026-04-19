@@ -1,96 +1,194 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - SchemeSathi</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
+<title>Login</title>
 
 <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg,#667eea,#764ba2,#ff6a00);
-  background-size: 300% 300%;
-  animation: gradient 8s ease infinite;
+    background: #e6eef8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-@keyframes gradient {
-  0% {background-position:0%}
-  50% {background-position:100%}
-  100% {background-position:0%}
+.container {
+    display: flex;
+    width: 900px;
+    height: 500px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
-.glass {
-  backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.2);
-  border-radius: 1.5rem;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+/* LEFT SIDE */
+.left {
+    width: 50%;
+    background: #f4f8fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left img {
+    width: 80%;
+}
+
+/* RIGHT SIDE */
+.right {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
+    width: 80%;
+}
+
+.login-box h2 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+}
+
+.input-box {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+.input-box input:focus {
+    border-color: #2f6fed;
+}
+
+.extra {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.extra a {
+    font-size: 12px;
+    text-decoration: none;
+    color: #2f6fed;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #2f6fed;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.signup {
+    margin-top: 15px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.signup a {
+    color: #2f6fed;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 15px;
+    font-size: 12px;
+    color: gray;
 }
 </style>
+
 </head>
+<body>
 
-<body class="flex items-center justify-center min-h-screen">
+<div class="container">
 
-<div class="glass w-full max-w-md text-white">
+    <!-- LEFT SIDE -->
+    <div class="left">
+        <!-- If using Flask -->
+        <!-- <img src="{{ url_for('static', filename='gov.png') }}"> -->
 
-<h1 class="text-3xl font-bold mb-2 text-center">Welcome Back</h1>
-<p class="text-center mb-6">Login to SchemeSathi</p>
+        <!-- If opening directly -->
+        <img src="gov.png" alt="illustration">
+    </div>
 
-<form id="loginForm">
+    <!-- RIGHT SIDE -->
+    <div class="right">
+        <div class="login-box">
 
-<input type="email" id="email" placeholder="Email"
-class="w-full p-3 rounded mb-4 text-black" required>
+            <h2>Login to Your Account</h2>
+            <p class="subtitle">Access government schemes easily</p>
 
-<input type="password" id="password" placeholder="Password"
-class="w-full p-3 rounded mb-4 text-black" required>
+            <form method="POST">
 
-<p id="error" class="text-red-300 mb-2 hidden"></p>
+                <label>Username</label>
+                <div class="input-box">
+                    <input type="text" name="username" placeholder="Enter your username" required>
+                </div>
 
-<button class="w-full bg-purple-600 p-3 rounded hover:bg-purple-700">
-Login
-</button>
+                <label>Password</label>
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Enter your password" required>
+                </div>
 
-</form>
-<a href="forgot.html" class="text-sm underline">
-Forgot Password?
-</a>
-<p class="mt-4 text-center">
-Don't have an account?
-<a href="register.html" class="underline font-semibold">Register</a>
-</p>
+                <div class="extra">
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="submit">Login</button>
+
+                <p class="signup">
+                    Don't have an account?
+                    <a href="/register">Sign Up Here</a>
+                </p>
+
+            </form>
+
+        </div>
+    </div>
 
 </div>
 
-<script>
-
-document.getElementById("loginForm").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const error = document.getElementById("error");
-
-  const user = JSON.parse(localStorage.getItem("user"));
-
-  if(!user){
-    error.textContent = "No account found. Please register.";
-    error.classList.remove("hidden");
-    return;
-  }
-
-  if(user.email === email && user.password === password){
-    localStorage.setItem("loggedIn", true);
-    window.location.href = "find.html";
-  } else {
-    error.textContent = "Invalid credentials";
-    error.classList.remove("hidden");
-  }
-});
-
-</script>
+<footer>
+    Disclaimer: This is a helping platform created for informational purposes only and is not affiliated with the Government of India.
+</footer>
 
 </body>
 </html>
