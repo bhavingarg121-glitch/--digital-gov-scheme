@@ -105,7 +105,7 @@
   { "name": "Farmer Producer Organization Scheme", "description": "Supports farmer collectives.", "link": "https://sfacindia.com/", "category": "agriculture" },
   { "name": "Climate Resilient Agriculture Scheme", "description": "Helps farmers adapt to climate change.", "link": "https://icar.org.in/", "category": "agriculture" },
   { "name": "National Innovations on Climate Resilient Agriculture (NICRA)", "description": "Develops climate-resilient farming practices to protect crops from extreme weather.", "link": "https://icar.org.in/", "category": "agriculture" },
-{ "name": "Integrated Nutrient Management Scheme", "description": "Promotes balanced fertilizer use for sustainable farming.", "link": "https://agricoop.nic.in/", "category": "agriculture" }
+{ "name": "Integrated Nutrient Management Scheme", "description": "Promotes balanced fertilizer use for sustainable farming.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
   {
     "name": "MGNREGA",
     "description": "Provides 100 days of guaranteed wage employment to rural households.",
