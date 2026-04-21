@@ -1,28 +1,55 @@
 [
-  {
-    "name": "Pradhan Mantri Awas Yojana (PMAY)",
-    "description": "Affordable housing scheme for urban and rural poor with subsidies and housing support.",
-    "link": "https://pmaymis.gov.in/",
-    "category": "housing"
-  },
-  {
-    "name": "Indira Awas Yojana",
-    "description": "Housing assistance for BPL families in rural areas.",
-    "link": "https://pmayg.nic.in/netiay/home.aspx",
-    "category": "housing"
-  },
-  {
-    "name": "Affordable Rental Housing Complexes",
-    "description": "Rental housing for migrant workers and urban poor.",
-    "link": "https://mohua.gov.in/",
-    "category": "housing"
-  },
-  {
-    "name": "Credit Linked Subsidy Scheme",
-    "description": "Interest subsidy on home loans for weaker sections.",
-    "link": "https://pmaymis.gov.in/",
-    "category": "housing"
-  },
+  { "name": "Pradhan Mantri Awas Yojana (Urban)", "description": "Affordable housing for urban poor with subsidy.", "link": "https://pmaymis.gov.in/", "category": "housing" },
+  { "name": "Pradhan Mantri Awas Yojana (Gramin)", "description": "Provides pucca houses to rural poor.", "link": "https://pmayg.nic.in/", "category": "housing" },
+  { "name": "Indira Awas Yojana", "description": "Housing for BPL rural families.", "link": "https://pmayg.nic.in/", "category": "housing" },
+  { "name": "Credit Linked Subsidy Scheme", "description": "Interest subsidy on home loans.", "link": "https://pmaymis.gov.in/", "category": "housing" },
+  { "name": "Affordable Rental Housing Complexes", "description": "Rental housing for migrants.", "link": "https://mohua.gov.in/", "category": "housing" },
+  { "name": "Rajiv Awas Yojana", "description": "Slum-free India initiative.", "link": "https://mohua.gov.in/", "category": "housing" },
+  { "name": "JNNURM Housing Component", "description": "Urban housing development.", "link": "https://mohua.gov.in/", "category": "housing" },
+  { "name": "Housing for All Mission", "description": "Mission to ensure housing for all.", "link": "https://pmaymis.gov.in/", "category": "housing" },
+  { "name": "Night Shelter Scheme", "description": "Shelters for urban homeless.", "link": "https://mohua.gov.in/", "category": "housing" },
+
+  { "name": "PMAY-Urban In-Situ Slum Redevelopment", "description": "Redevelopment of slums using land as resource.", "link": "https://pmaymis.gov.in/", "category": "housing" },
+  { "name": "PMAY-Urban Credit Linked Subsidy (CLSS)", "description": "Subsidy for home loans under PMAY.", "link": "https://pmaymis.gov.in/", "category": "housing" },
+  { "name": "PMAY-Urban Affordable Housing in Partnership", "description": "Public-private housing development.", "link": "https://pmaymis.gov.in/", "category": "housing" },
+  { "name": "PMAY-Urban Beneficiary Led Construction", "description": "Support for individual house construction.", "link": "https://pmaymis.gov.in/", "category": "housing" },
+
+  { "name": "PMAY-Gramin Beneficiary Selection", "description": "Selection of eligible rural beneficiaries.", "link": "https://pmayg.nic.in/", "category": "housing" },
+  { "name": "PMAY-Gramin Financial Assistance", "description": "Financial support for rural housing.", "link": "https://pmayg.nic.in/", "category": "housing" },
+  { "name": "PMAY-Gramin Convergence with MGNREGA", "description": "Labor support through MGNREGA.", "link": "https://pmayg.nic.in/", "category": "housing" },
+
+  { "name": "MHADA Housing Scheme", "description": "Affordable housing in Maharashtra.", "link": "https://mhada.gov.in/", "category": "housing" },
+  { "name": "DDA Housing Scheme", "description": "Affordable flats in Delhi.", "link": "https://dda.gov.in/", "category": "housing" },
+  { "name": "Tamil Nadu Housing Board Scheme", "description": "State housing initiative.", "link": "https://tnhb.tn.gov.in/", "category": "housing" },
+  { "name": "Karnataka Housing Board Scheme", "description": "Housing projects in Karnataka.", "link": "https://karnatakahousing.com/", "category": "housing" },
+  { "name": "Gujarat Housing Board Scheme", "description": "Affordable housing in Gujarat.", "link": "https://gujarathousingboard.org/", "category": "housing" },
+  { "name": "Rajasthan Housing Board Scheme", "description": "Housing for various income groups.", "link": "https://urban.rajasthan.gov.in/", "category": "housing" },
+
+  { "name": "Telangana Double Bedroom Housing", "description": "Free housing for poor families.", "link": "https://2bhk.telangana.gov.in/", "category": "housing" },
+  { "name": "Andhra Pradesh Housing Scheme", "description": "State housing support.", "link": "https://ap.gov.in/", "category": "housing" },
+  { "name": "West Bengal Housing Scheme", "description": "Affordable housing initiatives.", "link": "https://wb.gov.in/", "category": "housing" },
+  { "name": "Odisha Housing Scheme", "description": "Housing for low-income families.", "link": "https://odisha.gov.in/", "category": "housing" },
+  { "name": "Assam Housing Scheme", "description": "Affordable housing in Assam.", "link": "https://assam.gov.in/", "category": "housing" },
+  { "name": "Bihar Housing Scheme", "description": "Housing programs for poor families.", "link": "https://bihar.gov.in/", "category": "housing" },
+  { "name": "Uttar Pradesh Housing Scheme", "description": "Affordable housing in UP.", "link": "https://up.gov.in/", "category": "housing" },
+  { "name": "Haryana Housing Scheme", "description": "Housing initiatives in Haryana.", "link": "https://haryana.gov.in/", "category": "housing" },
+  { "name": "Punjab Housing Scheme", "description": "Housing support in Punjab.", "link": "https://punjab.gov.in/", "category": "housing" },
+
+  { "name": "Kerala LIFE Mission Housing", "description": "Housing for homeless families.", "link": "https://lifemission.kerala.gov.in/", "category": "housing" },
+  { "name": "Chhattisgarh Housing Scheme", "description": "Housing for weaker sections.", "link": "https://cg.gov.in/", "category": "housing" },
+  { "name": "Jharkhand Housing Scheme", "description": "Housing for poor families.", "link": "https://jharkhand.gov.in/", "category": "housing" },
+  { "name": "Himachal Housing Scheme", "description": "Housing in hilly regions.", "link": "https://himachal.nic.in/", "category": "housing" },
+  { "name": "Uttarakhand Housing Scheme", "description": "Affordable housing programs.", "link": "https://uk.gov.in/", "category": "housing" },
+  { "name": "Goa Housing Scheme", "description": "Housing initiatives in Goa.", "link": "https://goa.gov.in/", "category": "housing" },
+
+  { "name": "Pradhan Mantri Gramin Awaas Scheme Plus", "description": "Extended rural housing support.", "link": "https://pmayg.nic.in/", "category": "housing" },
+  { "name": "Urban Affordable Housing Fund", "description": "Funding for affordable housing projects.", "link": "https://nhb.org.in/", "category": "housing" },
+  { "name": "National Urban Housing Policy", "description": "Policy for urban housing development.", "link": "https://mohua.gov.in/", "category": "housing" },
+  { "name": "Rental Housing Scheme India", "description": "Promotes rental housing sector.", "link": "https://mohua.gov.in/", "category": "housing" },
+  { "name": "Slum Rehabilitation Authority Scheme", "description": "Redevelopment of slums.", "link": "https://sra.gov.in/", "category": "housing" },
+  { "name": "Basic Services for Urban Poor (BSUP)", "description": "Housing and services for urban poor.", "link": "https://mohua.gov.in/", "category": "housing" },
+  { "name": "Integrated Housing and Slum Development Programme", "description": "Housing for slum dwellers.", "link": "https://mohua.gov.in/", "category": "housing" },
+ 
 
   {
     "name": "MGNREGA",
