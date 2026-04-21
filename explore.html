@@ -182,22 +182,38 @@ let filteredSchemes = [];
 let currentIndex = 0;
 const loadCount = 12;
 
-// Load JSON
+const container = document.getElementById("schemesContainer");
+const topBtn = document.getElementById("topBtn");
+
+
+// 🔥 Load JSON
 fetch("explore.json")
 .then(res => {
-  if(!res.ok) throw new Error("JSON not found");
+  console.log("Fetch status:", res.status);
+  if (!res.ok) throw new Error("JSON not found");
   return res.json();
 })
 .then(data => {
+  console.log("Data loaded:", data);
+
   originalSchemes = data;
   expandSchemes();
+
   filteredSchemes = [...originalSchemes];
   loadMoreSchemes();
 })
-.catch(err => console.error(err));
+.catch(err => {
+  console.error("ERROR:", err);
+
+  container.innerHTML = `
+    <p class="text-center text-red-500">
+      Failed to load schemes. Check JSON path or server.
+    </p>
+  `;
+});
 
 
-// Expand schemes
+// 🔥 Expand schemes (dummy data)
 function expandSchemes(){
   const categories = ["housing","employment","agriculture","women","energy","infrastructure","business","digital","rural","food"];
 
@@ -218,50 +234,65 @@ function expandSchemes(){
 }
 
 
-// Load more (infinite scroll)
-function loadMoreSchemes(){
-  const container = document.getElementById("schemesContainer");
+// 🔥 Create card (better performance)
+function createCard(scheme){
+  return `
+    <div class="scheme-card">
+      
+      <h3 class="font-semibold text-lg mb-2 text-gray-800">
+        ${scheme.name}
+      </h3>
 
+      <p class="text-sm text-gray-600 mb-3 leading-relaxed">
+        ${scheme.description}
+      </p>
+
+      <span class="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded">
+        ${scheme.category}
+      </span>
+
+      <br><br>
+
+      ${
+        scheme.link && scheme.link !== "#"
+        ? `<a href="${scheme.link}" target="_blank"
+            class="bg-purple-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-purple-700">
+            Learn More →
+          </a>`
+        : `<span class="text-gray-400">No link available</span>`
+      }
+
+    </div>
+  `;
+}
+
+
+// 🔥 Load more (optimized)
+function loadMoreSchemes(){
   let next = filteredSchemes.slice(currentIndex, currentIndex + loadCount);
 
+  let html = "";
   next.forEach(scheme => {
-    container.innerHTML += `
-      <div class="scheme-card">
-        <h3 class="font-semibold text-lg mb-2">${scheme.name}</h3>
-        <p class="text-sm text-gray-600 mb-3">${scheme.description}</p>
-
-        <span class="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded">
-          ${scheme.category}
-        </span>
-
-        <br><br>
-
-        ${
-          scheme.link && scheme.link !== "#"
-          ? `<a href="${scheme.link}" target="_blank"
-              class="bg-purple-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-purple-700">
-              Learn More →
-            </a>`
-          : `<span class="text-gray-400">No link available</span>`
-        }
-      </div>
-    `;
+    html += createCard(scheme);
   });
 
+  container.innerHTML += html;
+
   currentIndex += loadCount;
+
   updateCounter();
   revealCards();
 }
 
 
-// Counter
+// 🔥 Counter
 function updateCounter(){
   document.getElementById("schemeInfo").innerText =
-    `Showing 1–${currentIndex} of ${filteredSchemes.length} schemes`;
+    `Showing 1–${Math.min(currentIndex, filteredSchemes.length)} of ${filteredSchemes.length} schemes`;
 }
 
 
-// Scroll reveal
+// 🔥 Reveal animation
 function revealCards(){
   document.querySelectorAll(".scheme-card").forEach(card => {
     let top = card.getBoundingClientRect().top;
@@ -272,21 +303,20 @@ function revealCards(){
 }
 
 
-// Infinite scroll trigger
+// 🔥 Infinite scroll + top button
 window.addEventListener("scroll", () => {
+
   if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 100){
     if(currentIndex < filteredSchemes.length){
       loadMoreSchemes();
     }
   }
 
-  // top button
-  document.getElementById("topBtn").style.display =
-    window.scrollY > 300 ? "block" : "none";
+  topBtn.style.display = window.scrollY > 300 ? "block" : "none";
 });
 
 
-// Search + filter
+// 🔥 Filters
 document.getElementById("searchInput").addEventListener("input", applyFilters);
 document.getElementById("categorySelect").addEventListener("change", applyFilters);
 
@@ -301,11 +331,11 @@ function applyFilters(){
     );
   });
 
-  document.getElementById("schemesContainer").innerHTML = "";
+  container.innerHTML = "";
   currentIndex = 0;
+
   loadMoreSchemes();
 }
-
 </script>
 
 </body>
