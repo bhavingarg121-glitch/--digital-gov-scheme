@@ -49,8 +49,63 @@
   { "name": "Slum Rehabilitation Authority Scheme", "description": "Redevelopment of slums.", "link": "https://sra.gov.in/", "category": "housing" },
   { "name": "Basic Services for Urban Poor (BSUP)", "description": "Housing and services for urban poor.", "link": "https://mohua.gov.in/", "category": "housing" },
   { "name": "Integrated Housing and Slum Development Programme", "description": "Housing for slum dwellers.", "link": "https://mohua.gov.in/", "category": "housing" },
- 
+  { "name": "Pradhan Mantri Fasal Bima Yojana", "description": "Crop insurance against natural disasters.", "link": "https://pmfby.gov.in/", "category": "agriculture" },
+  { "name": "PM Kisan Samman Nidhi", "description": "Income support of ₹6000/year to farmers.", "link": "https://pmkisan.gov.in/", "category": "agriculture" },
+  { "name": "PM Krishi Sinchai Yojana", "description": "Improves irrigation coverage and efficiency.", "link": "https://pmksy.gov.in/", "category": "agriculture" },
+  { "name": "Soil Health Card Scheme", "description": "Provides soil health information to farmers.", "link": "https://soilhealth.dac.gov.in/", "category": "agriculture" },
+  { "name": "e-NAM", "description": "Online trading platform for agricultural produce.", "link": "https://www.enam.gov.in/", "category": "agriculture" },
+  { "name": "Kisan Credit Card Scheme", "description": "Credit support for farmers.", "link": "https://www.nabard.org/", "category": "agriculture" },
+  { "name": "National Mission for Sustainable Agriculture", "description": "Promotes sustainable farming practices.", "link": "https://nmsa.dac.gov.in/", "category": "agriculture" },
+  { "name": "Paramparagat Krishi Vikas Yojana", "description": "Encourages organic farming.", "link": "https://pgsindia-ncof.gov.in/", "category": "agriculture" },
+  { "name": "National Food Security Mission", "description": "Increase production of rice, wheat, pulses.", "link": "https://nfsm.gov.in/", "category": "agriculture" },
+  { "name": "Rashtriya Krishi Vikas Yojana", "description": "Promotes agriculture development.", "link": "https://rkvy.nic.in/", "category": "agriculture" },
 
+  { "name": "PM Matsya Sampada Yojana", "description": "Development of fisheries sector.", "link": "https://pmmsy.dof.gov.in/", "category": "agriculture" },
+  { "name": "National Mission on Oilseeds and Oil Palm", "description": "Increase oilseed production.", "link": "https://nmoop.gov.in/", "category": "agriculture" },
+  { "name": "Mission for Integrated Development of Horticulture", "description": "Boost horticulture production.", "link": "https://midh.gov.in/", "category": "agriculture" },
+  { "name": "Sub Mission on Agricultural Mechanization", "description": "Promotes use of farm machinery.", "link": "https://agrimachinery.nic.in/", "category": "agriculture" },
+  { "name": "Sub Mission on Seeds and Planting Material", "description": "Improves seed quality.", "link": "https://seednet.gov.in/", "category": "agriculture" },
+  { "name": "Rainfed Area Development Programme", "description": "Supports farming in rainfed areas.", "link": "https://nmsa.dac.gov.in/", "category": "agriculture" },
+  { "name": "National Bamboo Mission", "description": "Promotes bamboo cultivation.", "link": "https://nbm.nic.in/", "category": "agriculture" },
+  { "name": "National Beekeeping Mission", "description": "Encourages beekeeping activities.", "link": "https://nbb.gov.in/", "category": "agriculture" },
+  { "name": "Agri Infrastructure Fund", "description": "Financing for farm infrastructure.", "link": "https://agriinfra.dac.gov.in/", "category": "agriculture" },
+  { "name": "Operation Greens", "description": "Stabilizes prices of tomatoes, onions, potatoes.", "link": "https://mofpi.gov.in/", "category": "agriculture" },
+
+  { "name": "KUSUM Scheme", "description": "Solar pumps for farmers.", "link": "https://mnre.gov.in/", "category": "agriculture" },
+  { "name": "Gramin Bhandaran Yojana", "description": "Rural godown storage scheme.", "link": "https://nabard.org/", "category": "agriculture" },
+  { "name": "National Livestock Mission", "description": "Development of livestock sector.", "link": "https://nlm.udyamimitra.in/", "category": "agriculture" },
+  { "name": "Dairy Entrepreneurship Development Scheme", "description": "Promotes dairy farming.", "link": "https://nabard.org/", "category": "agriculture" },
+  { "name": "National Dairy Plan", "description": "Increase milk production.", "link": "https://nddb.coop/", "category": "agriculture" },
+  { "name": "Fisheries and Aquaculture Infrastructure Development Fund", "description": "Infrastructure for fisheries.", "link": "https://dof.gov.in/", "category": "agriculture" },
+
+  { "name": "Rythu Bandhu", "description": "Income support for farmers in Telangana.", "link": "https://rythubandhu.telangana.gov.in/", "category": "agriculture" },
+  { "name": "KALIA Scheme", "description": "Support for farmers in Odisha.", "link": "https://kalia.odisha.gov.in/", "category": "agriculture" },
+  { "name": "YSR Rythu Bharosa", "description": "Financial support in Andhra Pradesh.", "link": "https://ysrrythubharosa.ap.gov.in/", "category": "agriculture" },
+  { "name": "Krishi Samruddhi Yojana", "description": "Agriculture growth in Maharashtra.", "link": "https://krishi.maharashtra.gov.in/", "category": "agriculture" },
+
+  { "name": "UP Krishi Kalyan Scheme", "description": "Agriculture welfare in UP.", "link": "https://up.gov.in/", "category": "agriculture" },
+  { "name": "Punjab Crop Diversification Programme", "description": "Encourages crop diversification.", "link": "https://punjab.gov.in/", "category": "agriculture" },
+  { "name": "Haryana Bhavantar Bharpai Yojana", "description": "Price compensation scheme.", "link": "https://haryana.gov.in/", "category": "agriculture" },
+  { "name": "Gujarat Krishi Mahotsav", "description": "Farmer awareness program.", "link": "https://gujarat.gov.in/", "category": "agriculture" },
+  { "name": "Rajasthan Krishi Yojana", "description": "Agriculture support schemes.", "link": "https://rajasthan.gov.in/", "category": "agriculture" },
+
+  { "name": "Bihar Krishi Input Subsidy Scheme", "description": "Subsidy for crop losses.", "link": "https://bihar.gov.in/", "category": "agriculture" },
+  { "name": "MP Bhavantar Bhugtan Yojana", "description": "Price support for farmers.", "link": "https://mp.gov.in/", "category": "agriculture" },
+  { "name": "Chhattisgarh Rajiv Gandhi Kisan Nyay Yojana", "description": "Income support scheme.", "link": "https://cg.gov.in/", "category": "agriculture" },
+  { "name": "Jharkhand Krishi Ashirwad Yojana", "description": "Farmer assistance scheme.", "link": "https://jharkhand.gov.in/", "category": "agriculture" },
+
+  { "name": "West Bengal Krishak Bandhu", "description": "Financial aid to farmers.", "link": "https://wb.gov.in/", "category": "agriculture" },
+  { "name": "Assam Krishi Yojana", "description": "Agriculture development scheme.", "link": "https://assam.gov.in/", "category": "agriculture" },
+  { "name": "Odisha Krushi Vikas Yojana", "description": "Agriculture development support.", "link": "https://odisha.gov.in/", "category": "agriculture" },
+  { "name": "Kerala Karshaka Kshema Yojana", "description": "Farmer welfare scheme.", "link": "https://kerala.gov.in/", "category": "agriculture" },
+
+  { "name": "Integrated Scheme on Agriculture Cooperation", "description": "Promotes farmer cooperatives.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+  { "name": "National Agricultural Market Scheme", "description": "Improves agri-marketing.", "link": "https://enam.gov.in/", "category": "agriculture" },
+  { "name": "Agri Export Policy Initiative", "description": "Boosts agricultural exports.", "link": "https://commerce.gov.in/", "category": "agriculture" },
+  { "name": "Farmer Producer Organization Scheme", "description": "Supports farmer collectives.", "link": "https://sfacindia.com/", "category": "agriculture" },
+  { "name": "Climate Resilient Agriculture Scheme", "description": "Helps farmers adapt to climate change.", "link": "https://icar.org.in/", "category": "agriculture" },
+  { "name": "National Innovations on Climate Resilient Agriculture (NICRA)", "description": "Develops climate-resilient farming practices to protect crops from extreme weather.", "link": "https://icar.org.in/", "category": "agriculture" },
+{ "name": "Integrated Nutrient Management Scheme", "description": "Promotes balanced fertilizer use for sustainable farming.", "link": "https://agricoop.nic.in/", "category": "agriculture" }
   {
     "name": "MGNREGA",
     "description": "Provides 100 days of guaranteed wage employment to rural households.",
@@ -105,68 +160,6 @@
     "link": "https://mp.gov.in/",
     "category": "employment"
   },
-
-  {
-    "name": "Pradhan Mantri Fasal Bima Yojana",
-    "description": "Crop insurance against natural disasters.",
-    "link": "https://pmfby.gov.in/",
-    "category": "agriculture"
-  },
-  {
-    "name": "Kisan Credit Card Scheme",
-    "description": "Provides credit support to farmers.",
-    "link": "https://www.nabard.org/",
-    "category": "agriculture"
-  },
-  {
-    "name": "PM Kisan Samman Nidhi",
-    "description": "Direct income support for farmers.",
-    "link": "https://pmkisan.gov.in/",
-    "category": "agriculture"
-  },
-  {
-    "name": "PM Krishi Sinchai Yojana",
-    "description": "Improves irrigation facilities.",
-    "link": "https://pmksy.gov.in/",
-    "category": "agriculture"
-  },
-  {
-    "name": "Soil Health Card Scheme",
-    "description": "Promotes soil testing and balanced fertilizer use.",
-    "link": "https://soilhealth.dac.gov.in/",
-    "category": "agriculture"
-  },
-  {
-    "name": "e-NAM",
-    "description": "Online agricultural trading platform.",
-    "link": "https://www.enam.gov.in/",
-    "category": "agriculture"
-  },
-  {
-    "name": "Rythu Bandhu",
-    "description": "Financial aid to farmers in Telangana.",
-    "link": "https://rythubandhu.telangana.gov.in/",
-    "category": "agriculture"
-  },
-  {
-    "name": "KALIA Scheme",
-    "description": "Support for farmers and laborers in Odisha.",
-    "link": "https://kalia.odisha.gov.in/",
-    "category": "agriculture"
-  },
-  {
-    "name": "YSR Rythu Bharosa",
-    "description": "Financial support to Andhra farmers.",
-    "link": "https://ysrrythubharosa.ap.gov.in/",
-    "category": "agriculture"
-  },
-  {
-    "name": "Krishi Samruddhi Yojana",
-    "description": "Agriculture development in Maharashtra.",
-    "link": "https://krishi.maharashtra.gov.in/",
-    "category": "agriculture"
-  },
-
   {
     "name": "Beti Bachao Beti Padhao",
     "description": "Promotes education and welfare of girls.",
