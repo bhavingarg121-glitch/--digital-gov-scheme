@@ -112,7 +112,73 @@
   { "name": "Paramparagat Krishi Vikas Yojana", "description": "Encourages organic farming.", "link": "https://pgsindia-ncof.gov.in/", "category": "agriculture" },
   { "name": "National Food Security Mission", "description": "Increase production of rice, wheat, pulses.", "link": "https://nfsm.gov.in/", "category": "agriculture" },
   { "name": "Rashtriya Krishi Vikas Yojana", "description": "Promotes agriculture development.", "link": "https://rkvy.nic.in/", "category": "agriculture" },
+  { "name": "Pradhan Mantri Annadata Aay Sanrakshan Abhiyan (PM-AASHA)", "description": "Ensures remunerative prices to farmers.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+  { "name": "Price Support Scheme (PSS)", "description": "Procurement of crops at MSP.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+  { "name": "Price Deficiency Payment Scheme (PDPS)", "description": "Compensation for price gap.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+  { "name": "Private Procurement Stockist Scheme (PPSS)", "description": "Private procurement of crops.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
 
+  { "name": "National Mission on Edible Oils (NMEO)", "description": "Increase domestic edible oil production.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+  { "name": "National Mission on Edible Oils - Oil Palm", "description": "Boost oil palm cultivation.", "link": "https://nmoop.gov.in/", "category": "agriculture" },
+  { "name": "Seed Village Programme", "description": "Improves seed production at village level.", "link": "https://seednet.gov.in/", "category": "agriculture" },
+  { "name": "Custom Hiring Centre Scheme", "description": "Provides farm machinery on rent.", "link": "https://agrimachinery.nic.in/", "category": "agriculture" },
+
+  { "name": "Per Drop More Crop", "description": "Efficient irrigation under PMKSY.", "link": "https://pmksy.gov.in/", "category": "agriculture" },
+  { "name": "Har Khet Ko Pani", "description": "Ensures irrigation to every farm.", "link": "https://pmksy.gov.in/", "category": "agriculture" },
+  { "name": "Watershed Development Component", "description": "Improves rainwater conservation.", "link": "https://pmksy.gov.in/", "category": "agriculture" },
+
+  { "name": "National Agroforestry Policy Scheme", "description": "Promotes tree plantation on farms.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+  { "name": "Organic Value Chain Development Scheme", "description": "Supports organic farmers' market access.", "link": "https://pgsindia-ncof.gov.in/", "category": "agriculture" },
+  { "name": "Mission Organic Value Chain North East", "description": "Organic farming in NE region.", "link": "https://mofpi.gov.in/", "category": "agriculture" },
+
+  { "name": "National Pest Surveillance System", "description": "Tracks pest outbreaks.", "link": "https://icar.org.in/", "category": "agriculture" },
+  { "name": "Plant Protection Scheme", "description": "Protect crops from pests/diseases.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+
+  { "name": "Integrated Farming System Scheme", "description": "Combines crops, livestock, fisheries.", "link": "https://icar.org.in/", "category": "agriculture" },
+  { "name": "National Mission on Natural Farming", "description": "Promotes chemical-free farming.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+
+  { "name": "Farmer Field School Programme", "description": "Training farmers on best practices.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+  { "name": "Agricultural Extension Scheme", "description": "Knowledge transfer to farmers.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+
+  { "name": "Kisan Call Center Scheme", "description": "Helpline for farmer queries.", "link": "https://mkisan.gov.in/", "category": "agriculture" },
+  { "name": "mKisan SMS Portal", "description": "SMS alerts for farmers.", "link": "https://mkisan.gov.in/", "category": "agriculture" },
+
+  { "name": "Agricultural Technology Management Agency (ATMA)", "description": "District-level agri support.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+  { "name": "Krishi Vigyan Kendra Programme", "description": "Farm science centers.", "link": "https://icar.org.in/", "category": "agriculture" },
+
+  { "name": "National Agricultural Higher Education Project", "description": "Improves agri education.", "link": "https://icar.org.in/", "category": "agriculture" },
+  { "name": "Agri Clinics and Agri Business Centres Scheme", "description": "Entrepreneurship in agriculture.", "link": "https://acabcmis.gov.in/", "category": "agriculture" },
+
+  { "name": "National Project on Organic Farming", "description": "Promotes organic inputs.", "link": "https://ncof.dacnet.nic.in/", "category": "agriculture" },
+  { "name": "Biofertilizer Promotion Scheme", "description": "Encourages biofertilizer use.", "link": "https://ncof.dacnet.nic.in/", "category": "agriculture" },
+
+  { "name": "National Rainfed Area Authority Scheme", "description": "Supports rainfed farming.", "link": "https://nraa.gov.in/", "category": "agriculture" },
+  { "name": "Crop Diversification Programme", "description": "Encourages crop variety.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+
+  { "name": "Agriculture Infrastructure Development Scheme", "description": "Improves farm infrastructure.", "link": "https://agriinfra.dac.gov.in/", "category": "agriculture" },
+  { "name": "Cold Chain Infrastructure Scheme", "description": "Supports cold storage.", "link": "https://mofpi.gov.in/", "category": "agriculture" },
+
+  { "name": "Mega Food Park Scheme", "description": "Food processing clusters.", "link": "https://mofpi.gov.in/", "category": "agriculture" },
+  { "name": "Food Processing Subsidy Scheme", "description": "Supports agri-processing units.", "link": "https://mofpi.gov.in/", "category": "agriculture" },
+
+  { "name": "National Agriculture Insurance Scheme", "description": "Old crop insurance scheme.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+  { "name": "Weather Based Crop Insurance Scheme", "description": "Insurance based on weather conditions.", "link": "https://pmfby.gov.in/", "category": "agriculture" },
+
+  { "name": "Unified Package Insurance Scheme", "description": "Comprehensive farmer insurance.", "link": "https://pmfby.gov.in/", "category": "agriculture" },
+
+  { "name": "Agriculture Marketing Infrastructure Scheme", "description": "Improves market infrastructure.", "link": "https://agmarknet.gov.in/", "category": "agriculture" },
+  { "name": "e-Gram Swaraj Agriculture Integration", "description": "Digital agriculture governance.", "link": "https://egramswaraj.gov.in/", "category": "agriculture" },
+
+  { "name": "Village Storage Scheme", "description": "Promotes local storage facilities.", "link": "https://nabard.org/", "category": "agriculture" },
+  { "name": "Farm Mechanization Training Scheme", "description": "Training for modern farming tools.", "link": "https://agrimachinery.nic.in/", "category": "agriculture" },
+
+  { "name": "Agri Skill Development Scheme", "description": "Skill development for farmers.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+  { "name": "Rural Agriculture Work Experience Programme", "description": "Hands-on farming training.", "link": "https://icar.org.in/", "category": "agriculture" },
+
+  { "name": "Women Farmers Empowerment Scheme", "description": "Supports women in agriculture.", "link": "https://wcd.nic.in/", "category": "agriculture" },
+  { "name": "Youth in Agriculture Scheme", "description": "Encourages youth participation.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+
+  { "name": "Digital Agriculture Mission", "description": "Uses tech for smart farming.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
+  { "name": "Agri Stack Initiative", "description": "Digital data platform for farmers.", "link": "https://agricoop.nic.in/", "category": "agriculture" },
   { "name": "PM Matsya Sampada Yojana", "description": "Development of fisheries sector.", "link": "https://pmmsy.dof.gov.in/", "category": "agriculture" },
   { "name": "National Mission on Oilseeds and Oil Palm", "description": "Increase oilseed production.", "link": "https://nmoop.gov.in/", "category": "agriculture" },
   { "name": "Mission for Integrated Development of Horticulture", "description": "Boost horticulture production.", "link": "https://midh.gov.in/", "category": "agriculture" },
