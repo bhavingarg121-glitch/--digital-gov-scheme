@@ -1,15 +1,18 @@
-const express = require("express");
-const router = express.Router();
-const db = require("../db");
+const mongoose = require("mongoose");
 
-// Get all schemes
-router.get("/", async (req, res) => {
-  try {
-    const result = await db.query("SELECT * FROM schemes ORDER BY created_at DESC");
-    res.json(result.rows);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+const schemeSchema = new mongoose.Schema({
+  name: String,
+  description: String,
+  link: String,
+
+  eligibility: {
+    minAge: Number,
+    maxAge: Number,
+    incomeLimit: Number,
+    occupation: String,
+    gender: String,
+    state: String
   }
 });
 
-module.exports = router;
+module.exports = mongoose.model("Scheme", schemeSchema);
