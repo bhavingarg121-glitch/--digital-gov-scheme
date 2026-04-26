@@ -2,25 +2,24 @@ const axios = require("axios");
 
 app.post("/api/find", async (req,res)=>{
 
-  const user = req.body;
+  const text = req.body.text;
 
   try {
 
-    // 🔥 CALL PYTHON ML
-    const mlRes = await axios.post("http://localhost:5000/predict", user);
+    const ml = await axios.post("http://localhost:5000/predict", { text });
 
-    const recommended = mlRes.data.recommended_scheme;
+    const schemeName = ml.data.recommended_scheme;
 
-    // 🔎 FIND FULL SCHEME DETAILS FROM DB
     const schemes = await Scheme.find({
-      name: new RegExp(recommended, "i")
+      name: new RegExp(schemeName, "i")
     });
 
-    res.json(schemes);
+    res.json({
+      ai: ml.data,
+      schemes
+    });
 
   } catch(err){
-    console.log(err);
-    res.send("ML server error");
+    res.send("Error connecting ML");
   }
-
 });
