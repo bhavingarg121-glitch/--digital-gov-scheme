@@ -12,8 +12,10 @@
 <body class="bg-blue-50 text-gray-800">
 
   <!-- Header -->
-  <header class="bg-blue-600 text-white p-4 shadow-md">
-    <h1 class="text-2xl font-bold text-center">Health Schemes</h1>
+  <header class="bg-blue-600 text-white p-5 shadow-md">
+    <h1 class="text-2xl md:text-3xl font-bold text-center">
+      Health Schemes
+    </h1>
   </header>
 
   <!-- Search Bar -->
@@ -21,14 +23,14 @@
     <input 
       id="search" 
       type="text" 
-      placeholder="Search health schemes..." 
-      class="w-full p-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-400"
+      placeholder="Search health schemes (name, description...)" 
+      class="w-full p-3 rounded-xl border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
     >
   </div>
 
   <!-- Schemes Container -->
-  <div id="schemes-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 max-w-6xl mx-auto">
-    <!-- Cards will load here -->
+  <div id="schemes-container"
+    class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 max-w-6xl mx-auto">
   </div>
 
   <!-- Footer -->
@@ -36,7 +38,7 @@
     <p>© 2026 Scheme Sathi | Health Schemes</p>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- SCRIPT -->
   <script>
     let schemes = [];
 
@@ -45,37 +47,44 @@
       .then(res => res.json())
       .then(data => {
         schemes = data;
-        displaySchemes(schemes);
+        renderSchemes(schemes);
       })
       .catch(err => {
         document.getElementById("schemes-container").innerHTML =
-          "<p class='text-red-500'>Failed to load data. Check JSON path.</p>";
+          "<p class='text-red-500 text-center col-span-full'>Failed to load data. Check JSON path.</p>";
+        console.error(err);
       });
 
-    // Display Schemes
-    function displaySchemes(data) {
+    // Render function
+    function renderSchemes(data) {
       const container = document.getElementById("schemes-container");
       container.innerHTML = "";
 
-      if (data.length === 0) {
-        container.innerHTML = "<p>No schemes found.</p>";
+      if (!data || data.length === 0) {
+        container.innerHTML = `
+          <p class="text-center text-gray-500 col-span-full">
+            No schemes found 😔
+          </p>`;
         return;
       }
 
       data.forEach(scheme => {
         const card = `
-          <div class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-            
-            <h2 class="text-xl font-semibold mb-2 text-blue-700">
-              ${scheme.name}
+          <div class="bg-white p-5 rounded-2xl shadow-md 
+                      hover:shadow-xl hover:-translate-y-1 
+                      transition duration-300 border border-gray-100">
+
+            <h2 class="text-lg font-semibold mb-2 text-blue-700">
+              ${scheme?.name || "No Title"}
             </h2>
-            
-            <p class="text-gray-600 mb-4">
-              ${scheme.description}
+
+            <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+              ${scheme?.description || "No description available"}
             </p>
 
-            <a href="${scheme.link}" target="_blank"
-              class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+            <a href="${scheme?.link || "#"}" target="_blank"
+              class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg 
+                     hover:bg-blue-700 transition text-sm">
               Learn More
             </a>
           </div>
@@ -84,16 +93,18 @@
       });
     }
 
-    // Search Functionality
+    // Search Function
     document.getElementById("search").addEventListener("input", function () {
-      const value = this.value.toLowerCase();
+      const value = this.value.toLowerCase().trim();
 
-      const filtered = schemes.filter(scheme =>
-        scheme.name.toLowerCase().includes(value) ||
-        scheme.description.toLowerCase().includes(value)
-      );
+      const filtered = schemes.filter(scheme => {
+        return (
+          (scheme.name && scheme.name.toLowerCase().includes(value)) ||
+          (scheme.description && scheme.description.toLowerCase().includes(value))
+        );
+      });
 
-      displaySchemes(filtered);
+      renderSchemes(filtered);
     });
   </script>
 
