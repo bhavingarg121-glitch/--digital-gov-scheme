@@ -393,6 +393,30 @@
   },
 
   {
+    "name": "National Rural Drinking Water Programme",
+    "description": "Provides safe drinking water in rural areas.",
+    "link": "https://jaljeevanmission.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "National Rural Health Mission",
+    "description": "Improves healthcare services in rural India.",
+    "link": "https://nhm.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Mahila Kisan Sashaktikaran Pariyojana",
+    "description": "Empowers women farmers through training and support.",
+    "link": "https://aajeevika.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Digital India Land Records Modernization Programme",
+    "description": "Digitizes land records for transparency in rural areas.",
+    "link": "https://dilrmp.gov.in/",
+    "category": "rural"
+  },
+  {
     "name": "DAY-NRLM",
     "description": "Supports rural livelihoods and SHGs.",
     "link": "https://nrlm.gov.in/",
@@ -402,6 +426,240 @@
     "name": "Sansad Adarsh Gram Yojana",
     "description": "Develops model villages.",
     "link": "https://saanjhi.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA)",
+    "description": "Guarantees 100 days of wage employment in rural areas.",
+    "link": "https://nrega.nic.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Pradhan Mantri Awaas Yojana - Gramin",
+    "description": "Provides housing for rural poor families.",
+    "link": "https://pmayg.nic.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Pradhan Mantri Gram Sadak Yojana",
+    "description": "Connects rural villages through all-weather roads.",
+    "link": "https://pmgsy.nic.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Deen Dayal Upadhyaya Grameen Kaushalya Yojana",
+    "description": "Skill development for rural youth.",
+    "link": "https://ddugky.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Startup Village Entrepreneurship Programme",
+    "description": "Promotes rural entrepreneurship.",
+    "link": "https://nrlm.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Pradhan Mantri Kisan Samman Nidhi",
+    "description": "Income support for farmers.",
+    "link": "https://pmkisan.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Pradhan Mantri Fasal Bima Yojana",
+    "description": "Crop insurance scheme for farmers.",
+    "link": "https://pmfby.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Kisan Credit Card Scheme",
+    "description": "Easy credit access for farmers.",
+    "link": "https://pmkisan.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "RKVY-RAFTAAR",
+    "description": "Supports agricultural development projects.",
+    "link": "https://rkvy.nic.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Soil Health Card Scheme",
+    "description": "Provides soil testing reports to farmers.",
+    "link": "https://soilhealth.dac.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Paramparagat Krishi Vikas Yojana",
+    "description": "Promotes organic farming.",
+    "link": "https://pgsindia-ncof.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Mission Antyodaya",
+    "description": "Improves rural governance and infrastructure.",
+    "link": "https://missionantyodaya.nic.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Jal Jeevan Mission",
+    "description": "Provides tap water to rural households.",
+    "link": "https://jaljeevanmission.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Swachh Bharat Mission - Gramin",
+    "description": "Rural sanitation and cleanliness program.",
+    "link": "https://swachhbharatmission.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Deen Dayal Upadhyaya Gram Jyoti Yojana",
+    "description": "Rural electrification scheme.",
+    "link": "https://powermin.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Saubhagya Scheme",
+    "description": "Electrification of rural households.",
+    "link": "https://saubhagya.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "National Social Assistance Programme",
+    "description": "Pension support for elderly, widows, disabled.",
+    "link": "https://nsap.nic.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Common Service Centres (CSC)",
+    "description": "Digital services in rural India.",
+    "link": "https://csc.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "e-Panchayat Mission Mode Project",
+    "description": "Digital governance for Panchayats.",
+    "link": "https://egramswaraj.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Watershed Development Programme",
+    "description": "Improves water conservation in rural areas.",
+    "link": "https://pmksy.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Gram Ujala Scheme",
+    "description": "Affordable LED bulbs in rural areas.",
+    "link": "https://energy.economictimes.indiatimes.com/",
+    "category": "rural"
+  },
+  {
+    "name": "PM Matsya Sampada Yojana",
+    "description": "Supports fisheries and aquaculture sector.",
+    "link": "https://pmmsy.dof.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "National Livestock Mission",
+    "description": "Development of livestock sector.",
+    "link": "https://dahd.nic.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Rashtriya Gokul Mission",
+    "description": "Improves indigenous cattle breeds.",
+    "link": "https://dahd.nic.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Dairy Entrepreneurship Development Scheme",
+    "description": "Supports dairy farming businesses.",
+    "link": "https://nabard.org/",
+    "category": "rural"
+  },
+  {
+    "name": "NABARD RIDF",
+    "description": "Funds rural infrastructure projects.",
+    "link": "https://nabard.org/",
+    "category": "rural"
+  },
+  {
+    "name": "Self Help Group Bank Linkage Programme",
+    "description": "Financial inclusion for SHGs.",
+    "link": "https://nabard.org/",
+    "category": "rural"
+  },
+  {
+    "name": "Van Dhan Vikas Yojana",
+    "description": "Supports tribal forest produce businesses.",
+    "link": "https://trifed.tribal.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Shyama Prasad Mukherji Rurban Mission",
+    "description": "Develops rural clusters with urban facilities.",
+    "link": "https://rurban.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Border Area Development Programme",
+    "description": "Development of villages near borders.",
+    "link": "https://mha.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "National Food Security Mission",
+    "description": "Improves agricultural productivity.",
+    "link": "https://nfsm.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Mission for Integrated Development of Horticulture",
+    "description": "Promotes fruit and vegetable farming.",
+    "link": "https://midh.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Agriculture Infrastructure Fund",
+    "description": "Supports farm infrastructure projects.",
+    "link": "https://agriinfra.dac.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "e-NAM",
+    "description": "National electronic agricultural market.",
+    "link": "https://enam.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Pradhan Mantri Krishi Sinchai Yojana",
+    "description": "Irrigation improvement scheme.",
+    "link": "https://pmksy.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Micro Irrigation Fund Scheme",
+    "description": "Promotes drip and sprinkler irrigation.",
+    "link": "https://nabard.org/",
+    "category": "rural"
+  },
+  {
+    "name": "Integrated Watershed Management Programme",
+    "description": "Water conservation and land management.",
+    "link": "https://pmksy.gov.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Rural Self Employment Training Institutes",
+    "description": "Skill training for rural unemployed youth.",
+    "link": "https://rseti.org.in/",
+    "category": "rural"
+  },
+  {
+    "name": "Pradhan Mantri Kaushal Vikas Yojana",
+    "description": "Skill development program for youth.",
+    "link": "https://pmkvyofficial.org/",
     "category": "rural"
   },
   {
