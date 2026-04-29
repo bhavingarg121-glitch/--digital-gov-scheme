@@ -280,6 +280,252 @@
     "category": "employment"
   },
   {
+  "name": "Skill India Mission",
+  "description": "Nationwide initiative for skill development and vocational training.",
+  "link": "https://www.skillindia.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Pradhan Mantri Mudra Yojana (PMMY)",
+  "description": "Provides loans to micro and small enterprises for self-employment.",
+  "link": "https://www.mudra.org.in/",
+  "category": "employment"
+},
+{
+  "name": "Atal Innovation Mission",
+  "description": "Promotes innovation and entrepreneurship among youth.",
+  "link": "https://aim.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "National Apprenticeship Promotion Scheme (NAPS)",
+  "description": "Promotes apprenticeship training in industries.",
+  "link": "https://apprenticeshipindia.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "National Apprenticeship Training Scheme (NATS)",
+  "description": "Provides practical training for technical graduates.",
+  "link": "https://nats.education.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "DAY-NULM (Deen Dayal Antyodaya Yojana - NULM)",
+  "description": "Supports urban poor through skill development and self-employment.",
+  "link": "https://nulm.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "National Rural Livelihood Mission (NRLM)",
+  "description": "Enhances livelihood opportunities for rural poor.",
+  "link": "https://aajeevika.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "PM SVANidhi Scheme",
+  "description": "Micro-credit facility for street vendors.",
+  "link": "https://pmsvanidhi.mohua.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "e-Shram Portal",
+  "description": "National database for unorganised workers.",
+  "link": "https://eshram.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Make in India",
+  "description": "Promotes manufacturing and job creation in India.",
+  "link": "https://www.makeinindia.com/",
+  "category": "employment"
+},
+{
+  "name": "Digital India Initiative",
+  "description": "Drives digital infrastructure and employment opportunities.",
+  "link": "https://www.digitalindia.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "PM Gati Shakti",
+  "description": "Infrastructure development program boosting employment.",
+  "link": "https://gatisakti.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Atmanirbhar Bharat Rozgar Yojana",
+  "description": "Incentivizes job creation in formal sector.",
+  "link": "https://www.epfindia.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Jan Shikshan Sansthan (JSS)",
+  "description": "Provides vocational training to non-literate and neo-literate adults.",
+  "link": "https://jss.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "National Skill Development Corporation (NSDC)",
+  "description": "Promotes skill training through private sector collaboration.",
+  "link": "https://nsdcindia.org/",
+  "category": "employment"
+},
+{
+  "name": "Pradhan Mantri Rojgar Protsahan Yojana (PMRPY)",
+  "description": "Encourages employers to generate new employment.",
+  "link": "https://www.epfindia.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Self Employment Scheme for Rehabilitation of Manual Scavengers (SRMS)",
+  "description": "Rehabilitation and employment support for manual scavengers.",
+  "link": "https://socialjustice.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Mahatma Gandhi National Fellowship (MGNF)",
+  "description": "Fellowship for skill development in districts.",
+  "link": "https://iimcat.ac.in/",
+  "category": "employment"
+},
+{
+  "name": "ASPIRE Scheme",
+  "description": "Promotes innovation and rural entrepreneurship.",
+  "link": "https://msme.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "SFURTI Scheme",
+  "description": "Cluster-based development for traditional industries.",
+  "link": "https://msme.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Skill Loan Scheme",
+  "description": "Provides loans for skill development courses.",
+  "link": "https://www.vidyalakshmi.co.in/",
+  "category": "employment"
+},
+{
+  "name": "Entrepreneurship Development Programme (EDP)",
+  "description": "Trains individuals for entrepreneurship skills.",
+  "link": "https://msme.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "RSETI (Rural Self Employment Training Institutes)",
+  "description": "Training for rural youth for self-employment.",
+  "link": "https://rseti.org/",
+  "category": "employment"
+},
+{
+  "name": "SMILE Scheme",
+  "description": "Support for marginalized individuals for livelihood.",
+  "link": "https://socialjustice.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "National Skill Certification and Monetary Reward Scheme (STAR)",
+  "description": "Rewards skill certification for youth.",
+  "link": "https://msde.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "UDAAN Scheme",
+  "description": "Skill development for youth in Jammu & Kashmir.",
+  "link": "https://www.nsdcindia.org/udan",
+  "category": "employment"
+},
+{
+  "name": "HIMAYAT Scheme",
+  "description": "Skill development and employment for J&K youth.",
+  "link": "https://himayat.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "PM Vishwakarma Yojana",
+  "description": "Support for traditional artisans and craftspeople.",
+  "link": "https://pmvishwakarma.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Rozgar Mela",
+  "description": "Job fairs for government and private employment.",
+  "link": "https://employmentnews.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "MSME Champions Scheme",
+  "description": "Support for MSME growth and employment generation.",
+  "link": "https://champions.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Udyam Registration",
+  "description": "Registration portal for MSMEs to access benefits.",
+  "link": "https://udyamregistration.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "CGTMSE Scheme",
+  "description": "Credit guarantee for micro and small enterprises.",
+  "link": "https://www.cgtmse.in/",
+  "category": "employment"
+},
+{
+  "name": "PM Formalisation of Micro Food Processing Enterprises (PMFME)",
+  "description": "Support for food processing micro enterprises.",
+  "link": "https://pmfme.mofpi.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Operation Greens",
+  "description": "Stabilizes prices and supports agricultural employment.",
+  "link": "https://mofpi.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Agri Infrastructure Fund",
+  "description": "Financial support for agricultural infrastructure.",
+  "link": "https://agriinfra.dac.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "National Livestock Mission",
+  "description": "Employment generation in livestock sector.",
+  "link": "https://dahd.nic.in/",
+  "category": "employment"
+},
+{
+  "name": "PM Matsya Sampada Yojana",
+  "description": "Boosts fisheries sector and employment.",
+  "link": "https://pmmsy.dof.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Skill India Digital Platform",
+  "description": "Digital ecosystem for skill learning and certification.",
+  "link": "https://www.skillindiadigital.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "National Digital Literacy Mission (NDLM)",
+  "description": "Improves digital literacy for employment readiness.",
+  "link": "https://www.digitalindia.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "Deendayal Disabled Rehabilitation Scheme (DDRS)",
+  "description": "Rehabilitation and employment for persons with disabilities.",
+  "link": "https://disabilityaffairs.gov.in/",
+  "category": "employment"
+},
+{
+  "name": "STEP Scheme (Support to Training and Employment Programme for Women)",
+  "description": "Employment and skill training for women.",
+  "link": "https://wcd.nic.in/",
+  "category": "employment"
+},
+  {
     "name": "Beti Bachao Beti Padhao",
     "description": "Promotes education and welfare of girls.",
     "link": "https://wcd.nic.in/",
@@ -309,7 +555,294 @@
     "link": "https://wbkanyashree.gov.in/",
     "category": "women"
   },
-
+{
+  "name": "Saubhagya Scheme",
+  "description": "Provides last-mile electricity connections to all households.",
+  "link": "https://saubhagya.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Deen Dayal Upadhyaya Gram Jyoti Yojana (DDUGJY)",
+  "description": "Strengthens rural electricity infrastructure.",
+  "link": "https://powermin.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Green Energy Corridor Project",
+  "description": "Enables transmission of renewable energy across states.",
+  "link": "https://powermin.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Perform, Achieve and Trade (PAT) Scheme",
+  "description": "Improves industrial energy efficiency through trading mechanism.",
+  "link": "https://beeindia.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "FAME India Scheme",
+  "description": "Promotes electric mobility and EV adoption.",
+  "link": "https://fame2.heavyindustries.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "National Hydrogen Mission",
+  "description": "Promotes green hydrogen production and usage.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "National Bio-Energy Programme",
+  "description": "Supports biomass and bioenergy projects.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Ethanol Blending Programme",
+  "description": "Promotes blending ethanol with petrol.",
+  "link": "https://petroleum.nic.in/",
+  "category": "energy"
+},
+{
+  "name": "National Wind Energy Mission",
+  "description": "Expands wind energy capacity in India.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Solar Park Scheme",
+  "description": "Develops large-scale solar power parks.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "PM Surya Ghar: Muft Bijli Yojana",
+  "description": "Free rooftop solar electricity for households.",
+  "link": "https://pmsuryaghar.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Grid Connected Rooftop Solar Programme Phase II",
+  "description": "Subsidies for rooftop solar installations.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "National Electric Mobility Mission Plan (NEMMP)",
+  "description": "Promotes electric and hybrid vehicles.",
+  "link": "https://heavyindustries.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Energy Conservation Building Code (ECBC)",
+  "description": "Sets energy efficiency standards for buildings.",
+  "link": "https://beeindia.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Smart Grid Mission India",
+  "description": "Modernises electricity distribution networks.",
+  "link": "https://powermin.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Integrated Power Development Scheme (IPDS)",
+  "description": "Improves urban power distribution systems.",
+  "link": "https://powermin.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Street Lighting National Programme (SLNP)",
+  "description": "LED streetlight replacement for energy savings.",
+  "link": "https://eeslindia.org/",
+  "category": "energy"
+},
+{
+  "name": "Biomass Power and Cogeneration Programme",
+  "description": "Promotes biomass-based electricity generation.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Waste to Energy Programme",
+  "description": "Generates power from urban waste.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "National Clean Energy Fund (NCEF)",
+  "description": "Funds clean energy and climate projects.",
+  "link": "https://finmin.nic.in/",
+  "category": "energy"
+},
+{
+  "name": "Solar Pumping Programme",
+  "description": "Promotes solar-powered irrigation pumps.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Off-Grid Solar PV Programme",
+  "description": "Supports solar systems in remote areas.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "National Mission for Enhanced Energy Efficiency (NMEEE)",
+  "description": "Improves energy efficiency across sectors.",
+  "link": "https://beeindia.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Small Hydro Power Programme",
+  "description": "Promotes small-scale hydroelectric projects.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Offshore Wind Energy Policy",
+  "description": "Develops offshore wind energy projects.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Renewable Energy Certificate (REC) Mechanism",
+  "description": "Market-based system to promote renewable energy.",
+  "link": "https://cercind.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "UDAY Scheme",
+  "description": "Revamps financial health of power distribution companies.",
+  "link": "https://powermin.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "National Smart Metering Programme",
+  "description": "Deploys smart meters for efficient billing.",
+  "link": "https://powermin.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Solar Cities Programme",
+  "description": "Promotes solar energy adoption in cities.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Energy Storage Mission",
+  "description": "Develops large-scale energy storage systems.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "EV Charging Infrastructure Scheme",
+  "description": "Expands electric vehicle charging stations.",
+  "link": "https://powermin.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "National Biogas Programme",
+  "description": "Promotes biogas production for rural energy.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "GOBAR-Dhan Scheme",
+  "description": "Converts cattle waste into biogas and compost.",
+  "link": "https://sbm.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Power for All Initiative",
+  "description": "Ensures 24x7 electricity access across India.",
+  "link": "https://powermin.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Renewable Purchase Obligation (RPO)",
+  "description": "Mandates renewable energy purchase by utilities.",
+  "link": "https://cercind.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Energy Efficiency Services Limited (EESL) Programs",
+  "description": "Implements large-scale energy efficiency projects.",
+  "link": "https://eeslindia.org/",
+  "category": "energy"
+},
+{
+  "name": "Rooftop Solar Subsidy Scheme",
+  "description": "Provides subsidies for rooftop solar installations.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Clean Cooking Energy Initiative",
+  "description": "Promotes clean and efficient cooking fuels.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Village Electrification Programme",
+  "description": "Electrification of remote and rural villages.",
+  "link": "https://powermin.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "National Solar Thermal Programme",
+  "description": "Promotes solar thermal energy systems.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Wind-Solar Hybrid Policy",
+  "description": "Encourages hybrid renewable energy projects.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Hydro Power Development Policy",
+  "description": "Supports development of hydropower projects.",
+  "link": "https://powermin.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Electricity Market Reforms Programme",
+  "description": "Reforms electricity trading and distribution markets.",
+  "link": "https://powermin.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "National Energy Conservation Awards Programme",
+  "description": "Recognises excellence in energy saving practices.",
+  "link": "https://beeindia.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Renewable Energy Development Fund",
+  "description": "Funds renewable energy infrastructure projects.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Solar Manufacturing PLI Scheme",
+  "description": "Incentivises domestic solar equipment manufacturing.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "National Grid Modernisation Programme",
+  "description": "Upgrades power transmission infrastructure.",
+  "link": "https://powermin.gov.in/",
+  "category": "energy"
+},
+{
+  "name": "Decentralised Renewable Energy Programme",
+  "description": "Promotes small-scale local renewable energy systems.",
+  "link": "https://mnre.gov.in/",
+  "category": "energy"
+},
   {
     "name": "Ujjwala Yojana",
     "description": "Free LPG connections for poor households.",
@@ -1171,5 +1704,851 @@
     "description": "Fortification of rice, wheat, and oil to reduce malnutrition.",
     "link": "https://dfpd.gov.in/",
     "category": "food"
-  }
+  },
+  {
+  "name": "Pradhan Mantri Gram Sadak Yojana (PMGSY)",
+  "description": "Rural road connectivity programme.",
+  "link": "https://pmgsy.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Dedicated Freight Corridor Project",
+  "description": "High-capacity freight rail network.",
+  "link": "https://dfccil.com/",
+  "category": "infrastructure"
+},
+{
+  "name": "Delhi-Mumbai Industrial Corridor (DMIC)",
+  "description": "Industrial corridor development between major cities.",
+  "link": "https://dmicdc.com/",
+  "category": "infrastructure"
+},
+{
+  "name": "Pradhan Mantri Awas Yojana (Urban)",
+  "description": "Affordable housing for urban poor.",
+  "link": "https://pmaymis.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Pradhan Mantri Awas Yojana (Gramin)",
+  "description": "Rural housing development scheme.",
+  "link": "https://pmayg.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "National Infrastructure Pipeline (NIP)",
+  "description": "Long-term infrastructure investment plan.",
+  "link": "https://niti.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Smart Grid Mission",
+  "description": "Modernisation of electricity distribution network.",
+  "link": "https://powermin.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "UDAN Scheme",
+  "description": "Regional air connectivity improvement.",
+  "link": "https://www.civilaviation.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "BharatNet Project",
+  "description": "High-speed broadband connectivity in rural India.",
+  "link": "https://bharatnet.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "National Rail Plan 2030",
+  "description": "Integrated development of railway infrastructure.",
+  "link": "https://indianrailways.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Rural Electrification Programme",
+  "description": "Ensures electricity access in rural areas.",
+  "link": "https://powermin.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Jal Jeevan Mission",
+  "description": "Safe drinking water supply to rural households.",
+  "link": "https://jaljeevanmission.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Namami Gange Programme",
+  "description": "River cleaning and rejuvenation initiative.",
+  "link": "https://nmcg.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "River Linking Project",
+  "description": "Interlinking rivers for water management.",
+  "link": "https://nwda.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Metro Rail Projects India",
+  "description": "Urban metro rail development.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "High-Speed Rail Project (Bullet Train)",
+  "description": "High-speed rail corridor development.",
+  "link": "https://nhsrcl.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Pradhan Mantri Adarsh Gram Yojana",
+  "description": "Village infrastructure development programme.",
+  "link": "https://socialjustice.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Border Area Development Programme (BADP)",
+  "description": "Infrastructure development in border areas.",
+  "link": "https://mha.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Sagarmala Coastal Community Development",
+  "description": "Coastal infrastructure and livelihood development.",
+  "link": "https://sagarmala.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Airport Infrastructure Modernisation",
+  "description": "Upgradation of airports across India.",
+  "link": "https://aai.aero/",
+  "category": "infrastructure"
+},
+{
+  "name": "Gati Shakti National Master Plan",
+  "description": "Integrated infrastructure planning platform.",
+  "link": "https://gatisakti.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Pradhan Mantri Gramodaya Yojana",
+  "description": "Rural infrastructure and development programme.",
+  "link": "https://rural.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Urban Transport Improvement Scheme",
+  "description": "Improves public transport systems in cities.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Coastal Road Development Project",
+  "description": "Development of coastal highways and roads.",
+  "link": "https://morth.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Logistics Efficiency Enhancement Programme",
+  "description": "Improves logistics and supply chain infrastructure.",
+  "link": "https://commerce.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Industrial Smart Cities Programme",
+  "description": "Development of smart industrial zones.",
+  "link": "https://dpiit.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "National Waterways Development",
+  "description": "Development of inland water transport.",
+  "link": "https://iwai.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Railway Station Redevelopment Project",
+  "description": "Modernisation of railway stations.",
+  "link": "https://indianrailways.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Digital Infrastructure Development Scheme",
+  "description": "Expansion of digital connectivity infrastructure.",
+  "link": "https://meity.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Urban Renewal Mission",
+  "description": "Upgrading urban infrastructure and services.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Housing for All Urban Mission",
+  "description": "Urban housing infrastructure development.",
+  "link": "https://pmaymis.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Rural Water Supply Scheme",
+  "description": "Improves rural drinking water infrastructure.",
+  "link": "https://jalshakti.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Solid Waste Management Mission",
+  "description": "Urban waste infrastructure development.",
+  "link": "https://swachhbharatmission.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Smart Village Mission",
+  "description": "Modernisation of rural infrastructure.",
+  "link": "https://rural.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Urban Street Development Programme",
+  "description": "Improves urban road and street infrastructure.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Electric Vehicle Charging Infrastructure Scheme",
+  "description": "Development of EV charging stations.",
+  "link": "https://powermin.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Rail Freight Modernisation Scheme",
+  "description": "Upgrades freight transport infrastructure.",
+  "link": "https://indianrailways.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "National Highway Development Programme",
+  "description": "Expansion of national highways network.",
+  "link": "https://nhai.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Urban Smart Parking Scheme",
+  "description": "Development of smart parking infrastructure.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Housing Infrastructure Boost Scheme",
+  "description": "Supports housing infrastructure expansion.",
+  "link": "https://pmaymis.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Green Building Mission",
+  "description": "Promotes eco-friendly building infrastructure.",
+  "link": "https://beeindia.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Smart Drainage System Programme",
+  "description": "Modern urban drainage infrastructure.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Urban Flood Management Scheme",
+  "description": "Infrastructure to control urban flooding.",
+  "link": "https://ndma.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Rural Connectivity Enhancement Programme",
+  "description": "Improves rural roads and connectivity.",
+  "link": "https://pmgsy.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Industrial Corridor Expansion Programme",
+  "description": "Expansion of industrial infrastructure corridors.",
+  "link": "https://dpiit.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Port Modernisation Scheme",
+  "description": "Upgrades port infrastructure and capacity.",
+  "link": "https://shipmin.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Smart Energy Infrastructure Programme",
+  "description": "Integration of smart energy systems in cities.",
+  "link": "https://powermin.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "National Urban Housing Infrastructure Fund",
+  "description": "Funding for urban housing projects.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Digital City Infrastructure Programme",
+  "description": "Develops digital infrastructure in urban areas.",
+  "link": "https://meity.gov.in/",
+  "category": "infrastructure"
+},
+  {
+  "name": "PM eVIDYA Digital Education Infrastructure",
+  "description": "Expands digital education infrastructure across India.",
+  "link": "https://mhrd.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Ayushman Bharat Health Infrastructure Mission",
+  "description": "Strengthens healthcare infrastructure across India.",
+  "link": "https://pmjay.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "National Digital Health Mission Infrastructure",
+  "description": "Builds digital health records and hospital connectivity systems.",
+  "link": "https://ndhm.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Bharat 5G Rollout Infrastructure Mission",
+  "description": "Expands 5G telecom infrastructure nationwide.",
+  "link": "https://dot.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "National Optical Fibre Expansion Programme",
+  "description": "Strengthens fibre optic connectivity across India.",
+  "link": "https://dot.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Smart Transport Intelligent Systems (ITS)",
+  "description": "Deploys intelligent traffic and transport management systems.",
+  "link": "https://morth.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Parvatmala Ropeway Development Scheme",
+  "description": "Develops ropeway infrastructure in hilly regions.",
+  "link": "https://morth.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Multi-Modal Logistics Parks Programme",
+  "description": "Creates integrated logistics hubs across India.",
+  "link": "https://commerce.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Urban Mobility Mission",
+  "description": "Improves sustainable urban transport systems.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Expressway Development Programme",
+  "description": "Expands high-speed expressway infrastructure.",
+  "link": "https://nhai.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Rural Internet Connectivity Mission",
+  "description": "Provides internet access to rural villages.",
+  "link": "https://meity.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Smart City Command and Control Centres Expansion",
+  "description": "Develops integrated city monitoring infrastructure.",
+  "link": "https://smartcities.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Storm Water Drainage Modernisation Mission",
+  "description": "Upgrades urban drainage systems.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Substation Modernisation Programme",
+  "description": "Upgrades power substations infrastructure.",
+  "link": "https://powermin.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Transmission Line Strengthening Scheme",
+  "description": "Enhances electricity transmission network.",
+  "link": "https://powermin.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Railway Electrification Mission",
+  "description": "Electrifies railway routes across India.",
+  "link": "https://indianrailways.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Airport Cargo Infrastructure Development Scheme",
+  "description": "Expands air cargo handling facilities.",
+  "link": "https://aai.aero/",
+  "category": "infrastructure"
+},
+{
+  "name": "Green Airport Initiative",
+  "description": "Promotes sustainable airport infrastructure.",
+  "link": "https://aai.aero/",
+  "category": "infrastructure"
+},
+{
+  "name": "Inland Water Ferry Development Scheme",
+  "description": "Develops ferry and inland water transport systems.",
+  "link": "https://iwai.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Affordable Rental Housing Complexes (ARHC)",
+  "description": "Provides rental housing infrastructure for urban migrants.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Urban Slum Redevelopment Mission",
+  "description": "Improves infrastructure in urban slum areas.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "HRIDAY Heritage City Development Scheme",
+  "description": "Develops infrastructure in heritage cities.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Swadesh Darshan Tourism Infrastructure Scheme",
+  "description": "Develops tourism infrastructure circuits.",
+  "link": "https://tourism.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "PRASHAD Pilgrimage Rejuvenation Scheme",
+  "description": "Improves pilgrimage site infrastructure.",
+  "link": "https://tourism.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "National Coastal Erosion Protection Programme",
+  "description": "Protects coastal areas from erosion.",
+  "link": "https://moef.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Desert Development Infrastructure Programme",
+  "description": "Develops infrastructure in desert regions.",
+  "link": "https://rural.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Himalayan Infrastructure Development Mission",
+  "description": "Improves infrastructure in Himalayan regions.",
+  "link": "https://morth.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Border Roads Development Programme",
+  "description": "Builds roads in strategic border areas.",
+  "link": "https://bro.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Strategic Tunnel Infrastructure Mission",
+  "description": "Develops tunnels for connectivity in difficult terrain.",
+  "link": "https://morth.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Smart Bridges Development Programme",
+  "description": "Modern bridge infrastructure using smart technology.",
+  "link": "https://morth.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Riverfront Development Mission",
+  "description": "Develops urban riverfront infrastructure.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Urban Lake Rejuvenation Scheme",
+  "description": "Restores lakes and water bodies in cities.",
+  "link": "https://moef.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Industrial Estate Development Scheme",
+  "description": "Develops industrial parks and estates.",
+  "link": "https://dpiit.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Special Economic Zone Infrastructure Scheme",
+  "description": "Builds infrastructure for export zones.",
+  "link": "https://sezindia.nic.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Unified Logistics Interface Platform (ULIP) Infrastructure",
+  "description": "Digital logistics infrastructure integration system.",
+  "link": "https://logistics.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "National Highway Maintenance Modernisation Scheme",
+  "description": "Improves highway maintenance infrastructure.",
+  "link": "https://nhai.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Coastal Shipping Infrastructure Development Scheme",
+  "description": "Enhances coastal transport infrastructure.",
+  "link": "https://shipmin.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Urban Sewerage Expansion Mission",
+  "description": "Develops modern sewerage systems in cities.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Smart Energy Grid Integration Scheme",
+  "description": "Integrates renewable energy into smart grids.",
+  "link": "https://powermin.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Container Freight Infrastructure Expansion Programme",
+  "description": "Expands container freight terminals.",
+  "link": "https://indianrailways.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Urban Parking Infrastructure Modernisation Scheme",
+  "description": "Develops smart parking systems in cities.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "National Housing Infrastructure Development Mission",
+  "description": "Supports large-scale housing infrastructure projects.",
+  "link": "https://mohua.gov.in/",
+  "category": "infrastructure"
+},
+{
+  "name": "Digital Infrastructure for Smart Cities Programme",
+  "description": "Builds digital backbone for smart cities.",
+  "link": "https://smartcities.gov.in/",
+  "category": "infrastructure"
+},
+  {
+  "name": "Sukanya Samriddhi Yojana",
+  "description": "Savings scheme for girl child education and marriage.",
+  "link": "https://www.nsiindia.gov.in/",
+  "category": "women"
+},
+{
+  "name": "One Stop Centre Scheme",
+  "description": "Support services for women affected by violence.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Women Helpline Scheme (181)",
+  "description": "24x7 emergency helpline for women in distress.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Ujjawala Scheme",
+  "description": "Prevention of trafficking and rescue of women.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Swadhar Greh Scheme",
+  "description": "Shelter and support for women in difficult circumstances.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Working Women Hostel Scheme",
+  "description": "Safe accommodation for working women.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "STEP Scheme",
+  "description": "Skill training and employment for women.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Pradhan Mantri Matru Vandana Yojana",
+  "description": "Maternity benefit for pregnant women.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Mahila E-Haat",
+  "description": "Online marketing platform for women entrepreneurs.",
+  "link": "https://mahilaehaat-rmk.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Stand-Up India Scheme",
+  "description": "Loans for women entrepreneurs and SC/ST borrowers.",
+  "link": "https://www.standupmitra.in/",
+  "category": "women"
+},
+{
+  "name": "Mudra Yojana for Women",
+  "description": "Collateral-free loans for women entrepreneurs.",
+  "link": "https://www.mudra.org.in/",
+  "category": "women"
+},
+{
+  "name": "Mahila Shakti Kendra",
+  "description": "Community support for rural women empowerment.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Beti Bachao Beti Padhao",
+  "description": "Improves child sex ratio and promotes girl education.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Ladli Scheme (Delhi)",
+  "description": "Financial support for girl child education.",
+  "link": "https://www.wcddel.in/",
+  "category": "women"
+},
+{
+  "name": "Mukhyamantri Ladli Laxmi Yojana",
+  "description": "Financial assistance for girl child in Madhya Pradesh.",
+  "link": "https://ladlilaxmi.mp.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Kanyashree Prakalpa",
+  "description": "Conditional cash transfer for girls in West Bengal.",
+  "link": "https://wbkanyashree.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Balika Samriddhi Yojana",
+  "description": "Financial assistance to girl children in poor families.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Nirbhaya Fund Initiatives",
+  "description": "Funds for women safety infrastructure projects.",
+  "link": "https://mha.gov.in/",
+  "category": "women"
+},
+{
+  "name": "National Mission for Empowerment of Women (NMEW)",
+  "description": "Umbrella mission for women empowerment programs.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Mahila Police Volunteers Scheme",
+  "description": "Women volunteers assist police in community safety.",
+  "link": "https://mha.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Rajiv Gandhi National Creche Scheme",
+  "description": "Daycare support for children of working mothers.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Indira Gandhi Matritva Sahyog Yojana",
+  "description": "Cash incentive for pregnant and lactating mothers.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Mahila Coir Yojana",
+  "description": "Training women in coir production industry.",
+  "link": "https://coirboard.gov.in/",
+  "category": "women"
+},
+{
+  "name": "TREAD Scheme for Women",
+  "description": "Trade-related entrepreneurship assistance for women.",
+  "link": "https://msme.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Mahila Udyam Nidhi Scheme",
+  "description": "Financial assistance for women entrepreneurs.",
+  "link": "https://sidbi.in/",
+  "category": "women"
+},
+{
+  "name": "Priyadarshini Scheme",
+  "description": "Women empowerment through self-help groups.",
+  "link": "https://ncrmp.gov.in/",
+  "category": "women"
+},
+{
+  "name": "SABLA Scheme",
+  "description": "Empowerment of adolescent girls.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Mahila Samridhi Yojana",
+  "description": "Micro-finance support for women SHGs.",
+  "link": "https://nsfdc.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Support to Training and Employment Programme (STEP)",
+  "description": "Skill development and employment for women.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Nari Shakti Puraskar",
+  "description": "Awards recognizing women achievers.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Mahila Kisan Sashaktikaran Pariyojana",
+  "description": "Empowerment of women farmers.",
+  "link": "https://aajeevika.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Deendayal Antyodaya Yojana – NRLM (Women SHG Focus)",
+  "description": "Self-help group based women empowerment.",
+  "link": "https://aajeevika.gov.in/",
+  "category": "women"
+},
+{
+  "name": "PMMVY Extension Scheme",
+  "description": "Extended maternity benefit support for women.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Mahila Shakti Yojana (State Programs)",
+  "description": "Various state-level women empowerment programs.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Rashtriya Mahila Kosh",
+  "description": "Micro-credit support for women entrepreneurs.",
+  "link": "https://rmk.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Mahila Samman Savings Certificate",
+  "description": "Short-term savings scheme for women.",
+  "link": "https://www.indiapost.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Namo Drone Didi Scheme",
+  "description": "Training SHG women as drone operators.",
+  "link": "https://aajeevika.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Lakhpati Didi Scheme",
+  "description": "Helps SHG women earn sustainable income above ₹1 lakh.",
+  "link": "https://aajeevika.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Drone Didi Initiative",
+  "description": "Empowers rural women with drone-based income skills.",
+  "link": "https://aajeevika.gov.in/",
+  "category": "women"
+},
+{
+  "name": "SHE Box Portal",
+  "description": "Online complaint system for workplace harassment.",
+  "link": "https://shebox.wcd.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Mahila Arthik Vikas Mahamandal (MAVIM)",
+  "description": "Women economic development program in Maharashtra.",
+  "link": "https://mavimindia.org/",
+  "category": "women"
+},
+{
+  "name": "Mission Shakti (UP & Central Model)",
+  "description": "Integrated women safety and empowerment mission.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "Pink Auto Scheme",
+  "description": "Employment scheme for women drivers (state-level).",
+  "link": "https://transport.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Mahila Police Volunteer Scheme Expansion",
+  "description": "Women volunteers for community safety monitoring.",
+  "link": "https://mha.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Digital Sakhi Initiative",
+  "description": "Digital literacy training for rural women.",
+  "link": "https://meity.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Women Entrepreneurship Platform (WEP)",
+  "description": "Startup India initiative for women entrepreneurs.",
+  "link": "https://wep.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Mahila E-Haat 2.0",
+  "description": "Enhanced digital marketplace for women sellers.",
+  "link": "https://mahilaehaat-rmk.gov.in/",
+  "category": "women"
+},
+{
+  "name": "Shakti Sadana Scheme",
+  "description": "Shelter homes for women in distress.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+},
+{
+  "name": "One Stop Digital Women Centre",
+  "description": "Digital integrated support for women welfare services.",
+  "link": "https://wcd.nic.in/",
+  "category": "women"
+}
 ]
