@@ -374,8 +374,254 @@
 
   {
     "name": "Digital India",
-    "description": "Digital transformation of India.",
+    "description": "Digital transformation of India through technology adoption.",
     "link": "https://digitalindia.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "DigiLocker",
+    "description": "Secure cloud platform for storing digital documents.",
+    "link": "https://digilocker.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "UMANG App",
+    "description": "Unified mobile app for government services.",
+    "link": "https://umang.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "Aadhaar",
+    "description": "Unique digital identity system for residents of India.",
+    "link": "https://uidai.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "UPI (Unified Payments Interface)",
+    "description": "Instant digital payment system.",
+    "link": "https://www.npci.org.in/",
+    "category": "digital"
+  },
+  {
+    "name": "BHIM App",
+    "description": "Government-backed digital payment application.",
+    "link": "https://www.bhimupi.org.in/",
+    "category": "digital"
+  },
+  {
+    "name": "e-NAM",
+    "description": "Electronic National Agriculture Market platform.",
+    "link": "https://enam.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "e-Sign",
+    "description": "Digital signature service for online documents.",
+    "link": "https://www.digitalseva.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "e-Hospital (ORS)",
+    "description": "Online registration system for hospitals.",
+    "link": "https://ors.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "e-Courts Mission Mode Project",
+    "description": "Digitization of Indian judiciary system.",
+    "link": "https://ecourts.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "MyGov Platform",
+    "description": "Citizen engagement platform for governance.",
+    "link": "https://mygov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "National Scholarship Portal",
+    "description": "Online portal for scholarship applications.",
+    "link": "https://scholarships.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "GST Portal",
+    "description": "Unified Goods and Services Tax system.",
+    "link": "https://www.gst.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "Income Tax e-Filing",
+    "description": "Online tax filing system for citizens.",
+    "link": "https://www.incometax.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "Passport Seva Portal",
+    "description": "Online passport application system.",
+    "link": "https://www.passportindia.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "Parivahan Sewa",
+    "description": "Digital transport and vehicle services.",
+    "link": "https://parivahan.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "e-Shram Portal",
+    "description": "National database of unorganized workers.",
+    "link": "https://eshram.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "PM Gati Shakti Portal",
+    "description": "Digital infrastructure planning platform.",
+    "link": "https://pmgatisakti.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "National Digital Health Mission (ABDM)",
+    "description": "Digital health records and healthcare system.",
+    "link": "https://abdm.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "CoWIN Platform",
+    "description": "COVID vaccination digital management system.",
+    "link": "https://www.cowin.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "e-Sanjeevani",
+    "description": "Telemedicine platform for online doctor consultation.",
+    "link": "https://esanjeevani.mohfw.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "National Knowledge Network",
+    "description": "High-speed research and education network.",
+    "link": "https://nkn.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "SWAYAM",
+    "description": "Online learning platform for courses.",
+    "link": "https://swayam.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "DIKSHA Platform",
+    "description": "Digital learning platform for schools.",
+    "link": "https://diksha.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "National Digital Library of India",
+    "description": "Online repository of educational resources.",
+    "link": "https://ndl.iitkgp.ac.in/",
+    "category": "digital"
+  },
+  {
+    "name": "GeM (Government e-Marketplace)",
+    "description": "Online procurement platform for government.",
+    "link": "https://gem.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "e-Office",
+    "description": "Paperless government office system.",
+    "link": "https://eoffice.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "UMANG Pension Services",
+    "description": "Digital pension service integration.",
+    "link": "https://umang.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "National e-Governance Service Delivery Gateway",
+    "description": "Backend infrastructure for digital services.",
+    "link": "https://services.india.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "Aarogya Setu",
+    "description": "COVID-19 tracking and health safety app.",
+    "link": "https://www.aarogyasetu.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "UMANG Digilocker Integration",
+    "description": "Integrated access to digital documents.",
+    "link": "https://digilocker.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "National Cyber Crime Reporting Portal",
+    "description": "Platform to report cyber crimes online.",
+    "link": "https://cybercrime.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "National e-Vidhan Application (NeVA)",
+    "description": "Paperless legislative assembly system.",
+    "link": "https://neva.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "e-Panchayat",
+    "description": "Digital governance for Panchayats.",
+    "link": "https://egramswaraj.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "BharatNet",
+    "description": "High-speed internet connectivity for rural India.",
+    "link": "https://bharatnet.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "National Digital Communications Policy",
+    "description": "Framework for digital telecom infrastructure.",
+    "link": "https://dot.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "e-Cabinet System",
+    "description": "Digital cabinet meeting system.",
+    "link": "https://india.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "Open Government Data Portal",
+    "description": "Public access to government datasets.",
+    "link": "https://data.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "National AI Portal (IndiaAI)",
+    "description": "Artificial intelligence ecosystem platform.",
+    "link": "https://indiaai.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "Digital Locker eSign Integration",
+    "description": "Digital signature + document system integration.",
+    "link": "https://digilocker.gov.in/",
+    "category": "digital"
+  },
+  {
+    "name": "India Stack",
+    "description": "Set of APIs for digital infrastructure (Aadhaar, UPI, etc).",
+    "link": "https://indiastack.org/",
+    "category": "digital"
+  },
+  {
+    "name": "National Data and Analytics Platform",
+    "description": "Government data analytics platform.",
+    "link": "https://niti.gov.in/",
     "category": "digital"
   },
 
