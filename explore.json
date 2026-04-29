@@ -404,7 +404,6 @@
     "link": "https://saanjhi.gov.in/",
     "category": "rural"
   },
-
   {
     "name": "Amma Canteen",
     "description": "Affordable food for the public.",
@@ -413,8 +412,260 @@
   },
   {
     "name": "Anna Bhagya",
-    "description": "Food security scheme.",
+    "description": "Food security scheme providing free or subsidized food grains.",
     "link": "https://ahara.kar.nic.in/",
+    "category": "food"
+  },
+  {
+    "name": "Public Distribution System (PDS)",
+    "description": "Nationwide ration distribution system for subsidized food grains.",
+    "link": "https://dfpd.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "National Food Security Act (NFSA)",
+    "description": "Legal right to subsidized food grains for eligible households.",
+    "link": "https://dfpd.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Antyodaya Anna Yojana",
+    "description": "Food scheme for poorest households with highly subsidized grains.",
+    "link": "https://dfpd.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Pradhan Mantri Garib Kalyan Anna Yojana",
+    "description": "Free food grains to poor households during crises.",
+    "link": "https://dfpd.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Mid Day Meal Scheme",
+    "description": "Free nutritious meals for school children.",
+    "link": "https://education.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Integrated Child Development Services (ICDS)",
+    "description": "Nutrition support for children and mothers.",
+    "link": "https://wcd.nic.in/",
+    "category": "food"
+  },
+  {
+    "name": "Annapurna Scheme",
+    "description": "Food support for destitute senior citizens.",
+    "link": "https://dfpd.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "One Nation One Ration Card",
+    "description": "Portable ration card system across India.",
+    "link": "https://dfpd.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Shiv Bhojan Thali",
+    "description": "Affordable meals at ₹10 for needy people.",
+    "link": "https://mahafood.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Tamil Nadu Amma Unavagam",
+    "description": "Subsidized canteen meals for urban poor.",
+    "link": "https://tn.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Odisha Madhubabu Pension Yojana (Nutrition Support)",
+    "description": "Supports elderly with food and pension assistance.",
+    "link": "https://odisha.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Gujarat Mid Day Meal Scheme",
+    "description": "State-level school meal program.",
+    "link": "https://gujaratindia.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Bihar Ration Subsidy Scheme",
+    "description": "State food subsidy distribution program.",
+    "link": "https://bihar.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "UP Free Ration Scheme",
+    "description": "Free ration distribution for eligible families.",
+    "link": "https://up.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Delhi Free Ration Scheme",
+    "description": "Subsidized food grains in Delhi.",
+    "link": "https://delhi.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Maharashtra Annapurna Scheme",
+    "description": "Food support for elderly poor.",
+    "link": "https://maharashtra.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Karnataka Ksheera Bhagya",
+    "description": "Milk nutrition program for children.",
+    "link": "https://kar.nic.in/",
+    "category": "food"
+  },
+  {
+    "name": "Maharashtra Shiv Bhojan Scheme",
+    "description": "₹10 meal scheme for poor and workers.",
+    "link": "https://mahafood.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "PM POSHAN Scheme",
+    "description": "School nutrition meal program (Mid Day Meal renamed).",
+    "link": "https://education.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Anganwadi Supplementary Nutrition",
+    "description": "Nutrition for children under 6 and mothers.",
+    "link": "https://wcd.nic.in/",
+    "category": "food"
+  },
+  {
+    "name": "Food Corporation of India System",
+    "description": "Procurement and distribution of food grains.",
+    "link": "https://fci.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Fortified Rice Distribution Scheme",
+    "description": "Distribution of nutrient-fortified rice.",
+    "link": "https://dfpd.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "State Annapurna Yojana",
+    "description": "Food support for elderly destitute across states.",
+    "link": "https://india.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Ration Subsidy Schemes (States)",
+    "description": "General food subsidy programs at state level.",
+    "link": "https://india.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "PMGKAY Extension",
+    "description": "Free grains during COVID-19 and post-pandemic support.",
+    "link": "https://dfpd.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Annapurna Grain Scheme",
+    "description": "Free grain for elderly poor households.",
+    "link": "https://dfpd.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "POSHAN Abhiyaan",
+    "description": "National nutrition mission to reduce malnutrition.",
+    "link": "https://wcd.nic.in/",
+    "category": "food"
+  },
+  {
+    "name": "Odisha Aahar Yojana",
+    "description": "Low-cost meal scheme for urban poor.",
+    "link": "https://odisha.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Telangana Anna Canteen",
+    "description": "Subsidized meals for urban poor in Telangana.",
+    "link": "https://telangana.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Andhra Pradesh Anna Canteen",
+    "description": "Affordable meals for poor and workers.",
+    "link": "https://ap.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Kerala Kudumbashree Janakeeya Hotels",
+    "description": "Community kitchen initiative for affordable food.",
+    "link": "https://kerala.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Kerala Community Kitchen Scheme",
+    "description": "Emergency food distribution system.",
+    "link": "https://kerala.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Take Home Ration (THR)",
+    "description": "Nutritious packaged food for women and children.",
+    "link": "https://wcd.nic.in/",
+    "category": "food"
+  },
+  {
+    "name": "Village Grain Bank Scheme",
+    "description": "Community-managed grain storage for emergencies.",
+    "link": "https://india.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Saksham Anganwadi",
+    "description": "Upgraded Anganwadi nutrition and childcare system.",
+    "link": "https://wcd.nic.in/",
+    "category": "food"
+  },
+  {
+    "name": "Special Nutrition Programme",
+    "description": "Supplementary nutrition for mothers and children.",
+    "link": "https://wcd.nic.in/",
+    "category": "food"
+  },
+  {
+    "name": "Wheat Based Nutrition Programme",
+    "description": "Food support using wheat-based supplements.",
+    "link": "https://dfpd.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Nutrition Rehabilitation Centres",
+    "description": "Treatment and nutrition for severely malnourished children.",
+    "link": "https://wcd.nic.in/",
+    "category": "food"
+  },
+  {
+    "name": "School Feeding Programme (State Variants)",
+    "description": "Local school meal programs in different states.",
+    "link": "https://education.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Emergency Feeding Programme",
+    "description": "Food support during disasters and emergencies.",
+    "link": "https://ndma.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "Mid Day Meal for Madrasas",
+    "description": "School nutrition support extended to madrasa students.",
+    "link": "https://education.gov.in/",
+    "category": "food"
+  },
+  {
+    "name": "National Food Fortification Initiative",
+    "description": "Fortification of rice, wheat, and oil to reduce malnutrition.",
+    "link": "https://dfpd.gov.in/",
     "category": "food"
   }
 ]
