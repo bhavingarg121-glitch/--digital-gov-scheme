@@ -3,64 +3,221 @@
 <head>
   <meta charset="UTF-8" />
   <title>Pension Schemes</title>
+
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
+    /* ===== GLOBAL ===== */
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0;
+      background: #f6f9fc;
+      color: #1f2937;
+    }
+
+    /* ===== HEADER ===== */
+    h1 {
+      text-align: center;
+      padding: 25px 10px;
+      margin: 0;
+      background: linear-gradient(135deg, #ffffff, #f1f5f9);
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 32px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* ===== SEARCH ===== */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    #searchBox {
+      width: 90%;
+      max-width: 500px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      outline: none;
+      font-size: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    #searchBox:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+
+    /* ===== CONTAINER ===== */
+    #schemes {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    /* ===== CARD ===== */
     .scheme-card {
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 15px;
-      margin-bottom: 15px;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .scheme-card h2 { margin: 0 0 10px; }
-    .scheme-card a { color: blue; text-decoration: none; }
-    .scheme-card a:hover { text-decoration: underline; }
-    .back-link {
+
+    .scheme-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
+    }
+
+    .scheme-card h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #0f172a;
+    }
+
+    .scheme-card p {
+      margin: 6px 0;
+      line-height: 1.5;
+      color: #475569;
+      font-size: 14.5px;
+    }
+
+    .scheme-card p strong {
+      color: #111827;
+    }
+
+    .scheme-card a {
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 15px;
-      background: #0078d7;
-      color: white;
+      margin-top: 10px;
+      padding: 8px 14px;
+      background: #2563eb;
+      color: #ffffff;
+      border-radius: 8px;
       text-decoration: none;
-      border-radius: 6px;
+      font-size: 14px;
+      transition: background 0.2s ease;
     }
-    .back-link:hover { background: #005a9e; }
+
+    .scheme-card a:hover {
+      background: #1d4ed8;
+    }
+
+    /* ===== BACK BUTTON ===== */
+    .back-link {
+      display: block;
+      width: fit-content;
+      margin: 30px auto 50px;
+      padding: 10px 18px;
+      background: #0f172a;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: #1e293b;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 24px;
+      }
+
+      .scheme-card {
+        padding: 16px;
+      }
+    }
   </style>
 </head>
+
 <body>
+
   <h1>Pension Schemes</h1>
+
+  <!-- 🔍 SEARCH BAR -->
+  <div class="search-container">
+    <input
+      type="text"
+      id="searchBox"
+      placeholder="Search pension schemes (state, category, eligibility...)"
+      onkeyup="filterSchemes()"
+    />
+  </div>
+
+  <!-- SCHEMES -->
   <div id="schemes"></div>
 
   <a href="index.html" class="back-link">← Back to Home</a>
 
   <script>
-   fetch("pension.json")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("schemes");
-    container.innerHTML = "";
+    let allSchemes = [];
 
-    data.forEach(scheme => {
-      const card = document.createElement("div");
-      card.className = "scheme-card";
+    // Load JSON
+    fetch("pension.json")
+      .then(res => res.json())
+      .then(data => {
+        allSchemes = data;
+        renderSchemes(data);
+      })
+      .catch(err => {
+        document.getElementById("schemes").innerText =
+          "Failed to load schemes.";
+        console.error(err);
+      });
 
-      card.innerHTML = `
-        <h2>${scheme.name || "No Title"}</h2>
-        <p><strong>State:</strong> ${scheme.state || "N/A"}</p>
-        <p><strong>Category:</strong> ${scheme.category || "N/A"}</p>
-        <p>${scheme.description || "No description"}</p>
-        <p><strong>Eligibility:</strong> ${scheme.eligibility || "N/A"}</p>
-        <p><strong>Amount:</strong> ${scheme.amount || "N/A"}</p>
-        <a href="${scheme.link || "#"}" target="_blank">Learn More</a>
-      `;
+    // Render function
+    function renderSchemes(data) {
+      const container = document.getElementById("schemes");
+      container.innerHTML = "";
 
-      container.appendChild(card);
-    });
-  })
-  .catch(err => {
-    document.getElementById("schemes").innerText = "Failed to load.";
-    console.error(err);
-  });
+      if (data.length === 0) {
+        container.innerHTML = "<p>No schemes found.</p>";
+        return;
+      }
+
+      data.forEach(scheme => {
+        const card = document.createElement("div");
+        card.className = "scheme-card";
+
+        card.innerHTML = `
+          <h2>${scheme.name || "No Title"}</h2>
+          <p><strong>State:</strong> ${scheme.state || "N/A"}</p>
+          <p><strong>Category:</strong> ${scheme.category || "N/A"}</p>
+          <p>${scheme.description || "No description"}</p>
+          <p><strong>Eligibility:</strong> ${scheme.eligibility || "N/A"}</p>
+          <p><strong>Amount:</strong> ${scheme.amount || "N/A"}</p>
+          <a href="${scheme.link || "#"}" target="_blank">Learn More</a>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // SEARCH FILTER
+    function filterSchemes() {
+      const query = document
+        .getElementById("searchBox")
+        .value.toLowerCase();
+
+      const filtered = allSchemes.filter(scheme => {
+        return (
+          (scheme.name && scheme.name.toLowerCase().includes(query)) ||
+          (scheme.state && scheme.state.toLowerCase().includes(query)) ||
+          (scheme.category && scheme.category.toLowerCase().includes(query)) ||
+          (scheme.description &&
+            scheme.description.toLowerCase().includes(query)) ||
+          (scheme.eligibility &&
+            scheme.eligibility.toLowerCase().includes(query))
+        );
+      });
+
+      renderSchemes(filtered);
+    }
   </script>
+
 </body>
 </html>
