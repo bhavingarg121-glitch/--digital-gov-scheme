@@ -12,16 +12,16 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
 }
 
 body{
   background:#f5f5f5;
-  color:#222;
   padding:20px;
+  color:#222;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 .header{
   margin-bottom:25px;
@@ -29,17 +29,17 @@ body{
 
 .header h1{
   font-size:32px;
-  margin-bottom:8px;
+  margin-bottom:6px;
 }
 
 .header p{
   color:#666;
 }
 
-/* ================= SEARCH ================= */
+/* SEARCH */
 
 .search-box{
-  margin:20px 0;
+  margin-bottom:20px;
 }
 
 .search-box input{
@@ -56,20 +56,20 @@ body{
   border-color:#ff7a00;
 }
 
-/* ================= CATEGORIES ================= */
+/* CATEGORIES */
 
 .categories{
   display:flex;
-  gap:10px;
   flex-wrap:wrap;
+  gap:10px;
   margin-bottom:25px;
 }
 
 .category-btn{
-  padding:10px 18px;
   border:none;
   background:white;
   border:1px solid #ddd;
+  padding:10px 18px;
   border-radius:30px;
   cursor:pointer;
   transition:0.3s;
@@ -85,7 +85,7 @@ body{
   border-color:#ff7a00;
 }
 
-/* ================= SCHEMES GRID ================= */
+/* GRID */
 
 .scheme-grid{
   display:grid;
@@ -93,16 +93,14 @@ body{
   gap:20px;
 }
 
-/* ================= CARD ================= */
+/* CARD */
 
 .scheme-card{
   background:white;
   border-radius:16px;
   padding:20px;
   border:1px solid #e5e5e5;
-  opacity:0;
-  transform:translateY(10px);
-  animation:fadeIn 0.4s forwards;
+  animation:fadeIn 0.4s ease;
   transition:0.3s;
 }
 
@@ -117,14 +115,14 @@ body{
 
 .scheme-card p{
   color:#666;
-  margin-bottom:14px;
   line-height:1.5;
+  margin-bottom:14px;
 }
 
 .tag{
   display:inline-block;
-  padding:6px 12px;
   background:#f3f3f3;
+  padding:6px 12px;
   border-radius:20px;
   font-size:13px;
   margin-bottom:14px;
@@ -137,31 +135,30 @@ body{
   border-radius:10px;
   background:#ff7a00;
   color:white;
-  font-size:15px;
   cursor:pointer;
-  transition:0.3s;
+  font-size:15px;
 }
 
 .apply-btn:hover{
-  background:#e66d00;
+  background:#e46d00;
 }
 
-/* ================= EMPTY ================= */
+/* EMPTY */
 
 .empty{
-  text-align:center;
-  color:#777;
-  margin-top:40px;
   display:none;
+  text-align:center;
+  margin-top:40px;
+  color:#777;
 }
 
-/* ================= ANIMATION ================= */
+/* ANIMATION */
 
 @keyframes fadeIn{
 
   from{
     opacity:0;
-    transform:translateY(15px);
+    transform:translateY(10px);
   }
 
   to{
@@ -171,42 +168,27 @@ body{
 
 }
 
-.fade-out{
-  animation:fadeOut 0.2s forwards;
-}
-
-@keyframes fadeOut{
-
-  from{
-    opacity:1;
-  }
-
-  to{
-    opacity:0;
-  }
-
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+
+<!-- HEADER -->
 
 <div class="header">
 
   <h1>Explore Schemes</h1>
 
   <p>
-    Find government schemes easily
+    Search and explore government schemes
   </p>
 
 </div>
 
 
 
-<!-- ================= SEARCH ================= -->
+<!-- SEARCH -->
 
 <div class="search-box">
 
@@ -220,7 +202,7 @@ body{
 
 
 
-<!-- ================= CATEGORIES ================= -->
+<!-- CATEGORIES -->
 
 <div class="categories" id="categoryButtons">
 
@@ -228,7 +210,7 @@ body{
 
 
 
-<!-- ================= SCHEMES ================= -->
+<!-- SCHEMES -->
 
 <div class="scheme-grid" id="schemeGrid">
 
@@ -236,7 +218,7 @@ body{
 
 
 
-<!-- ================= EMPTY ================= -->
+<!-- EMPTY -->
 
 <div class="empty" id="emptyState">
 
@@ -249,23 +231,44 @@ body{
 
 <script>
 
-/* ================= DATA ================= */
+/* ================= VARIABLES ================= */
 
-let schemes = [];
+let allSchemes = [];
 
 let activeCategory = "All";
 
 
 
-/* ================= FETCH JSON ================= */
+/* ================= LOAD JSON ================= */
 
 async function loadSchemes(){
 
   try{
 
-    const response = await fetch("explore.json");
+    const response =
+      await fetch("./explore.json");
 
-    schemes = await response.json();
+    const data =
+      await response.json();
+
+
+
+
+    /* IMPORTANT */
+
+    /*
+      If your JSON structure is:
+
+      {
+        "schemes":[ ... ]
+      }
+
+      then use:
+    */
+
+    allSchemes = data.schemes || data;
+
+
 
     renderCategories();
 
@@ -275,7 +278,9 @@ async function loadSchemes(){
 
   catch(error){
 
-    console.log("Failed to load explore.json");
+    console.error(error);
+
+    alert("explore.json not found");
 
   }
 
@@ -283,7 +288,8 @@ async function loadSchemes(){
 
 
 
-/* ================= RENDER CATEGORY ================= */
+
+/* ================= CATEGORIES ================= */
 
 function renderCategories(){
 
@@ -292,12 +298,16 @@ function renderCategories(){
 
   container.innerHTML = "";
 
+
+
   const categories = [
 
     "All",
 
     ...new Set(
-      schemes.map(scheme => scheme.category)
+      allSchemes.map(
+        scheme => scheme.category
+      )
     )
 
   ];
@@ -309,12 +319,21 @@ function renderCategories(){
     const button =
       document.createElement("button");
 
+
+
     button.className =
+
       activeCategory === category
+
       ? "category-btn active"
+
       : "category-btn";
 
+
+
     button.innerText = category;
+
+
 
     button.onclick = () => {
 
@@ -326,6 +345,8 @@ function renderCategories(){
 
     };
 
+
+
     container.appendChild(button);
 
   });
@@ -334,7 +355,8 @@ function renderCategories(){
 
 
 
-/* ================= RENDER SCHEMES ================= */
+
+/* ================= SCHEMES ================= */
 
 function renderSchemes(){
 
@@ -343,6 +365,8 @@ function renderSchemes(){
 
   const empty =
     document.getElementById("emptyState");
+
+
 
   const search =
     document.getElementById("searchInput")
@@ -355,34 +379,49 @@ function renderSchemes(){
 
 
 
-  const filtered = schemes.filter(scheme => {
+  const filteredSchemes =
 
-    const matchCategory =
-
-      activeCategory === "All" ||
-
-      scheme.category === activeCategory;
+    allSchemes.filter(scheme => {
 
 
 
-    const matchSearch =
+      const matchCategory =
 
-      scheme.title.toLowerCase().includes(search) ||
+        activeCategory === "All" ||
 
-      scheme.description.toLowerCase().includes(search) ||
-
-      scheme.category.toLowerCase().includes(search);
+        scheme.category === activeCategory;
 
 
 
-    return matchCategory && matchSearch;
+      const matchSearch =
 
-  });
+        scheme.title
+        .toLowerCase()
+        .includes(search)
+
+        ||
+
+        scheme.description
+        .toLowerCase()
+        .includes(search)
+
+        ||
+
+        scheme.category
+        .toLowerCase()
+        .includes(search);
 
 
 
 
-  if(filtered.length === 0){
+      return matchCategory && matchSearch;
+
+    });
+
+
+
+
+  if(filteredSchemes.length === 0){
 
     empty.style.display = "block";
 
@@ -395,12 +434,17 @@ function renderSchemes(){
 
 
 
-  filtered.forEach((scheme,index) => {
+  filteredSchemes.forEach((scheme,index) => {
 
     const card =
       document.createElement("div");
 
-    card.className = "scheme-card";
+
+
+    card.className =
+      "scheme-card";
+
+
 
     card.style.animationDelay =
       `${index * 0.05}s`;
@@ -427,11 +471,14 @@ function renderSchemes(){
 
     `;
 
+
+
     grid.appendChild(card);
 
   });
 
 }
+
 
 
 
@@ -443,7 +490,8 @@ document
 
 
 
-/* ================= INIT ================= */
+
+/* ================= START ================= */
 
 loadSchemes();
 
