@@ -230,272 +230,62 @@ body{
 
 
 <script>
-
-/* ================= VARIABLES ================= */
-
 let allSchemes = [];
-
 let activeCategory = "All";
 
-
-
 /* ================= LOAD JSON ================= */
+async function loadSchemes() {
 
-async function loadSchemes(){
+  try {
 
-  try{
+    const response = await fetch("explore.json");
 
-    const response =
-      await fetch("explore.json");
+    if (!response.ok) {
+      throw new Error(
+        `HTTP error! Status: ${response.status}`
+      );
+    }
 
-    const data =
-      await response.json();
+    const data = await response.json();
 
-
-
-
-    /* IMPORTANT */
-
-    /*
-      If your JSON structure is:
-
-      {
-        "schemes":[ ... ]
-      }
-
-      then use:
-    */
+    console.log("Loaded JSON:", data);
 
     allSchemes = data.schemes || data;
 
-
-
     renderCategories();
-
     renderSchemes();
 
   }
 
-  catch(error){
-
-    console.error(error);
-
-    alert("explore.json not found");
-
-  }
-
-}
-
-
-
-
-/* ================= CATEGORIES ================= */
-
-function renderCategories(){
-
-  const container =
-    document.getElementById("categoryButtons");
-
-  container.innerHTML = "";
-
-
-
-  const categories = [
-
-    "All",
-
-    ...new Set(
-      allSchemes.map(
-        scheme => scheme.category
-      )
-    )
-
-  ];
-
-
-
-  categories.forEach(category => {
-
-    const button =
-      document.createElement("button");
-
-
-
-    button.className =
-
-      activeCategory === category
-
-      ? "category-btn active"
-
-      : "category-btn";
-
-
-
-    button.innerText = category;
-
-
-
-    button.onclick = () => {
-
-      activeCategory = category;
-
-      renderCategories();
-
-      renderSchemes();
-
-    };
-
-
-
-    container.appendChild(button);
-
-  });
-
-}
-
-
-
-
-/* ================= SCHEMES ================= */
-
-function renderSchemes(){
-
-  const grid =
-    document.getElementById("schemeGrid");
-
-  const empty =
-    document.getElementById("emptyState");
-
-
-
-  const search =
-    document.getElementById("searchInput")
-    .value
-    .toLowerCase();
-
-
-
-  grid.innerHTML = "";
-
-
-
-  const filteredSchemes =
-
-    allSchemes.filter(scheme => {
-
-
-
-      const matchCategory =
-
-        activeCategory === "All" ||
-
-        scheme.category === activeCategory;
-
-
-
-      const matchSearch =
-
-        scheme.title
-        .toLowerCase()
-        .includes(search)
-
-        ||
-
-        scheme.description
-        .toLowerCase()
-        .includes(search)
-
-        ||
-
-        scheme.category
-        .toLowerCase()
-        .includes(search);
-
-
-
-
-      return matchCategory && matchSearch;
-
-    });
-
-
-
-
-  if(filteredSchemes.length === 0){
-
-    empty.style.display = "block";
-
-    return;
-
-  }
-
-  empty.style.display = "none";
-
-
-
-
-  filteredSchemes.forEach((scheme,index) => {
-
-    const card =
-      document.createElement("div");
-
-
-
-    card.className =
-      "scheme-card";
-
-
-
-    card.style.animationDelay =
-      `${index * 0.05}s`;
-
-
-
-    card.innerHTML = `
-
-      <div class="tag">
-        ${scheme.category}
+  catch(error) {
+
+    console.error("JSON LOAD ERROR:", error);
+
+    document.getElementById("schemeGrid").innerHTML = `
+      <div style="
+        background:white;
+        padding:20px;
+        border-radius:12px;
+        border:1px solid #ddd;
+      ">
+        <h3>Unable to load explore.json</h3>
+        <p>
+          Make sure:
+        </p>
+
+        <ul style="margin-top:10px;padding-left:18px;">
+          <li>explore.json exists</li>
+          <li>JSON is valid</li>
+          <li>Both files are in same folder</li>
+          <li>You are using Live Server or GitHub Pages</li>
+        </ul>
       </div>
-
-      <h3>
-        ${scheme.title}
-      </h3>
-
-      <p>
-        ${scheme.description}
-      </p>
-
-      <button class="apply-btn">
-        View Scheme
-      </button>
-
     `;
-
-
-
-    grid.appendChild(card);
-
-  });
-
+  }
 }
-
-
-
-
-/* ================= SEARCH ================= */
-
-document
-.getElementById("searchInput")
-.addEventListener("input", renderSchemes);
-
-
-
-
-/* ================= START ================= */
-
-loadSchemes();
-
 </script>
+
+
 
 </body>
 </html>
