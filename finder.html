@@ -1,152 +1,455 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Scheme AI Assistant</title>
-
-<style>
-body {
-  font-family: Arial;
-  background: #f1f5f9;
-  margin: 0;
-}
-
-.chat-container {
-  max-width: 600px;
-  margin: auto;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.header {
-  background: #0b5ed7;
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
-
-.chat-box {
-  flex: 1;
-  padding: 15px;
-  overflow-y: auto;
-}
-
-.msg {
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 10px;
-  max-width: 70%;
-}
-
-.user {
-  background: #0b5ed7;
-  color: white;
-  margin-left: auto;
-}
-
-.bot {
-  background: #e2e8f0;
-}
-
-.input-box {
-  display: flex;
-  padding: 10px;
-  background: white;
-}
-
-input {
-  flex: 1;
-  padding: 10px;
-}
-
-button {
-  background: #0b5ed7;
-  color: white;
-  border: none;
-  padding: 10px;
-}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Eligibility Engine</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-gray-100 min-h-screen">
 
-<div class="chat-container">
+<div class="max-w-7xl mx-auto p-6">
 
-<div class="header">🤖 Scheme AI Assistant</div>
+<h1 class="text-4xl font-bold mb-2 text-center">
+AI Eligibility Engine
+</h1>
 
-<div id="chat" class="chat-box"></div>
+<p class="text-center text-gray-600 mb-8">
+Find schemes you are eligible for instantly
+</p>
 
-<div class="input-box">
-  <input id="input" placeholder="Type your answer...">
-  <button onclick="send()">Send</button>
+
+<!-- USER FORM -->
+<div class="bg-white rounded-3xl shadow-xl p-6 mb-8">
+
+<h2 class="text-2xl font-bold mb-6">
+Enter Your Details
+</h2>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+<input id="age" type="number" placeholder="Age"
+class="border p-4 rounded-xl w-full">
+
+<select id="gender" class="border p-4 rounded-xl w-full">
+<option value="">Gender</option>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
+
+<input id="income" type="number" placeholder="Annual Income"
+class="border p-4 rounded-xl w-full">
+
+<input id="state" type="text" placeholder="State"
+class="border p-4 rounded-xl w-full">
+
+<input id="occupation" type="text" placeholder="Occupation"
+class="border p-4 rounded-xl w-full">
+
+<input id="education" type="text" placeholder="Education"
+class="border p-4 rounded-xl w-full">
+
+<select id="caste" class="border p-4 rounded-xl w-full">
+<option value="">Caste</option>
+<option>General</option>
+<option>OBC</option>
+<option>SC</option>
+<option>ST</option>
+<option>EWS</option>
+</select>
+
+<select id="disability" class="border p-4 rounded-xl w-full">
+<option value="">Disability</option>
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+<input id="searchInput" type="text" placeholder="Search schemes"
+class="border p-4 rounded-xl w-full">
+
 </div>
+
+<button onclick="findEligibleSchemes()"
+class="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition">
+Find Eligible Schemes
+</button>
+
+</div>
+
+
+<!-- RESULTS -->
+<div id="results" class="grid md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
 
 </div>
 
 <script>
 
-let step = 0;
+let allSchemes = [];
 
-const questions = [
-  "What is your age?",
-  "What is your annual income?",
-  "What is your occupation? (farmer/student/business)",
-  "Which state do you belong to?"
-];
 
-let user = {};
+// LOAD explore.json
+async function loadSchemes() {
 
-function addMessage(text, type){
-  const div = document.createElement("div");
-  div.className = "msg " + type;
-  div.innerText = text;
-  document.getElementById("chat").appendChild(div);
-  chat.scrollTop = chat.scrollHeight;
+    try {
+
+        const response = await fetch('explore.json');
+        const data = await response.json();
+
+        // Works with ANY structure
+        if (Array.isArray(data)) {
+            allSchemes = data;
+        }
+        else if (data.schemes) {
+            allSchemes = data.schemes;
+        }
+        else {
+            allSchemes = Object.values(data).flat();
+        }
+
+        console.log('Schemes Loaded:', allSchemes);
+
+    } catch(error) {
+        console.error('Error loading explore.json:', error);
+    }
 }
 
-// Start
-addMessage(questions[0], "bot");
 
-async function send(){
+loadSchemes();
 
-  const input = document.getElementById("input");
-  const value = input.value;
 
-  if(!value) return;
+function getUserData() {
 
-  addMessage(value, "user");
+    return {
+        age: Number(document.getElementById('age').value),
+        gender: document.getElementById('gender').value.toLowerCase(),
+        income: Number(document.getElementById('income').value),
+        state: document.getElementById('state').value.toLowerCase(),
+        occupation: document.getElementById('occupation').value.toLowerCase(),
+        education: document.getElementById('education').value.toLowerCase(),
+        caste: document.getElementById('caste').value.toLowerCase(),
+        disability: document.getElementById('disability').value,
+        search: document.getElementById('searchInput').value.toLowerCase()
+    };
+}
 
-  // save answers
-  if(step === 0) user.age = Number(value);
-  if(step === 1) user.income = Number(value);
-  if(step === 2) user.occupation = value;
-  if(step === 3) user.state = value;
 
-  input.value = "";
+function calculateEligibility(user, scheme) {
 
-  step++;
+    let score = 0;
+    let reasons = [];
 
-  if(step < questions.length){
-    setTimeout(()=> addMessage(questions[step], "bot"), 500);
-  } else {
 
-    addMessage("🔍 Finding best schemes...", "bot");
+    // Convert scheme to searchable text
+    const schemeText = JSON.stringify(scheme).toLowerCase();
 
-    const res = await fetch("http://localhost:3000/api/find",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify(user)
+
+    // AGE MATCH
+    if (user.age) {
+
+        if (schemeText.includes('student') && user.age <= 25) {
+            score += 20;
+            reasons.push('Student age matched');
+        }
+
+        if (schemeText.includes('senior') && user.age >= 60) {
+            score += 20;
+            reasons.push('Senior citizen age matched');
+        }
+
+        if (!schemeText.includes('student') && !schemeText.includes('senior')) {
+            score += 10;
+        }
+    }
+
+
+    // INCOME MATCH
+    if (user.income) {
+
+        if (user.income <= 250000) {
+            score += 20;
+            reasons.push('Low income category matched');
+        }
+
+        if (user.income <= 800000) {
+            score += 10;
+        }
+    }
+
+
+    // OCCUPATION MATCH
+    if (user.occupation) {
+
+        if (schemeText.includes(user.occupation)) {
+            score += 25;
+            reasons.push('Occupation matched');
+        }
+    }
+
+
+    // EDUCATION MATCH
+    if (user.education) {
+
+        if (schemeText.includes(user.education)) {
+            score += 20;
+            reasons.push('Education matched');
+        }
+    }
+
+
+    // STATE MATCH
+    if (user.state) {
+
+        if (schemeText.includes(user.state)) {
+            score += 15;
+            reasons.push('State matched');
+        }
+    }
+
+
+    // CASTE MATCH
+    if (user.caste) {
+
+        if (schemeText.includes(user.caste)) {
+            score += 15;
+            reasons.push('Caste category matched');
+        }
+    }
+
+
+    // DISABILITY MATCH
+    if (user.disability === 'yes') {
+
+        if (schemeText.includes('disability') ||
+           schemeText.includes('disabled') ||
+           schemeText.includes('divyang')) {
+
+            score += 25;
+            reasons.push('Disability category matched');
+        }
+    }
+
+
+    // SEARCH MATCH
+    if (user.search) {
+
+        if (schemeText.includes(user.search)) {
+            score += 20;
+            reasons.push('Search keyword matched');
+        }
+    }
+
+
+    // BONUS FOR STUDENT SCHEMES
+    if (
+        user.occupation.includes('student') &&
+        schemeText.includes('scholarship')
+    ) {
+        score += 30;
+        reasons.push('Scholarship scheme matched');
+    }
+
+
+    return {
+        score,
+        reasons
+    };
+}
+
+
+function extractDocuments(scheme) {
+
+    const text = JSON.stringify(scheme).toLowerCase();
+
+    const docs = [];
+
+    if (text.includes('aadhaar')) docs.push('Aadhaar Card');
+    if (text.includes('income')) docs.push('Income Certificate');
+    if (text.includes('domicile')) docs.push('Domicile Certificate');
+    if (text.includes('caste')) docs.push('Caste Certificate');
+    if (text.includes('bank')) docs.push('Bank Passbook');
+    if (text.includes('photo')) docs.push('Passport Photo');
+
+    return docs;
+}
+
+
+function getSchemeName(scheme) {
+
+    return scheme.name ||
+           scheme.title ||
+           scheme.schemeName ||
+           scheme.scheme ||
+           'Government Scheme';
+}
+
+
+function getSchemeDescription(scheme) {
+
+    return scheme.description ||
+           scheme.details ||
+           scheme.about ||
+           'No description available';
+}
+
+
+function getSchemeLink(scheme) {
+
+    return scheme.link ||
+           scheme.url ||
+           scheme.website ||
+           '#';
+}
+
+
+function createSchemeCard(scheme, eligibility) {
+
+    const docs = extractDocuments(scheme);
+
+    let badgeColor = 'bg-red-500';
+
+    if (eligibility.score >= 70) {
+        badgeColor = 'bg-green-500';
+    }
+    else if (eligibility.score >= 40) {
+        badgeColor = 'bg-yellow-500';
+    }
+
+
+    return `
+
+    <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:scale-105 transition duration-300">
+
+        <div class="p-6">
+
+            <div class="flex justify-between items-start mb-4">
+
+                <h2 class="text-2xl font-bold text-gray-800">
+                    ${getSchemeName(scheme)}
+                </h2>
+
+                <div class="${badgeColor} text-white px-4 py-2 rounded-full font-bold">
+                    ${eligibility.score}% Match
+                </div>
+
+            </div>
+
+
+            <p class="text-gray-600 mb-5 line-clamp-4">
+                ${getSchemeDescription(scheme)}
+            </p>
+
+
+            <div class="mb-5">
+                <h3 class="font-bold mb-2 text-lg">
+                    Why You Match
+                </h3>
+
+                <div class="flex flex-wrap gap-2">
+
+                    ${eligibility.reasons.map(reason => `
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
+                            ${reason}
+                        </span>
+                    `).join('')}
+
+                </div>
+            </div>
+
+
+            <div class="mb-5">
+                <h3 class="font-bold mb-2 text-lg">
+                    Likely Required Documents
+                </h3>
+
+                <div class="flex flex-wrap gap-2">
+
+                    ${docs.map(doc => `
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+                            ${doc}
+                        </span>
+                    `).join('')}
+
+                </div>
+            </div>
+
+
+            <div class="flex gap-3 mt-6">
+
+                <a href="${getSchemeLink(scheme)}"
+                target="_blank"
+                class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-2xl font-bold transition">
+                Apply
+                </a>
+
+                <button class="flex-1 bg-gray-100 hover:bg-gray-200 py-3 rounded-2xl font-bold transition">
+                Save
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    `;
+}
+
+
+function findEligibleSchemes() {
+
+    const user = getUserData();
+
+    let matchedSchemes = [];
+
+
+    allSchemes.forEach(scheme => {
+
+        const eligibility = calculateEligibility(user, scheme);
+
+        if (eligibility.score > 20) {
+
+            matchedSchemes.push({
+                scheme,
+                eligibility
+            });
+        }
     });
 
-    const data = await res.json();
 
-    data.forEach(s => {
-      addMessage(`✅ ${s.name}\n${s.description}`, "bot");
-    });
-  }
+    matchedSchemes.sort((a, b) =>
+        b.eligibility.score - a.eligibility.score
+    );
+
+
+    const resultsDiv = document.getElementById('results');
+
+
+    if (matchedSchemes.length === 0) {
+
+        resultsDiv.innerHTML = `
+        <div class="col-span-full bg-white rounded-3xl shadow-xl p-10 text-center">
+            <h2 class="text-3xl font-bold mb-4">
+                No Matching Schemes Found
+            </h2>
+            <p class="text-gray-600">
+                Try changing your filters or profile details.
+            </p>
+        </div>
+        `;
+
+        return;
+    }
+
+
+    resultsDiv.innerHTML = matchedSchemes.map(item =>
+        createSchemeCard(item.scheme, item.eligibility)
+    ).join('');
 }
 
 </script>
 
 </body>
 </html>
+
