@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -173,20 +174,15 @@ body{
 
 <body>
 
-
 <!-- HEADER -->
 
 <div class="header">
 
   <h1>Explore Schemes</h1>
 
-  <p>
-    Search and explore government schemes
-  </p>
+  <p>Search and explore government schemes</p>
 
 </div>
-
-
 
 <!-- SEARCH -->
 
@@ -200,40 +196,27 @@ body{
 
 </div>
 
-
-
 <!-- CATEGORIES -->
 
-<div class="categories" id="categoryButtons">
-
-</div>
-
-
+<div class="categories" id="categoryButtons"></div>
 
 <!-- SCHEMES -->
 
-<div class="scheme-grid" id="schemeGrid">
-
-</div>
-
-
+<div class="scheme-grid" id="schemeGrid"></div>
 
 <!-- EMPTY -->
 
 <div class="empty" id="emptyState">
-
   No schemes found
-
 </div>
 
-
-
-
 <script>
+
 let allSchemes = [];
 let activeCategory = "All";
 
 /* ================= LOAD JSON ================= */
+
 async function loadSchemes() {
 
   try {
@@ -241,9 +224,7 @@ async function loadSchemes() {
     const response = await fetch("explore.json");
 
     if (!response.ok) {
-      throw new Error(
-        `HTTP error! Status: ${response.status}`
-      );
+      throw new Error(`HTTP error! ${response.status}`);
     }
 
     const data = await response.json();
@@ -269,7 +250,8 @@ async function loadSchemes() {
         border:1px solid #ddd;
       ">
         <h3>Unable to load explore.json</h3>
-        <p>
+
+        <p style="margin-top:10px;">
           Make sure:
         </p>
 
@@ -277,15 +259,128 @@ async function loadSchemes() {
           <li>explore.json exists</li>
           <li>JSON is valid</li>
           <li>Both files are in same folder</li>
-          <li>You are using Live Server or GitHub Pages</li>
+          <li>Use Live Server</li>
         </ul>
       </div>
     `;
   }
+
 }
+
+/* ================= CATEGORIES ================= */
+
+function renderCategories() {
+
+  const container = document.getElementById("categoryButtons");
+
+  const categories = [
+    "All",
+    ...new Set(allSchemes.map(s => s.category))
+  ];
+
+  container.innerHTML = "";
+
+  categories.forEach(category => {
+
+    const btn = document.createElement("button");
+
+    btn.className = `
+      category-btn
+      ${activeCategory === category ? "active" : ""}
+    `;
+
+    btn.textContent = category;
+
+    btn.onclick = () => {
+
+      activeCategory = category;
+
+      renderCategories();
+      renderSchemes();
+
+    };
+
+    container.appendChild(btn);
+
+  });
+
+}
+
+/* ================= RENDER SCHEMES ================= */
+
+function renderSchemes() {
+
+  const grid = document.getElementById("schemeGrid");
+
+  const search = document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+  let filtered = allSchemes.filter(scheme => {
+
+    const matchesCategory =
+      activeCategory === "All" ||
+      scheme.category === activeCategory;
+
+    const matchesSearch =
+      scheme.name.toLowerCase().includes(search) ||
+      scheme.description.toLowerCase().includes(search);
+
+    return matchesCategory && matchesSearch;
+
+  });
+
+  grid.innerHTML = "";
+
+  if(filtered.length === 0){
+
+    document.getElementById("emptyState").style.display = "block";
+
+    return;
+  }
+
+  document.getElementById("emptyState").style.display = "none";
+
+  filtered.forEach(scheme => {
+
+    const card = document.createElement("div");
+
+    card.className = "scheme-card";
+
+    card.innerHTML = `
+      <h3>${scheme.name}</h3>
+
+      <div class="tag">
+        ${scheme.category}
+      </div>
+
+      <p>
+        ${scheme.description}
+      </p>
+
+      <button class="apply-btn">
+        View Scheme
+      </button>
+    `;
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+/* ================= SEARCH ================= */
+
+document
+  .getElementById("searchInput")
+  .addEventListener("input", renderSchemes);
+
+/* ================= START ================= */
+
+loadSchemes();
+
 </script>
-
-
 
 </body>
 </html>
