@@ -99,29 +99,19 @@ body{
 
 .state{
   stroke:#ffffff;
-  stroke-width:1.4;
-  cursor:pointer;
+  stroke-width:1.5;
   transition:0.35s;
+  cursor:pointer;
 }
 
 .state:hover{
+  filter:brightness(1.2);
   transform:translateY(-2px) scale(1.02);
-  filter:brightness(1.1);
 }
 
-/* Different colors */
-
-.north{fill:#1e3a8a;}
-.west{fill:#2563eb;}
-.south{fill:#0f766e;}
-.east{fill:#7c3aed;}
-.central{fill:#ea580c;}
-.ne{fill:#0ea5e9;}
-.ut{fill:#475569;}
-
 .label{
-  font-size:10px;
   fill:white;
+  font-size:10px;
   font-weight:700;
   pointer-events:none;
 }
