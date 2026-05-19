@@ -96,28 +96,21 @@ body{
 .card:hover{
   transform:translateY(-10px) scale(1.02);
 }
-body{
-  background:#07142b;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
-  margin:0;
-  padding:30px;
-  font-family:Arial,sans-serif;
-}
 
 /* Square Card */
+/* MAP CARD */
+
 .map-card{
-  width:700px;
-  height:700px;
+  width:100%;
+  max-width:650px;
+  aspect-ratio:1/1;
 
   background:
-    linear-gradient(
-      145deg,
-      rgba(12,25,55,.95),
-      rgba(6,14,35,.95)
-    );
+  linear-gradient(
+    145deg,
+    rgba(12,25,55,.95),
+    rgba(6,14,35,.95)
+  );
 
   border-radius:35px;
 
@@ -127,21 +120,23 @@ body{
 
   padding:30px;
 
-  box-shadow:
-    0 10px 40px rgba(0,0,0,.45),
-    inset 0 0 0 1px rgba(255,255,255,.06);
-
-  overflow:hidden;
   position:relative;
+  overflow:hidden;
+
+  box-shadow:
+  0 10px 40px rgba(0,0,0,.45),
+  inset 0 0 0 1px rgba(255,255,255,.06);
 }
 
 /* Glow Border */
+
 .map-card::before{
   content:"";
   position:absolute;
   inset:-2px;
 
-  background:linear-gradient(
+  background:
+  linear-gradient(
     135deg,
     #00bfff,
     #7c3aed,
@@ -150,18 +145,20 @@ body{
 
   border-radius:35px;
   z-index:-1;
+
   filter:blur(18px);
   opacity:.4;
 }
 
-/* Map Image */
+/* MAP */
+
 .india-map{
   width:100%;
   height:100%;
   object-fit:contain;
 
   filter:
-    drop-shadow(0 0 25px rgba(0,180,255,.25));
+  drop-shadow(0 0 25px rgba(0,180,255,.25));
 
   animation:floatMap 5s ease-in-out infinite;
   transition:.4s;
@@ -172,29 +169,20 @@ body{
 }
 
 @keyframes floatMap{
+
   0%{
     transform:translateY(0px);
   }
+
   50%{
     transform:translateY(-8px);
   }
+
   100%{
     transform:translateY(0px);
   }
-}
-
-/* Mobile */
-@media(max-width:768px){
-
-  .map-card{
-    width:100%;
-    height:auto;
-    aspect-ratio:1/1;
-    padding:20px;
-  }
 
 }
-/* Search */
 
 .search-box{
   background:rgba(255,255,255,0.95);
@@ -594,86 +582,91 @@ Explore By Government Type
 </section>
 
 
-<!-- RIGHT CONTENT -->
-<div class="text-white">
-<div class="map-card">
+<!-- STATES MAP SECTION -->
+<section class="py-24 px-8">
 
-  <img src="Indian Map.png" alt="India Map" class="india-map">
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
-</div>
+  <!-- LEFT : MAP -->
+  <div class="flex justify-center">
 
-<h2 class="text-5xl font-extrabold mb-8 leading-tight">
-Discover State Welfare
-Programs Easily
-</h2>
+    <div class="map-card">
 
-<p class="text-xl text-gray-200 leading-relaxed mb-10">
+      <img
+        src="Indian Map.png"
+        alt="India Map"
+        class="india-map"
+      >
 
-SchemeSathi helps citizens explore welfare schemes, scholarships,
-employment opportunities, startup initiatives and healthcare programs
-offered by different Indian states and union territories.
+    </div>
 
-</p>
+  </div>
 
-<div class="space-y-5 mb-10">
+  <!-- RIGHT : CONTENT -->
+  <div class="text-white">
 
-<div class="flex items-center gap-4">
+    <h2 class="text-5xl font-extrabold mb-8 leading-tight">
+      Discover State Welfare
+      Programs Easily
+    </h2>
 
-<div class="w-4 h-4 rounded-full bg-blue-500"></div>
+    <p class="text-xl text-gray-200 leading-relaxed mb-10">
 
-<p class="text-lg">
-Central & State Government Schemes
-</p>
+      SchemeSathi helps citizens explore welfare schemes,
+      scholarships, employment opportunities, startup initiatives
+      and healthcare programs offered by different Indian states
+      and union territories.
 
-</div>
+    </p>
 
-<div class="flex items-center gap-4">
+    <div class="space-y-5 mb-10">
 
-<div class="w-4 h-4 rounded-full bg-orange-500"></div>
+      <div class="flex items-center gap-4">
+        <div class="w-4 h-4 rounded-full bg-blue-500"></div>
 
-<p class="text-lg">
-Interactive Political India Map
-</p>
+        <p class="text-lg">
+          Central & State Government Schemes
+        </p>
+      </div>
 
-</div>
+      <div class="flex items-center gap-4">
+        <div class="w-4 h-4 rounded-full bg-orange-500"></div>
 
-<div class="flex items-center gap-4">
+        <p class="text-lg">
+          Interactive Political India Map
+        </p>
+      </div>
 
-<div class="w-4 h-4 rounded-full bg-green-500"></div>
+      <div class="flex items-center gap-4">
+        <div class="w-4 h-4 rounded-full bg-green-500"></div>
 
-<p class="text-lg">
-AI Powered Eligibility Suggestions
-</p>
+        <p class="text-lg">
+          AI Powered Eligibility Suggestions
+        </p>
+      </div>
 
-</div>
+      <div class="flex items-center gap-4">
+        <div class="w-4 h-4 rounded-full bg-purple-500"></div>
 
-<div class="flex items-center gap-4">
+        <p class="text-lg">
+          State-wise Smart Filtering
+        </p>
+      </div>
 
-<div class="w-4 h-4 rounded-full bg-purple-500"></div>
+    </div>
 
-<p class="text-lg">
-State-wise Smart Filtering
-</p>
+    <a
+      href="states.html"
+      class="inline-block bg-gradient-to-r from-blue-600 to-orange-500 hover:scale-105 transition px-10 py-5 rounded-2xl text-xl font-bold shadow-2xl"
+    >
+      Explore States →
+    </a>
 
-</div>
-
-</div>
-
-<a
-href="states.html"
-class="inline-block bg-gradient-to-r from-blue-600 to-orange-500 hover:scale-105 transition px-10 py-5 rounded-2xl text-xl font-bold shadow-2xl"
->
-Explore States →
-</a>
-
-</div>
-
-</div>
+  </div>
 
 </div>
 
 </section>
-<!-- STATS -->
 <section class="py-20 px-8">
 
 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
