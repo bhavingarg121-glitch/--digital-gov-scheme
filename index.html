@@ -510,55 +510,272 @@ Explore By Government Type
 
 </section>
 
+
 <!-- INDIA MAP -->
-<section class="py-20 px-8">
+<section class="py-20 px-6">
 
 <h2 class="text-center text-5xl font-bold mb-12">
-Explore Schemes By State
+Explore Schemes By State & UT
 </h2>
 
-<div class="glass rounded-3xl p-10 overflow-auto">
+<p class="text-center text-gray-200 text-xl mb-10">
+Click on any Indian State or Union Territory
+</p>
 
-<svg viewBox="0 0 800 800" class="w-full max-w-5xl mx-auto">
+<div class="glass rounded-3xl p-6 overflow-auto">
 
+<svg
+viewBox="0 0 900 1000"
+class="w-full max-w-6xl mx-auto"
+>
+
+<!-- JAMMU & KASHMIR -->
 <a href="jammu-kashmir.html">
-<rect x="280" y="60" width="130" height="70" class="map-state"/>
-<text x="300" y="100" fill="black">J&K</text>
+<path class="state"
+d="M310 70 L360 60 L390 90 L360 120 L300 110 Z"/>
+<text x="315" y="95" class="label">J&K</text>
 </a>
 
+<!-- LADAKH -->
+<a href="ladakh.html">
+<path class="state"
+d="M390 70 L450 80 L470 130 L420 150 L360 120 Z"/>
+<text x="400" y="115" class="label">Ladakh</text>
+</a>
+
+<!-- HIMACHAL -->
+<a href="himachal.html">
+<path class="state"
+d="M310 140 L360 130 L370 165 L325 180 Z"/>
+<text x="320" y="160" class="label">HP</text>
+</a>
+
+<!-- PUNJAB -->
 <a href="punjab.html">
-<rect x="250" y="160" width="90" height="60" class="map-state"/>
-<text x="270" y="195" fill="black">Punjab</text>
+<path class="state"
+d="M260 180 L310 175 L320 220 L275 230 Z"/>
+<text x="275" y="205" class="label">Punjab</text>
 </a>
 
+<!-- HARYANA -->
+<a href="haryana.html">
+<path class="state"
+d="M320 190 L360 185 L370 235 L330 240 Z"/>
+<text x="330" y="220" class="label">Haryana</text>
+</a>
+
+<!-- DELHI -->
+<a href="delhi.html">
+<circle cx="375" cy="225" r="8" class="state"/>
+<text x="385" y="230" class="label">Delhi</text>
+</a>
+
+<!-- RAJASTHAN -->
 <a href="rajasthan.html">
-<rect x="180" y="250" width="160" height="120" class="map-state"/>
-<text x="220" y="320" fill="black">Rajasthan</text>
+<path class="state"
+d="M180 250 L320 240 L350 390 L210 420 L150 330 Z"/>
+<text x="220" y="330" class="label">Rajasthan</text>
 </a>
 
+<!-- GUJARAT -->
 <a href="gujarat.html">
-<rect x="120" y="400" width="120" height="90" class="map-state"/>
-<text x="150" y="450" fill="black">Gujarat</text>
+<path class="state"
+d="M140 430 L250 420 L270 520 L180 560 L120 500 Z"/>
+<text x="170" y="500" class="label">Gujarat</text>
 </a>
 
-<a href="maharashtra.html">
-<rect x="280" y="450" width="180" height="100" class="map-state"/>
-<text x="320" y="505" fill="black">Maharashtra</text>
-</a>
-
+<!-- UTTAR PRADESH -->
 <a href="uttarpradesh.html">
-<rect x="390" y="250" width="200" height="80" class="map-state"/>
-<text x="440" y="295" fill="black">UP</text>
+<path class="state"
+d="M390 240 L560 250 L590 300 L420 320 L380 280 Z"/>
+<text x="450" y="285" class="label">Uttar Pradesh</text>
 </a>
 
+<!-- UTTARAKHAND -->
+<a href="uttarakhand.html">
+<path class="state"
+d="M400 190 L480 195 L490 235 L410 225 Z"/>
+<text x="420" y="215" class="label">UK</text>
+</a>
+
+<!-- BIHAR -->
+<a href="bihar.html">
+<path class="state"
+d="M590 260 L670 270 L690 320 L610 325 Z"/>
+<text x="620" y="300" class="label">Bihar</text>
+</a>
+
+<!-- JHARKHAND -->
+<a href="jharkhand.html">
+<path class="state"
+d="M570 340 L650 350 L640 400 L560 390 Z"/>
+<text x="585" y="375" class="label">Jharkhand</text>
+</a>
+
+<!-- WEST BENGAL -->
 <a href="westbengal.html">
-<rect x="640" y="320" width="70" height="120" class="map-state"/>
-<text x="650" y="380" fill="black">WB</text>
+<path class="state"
+d="M700 280 L740 300 L730 430 L680 420 L670 330 Z"/>
+<text x="685" y="360" class="label">WB</text>
 </a>
 
+<!-- SIKKIM -->
+<a href="sikkim.html">
+<circle cx="700" cy="250" r="8" class="state"/>
+<text x="710" y="250" class="label">SK</text>
+</a>
+
+<!-- ASSAM -->
+<a href="assam.html">
+<path class="state"
+d="M760 340 L860 350 L850 390 L760 385 Z"/>
+<text x="790" y="375" class="label">Assam</text>
+</a>
+
+<!-- ARUNACHAL -->
+<a href="arunachal.html">
+<path class="state"
+d="M790 250 L880 260 L860 320 L780 300 Z"/>
+<text x="800" y="290" class="label">Arunachal</text>
+</a>
+
+<!-- MEGHALAYA -->
+<a href="meghalaya.html">
+<path class="state"
+d="M760 410 L810 410 L800 440 L760 435 Z"/>
+<text x="765" y="430" class="label">Meghalaya</text>
+</a>
+
+<!-- NAGALAND -->
+<a href="nagaland.html">
+<path class="state"
+d="M840 350 L870 360 L865 420 L835 410 Z"/>
+<text x="835" y="390" class="label">Nagaland</text>
+</a>
+
+<!-- MANIPUR -->
+<a href="manipur.html">
+<path class="state"
+d="M840 430 L870 440 L865 500 L835 495 Z"/>
+<text x="835" y="470" class="label">Manipur</text>
+</a>
+
+<!-- MIZORAM -->
+<a href="mizoram.html">
+<path class="state"
+d="M790 500 L830 510 L820 590 L780 580 Z"/>
+<text x="785" y="550" class="label">Mizoram</text>
+</a>
+
+<!-- TRIPURA -->
+<a href="tripura.html">
+<path class="state"
+d="M740 500 L770 510 L760 560 L730 550 Z"/>
+<text x="735" y="535" class="label">Tripura</text>
+</a>
+
+<!-- ODISHA -->
+<a href="odisha.html">
+<path class="state"
+d="M540 430 L650 420 L670 520 L590 560 L520 500 Z"/>
+<text x="565" y="495" class="label">Odisha</text>
+</a>
+
+<!-- CHHATTISGARH -->
+<a href="chhattisgarh.html">
+<path class="state"
+d="M430 390 L530 390 L550 500 L470 550 L410 470 Z"/>
+<text x="445" y="470" class="label">Chhattisgarh</text>
+</a>
+
+<!-- MADHYA PRADESH -->
+<a href="madhyapradesh.html">
+<path class="state"
+d="M310 350 L470 350 L510 450 L340 470 L290 400 Z"/>
+<text x="355" y="420" class="label">MP</text>
+</a>
+
+<!-- MAHARASHTRA -->
+<a href="maharashtra.html">
+<path class="state"
+d="M280 500 L500 500 L540 610 L320 650 L240 570 Z"/>
+<text x="340" y="585" class="label">Maharashtra</text>
+</a>
+
+<!-- GOA -->
+<a href="goa.html">
+<circle cx="250" cy="650" r="8" class="state"/>
+<text x="260" y="655" class="label">Goa</text>
+</a>
+
+<!-- KARNATAKA -->
+<a href="karnataka.html">
+<path class="state"
+d="M280 660 L430 650 L470 790 L340 830 L260 740 Z"/>
+<text x="320" y="740" class="label">Karnataka</text>
+</a>
+
+<!-- KERALA -->
+<a href="kerala.html">
+<path class="state"
+d="M260 780 L310 790 L300 930 L250 910 Z"/>
+<text x="255" y="860" class="label">Kerala</text>
+</a>
+
+<!-- TAMIL NADU -->
 <a href="tamilnadu.html">
-<rect x="390" y="720" width="120" height="60" class="map-state"/>
-<text x="410" y="755" fill="black">Tamil Nadu</text>
+<path class="state"
+d="M350 790 L500 780 L530 900 L390 940 L320 860 Z"/>
+<text x="390" y="860" class="label">Tamil Nadu</text>
+</a>
+
+<!-- TELANGANA -->
+<a href="telangana.html">
+<path class="state"
+d="M500 560 L580 560 L590 650 L520 670 Z"/>
+<text x="520" y="620" class="label">Telangana</text>
+</a>
+
+<!-- ANDHRA -->
+<a href="andhrapradesh.html">
+<path class="state"
+d="M570 610 L660 620 L700 830 L600 870 L520 760 Z"/>
+<text x="565" y="740" class="label">Andhra</text>
+</a>
+
+<!-- ANDAMAN -->
+<a href="andaman.html">
+<circle cx="760" cy="860" r="10" class="state"/>
+<text x="775" y="865" class="label">A&N</text>
+</a>
+
+<!-- LAKSHADWEEP -->
+<a href="lakshadweep.html">
+<circle cx="180" cy="820" r="8" class="state"/>
+<text x="120" y="825" class="label">Lakshadweep</text>
+</a>
+
+<!-- CHANDIGARH -->
+<a href="chandigarh.html">
+<circle cx="300" cy="175" r="6" class="state"/>
+<text x="310" y="175" class="label">CH</text>
+</a>
+
+<!-- DADRA -->
+<a href="dadra.html">
+<circle cx="220" cy="520" r="6" class="state"/>
+<text x="230" y="525" class="label">DNHDD</text>
+</a>
+
+<!-- PUDUCHERRY -->
+<a href="puducherry.html">
+<circle cx="470" cy="900" r="7" class="state"/>
+<text x="480" y="905" class="label">PY</text>
+</a>
+
+<!-- DAMAN -->
+<a href="daman.html">
+<circle cx="210" cy="540" r="6" class="state"/>
 </a>
 
 </svg>
