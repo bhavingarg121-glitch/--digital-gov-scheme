@@ -96,24 +96,103 @@ body{
 .card:hover{
   transform:translateY(-10px) scale(1.02);
 }
-
-.state{
-  stroke:#ffffff;
-  stroke-width:1.5;
-  transition:0.35s;
-  cursor:pointer;
+body{
+  background:#07142b;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  margin:0;
+  padding:30px;
+  font-family:Arial,sans-serif;
 }
 
-.state:hover{
-  filter:brightness(1.2);
-  transform:translateY(-2px) scale(1.02);
+/* Square Card */
+.map-card{
+  width:700px;
+  height:700px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(12,25,55,.95),
+      rgba(6,14,35,.95)
+    );
+
+  border-radius:35px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:30px;
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,.45),
+    inset 0 0 0 1px rgba(255,255,255,.06);
+
+  overflow:hidden;
+  position:relative;
 }
 
-.label{
-  fill:white;
-  font-size:10px;
-  font-weight:700;
-  pointer-events:none;
+/* Glow Border */
+.map-card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+
+  background:linear-gradient(
+    135deg,
+    #00bfff,
+    #7c3aed,
+    #00bfff
+  );
+
+  border-radius:35px;
+  z-index:-1;
+  filter:blur(18px);
+  opacity:.4;
+}
+
+/* Map Image */
+.india-map{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+
+  filter:
+    drop-shadow(0 0 25px rgba(0,180,255,.25));
+
+  animation:floatMap 5s ease-in-out infinite;
+  transition:.4s;
+}
+
+.india-map:hover{
+  transform:scale(1.03);
+}
+
+@keyframes floatMap{
+  0%{
+    transform:translateY(0px);
+  }
+  50%{
+    transform:translateY(-8px);
+  }
+  100%{
+    transform:translateY(0px);
+  }
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+  .map-card{
+    width:100%;
+    height:auto;
+    aspect-ratio:1/1;
+    padding:20px;
+  }
+
 }
 /* Search */
 
@@ -515,41 +594,13 @@ Explore By Government Type
 </section>
 
 
-<!-- INDIA MAP -->
-<!-- MODERN INDIA STATE MAP SECTION -->
-<section class="py-24 px-6 relative overflow-hidden">
-
-<!-- Background Glow -->
-<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900/20 via-transparent to-orange-500/10 -z-10"></div>
-
-<!-- Heading -->
-<div class="text-center mb-16">
-
-<h2 class="text-5xl md:text-6xl font-extrabold text-white mb-5">
-State-Specific Schemes
-</h2>
-
-<p class="text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
-Explore government schemes and welfare programs tailored for each Indian state and union territory.
-Click on the interactive political map to discover state-specific benefits, scholarships,
-healthcare initiatives, startup support and more.
-</p>
-
-</div>
-
-<!-- INDIA MAP SECTION ONLY -->
-<div id="india-map"></div>
-
-<!-- Leaflet CSS -->
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
-
-
-
 <!-- RIGHT CONTENT -->
 <div class="text-white">
+<div class="map-card">
+
+  <img src="Indian Map.png" alt="India Map" class="india-map">
+
+</div>
 
 <h2 class="text-5xl font-extrabold mb-8 leading-tight">
 Discover State Welfare
