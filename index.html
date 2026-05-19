@@ -1,159 +1,1013 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SchemeSathi</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @keyframes shimmer {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .shimmer-bg {
-      background: linear-gradient(90deg, rgba(255,255,255,0.15), rgba(255,255,255,0.35), rgba(255,255,255,0.15));
-      background-size: 200% 200%;
-      animation: shimmer 8s infinite linear;
-    }
-  </style>
-</head>
-<body class="flex flex-col min-h-screen text-gray-800">
 
-  <!-- Background -->
-  <div class="fixed inset-0 -z-10">
-    <img src="Background.png" alt="India landmarks background" 
-         class="w-full h-full object-cover brightness-110 contrast-125" />
-    <div class="absolute inset-0 bg-gradient-to-r from-blue-900/50 to-orange-500/40"></div>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>SchemeSathi - Smart Government Scheme Portal</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  overflow-x:hidden;
+  background:#0f172a;
+  color:white;
+}
+
+/* Background */
+
+.background{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+}
+
+.background img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(0.45);
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  background:
+  linear-gradient(
+  135deg,
+  rgba(15,23,42,0.95),
+  rgba(30,41,59,0.82),
+  rgba(249,115,22,0.35)
+  );
+}
+
+/* Glass */
+
+.glass{
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+/* Animation */
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(35px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0px);
+  }
+
+}
+
+.fade-up{
+  animation:fadeUp 1s ease;
+}
+
+/* Hover */
+
+.card{
+  transition:0.35s;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+}
+
+/* Map */
+
+.map-state{
+  fill:white;
+  stroke:#1e3a8a;
+  stroke-width:1;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.map-state:hover{
+  fill:#f97316;
+}
+
+/* Search */
+
+.search-box{
+  background:rgba(255,255,255,0.95);
+  color:black;
+}
+
+/* Stats */
+
+.gradient-text{
+  background:linear-gradient(to right,#60a5fa,#f97316);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="background">
+
+  <img src="Background.png" alt="background">
+
+  <div class="overlay"></div>
+
+</div>
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-50 glass shadow-xl">
+
+<div class="flex justify-between items-center px-8 py-5">
+
+  <!-- Logo -->
+  <div class="text-4xl font-extrabold tracking-wide">
+    SchemeSathi
   </div>
 
-  <!-- Header -->
-  <header class="flex justify-between items-center px-8 py-6 shimmer-bg backdrop-blur-md shadow-md">
-     <!-- Left: Logo -->
+  <!-- Nav -->
+  <nav class="hidden lg:flex gap-10 text-lg font-medium">
 
-  <div class="text-4xl font-extrabold text-white">SchemeSathi</div>
+    <a href="#" class="hover:text-blue-300">
+      Home
+    </a>
 
-  <!-- Center: Navigation -->
-  <nav class="flex space-x-10 text-xl font-semibold text-white mx-auto">
-    <a href="index.html" class="hover:text-blue-300">Home</a>
-    <a href="dashboard.html" class="mx-4">Dashboard</a>
-    <a href="finder.html"
-class="mx-4">
-Find Scheme
-</a>
-    <a href="faqs.html" class="hover:text-blue-300">FAQs</a>
-    <a href="contact.html" class="hover:text-blue-300">Contact</a>
-    <a href="about.html" class="hover:text-blue-300">About</a>
+    <a href="explore.html" class="hover:text-blue-300">
+      Explore
+    </a>
+
+    <a href="finder.html" class="hover:text-blue-300">
+      AI Finder
+    </a>
+
+    <a href="dashboard.html" class="hover:text-blue-300">
+      Dashboard
+    </a>
+
+    <a href="states.html" class="hover:text-blue-300">
+      States
+    </a>
+
+    <a href="about.html" class="hover:text-blue-300">
+      About
+    </a>
+
   </nav>
 
-  <!-- Right: Login/Register -->
-  <div class="flex space-x-6 text-xl font-semibold">
-    <a href="login.html" class="text-white hover:text-blue-300">Login</a>
-    <a href="register.html" class="text-white hover:text-blue-300">Register</a>
+  <!-- Buttons -->
+  <div class="flex gap-4">
+
+    <button
+      onclick="toggleTheme()"
+      class="bg-white/20 px-5 py-2 rounded-xl hover:bg-white/30"
+    >
+      🌙
+    </button>
+
+    <a
+      href="login.html"
+      class="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-xl"
+    >
+      Login
+    </a>
+
   </div>
+
+</div>
+
 </header>
 
+<!-- HERO -->
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-6 fade-up">
 
-  <!-- Hero Section -->
-  <section class="flex flex-col items-center justify-center text-center py-24 px-6 text-white flex-grow">
-    <h1 class="text-6xl font-extrabold mb-6 drop-shadow-lg">Empowering Citizens with Trusted Schemes</h1>
-    <p class="text-2xl mb-8 max-w-3xl drop-shadow-md">
-      SchemeSathi brings clarity, accessibility, and trust to government programs—your gateway to opportunities.
+<h1 class="text-6xl md:text-7xl font-extrabold leading-tight max-w-6xl">
+
+India's Smartest Platform For
+
+<span class="gradient-text">
+Government Schemes
+</span>
+
+</h1>
+
+<p class="text-2xl mt-8 max-w-4xl text-gray-200 leading-relaxed">
+
+Discover central and state schemes with AI-powered eligibility,
+smart recommendations, instant filtering and simplified guidance.
+
+</p>
+
+<!-- Search -->
+<div class="mt-14 glass rounded-3xl p-8 w-full max-w-5xl shadow-2xl">
+
+  <div class="grid md:grid-cols-4 gap-5">
+
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Search schemes..."
+      class="search-box md:col-span-2 px-6 py-4 rounded-xl text-lg outline-none"
+    >
+
+    <select
+      id="categoryFilter"
+      class="search-box px-5 py-4 rounded-xl text-lg outline-none"
+    >
+
+      <option value="all">All Categories</option>
+      <option value="education">Education</option>
+      <option value="health">Health</option>
+      <option value="women">Women</option>
+      <option value="farmer">Farmer</option>
+      <option value="startup">Startup</option>
+
+    </select>
+
+    <button
+      onclick="searchSchemes()"
+      class="bg-blue-600 hover:bg-blue-700 rounded-xl text-xl font-semibold"
+    >
+      Search
+    </button>
+
+  </div>
+
+</div>
+
+<div class="flex flex-wrap justify-center gap-5 mt-10">
+
+  <a
+    href="#schemes"
+    class="bg-orange-500 hover:bg-orange-600 px-10 py-4 rounded-xl text-xl font-semibold"
+  >
+    Explore Schemes
+  </a>
+
+  <a
+    href="#eligibility"
+    class="bg-blue-600 hover:bg-blue-700 px-10 py-4 rounded-xl text-xl font-semibold"
+  >
+    AI Eligibility Finder
+  </a>
+
+</div>
+
+</section>
+
+<!-- QUICK FILTERS -->
+<section class="py-12 px-8">
+
+<div class="flex flex-wrap justify-center gap-4">
+
+  <button class="glass px-6 py-3 rounded-full hover:bg-blue-600">
+    🎓 Students
+  </button>
+
+  <button class="glass px-6 py-3 rounded-full hover:bg-blue-600">
+    👩 Women
+  </button>
+
+  <button class="glass px-6 py-3 rounded-full hover:bg-blue-600">
+    🌾 Farmers
+  </button>
+
+  <button class="glass px-6 py-3 rounded-full hover:bg-blue-600">
+    👴 Senior Citizens
+  </button>
+
+  <button class="glass px-6 py-3 rounded-full hover:bg-blue-600">
+    💼 Jobs
+  </button>
+
+  <button class="glass px-6 py-3 rounded-full hover:bg-blue-600">
+    🚀 Startup
+  </button>
+
+</div>
+
+</section>
+
+<!-- AI ELIGIBILITY -->
+<section id="eligibility" class="py-20 px-8">
+
+<h2 class="text-center text-5xl font-bold mb-14">
+AI Eligibility Finder
+</h2>
+
+<div class="max-w-6xl mx-auto glass rounded-3xl p-10">
+
+  <div class="grid md:grid-cols-2 gap-8">
+
+    <!-- Form -->
+    <div class="space-y-5">
+
+      <input
+        id="age"
+        type="number"
+        placeholder="Age"
+        class="w-full search-box px-6 py-4 rounded-xl"
+      >
+
+      <select id="gender" class="w-full search-box px-6 py-4 rounded-xl">
+
+        <option>Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+
+      </select>
+
+      <input
+        id="income"
+        type="number"
+        placeholder="Family Income"
+        class="w-full search-box px-6 py-4 rounded-xl"
+      >
+
+      <select id="occupation" class="w-full search-box px-6 py-4 rounded-xl">
+
+        <option>Occupation</option>
+        <option>Student</option>
+        <option>Farmer</option>
+        <option>Business</option>
+        <option>Employee</option>
+
+      </select>
+
+      <button
+        onclick="checkEligibility()"
+        class="w-full bg-orange-500 hover:bg-orange-600 py-4 rounded-xl text-xl font-semibold"
+      >
+        Find Eligible Schemes
+      </button>
+
+    </div>
+
+    <!-- Result -->
+    <div>
+
+      <div
+        id="eligibilityResult"
+        class="glass rounded-2xl p-8 min-h-[350px]"
+      >
+
+        <h3 class="text-3xl font-bold mb-4">
+          Suggested Schemes
+        </h3>
+
+        <p class="text-gray-200">
+          Fill details and get AI recommendations.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- CATEGORIES -->
+<section class="py-20 px-8">
+
+<h2 class="text-center text-5xl font-bold mb-14">
+Browse Categories
+</h2>
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+
+  <div class="glass rounded-3xl p-8 text-center card">
+    <div class="text-6xl mb-4">🎓</div>
+    <h3 class="text-2xl font-bold">Education</h3>
+  </div>
+
+  <div class="glass rounded-3xl p-8 text-center card">
+    <div class="text-6xl mb-4">🏥</div>
+    <h3 class="text-2xl font-bold">Health</h3>
+  </div>
+
+  <div class="glass rounded-3xl p-8 text-center card">
+    <div class="text-6xl mb-4">👩</div>
+    <h3 class="text-2xl font-bold">Women</h3>
+  </div>
+
+  <div class="glass rounded-3xl p-8 text-center card">
+    <div class="text-6xl mb-4">🌾</div>
+    <h3 class="text-2xl font-bold">Farmer</h3>
+  </div>
+
+  <div class="glass rounded-3xl p-8 text-center card">
+    <div class="text-6xl mb-4">💼</div>
+    <h3 class="text-2xl font-bold">Jobs</h3>
+  </div>
+
+  <div class="glass rounded-3xl p-8 text-center card">
+    <div class="text-6xl mb-4">🚀</div>
+    <h3 class="text-2xl font-bold">Startup</h3>
+  </div>
+
+</div>
+
+</section>
+
+<!-- CENTRAL / STATE -->
+<section class="py-20 px-8">
+
+<h2 class="text-center text-5xl font-bold mb-14">
+Explore By Government Type
+</h2>
+
+<div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+
+  <!-- Central -->
+  <div class="glass rounded-3xl p-10 text-center card">
+
+    <div class="text-7xl mb-6">
+      🏛️
+    </div>
+
+    <h3 class="text-4xl font-bold mb-4">
+      Central Schemes
+    </h3>
+
+    <div class="text-6xl font-extrabold text-blue-300 mb-4">
+      1500+
+    </div>
+
+    <p class="text-lg text-gray-100 leading-relaxed mb-8">
+
+      Explore nationwide schemes launched by Government of India.
+
     </p>
-    <a href="explore.html" 
-       class="bg-blue-600 text-white font-semibold px-8 py-4 rounded-md text-xl hover:bg-blue-700">
-       Explore Schemes
+
+    <a
+      href="central.html"
+      class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-xl"
+    >
+      View Schemes
     </a>
-  </section>
 
-  <!-- Featured Schemes -->
-  <section class="py-12 px-8">
-    <h2 class="text-center text-4xl font-bold text-white mb-12 drop-shadow-lg">Featured Schemes</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      <!-- Scholarship -->
-      <div class="bg-white/30 backdrop-blur-md shadow-lg rounded-lg p-8 hover:scale-105 transition-transform">
-        <h3 class="text-2xl font-bold mb-2 text-pink-800">Scholarship Program</h3>
-        <p class="mb-4 text-gray-700">Financial aid opportunities for students across India.</p>
-        <a href="scholarship.html" class="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600">Apply Now →</a>
-      </div>
+  </div>
 
-      <!-- Pension -->
-      <div class="bg-white/30 backdrop-blur-md shadow-lg rounded-lg p-8 hover:scale-105 transition-transform">
-        <h3 class="text-2xl font-bold mb-2 text-orange-800">Pension Scheme</h3>
-        <p class="mb-4 text-gray-700">Secure retirement benefits for senior citizens.</p>
-        <a href="pension.html" class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600">Apply Now →</a>
-      </div>
+  <!-- State -->
+  <div class="glass rounded-3xl p-10 text-center card">
 
-      <!-- Healthcare -->
-      <div class="bg-white/30 backdrop-blur-md shadow-lg rounded-lg p-8 hover:scale-105 transition-transform">
-        <h3 class="text-2xl font-bold mb-2 text-blue-800">Healthcare Support</h3>
-        <p class="mb-4 text-gray-700">Accessible medical coverage for families in need.</p>
-        <a href="health.html" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Apply Now →</a>
-      </div>
+    <div class="text-7xl mb-6">
+      🗺️
+    </div>
+
+    <h3 class="text-4xl font-bold mb-4">
+      State Schemes
+    </h3>
+
+    <div class="text-6xl font-extrabold text-orange-300 mb-4">
+      3000+
+    </div>
+
+    <p class="text-lg text-gray-100 leading-relaxed mb-8">
+
+      Discover region-specific welfare and development schemes.
+
+    </p>
+
+    <a
+      href="states.html"
+      class="bg-orange-500 hover:bg-orange-600 px-8 py-4 rounded-xl"
+    >
+      View Schemes
+    </a>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- INDIA MAP -->
+<section class="py-20 px-8">
+
+<h2 class="text-center text-5xl font-bold mb-12">
+Explore Schemes By State
+</h2>
+
+<div class="glass rounded-3xl p-10 overflow-auto">
+
+<svg viewBox="0 0 800 800" class="w-full max-w-5xl mx-auto">
+
+<a href="jammu-kashmir.html">
+<rect x="280" y="60" width="130" height="70" class="map-state"/>
+<text x="300" y="100" fill="black">J&K</text>
+</a>
+
+<a href="punjab.html">
+<rect x="250" y="160" width="90" height="60" class="map-state"/>
+<text x="270" y="195" fill="black">Punjab</text>
+</a>
+
+<a href="rajasthan.html">
+<rect x="180" y="250" width="160" height="120" class="map-state"/>
+<text x="220" y="320" fill="black">Rajasthan</text>
+</a>
+
+<a href="gujarat.html">
+<rect x="120" y="400" width="120" height="90" class="map-state"/>
+<text x="150" y="450" fill="black">Gujarat</text>
+</a>
+
+<a href="maharashtra.html">
+<rect x="280" y="450" width="180" height="100" class="map-state"/>
+<text x="320" y="505" fill="black">Maharashtra</text>
+</a>
+
+<a href="uttarpradesh.html">
+<rect x="390" y="250" width="200" height="80" class="map-state"/>
+<text x="440" y="295" fill="black">UP</text>
+</a>
+
+<a href="westbengal.html">
+<rect x="640" y="320" width="70" height="120" class="map-state"/>
+<text x="650" y="380" fill="black">WB</text>
+</a>
+
+<a href="tamilnadu.html">
+<rect x="390" y="720" width="120" height="60" class="map-state"/>
+<text x="410" y="755" fill="black">Tamil Nadu</text>
+</a>
+
+</svg>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+<section class="py-20 px-8">
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+
+  <div class="glass rounded-3xl p-10">
+
+    <h2 class="text-6xl font-bold text-blue-300">
+      5000+
+    </h2>
+
+    <p class="text-2xl mt-4">
+      Schemes
+    </p>
+
+  </div>
+
+  <div class="glass rounded-3xl p-10">
+
+    <h2 class="text-6xl font-bold text-orange-300">
+      28
+    </h2>
+
+    <p class="text-2xl mt-4">
+      States
+    </p>
+
+  </div>
+
+  <div class="glass rounded-3xl p-10">
+
+    <h2 class="text-6xl font-bold text-green-300">
+      100+
+    </h2>
+
+    <p class="text-2xl mt-4">
+      Categories
+    </p>
+
+  </div>
+
+  <div class="glass rounded-3xl p-10">
+
+    <h2 class="text-6xl font-bold text-pink-300">
+      24/7
+    </h2>
+
+    <p class="text-2xl mt-4">
+      Accessible
+    </p>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- SCHEMES -->
+<section id="schemes" class="py-20 px-8">
+
+<h2 class="text-center text-5xl font-bold mb-14">
+Popular Government Schemes
+</h2>
+
+<div
+id="schemes-container"
+class="grid md:grid-cols-3 gap-8"
+>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="glass mt-20 px-8 py-14">
+
+<div class="grid md:grid-cols-3 gap-10">
+
+  <!-- About -->
+  <div>
+
+    <h2 class="text-3xl font-bold mb-4">
+      SchemeSathi
+    </h2>
+
+    <p class="text-lg text-gray-200 leading-relaxed">
+
+      India's next-generation smart portal for discovering
+      government schemes with AI assistance.
+
+    </p>
+
+  </div>
+
+  <!-- Links -->
+  <div>
+
+    <h3 class="text-2xl font-bold mb-4">
+      Quick Links
+    </h3>
+
+    <div class="space-y-3 text-lg">
+
+      <a href="#" class="block hover:text-blue-300">
+        Home
+      </a>
+
+      <a href="explore.html" class="block hover:text-blue-300">
+        Explore Schemes
+      </a>
+
+      <a href="finder.html" class="block hover:text-blue-300">
+        AI Finder
+      </a>
+
+      <a href="states.html" class="block hover:text-blue-300">
+        State Schemes
+      </a>
 
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="shimmer-bg backdrop-blur-md text-white p-8 text-lg mt-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
-        <h3 class="text-2xl font-bold">SchemeSathi</h3>
-        <p>Your trusted guide to government schemes.</p>
-      </div>
-      <div class="text-center">
-        <h4 class="font-semibold">Quick Links</h4>
-        <a href="schemes.html" class="block hover:text-blue-300">Schemes</a>
-        <a href="pension.html" class="block hover:text-blue-300">Pension</a>
-      </div>
-      <div class="text-right">
-        <h4 class="font-semibold">Contact</h4>
-        <p>Email: bhavingarg121@gmail.com</p>
-        <p>Phone: +91 600103292</p>
-      </div>
-    </div>
-    <div class="text-center mt-8 text-gray-300">
-      © 2024 SchemeSathi. All rights reserved.
-    </div>
-  </footer>
+  </div>
+
+  <!-- Contact -->
+  <div>
+
+    <h3 class="text-2xl font-bold mb-4">
+      Contact
+    </h3>
+
+    <p class="text-lg">
+      Email: bhavingarg121@gmail.com
+    </p>
+
+    <p class="text-lg mt-3">
+      Phone: +91 600103292
+    </p>
+
+  </div>
+
+</div>
+
+<div class="text-center mt-14 text-gray-300 text-lg">
+
+© 2026 SchemeSathi. All Rights Reserved.
+
+</div>
+
+</footer>
+
+<!-- SCRIPT -->
+<script>
+
+let dark = true;
+
+/* Theme */
+
+function toggleTheme(){
+
+  if(dark){
+
+    document.body.style.background="#f5f5f5";
+    document.body.style.color="#111";
+
+    dark=false;
+
+  }
+
+  else{
+
+    document.body.style.background="#0f172a";
+    document.body.style.color="white";
+
+    dark=true;
+
+  }
+
+}
+
+/* Schemes */
+
+const schemes = [
+
+{
+title:"PM Kisan",
+description:"Financial support for farmers across India.",
+category:"farmer",
+link:"#",
+eligibility:"Farmer"
+},
+
+{
+title:"Ayushman Bharat",
+description:"Healthcare support scheme for families.",
+category:"health",
+link:"#",
+eligibility:"All Citizens"
+},
+
+{
+title:"Startup India",
+description:"Funding and support for startups.",
+category:"startup",
+link:"#",
+eligibility:"Entrepreneurs"
+},
+
+{
+title:"National Scholarship",
+description:"Scholarship support for students.",
+category:"education",
+link:"#",
+eligibility:"Students"
+},
+
+{
+title:"Women Empowerment Scheme",
+description:"Support programs for women.",
+category:"women",
+link:"#",
+eligibility:"Women"
+},
+
+{
+title:"Senior Citizen Pension",
+description:"Monthly pension support.",
+category:"health",
+link:"#",
+eligibility:"Senior Citizens"
+}
+
+];
+
+/* Load Schemes */
+
+function loadSchemes(data){
+
+const container =
+document.getElementById("schemes-container");
+
+container.innerHTML="";
+
+data.forEach((scheme)=>{
+
+const card=document.createElement("div");
+
+card.className=
+"glass rounded-3xl p-8 card";
+
+card.innerHTML=`
+
+<div class="flex justify-between items-start">
+
+<div>
+
+<h3 class="text-3xl font-bold">
+${scheme.title}
+</h3>
+
+<p class="mt-4 text-lg text-gray-100 leading-relaxed">
+${scheme.description}
+</p>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap gap-3 mt-5">
+
+<span class="bg-blue-500/20 px-4 py-2 rounded-full">
+${scheme.category}
+</span>
+
+<span class="bg-orange-500/20 px-4 py-2 rounded-full">
+${scheme.eligibility}
+</span>
+
+</div>
+
+<a
+href="${scheme.link}"
+class="inline-block mt-6 bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-xl"
+>
+
+Learn More →
+
+</a>
+
+`;
+
+container.appendChild(card);
+
+});
+
+}
+
+/* Search */
+
+function searchSchemes(){
+
+const search=
+document.getElementById("searchInput")
+.value
+.toLowerCase();
+
+const category=
+document.getElementById("categoryFilter")
+.value;
+
+const filtered=
+schemes.filter((scheme)=>{
+
+const matchSearch=
+scheme.title.toLowerCase().includes(search);
+
+const matchCategory=
+category==="all" ||
+scheme.category===category;
+
+return matchSearch && matchCategory;
+
+});
+
+loadSchemes(filtered);
+
+}
+
+/* AI Eligibility */
+
+function checkEligibility(){
+
+const age=
+document.getElementById("age").value;
+
+const occupation=
+document.getElementById("occupation").value;
+
+let result="";
+
+if(occupation==="Student"){
+
+result=`
+
+<div class="space-y-5">
+
+<div class="glass p-5 rounded-xl">
+
+<h4 class="text-2xl font-bold">
+National Scholarship Scheme
+</h4>
+
+<p class="mt-2 text-gray-200">
+Financial support for students.
+</p>
+
+</div>
+
+<div class="glass p-5 rounded-xl">
+
+<h4 class="text-2xl font-bold">
+Digital Education Mission
+</h4>
+
+<p class="mt-2 text-gray-200">
+Support for online learning and devices.
+</p>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+else if(occupation==="Farmer"){
+
+result=`
+
+<div class="space-y-5">
+
+<div class="glass p-5 rounded-xl">
+
+<h4 class="text-2xl font-bold">
+PM Kisan
+</h4>
+
+<p class="mt-2 text-gray-200">
+Farmer income support scheme.
+</p>
+
+</div>
+
+<div class="glass p-5 rounded-xl">
+
+<h4 class="text-2xl font-bold">
+Crop Insurance Scheme
+</h4>
+
+<p class="mt-2 text-gray-200">
+Insurance protection for crops.
+</p>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+else{
+
+result=`
+
+<div class="glass p-5 rounded-xl">
+
+<h4 class="text-2xl font-bold">
+Startup India
+</h4>
+
+<p class="mt-2 text-gray-200">
+Support and funding for startups.
+</p>
+
+</div>
+
+`;
+
+}
+
+document.getElementById("eligibilityResult")
+.innerHTML=result;
+
+}
+
+/* Initial */
+
+loadSchemes(schemes);
+
+</script>
 
 </body>
 </html>
-  <!-- Script -->
-  <script>
-   async function loadSchemes() {
-    try {
-      // Fetch schemes from a static JSON file in /public/data/schemes.json
-      const response = await fetch('/data/schemes.json');
-      const schemes = await response.json();
-
-      const container = document.getElementById('schemes-container');
-      container.innerHTML = ""; // clear any existing content
-
-      schemes.forEach(scheme => {
-        const card = document.createElement('div');
-        card.className = "bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition";
-        card.innerHTML = `
-          <h3 class="text-xl font-bold text-blue-900">${scheme.title}</h3>
-          <p class="mt-2 text-gray-700">${scheme.description}</p>
-          <a href="${scheme.link}" class="mt-4 inline-block text-blue-600 font-semibold hover:underline">Learn More</a>
-        `;
-        container.appendChild(card);
-      });
-    } catch (error) {
-      console.error("Error loading schemes:", error);
-      document.getElementById('schemes-container').innerHTML =
-        "<p class='text-red-600'>Error loading schemes. Make sure JSON file is available.</p>";
-    }
-  }
-function logout() {
-      alert("Logged out!");
-      window.location.href = "login.html"; // back to login page
-    }
-
-  loadSchemes();
-</script>
-
-  </body>
-  </html>
