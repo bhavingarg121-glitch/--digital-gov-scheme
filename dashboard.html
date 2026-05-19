@@ -454,18 +454,105 @@ Scholarship verification pending
 
 <!-- SCRIPT -->
 
-<script>
+<script type="module">
 
-/* STORAGE */
+/* =========================
+   FIREBASE IMPORTS
+========================= */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+setDoc,
+doc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import {
+getAuth,
+signInAnonymously
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+/* =========================
+   FIREBASE CONFIG
+========================= */
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyDVbSTJ5-JALcukU2FiavqeMqkvrKkfGS0",
+
+authDomain: "schemesathi-bfc0b.firebaseapp.com",
+
+projectId: "schemesathi-bfc0b",
+
+storageBucket: "schemesathi-bfc0b.firebasestorage.app",
+
+messagingSenderId: "384640220695",
+
+appId: "1:384640220695:web:f4ee2d706c098beef02652",
+
+measurementId: "G-GDCQQ50QWB"
+
+};
+
+/* =========================
+   FIREBASE INIT
+========================= */
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
+const auth =
+getAuth(app);
+
+/* =========================
+   STORAGE
+========================= */
 
 let schemes = [];
+
 let savedSchemes =
-JSON.parse(localStorage.getItem("savedSchemes")) || [];
+JSON.parse(
+localStorage.getItem("savedSchemes")
+) || [];
 
 let profile =
-JSON.parse(localStorage.getItem("profile")) || {};
+JSON.parse(
+localStorage.getItem("profile")
+) || {};
 
-/* LOAD PROFILE */
+/* =========================
+   LOGIN
+========================= */
+
+signInAnonymously(auth)
+
+.then(()=>{
+
+console.log("Firebase Connected");
+
+loadSavedSchemes();
+
+})
+
+.catch((error)=>{
+
+console.log(error);
+
+});
+
+/* =========================
+   LOAD PROFILE
+========================= */
 
 function loadProfile(){
 
@@ -483,13 +570,18 @@ profile.age || "";
 document.getElementById("userOccupation").value =
 profile.occupation || "";
 
-}
+document.getElementById("stateFilter").value =
+profile.state || "all";
 
 }
 
-/* SAVE PROFILE */
+}
 
-function saveProfile(){
+/* =========================
+   SAVE PROFILE
+========================= */
+
+window.saveProfile = async function(){
 
 profile = {
 
@@ -510,18 +602,29 @@ document.getElementById("stateFilter").value
 
 };
 
+/* LOCAL STORAGE */
+
 localStorage.setItem(
 "profile",
 JSON.stringify(profile)
+);
+
+/* FIREBASE SAVE */
+
+await setDoc(
+doc(db,"profiles","mainUser"),
+profile
 );
 
 alert("Profile Saved");
 
 loadRecommendations();
 
-}
+};
 
-/* FETCH SCHEMES */
+/* =========================
+   FETCH SCHEMES
+========================= */
 
 fetch("explore.json")
 
@@ -533,18 +636,26 @@ schemes=data;
 
 loadRecommendations();
 
-renderSaved();
-
 renderTracker();
+
+})
+
+.catch(error=>{
+
+console.log(error);
 
 });
 
-/* RECOMMEND ENGINE */
+/* =========================
+   RECOMMEND ENGINE
+========================= */
 
 function loadRecommendations(){
 
 const container =
 document.getElementById("recommendations");
+
+if(!container) return;
 
 container.innerHTML="";
 
@@ -557,16 +668,21 @@ let matchState = true;
 if(profile.occupation){
 
 matchOccupation =
-scheme.category?.toLowerCase()
-.includes(profile.occupation.toLowerCase());
+scheme.category
+?.toLowerCase()
+.includes(
+profile.occupation.toLowerCase()
+);
 
 }
 
-if(profile.state &&
-profile.state!=="all"){
+if(
+profile.state &&
+profile.state !== "all"
+){
 
 matchState =
-scheme.state===profile.state;
+scheme.state === profile.state;
 
 }
 
@@ -574,35 +690,51 @@ return matchOccupation || matchState;
 
 });
 
+/* FALLBACK */
+
 if(filtered.length===0){
 
-filtered=schemes.slice(0,6);
+filtered =
+schemes.slice(0,6);
 
 }
 
-document.getElementById("eligibleCount")
-.innerText=filtered.length;
+/* COUNT */
+
+const eligible =
+document.getElementById("eligibleCount");
+
+if(eligible){
+
+eligible.innerText =
+filtered.length;
+
+}
+
+/* RENDER */
 
 filtered.slice(0,6).forEach(scheme=>{
 
-const card=document.createElement("div");
+const card =
+document.createElement("div");
 
-card.className="scheme-card";
+card.className =
+"scheme-card";
 
-card.innerHTML=`
+card.innerHTML = `
 
 <h3 class="text-3xl font-bold">
-${scheme.title}
+${scheme.title || "Scheme"}
 </h3>
 
 <p class="mt-5 text-gray-200">
-${scheme.description}
+${scheme.description || "No Description"}
 </p>
 
 <div class="flex gap-3 mt-5 flex-wrap">
 
 <span class="bg-blue-500/20 px-4 py-2 rounded-full">
-${scheme.category}
+${scheme.category || "General"}
 </span>
 
 <span class="bg-orange-500/20 px-4 py-2 rounded-full">
@@ -614,8 +746,7 @@ ${scheme.state || "India"}
 <div class="flex gap-4 mt-6">
 
 <button
-onclick='saveScheme(${JSON.stringify(scheme)})'
-class="bg-blue-600 px-5 py-3 rounded-xl"
+class="bg-blue-600 px-5 py-3 rounded-xl save-btn"
 >
 Save
 </button>
@@ -630,50 +761,87 @@ Apply
 
 `;
 
+/* SAVE BUTTON */
+
+card
+.querySelector(".save-btn")
+.addEventListener("click",()=>{
+
+saveScheme(scheme);
+
+});
+
 container.appendChild(card);
 
 });
 
 }
 
-/* SAVE SCHEME */
+/* =========================
+   SAVE SCHEME
+========================= */
 
-function saveScheme(scheme){
+window.saveScheme = async function(scheme){
 
 savedSchemes.push(scheme);
+
+/* LOCAL STORAGE */
 
 localStorage.setItem(
 "savedSchemes",
 JSON.stringify(savedSchemes)
 );
 
+/* FIREBASE */
+
+await addDoc(
+collection(db,"savedSchemes"),
+scheme
+);
+
+alert("Scheme Saved");
+
 renderSaved();
 
-}
+};
 
-/* RENDER SAVED */
+/* =========================
+   LOAD FIREBASE SAVED
+========================= */
 
-function renderSaved(){
+async function loadSavedSchemes(){
 
 const container =
 document.getElementById("savedSchemes");
 
+if(!container) return;
+
 container.innerHTML="";
 
-savedSchemes.forEach(scheme=>{
+const querySnapshot =
+await getDocs(
+collection(db,"savedSchemes")
+);
 
-const card=document.createElement("div");
+querySnapshot.forEach((docItem)=>{
 
-card.className="scheme-card";
+const scheme =
+docItem.data();
 
-card.innerHTML=`
+const card =
+document.createElement("div");
+
+card.className =
+"scheme-card";
+
+card.innerHTML = `
 
 <h3 class="text-2xl font-bold">
-${scheme.title}
+${scheme.title || "Scheme"}
 </h3>
 
 <p class="mt-4 text-gray-200">
-${scheme.description}
+${scheme.description || "No Description"}
 </p>
 
 `;
@@ -684,14 +852,57 @@ container.appendChild(card);
 
 }
 
-/* TRACKER */
+/* =========================
+   LOCAL SAVED
+========================= */
+
+function renderSaved(){
+
+const container =
+document.getElementById("savedSchemes");
+
+if(!container) return;
+
+container.innerHTML="";
+
+savedSchemes.forEach(scheme=>{
+
+const card =
+document.createElement("div");
+
+card.className =
+"scheme-card";
+
+card.innerHTML = `
+
+<h3 class="text-2xl font-bold">
+${scheme.title || "Scheme"}
+</h3>
+
+<p class="mt-4 text-gray-200">
+${scheme.description || "No Description"}
+</p>
+
+`;
+
+container.appendChild(card);
+
+});
+
+}
+
+/* =========================
+   TRACKER
+========================= */
 
 function renderTracker(){
 
 const tracker =
 document.getElementById("applicationTracker");
 
-tracker.innerHTML=`
+if(!tracker) return;
+
+tracker.innerHTML = `
 
 <div class="glass p-5 rounded-2xl">
 
@@ -715,7 +926,7 @@ Approved
 
 </div>
 
-<div class="glass p-5 rounded-2xl">
+<div class="glass p-5 rounded-2xl mt-5">
 
 <div class="flex justify-between mb-3">
 
@@ -741,27 +952,55 @@ Pending
 
 }
 
-/* NOTIFICATIONS */
+/* =========================
+   NOTIFICATIONS
+========================= */
 
-function showNotifications(){
+window.showNotifications = function(){
 
 document
 .getElementById("notificationPanel")
 .classList.toggle("hidden");
 
+};
+
+/* =========================
+   MAP
+========================= */
+
+window.openStates = function(){
+
+window.location.href =
+"states.html";
+
+};
+
+/* =========================
+   TEST FIREBASE
+========================= */
+
+window.testFirebase =
+async function(){
+
+await addDoc(
+collection(db,"test"),
+{
+message:"Firebase Working",
+time:Date.now()
 }
+);
 
-/* MAP */
+alert("Firebase Connected");
 
-function openStates(){
+};
 
-window.location.href="states.html";
-
-}
-
-/* INIT */
+/* =========================
+   INIT
+========================= */
 
 loadProfile();
+
+renderSaved();
 
 </script>
 
