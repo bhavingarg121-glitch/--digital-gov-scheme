@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>States | SchemeSathi</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#07152d;
+color:white;
+overflow-x:hidden;
+}
+
+/* Background */
+
+.bg-layer{
+position:fixed;
+inset:0;
+z-index:-2;
+background:
+linear-gradient(to bottom right,#07152d,#0b2447,#102d5c);
+}
+
+.grid-overlay{
+position:fixed;
+inset:0;
+background-image:
+linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+background-size:40px 40px;
+z-index:-1;
+}
+
+/* Glass */
+
+.glass{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(16px);
+border:1px solid rgba(255,255,255,0.1);
+}
+
+/* Navbar */
+
+.nav-link{
+transition:0.3s;
+}
+
+.nav-link:hover{
+color:#60a5fa;
+}
+
+/* Map */
+
+.map-container{
+position:relative;
+overflow:hidden;
+}
+
+.map-img{
+width:100%;
+max-width:700px;
+transition:0.4s ease;
+cursor:grab;
+}
+
+.map-img:hover{
+transform:scale(1.04);
+}
+
+/* Card */
+
+.state-card{
+transition:0.35s;
+cursor:pointer;
+}
+
+.state-card:hover{
+transform:translateY(-8px);
+background:rgba(255,255,255,0.14);
+}
+
+/* Search */
+
+.search-box{
+background:rgba(255,255,255,0.95);
+color:black;
+}
+
+/* Scheme Card */
+
+.scheme-card{
+transition:0.3s;
+}
+
+.scheme-card:hover{
+transform:translateY(-6px);
+}
+
+/* Scroll */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#3b82f6;
+border-radius:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg-layer"></div>
+<div class="grid-overlay"></div>
+
+<!-- NAVBAR -->
+<header class="glass sticky top-0 z-50">
+
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-5">
+
+<div class="text-4xl font-extrabold">
+SchemeSathi
+</div>
+
+<nav class="hidden md:flex gap-8 text-lg">
+
+<a href="index.html" class="nav-link">Home</a>
+<a href="explore.html" class="nav-link">Explore</a>
+<a href="finder.html" class="nav-link">AI Finder</a>
+<a href="states.html" class="nav-link text-blue-300">States</a>
+<a href="about.html" class="nav-link">About</a>
+
+</nav>
+
+<a href="login.html"
+class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl">
+Login
+</a>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+<section class="py-20 px-6">
+
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+
+<!-- LEFT -->
+<div>
+
+<h1 class="text-6xl font-extrabold leading-tight mb-8">
+
+Find Schemes
+According To
+<span class="text-blue-400">
+Your State
+</span>
+
+</h1>
+
+<p class="text-xl text-gray-200 leading-relaxed mb-10">
+
+Explore government schemes available in your state including scholarships,
+healthcare support, startup programs, farmer welfare,
+women empowerment and employment opportunities.
+
+</p>
+
+<div class="flex flex-wrap gap-5">
+
+<button
+onclick="scrollToStates()"
+class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-2xl text-xl font-semibold"
+>
+Explore States
+</button>
+
+<button
+onclick="scrollToSchemes()"
+class="bg-orange-500 hover:bg-orange-600 px-8 py-4 rounded-2xl text-xl font-semibold"
+>
+View Schemes
+</button>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="glass rounded-[35px] p-8 map-container">
+
+<img
+src="india-map.png"
+alt="India Political Map"
+class="map-img mx-auto"
+/>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SEARCH -->
+<section class="px-6 py-8">
+
+<div class="max-w-5xl mx-auto glass rounded-3xl p-8">
+
+<h2 class="text-4xl font-bold text-center mb-8">
+Search Your State
+</h2>
+
+<div class="grid md:grid-cols-3 gap-5">
+
+<input
+type="text"
+id="stateSearch"
+placeholder="Enter state name..."
+class="search-box px-6 py-4 rounded-xl outline-none text-lg"
+/>
+
+<select
+id="categoryFilter"
+class="search-box px-6 py-4 rounded-xl outline-none text-lg"
+>
+
+<option value="all">All Categories</option>
+<option value="education">Education</option>
+<option value="health">Health</option>
+<option value="women">Women</option>
+<option value="farmer">Farmer</option>
+<option value="startup">Startup</option>
+
+</select>
+
+<button
+onclick="filterSchemes()"
+class="bg-blue-600 hover:bg-blue-700 rounded-xl text-xl font-semibold"
+>
+Search
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STATES -->
+<section id="states-section" class="py-20 px-6">
+
+<h2 class="text-center text-5xl font-bold mb-14">
+Choose Your State
+</h2>
+
+<div
+id="statesGrid"
+class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6"
+>
+
+</div>
+
+</section>
+
+<!-- SCHEMES -->
+<section id="schemes-section" class="py-20 px-6">
+
+<h2 class="text-center text-5xl font-bold mb-14">
+State Schemes
+</h2>
+
+<div
+id="schemesContainer"
+class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="glass mt-20 px-6 py-14">
+
+<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
+
+<div>
+
+<h2 class="text-3xl font-bold mb-4">
+SchemeSathi
+</h2>
+
+<p class="text-gray-200 text-lg leading-relaxed">
+India's smart portal for discovering central and state government schemes.
+</p>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-bold mb-4">
+Quick Links
+</h3>
+
+<div class="space-y-3 text-lg">
+
+<a href="index.html" class="block hover:text-blue-300">Home</a>
+<a href="explore.html" class="block hover:text-blue-300">Explore</a>
+<a href="finder.html" class="block hover:text-blue-300">AI Finder</a>
+
+</div>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-bold mb-4">
+Contact
+</h3>
+
+<p class="text-lg">
+Email: bhavingarg121@gmail.com
+</p>
+
+<p class="text-lg mt-3">
+Phone: +91 600103292
+</p>
+
+</div>
+
+</div>
+
+<div class="text-center mt-12 text-gray-300">
+© 2026 SchemeSathi. All Rights Reserved.
+</div>
+
+</footer>
+
+<script>
+
+/* STATES */
+
+const states = [
+
+"Andhra Pradesh",
+"Arunachal Pradesh",
+"Assam",
+"Bihar",
+"Chhattisgarh",
+"Goa",
+"Gujarat",
+"Haryana",
+"Himachal Pradesh",
+"Jharkhand",
+"Karnataka",
+"Kerala",
+"Madhya Pradesh",
+"Maharashtra",
+"Manipur",
+"Meghalaya",
+"Mizoram",
+"Nagaland",
+"Odisha",
+"Punjab",
+"Rajasthan",
+"Sikkim",
+"Tamil Nadu",
+"Telangana",
+"Tripura",
+"Uttar Pradesh",
+"Uttarakhand",
+"West Bengal"
+
+];
+
+/* SCHEMES */
+
+const schemes =[
+  {
+    "state": "Andhra Pradesh",
+    "officialPortal": "https://www.ap.gov.in/",
+    "schemes": [
+      {
+        "name": "YSR Rythu Bharosa",
+        "link": "https://ysrrythubharosa.ap.gov.in/"
+      },
+      {
+        "name": "YSR Aarogyasri",
+        "link": "https://www.ysraarogyasri.ap.gov.in/"
+      },
+      {
+        "name": "Jagananna Vidya Deevena",
+        "link": "https://jnanabhumi.ap.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Arunachal Pradesh",
+    "officialPortal": "https://arunachalpradesh.gov.in/",
+    "schemes": [
+      {
+        "name": "Dulari Kanya Scheme",
+        "link": "https://socialjustice.arunachal.gov.in/"
+      },
+      {
+        "name": "CM Social Security Scheme",
+        "link": "https://arunachalpradesh.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Assam",
+    "officialPortal": "https://assam.gov.in/",
+    "schemes": [
+      {
+        "name": "Orunodoi Scheme",
+        "link": "https://orunodoi.assam.gov.in/"
+      },
+      {
+        "name": "Apun Ghar",
+        "link": "https://finance.assam.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Bihar",
+    "officialPortal": "https://state.bihar.gov.in/",
+    "schemes": [
+      {
+        "name": "Student Credit Card Scheme",
+        "link": "https://www.7nishchay-yuvaupmission.bihar.gov.in/"
+      },
+      {
+        "name": "Mukhyamantri Kanya Utthan",
+        "link": "https://medhasoft.bih.nic.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Chhattisgarh",
+    "officialPortal": "https://www.cgstate.gov.in/",
+    "schemes": [
+      {
+        "name": "Rajiv Gandhi Kisan Nyay Yojana",
+        "link": "https://rgkny.cg.nic.in/"
+      },
+      {
+        "name": "Godhan Nyay Scheme",
+        "link": "https://gothan.cg.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Goa",
+    "officialPortal": "https://www.goa.gov.in/",
+    "schemes": [
+      {
+        "name": "Griha Aadhar Scheme",
+        "link": "https://goasocialwelfare.gov.in/"
+      },
+      {
+        "name": "Laadli Laxmi",
+        "link": "https://goaonline.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Gujarat",
+    "officialPortal": "https://www.gujarat.gov.in/",
+    "schemes": [
+      {
+        "name": "iKhedut Portal",
+        "link": "https://ikhedut.gujarat.gov.in/"
+      },
+      {
+        "name": "Mukhyamantri Amrutam",
+        "link": "https://maavas.gujarat.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Haryana",
+    "officialPortal": "https://haryana.gov.in/",
+    "schemes": [
+      {
+        "name": "Saksham Yuva",
+        "link": "https://www.hreyahs.gov.in/"
+      },
+      {
+        "name": "Ladli Scheme",
+        "link": "https://wcdhry.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Himachal Pradesh",
+    "officialPortal": "https://himachal.nic.in/",
+    "schemes": [
+      {
+        "name": "HIMCARE",
+        "link": "https://himcare.hp.gov.in/"
+      },
+      {
+        "name": "Sahara Yojana",
+        "link": "https://himachal.nic.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Jharkhand",
+    "officialPortal": "https://www.jharkhand.gov.in/",
+    "schemes": [
+      {
+        "name": "Guruji Student Credit Card",
+        "link": "https://gscc.jharkhand.gov.in/"
+      },
+      {
+        "name": "Savitribai Phule Kishori Samridhi",
+        "link": "https://www.jharkhand.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Karnataka",
+    "officialPortal": "https://www.karnataka.gov.in/",
+    "schemes": [
+      {
+        "name": "Gruha Lakshmi",
+        "link": "https://sevasindhugs.karnataka.gov.in/"
+      },
+      {
+        "name": "Shakti Scheme",
+        "link": "https://www.karnataka.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Kerala",
+    "officialPortal": "https://kerala.gov.in/",
+    "schemes": [
+      {
+        "name": "Karunya Benevolent Fund",
+        "link": "https://karunya.kerala.gov.in/"
+      },
+      {
+        "name": "Kudumbashree",
+        "link": "https://www.kudumbashree.org/"
+      }
+    ]
+  },
+
+  {
+    "state": "Madhya Pradesh",
+    "officialPortal": "https://www.mp.gov.in/",
+    "schemes": [
+      {
+        "name": "Ladli Behna Yojana",
+        "link": "https://cmladlibahna.mp.gov.in/"
+      },
+      {
+        "name": "Sambal Yojana",
+        "link": "https://sambal.mp.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Maharashtra",
+    "officialPortal": "https://www.maharashtra.gov.in/",
+    "schemes": [
+      {
+        "name": "MahaDBT Farmer Scheme",
+        "link": "https://mahadbt.maharashtra.gov.in/"
+      },
+      {
+        "name": "Majhi Kanya Bhagyashree",
+        "link": "https://womenchild.maharashtra.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Manipur",
+    "officialPortal": "https://manipur.gov.in/",
+    "schemes": [
+      {
+        "name": "CMHT Health Scheme",
+        "link": "https://cmht.manipur.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Meghalaya",
+    "officialPortal": "https://meghalaya.gov.in/",
+    "schemes": [
+      {
+        "name": "FOCUS Meghalaya",
+        "link": "https://focusmeghalaya.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Mizoram",
+    "officialPortal": "https://mizoram.gov.in/",
+    "schemes": [
+      {
+        "name": "SEDP Scheme",
+        "link": "https://sedp.mizoram.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Nagaland",
+    "officialPortal": "https://nagaland.gov.in/",
+    "schemes": [
+      {
+        "name": "Startup Nagaland",
+        "link": "https://startupnagaland.com/"
+      }
+    ]
+  },
+
+  {
+    "state": "Odisha",
+    "officialPortal": "https://odisha.gov.in/",
+    "schemes": [
+      {
+        "name": "KALIA Scheme",
+        "link": "https://kalia.odisha.gov.in/"
+      },
+      {
+        "name": "Mission Shakti",
+        "link": "https://missionshakti.odisha.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Punjab",
+    "officialPortal": "https://punjab.gov.in/",
+    "schemes": [
+      {
+        "name": "Sarbat Sehat Bima",
+        "link": "https://sha.punjab.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Rajasthan",
+    "officialPortal": "https://www.rajasthan.gov.in/",
+    "schemes": [
+      {
+        "name": "Chiranjeevi Health Insurance",
+        "link": "https://chiranjeevi.rajasthan.gov.in/"
+      },
+      {
+        "name": "Raj Kisan Portal",
+        "link": "https://rajkisan.rajasthan.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Sikkim",
+    "officialPortal": "https://sikkim.gov.in/",
+    "schemes": [
+      {
+        "name": "One Family One Job",
+        "link": "https://sikkim.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Tamil Nadu",
+    "officialPortal": "https://www.tn.gov.in/",
+    "schemes": [
+      {
+        "name": "Kalaignar Health Insurance",
+        "link": "https://www.cmchistn.com/"
+      },
+      {
+        "name": "Pudhumai Penn Scheme",
+        "link": "https://penkalvi.tn.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Telangana",
+    "officialPortal": "https://www.telangana.gov.in/",
+    "schemes": [
+      {
+        "name": "Rythu Bandhu",
+        "link": "https://rythubandhu.telangana.gov.in/"
+      },
+      {
+        "name": "Dalit Bandhu",
+        "link": "https://dalitbandhu.telangana.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Tripura",
+    "officialPortal": "https://tripura.gov.in/",
+    "schemes": [
+      {
+        "name": "Mukhyamantri Swanirbhar",
+        "link": "https://tripura.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Uttar Pradesh",
+    "officialPortal": "https://up.gov.in/",
+    "schemes": [
+      {
+        "name": "Kanya Sumangala",
+        "link": "https://mksy.up.gov.in/"
+      },
+      {
+        "name": "UP Scholarship",
+        "link": "https://scholarship.up.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Uttarakhand",
+    "officialPortal": "https://uk.gov.in/",
+    "schemes": [
+      {
+        "name": "Mukhyamantri Swarozgar",
+        "link": "https://uk.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "West Bengal",
+    "officialPortal": "https://wb.gov.in/",
+    "schemes": [
+      {
+        "name": "Lakshmir Bhandar",
+        "link": "https://socialsecurity.wb.gov.in/"
+      },
+      {
+        "name": "Kanyashree",
+        "link": "https://kanyashree.wb.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Andaman and Nicobar Islands",
+    "officialPortal": "https://www.andaman.gov.in/",
+    "schemes": [
+      {
+        "name": "Island Welfare Schemes",
+        "link": "https://www.andaman.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Chandigarh",
+    "officialPortal": "https://chandigarh.gov.in/",
+    "schemes": [
+      {
+        "name": "Chandigarh Social Welfare",
+        "link": "https://chandigarh.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Dadra and Nagar Haveli and Daman and Diu",
+    "officialPortal": "https://ddd.gov.in/",
+    "schemes": [
+      {
+        "name": "Citizen Welfare Schemes",
+        "link": "https://ddd.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Jammu and Kashmir",
+    "officialPortal": "https://jk.gov.in/",
+    "schemes": [
+      {
+        "name": "J&K Scholarship",
+        "link": "https://jk.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Ladakh",
+    "officialPortal": "https://ladakh.nic.in/",
+    "schemes": [
+      {
+        "name": "Ladakh Rural Development",
+        "link": "https://ladakh.nic.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Lakshadweep",
+    "officialPortal": "https://lakshadweep.gov.in/",
+    "schemes": [
+      {
+        "name": "Island Development Scheme",
+        "link": "https://lakshadweep.gov.in/"
+      }
+    ]
+  },
+
+  {
+    "state": "Puducherry",
+    "officialPortal": "https://py.gov.in/",
+    "schemes": [
+      {
+        "name": "Puducherry Welfare Schemes",
+        "link": "https://py.gov.in/"
+      }
+    ]
+  } 
+];
+
+/* LOAD STATES */
+
+const statesGrid =
+document.getElementById("statesGrid");
+
+states.forEach((state)=>{
+
+const card=document.createElement("div");
+
+card.className=
+"glass rounded-2xl p-6 text-center state-card";
+
+card.innerHTML=`
+
+<h3 class="text-xl font-semibold">
+${state}
+</h3>
+
+`;
+
+card.onclick=()=>{
+
+document.getElementById("stateSearch").value=state;
+filterSchemes();
+
+scrollToSchemes();
+
+};
+
+statesGrid.appendChild(card);
+
+});
+
+/* LOAD SCHEMES */
+
+function loadSchemes(data){
+
+const container =
+document.getElementById("schemesContainer");
+
+container.innerHTML="";
+
+if(data.length===0){
+
+container.innerHTML=`
+
+<div class="glass rounded-3xl p-10 col-span-full text-center">
+
+<h3 class="text-3xl font-bold mb-4">
+No Schemes Found
+</h3>
+
+<p class="text-gray-300 text-lg">
+Try searching another state or category.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+data.forEach((scheme)=>{
+
+const card=document.createElement("div");
+
+card.className=
+"glass rounded-3xl p-8 scheme-card";
+
+card.innerHTML=`
+
+<div class="flex justify-between items-center mb-5">
+
+<span class="bg-blue-500/20 px-4 py-2 rounded-full text-sm">
+${scheme.category}
+</span>
+
+<span class="bg-orange-500/20 px-4 py-2 rounded-full text-sm">
+${scheme.state}
+</span>
+
+</div>
+
+<h3 class="text-3xl font-bold mb-4">
+${scheme.title}
+</h3>
+
+<p class="text-gray-200 text-lg leading-relaxed mb-8">
+${scheme.description}
+</p>
+
+<button
+class="bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-xl"
+>
+View Details →
+</button>
+
+`;
+
+container.appendChild(card);
+
+});
+
+}
+
+/* FILTER */
+
+function filterSchemes(){
+
+const stateSearch =
+document.getElementById("stateSearch")
+.value
+.toLowerCase();
+
+const category =
+document.getElementById("categoryFilter")
+.value;
+
+const filtered =
+schemes.filter((scheme)=>{
+
+const matchState =
+scheme.state.toLowerCase()
+.includes(stateSearch);
+
+const matchCategory =
+category==="all" ||
+scheme.category===category;
+
+return matchState && matchCategory;
+
+});
+
+loadSchemes(filtered);
+
+}
+
+/* SCROLL */
+
+function scrollToStates(){
+
+document
+.getElementById("states-section")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function scrollToSchemes(){
+
+document
+.getElementById("schemes-section")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+/* INITIAL */
+
+loadSchemes(schemes);
+
+</script>
+
+</body>
+</html>
