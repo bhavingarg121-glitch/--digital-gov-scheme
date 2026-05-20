@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Central Government Schemes | SchemeSathi</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+/* Background */
+
+.bg-layer{
+position:fixed;
+inset:0;
+z-index:-2;
+}
+
+.bg-layer img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.2);
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+135deg,
+rgba(15,23,42,0.95),
+rgba(30,41,59,0.85),
+rgba(249,115,22,0.25)
+);
+}
+
+/* Glass */
+
+.glass{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(16px);
+border:1px solid rgba(255,255,255,0.12);
+}
+
+/* Navbar */
+
+.navbar{
+position:sticky;
+top:0;
+z-index:100;
+}
+
+/* Cards */
+
+.scheme-card{
+transition:0.35s;
+}
+
+.scheme-card:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 0 30px rgba(59,130,246,0.3);
+}
+
+/* Fade */
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0px);
+}
+
+}
+
+.fade-up{
+animation:fadeUp 1s ease;
+}
+
+/* Search */
+
+.search-box{
+background:white;
+color:black;
+}
+
+/* Buttons */
+
+.category-btn{
+transition:0.3s;
+}
+
+.category-btn:hover{
+background:#2563eb;
+}
+
+.active-btn{
+background:#2563eb;
+}
+
+/* Scroll */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#2563eb;
+border-radius:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg-layer">
+
+<img src="Background.png">
+
+<div class="overlay"></div>
+
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar glass shadow-2xl">
+
+<div class="flex justify-between items-center px-8 py-5">
+
+<div class="text-4xl font-extrabold">
+SchemeSathi
+</div>
+
+<nav class="hidden lg:flex gap-10 text-lg">
+
+<a href="index.html" class="hover:text-blue-300">
+Home
+</a>
+
+<a href="explore.html" class="hover:text-blue-300">
+Explore
+</a>
+
+<a href="states.html" class="hover:text-blue-300">
+States
+</a>
+
+<a href="central.html" class="text-blue-300">
+Central
+</a>
+
+<a href="finder.html" class="hover:text-blue-300">
+AI Finder
+</a>
+
+</nav>
+
+<a
+href="login.html"
+class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl"
+>
+Login
+</a>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+<section class="py-24 text-center px-6 fade-up">
+
+<h1 class="text-6xl md:text-7xl font-extrabold leading-tight">
+
+Central Government
+<span class="text-blue-400">
+Schemes
+</span>
+
+</h1>
+
+<p class="text-2xl text-gray-200 mt-8 max-w-5xl mx-auto leading-relaxed">
+
+Explore official Government of India welfare schemes,
+healthcare programs, scholarships, farmer support,
+employment initiatives and startup opportunities.
+
+</p>
+
+<!-- Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-6xl mx-auto">
+
+<div class="glass rounded-3xl p-8">
+
+<h2 class="text-5xl font-bold text-blue-400">
+5000+
+</h2>
+
+<p class="mt-3 text-xl">
+Schemes
+</p>
+
+</div>
+
+<div class="glass rounded-3xl p-8">
+
+<h2 class="text-5xl font-bold text-orange-400">
+40+
+</h2>
+
+<p class="mt-3 text-xl">
+Categories
+</p>
+
+</div>
+
+<div class="glass rounded-3xl p-8">
+
+<h2 class="text-5xl font-bold text-green-400">
+24/7
+</h2>
+
+<p class="mt-3 text-xl">
+Access
+</p>
+
+</div>
+
+<div class="glass rounded-3xl p-8">
+
+<h2 class="text-5xl font-bold text-pink-400">
+AI
+</h2>
+
+<p class="mt-3 text-xl">
+Smart Filtering
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SEARCH -->
+<section class="px-6">
+
+<div class="glass rounded-3xl p-8 max-w-7xl mx-auto">
+
+<div class="grid md:grid-cols-3 gap-5">
+
+<input
+id="searchInput"
+type="text"
+placeholder="Search central schemes..."
+class="search-box px-6 py-4 rounded-xl text-lg outline-none"
+>
+
+<select
+id="categoryFilter"
+class="search-box px-6 py-4 rounded-xl text-lg outline-none"
+>
+
+<option value="all">
+All Categories
+</option>
+
+<option value="Farmer">
+Farmer
+</option>
+
+<option value="Health">
+Health
+</option>
+
+<option value="Education">
+Education
+</option>
+
+<option value="Women">
+Women
+</option>
+
+<option value="Startup">
+Startup
+</option>
+
+<option value="Housing">
+Housing
+</option>
+
+<option value="Employment">
+Employment
+</option>
+
+<option value="Pension">
+Pension
+</option>
+
+<option value="Insurance">
+Insurance
+</option>
+
+</select>
+
+<button
+onclick="searchSchemes()"
+class="bg-blue-600 hover:bg-blue-700 rounded-xl text-xl font-semibold"
+>
+
+Search
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CATEGORY FILTERS -->
+<section class="py-14 px-6">
+
+<div class="flex flex-wrap justify-center gap-4">
+
+<button class="category-btn glass px-6 py-3 rounded-full" onclick="filterCategory('all')">
+All
+</button>
+
+<button class="category-btn glass px-6 py-3 rounded-full" onclick="filterCategory('Farmer')">
+🌾 Farmer
+</button>
+
+<button class="category-btn glass px-6 py-3 rounded-full" onclick="filterCategory('Health')">
+🏥 Health
+</button>
+
+<button class="category-btn glass px-6 py-3 rounded-full" onclick="filterCategory('Education')">
+🎓 Education
+</button>
+
+<button class="category-btn glass px-6 py-3 rounded-full" onclick="filterCategory('Women')">
+👩 Women
+</button>
+
+<button class="category-btn glass px-6 py-3 rounded-full" onclick="filterCategory('Startup')">
+🚀 Startup
+</button>
+
+<button class="category-btn glass px-6 py-3 rounded-full" onclick="filterCategory('Employment')">
+💼 Jobs
+</button>
+
+</div>
+
+</section>
+
+<!-- SCHEMES -->
+<section class="pb-24 px-6">
+
+<div
+id="schemes-container"
+class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto"
+>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="glass border-t border-white/10 py-14 px-8">
+
+<div class="grid md:grid-cols-3 gap-10">
+
+<div>
+
+<h2 class="text-3xl font-bold mb-4">
+SchemeSathi
+</h2>
+
+<p class="text-gray-300 leading-relaxed text-lg">
+
+India's smart platform for discovering
+central and state government schemes.
+
+</p>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-bold mb-4">
+Quick Links
+</h3>
+
+<div class="space-y-3">
+
+<a href="index.html" class="block hover:text-blue-300">
+Home
+</a>
+
+<a href="central.html" class="block hover:text-blue-300">
+Central Schemes
+</a>
+
+<a href="states.html" class="block hover:text-blue-300">
+State Schemes
+</a>
+
+<a href="finder.html" class="block hover:text-blue-300">
+AI Finder
+</a>
+
+</div>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-bold mb-4">
+Contact
+</h3>
+
+<p>Email: bhavingarg121@gmail.com</p>
+
+<p class="mt-3">
+Phone: +91 600103292
+</p>
+
+</div>
+
+</div>
+
+<div class="text-center mt-12 text-gray-400">
+
+© 2026 SchemeSathi. All rights reserved.
+
+</div>
+
+</footer>
+
+<!-- SCRIPT -->
+<script>
+
+/* CENTRAL SCHEMES */
+
+const schemes = [
+
+{
+title:"PM Kisan Samman Nidhi",
+category:"Farmer",
+description:"Income support for farmers across India.",
+link:"https://pmkisan.gov.in/"
+},
+
+{
+title:"Ayushman Bharat PM-JAY",
+category:"Health",
+description:"Free healthcare insurance coverage.",
+link:"https://pmjay.gov.in/"
+},
+
+{
+title:"National Scholarship Portal",
+category:"Education",
+description:"Scholarships for students.",
+link:"https://scholarships.gov.in/"
+},
+
+{
+title:"PM Awas Yojana",
+category:"Housing",
+description:"Affordable housing scheme.",
+link:"https://pmaymis.gov.in/"
+},
+
+{
+title:"Startup India",
+category:"Startup",
+description:"Startup support and funding.",
+link:"https://www.startupindia.gov.in/"
+},
+
+{
+title:"PM Mudra Yojana",
+category:"Business",
+description:"Loans for small businesses.",
+link:"https://www.mudra.org.in/"
+},
+
+{
+title:"PM Fasal Bima Yojana",
+category:"Farmer",
+description:"Crop insurance scheme.",
+link:"https://pmfby.gov.in/"
+},
+
+{
+title:"Digital India",
+category:"Technology",
+description:"Digital governance initiative.",
+link:"https://digitalindia.gov.in/"
+},
+
+{
+title:"Skill India Mission",
+category:"Employment",
+description:"Skill training and jobs.",
+link:"https://www.skillindia.gov.in/"
+},
+
+{
+title:"PM Ujjwala Yojana",
+category:"Women",
+description:"Free LPG gas connections.",
+link:"https://www.pmuy.gov.in/"
+},
+
+{
+title:"Atal Pension Yojana",
+category:"Pension",
+description:"Guaranteed pension support.",
+link:"https://www.npscra.nsdl.co.in/"
+},
+
+{
+title:"PM Jeevan Jyoti Bima Yojana",
+category:"Insurance",
+description:"Affordable life insurance.",
+link:"https://jansuraksha.gov.in/"
+},
+  {
+    "scheme": "PM Kisan Samman Nidhi",
+    "category": "Farmer",
+    "officialLink": "https://pmkisan.gov.in/",
+    "description": "Income support for farmers."
+  },
+  {
+    "scheme": "PM Fasal Bima Yojana",
+    "category": "Agriculture",
+    "officialLink": "https://pmfby.gov.in/",
+    "description": "Crop insurance scheme."
+  },
+  {
+    "scheme": "Kisan Credit Card",
+    "category": "Farmer Loan",
+    "officialLink": "https://www.myscheme.gov.in/schemes/kcc",
+    "description": "Low-interest agricultural loans."
+  },
+  {
+    "scheme": "Soil Health Card Scheme",
+    "category": "Agriculture",
+    "officialLink": "https://soilhealth.dac.gov.in/",
+    "description": "Soil nutrient information for farmers."
+  },
+  {
+    "scheme": "PM Krishi Sinchai Yojana",
+    "category": "Agriculture",
+    "officialLink": "https://pmksy.gov.in/",
+    "description": "Irrigation support for farmers."
+  },
+  {
+    "scheme": "National Agriculture Market (eNAM)",
+    "category": "Agriculture",
+    "officialLink": "https://www.enam.gov.in/",
+    "description": "Online agricultural trading platform."
+  },
+  {
+    "scheme": "Ayushman Bharat PM-JAY",
+    "category": "Health",
+    "officialLink": "https://pmjay.gov.in/",
+    "description": "Free healthcare insurance coverage."
+  },
+  {
+    "scheme": "National Digital Health Mission",
+    "category": "Health",
+    "officialLink": "https://abdm.gov.in/",
+    "description": "Digital healthcare ecosystem."
+  },
+  {
+    "scheme": "Jan Aushadhi Scheme",
+    "category": "Health",
+    "officialLink": "https://janaushadhi.gov.in/",
+    "description": "Affordable generic medicines."
+  },
+  {
+    "scheme": "Mission Indradhanush",
+    "category": "Health",
+    "officialLink": "https://www.nhm.gov.in/",
+    "description": "Vaccination and immunization program."
+  },
+  {
+    "scheme": "PM Awas Yojana Urban",
+    "category": "Housing",
+    "officialLink": "https://pmaymis.gov.in/",
+    "description": "Affordable urban housing."
+  },
+  {
+    "scheme": "PM Awas Yojana Gramin",
+    "category": "Housing",
+    "officialLink": "https://pmayg.nic.in/",
+    "description": "Rural housing assistance."
+  },
+  {
+    "scheme": "Smart Cities Mission",
+    "category": "Urban Development",
+    "officialLink": "https://smartcities.gov.in/",
+    "description": "Modern city infrastructure development."
+  },
+  {
+    "scheme": "AMRUT Mission",
+    "category": "Urban Development",
+    "officialLink": "https://amrut.gov.in/",
+    "description": "Urban infrastructure and water supply."
+  },
+  {
+    "scheme": "Swachh Bharat Mission",
+    "category": "Sanitation",
+    "officialLink": "https://swachhbharatmission.gov.in/",
+    "description": "National cleanliness mission."
+  },
+  {
+    "scheme": "Jal Jeevan Mission",
+    "category": "Water",
+    "officialLink": "https://ejalshakti.gov.in/jjmreport/",
+    "description": "Tap water for every rural household."
+  },
+  {
+    "scheme": "National Scholarship Portal",
+    "category": "Education",
+    "officialLink": "https://scholarships.gov.in/",
+    "description": "Scholarship portal for students."
+  },
+  {
+    "scheme": "PM eVIDYA",
+    "category": "Education",
+    "officialLink": "https://www.education.gov.in/",
+    "description": "Digital education initiative."
+  },
+  {
+    "scheme": "Vidyanjali Scheme",
+    "category": "Education",
+    "officialLink": "https://vidyanjali.education.gov.in/",
+    "description": "Community participation in schools."
+  },
+  {
+    "scheme": "Mid Day Meal Scheme",
+    "category": "Education",
+    "officialLink": "https://pmposhan.education.gov.in/",
+    "description": "Nutritional support for school children."
+  },
+  {
+    "scheme": "Beti Bachao Beti Padhao",
+    "category": "Women",
+    "officialLink": "https://wcd.nic.in/bbbp-schemes",
+    "description": "Girl child welfare initiative."
+  },
+  {
+    "scheme": "PM Ujjwala Yojana",
+    "category": "Women",
+    "officialLink": "https://www.pmuy.gov.in/",
+    "description": "Free LPG connections."
+  },
+  {
+    "scheme": "One Stop Centre Scheme",
+    "category": "Women",
+    "officialLink": "https://sakhi.gov.in/",
+    "description": "Support for women facing violence."
+  },
+  {
+    "scheme": "Mahila Shakti Kendra",
+    "category": "Women",
+    "officialLink": "https://wcd.nic.in/",
+    "description": "Women empowerment initiative."
+  },
+  {
+    "scheme": "Sukanya Samriddhi Yojana",
+    "category": "Girl Child",
+    "officialLink": "https://www.nsiindia.gov.in/",
+    "description": "Savings scheme for girl children."
+  },
+  {
+    "scheme": "Startup India",
+    "category": "Startup",
+    "officialLink": "https://www.startupindia.gov.in/",
+    "description": "Startup funding and support."
+  },
+  {
+    "scheme": "Stand Up India",
+    "category": "Business",
+    "officialLink": "https://www.standupmitra.in/",
+    "description": "Business loans for women and SC/ST."
+  },
+  {
+    "scheme": "PM Mudra Yojana",
+    "category": "Business Loan",
+    "officialLink": "https://www.mudra.org.in/",
+    "description": "Loans for micro enterprises."
+  },
+  {
+    "scheme": "CGTMSE",
+    "category": "MSME",
+    "officialLink": "https://www.cgtmse.in/",
+    "description": "Credit guarantee for MSMEs."
+  },
+  {
+    "scheme": "Digital India",
+    "category": "Technology",
+    "officialLink": "https://digitalindia.gov.in/",
+    "description": "Digital governance initiative."
+  },
+  {
+    "scheme": "Skill India Mission",
+    "category": "Skill Development",
+    "officialLink": "https://www.skillindia.gov.in/",
+    "description": "Skill training for youth."
+  },
+  {
+    "scheme": "PM Kaushal Vikas Yojana",
+    "category": "Skill Development",
+    "officialLink": "https://www.pmkvyofficial.org/",
+    "description": "Industry skill certification program."
+  },
+  {
+    "scheme": "National Apprenticeship Promotion Scheme",
+    "category": "Employment",
+    "officialLink": "https://www.apprenticeshipindia.gov.in/",
+    "description": "Apprenticeship training support."
+  },
+  {
+    "scheme": "e-Shram Portal",
+    "category": "Workers",
+    "officialLink": "https://eshram.gov.in/",
+    "description": "Database for unorganized workers."
+  },
+  {
+    "scheme": "Atal Pension Yojana",
+    "category": "Pension",
+    "officialLink": "https://www.npscra.nsdl.co.in/",
+    "description": "Guaranteed pension scheme."
+  },
+  {
+    "scheme": "National Pension System",
+    "category": "Pension",
+    "officialLink": "https://enps.nsdl.com/",
+    "description": "Retirement savings scheme."
+  },
+  {
+    "scheme": "PM Jeevan Jyoti Bima Yojana",
+    "category": "Insurance",
+    "officialLink": "https://jansuraksha.gov.in/",
+    "description": "Life insurance scheme."
+  },
+  {
+    "scheme": "PM Suraksha Bima Yojana",
+    "category": "Insurance",
+    "officialLink": "https://jansuraksha.gov.in/",
+    "description": "Accident insurance scheme."
+  },
+  {
+    "scheme": "PM SVANidhi",
+    "category": "Street Vendors",
+    "officialLink": "https://pmsvanidhi.mohua.gov.in/",
+    "description": "Loans for street vendors."
+  },
+  {
+    "scheme": "One Nation One Ration Card",
+    "category": "Food Security",
+    "officialLink": "https://nfsa.gov.in/",
+    "description": "Portable ration card benefits."
+  },
+  {
+    "scheme": "PM Garib Kalyan Anna Yojana",
+    "category": "Food",
+    "officialLink": "https://dfpd.gov.in/",
+    "description": "Free food grains scheme."
+  },
+  {
+    "scheme": "National Food Security Act",
+    "category": "Food",
+    "officialLink": "https://nfsa.gov.in/",
+    "description": "Subsidized food grains."
+  },
+  {
+    "scheme": "NREGA",
+    "category": "Employment",
+    "officialLink": "https://nrega.nic.in/",
+    "description": "100 days employment guarantee."
+  },
+  {
+    "scheme": "DAY-NULM",
+    "category": "Urban Employment",
+    "officialLink": "https://nulm.gov.in/",
+    "description": "Urban livelihood mission."
+  },
+  {
+    "scheme": "DAY-NRLM",
+    "category": "Rural Development",
+    "officialLink": "https://aajeevika.gov.in/",
+    "description": "Rural livelihood support."
+  },
+  {
+    "scheme": "PM Vishwakarma",
+    "category": "Artisans",
+    "officialLink": "https://pmvishwakarma.gov.in/",
+    "description": "Support for traditional artisans."
+  },
+  {
+    "scheme": "Accessible India Campaign",
+    "category": "Disability",
+    "officialLink": "https://accessibleindia.gov.in/",
+    "description": "Accessibility for disabled citizens."
+  },
+  {
+    "scheme": "Deendayal Disabled Rehabilitation Scheme",
+    "category": "Disability",
+    "officialLink": "https://depwd.gov.in/",
+    "description": "Rehabilitation support for disabled persons."
+  },
+  {
+    "scheme": "National Child Labour Project",
+    "category": "Child Welfare",
+    "officialLink": "https://labour.gov.in/",
+    "description": "Rehabilitation of child labourers."
+  },
+  {
+    "scheme": "Poshan Abhiyaan",
+    "category": "Nutrition",
+    "officialLink": "https://poshanabhiyaan.gov.in/",
+    "description": "Nutrition support mission."
+  },
+  {
+    "scheme": "Integrated Child Development Services",
+    "category": "Child Welfare",
+    "officialLink": "https://icds-wcd.nic.in/",
+    "description": "Health and nutrition for children."
+  },
+  {
+    "scheme": "National Social Assistance Programme",
+    "category": "Social Welfare",
+    "officialLink": "https://nsap.nic.in/",
+    "description": "Social pensions and welfare support."
+  }
+
+];
+
+/* LOAD */
+
+function loadSchemes(data){
+
+const container =
+document.getElementById("schemes-container");
+
+container.innerHTML="";
+
+data.forEach((scheme)=>{
+
+const card=document.createElement("div");
+
+card.className=
+"scheme-card glass rounded-3xl p-8";
+
+card.innerHTML=`
+
+<div class="flex justify-between items-start gap-4">
+
+<div>
+
+<h2 class="text-3xl font-bold mb-4">
+${scheme.title}
+</h2>
+
+<p class="text-gray-200 text-lg leading-relaxed">
+${scheme.description}
+</p>
+
+</div>
+
+</div>
+
+<div class="mt-6 flex gap-3 flex-wrap">
+
+<span class="bg-blue-500/20 text-blue-200 px-4 py-2 rounded-full">
+${scheme.category}
+</span>
+
+</div>
+
+<a
+href="${scheme.link}"
+target="_blank"
+class="inline-block mt-7 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl font-semibold"
+>
+
+Official Website →
+
+</a>
+
+`;
+
+container.appendChild(card);
+
+});
+
+}
+
+/* SEARCH */
+
+function searchSchemes(){
+
+const search=
+document.getElementById("searchInput")
+.value
+.toLowerCase();
+
+const category=
+document.getElementById("categoryFilter")
+.value;
+
+const filtered=
+schemes.filter((scheme)=>{
+
+const matchSearch=
+scheme.title.toLowerCase().includes(search);
+
+const matchCategory=
+category==="all" ||
+scheme.category===category;
+
+return matchSearch && matchCategory;
+
+});
+
+loadSchemes(filtered);
+
+}
+
+/* CATEGORY */
+
+function filterCategory(cat){
+
+if(cat==="all"){
+
+loadSchemes(schemes);
+
+return;
+
+}
+
+const filtered=
+schemes.filter(
+scheme=>scheme.category===cat
+);
+
+loadSchemes(filtered);
+
+}
+
+/* INITIAL */
+
+loadSchemes(schemes);
+
+</script>
+
+</body>
+</html>
