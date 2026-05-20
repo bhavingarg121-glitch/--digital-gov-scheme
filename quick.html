@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SchemeSathi - AI Assisted Form Filling</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Firebase -->
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+
+apiKey: "YOUR_API_KEY",
+authDomain: "YOUR_PROJECT.firebaseapp.com",
+projectId: "YOUR_PROJECT_ID",
+storageBucket: "YOUR_PROJECT.appspot.com",
+messagingSenderId: "XXXX",
+appId: "XXXX"
+
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.registerUser = async function(){
+
+const email=document.getElementById("registerEmail").value;
+const password=document.getElementById("registerPassword").value;
+
+try{
+
+await createUserWithEmailAndPassword(auth,email,password);
+alert("Registration Successful");
+
+}
+catch(error){
+
+alert(error.message);
+
+}
+
+}
+
+window.loginUser = async function(){
+
+const email=document.getElementById("loginEmail").value;
+const password=document.getElementById("loginPassword").value;
+
+try{
+
+await signInWithEmailAndPassword(auth,email,password);
+
+alert("Login Successful");
+
+document.getElementById("authSection").style.display="none";
+document.getElementById("mainApp").style.display="block";
+
+}
+catch(error){
+
+alert(error.message);
+
+}
+
+}
+
+window.logoutUser = async function(){
+
+await signOut(auth);
+
+location.reload();
+
+}
+
+onAuthStateChanged(auth,(user)=>{
+
+if(user){
+
+document.getElementById("authSection").style.display="none";
+document.getElementById("mainApp").style.display="block";
+
+}
+
+});
+
+</script>
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+.background{
+position:fixed;
+inset:0;
+z-index:-2;
+}
+
+.background img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.35);
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(
+135deg,
+rgba(15,23,42,0.95),
+rgba(30,41,59,0.88),
+rgba(249,115,22,0.25)
+);
+}
+
+.glass{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.15);
+}
+
+.input{
+width:100%;
+padding:16px;
+border-radius:14px;
+outline:none;
+background:white;
+color:black;
+}
+
+.card{
+transition:0.35s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.gradient{
+background:linear-gradient(to right,#2563eb,#f97316);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="background">
+
+<img src="Background.png">
+
+<div class="overlay"></div>
+
+</div>
+
+<!-- AUTH SECTION -->
+<section
+id="authSection"
+class="min-h-screen flex items-center justify-center px-6 py-20"
+>
+
+<div class="glass rounded-3xl p-10 w-full max-w-5xl">
+
+<h1 class="text-5xl font-extrabold text-center mb-12">
+SchemeSathi AI Portal
+</h1>
+
+<div class="grid md:grid-cols-2 gap-10">
+
+<!-- REGISTER -->
+<div class="glass rounded-3xl p-8">
+
+<h2 class="text-3xl font-bold mb-6">
+Register
+</h2>
+
+<div class="space-y-5">
+
+<input
+type="email"
+id="registerEmail"
+placeholder="Email"
+class="input"
+>
+
+<input
+type="password"
+id="registerPassword"
+placeholder="Password"
+class="input"
+>
+
+<button
+onclick="registerUser()"
+class="gradient w-full py-4 rounded-xl text-xl font-bold"
+>
+
+Create Account
+
+</button>
+
+</div>
+
+</div>
+
+<!-- LOGIN -->
+<div class="glass rounded-3xl p-8">
+
+<h2 class="text-3xl font-bold mb-6">
+Login
+</h2>
+
+<div class="space-y-5">
+
+<input
+type="email"
+id="loginEmail"
+placeholder="Email"
+class="input"
+>
+
+<input
+type="password"
+id="loginPassword"
+placeholder="Password"
+class="input"
+>
+
+<button
+onclick="loginUser()"
+class="gradient w-full py-4 rounded-xl text-xl font-bold"
+>
+
+Login
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MAIN APP -->
+<div id="mainApp" style="display:none;">
+
+<!-- NAVBAR -->
+<header class="glass sticky top-0 z-50 px-8 py-5">
+
+<div class="flex justify-between items-center">
+
+<h1 class="text-4xl font-extrabold">
+SchemeSathi
+</h1>
+
+<div class="flex gap-4">
+
+<button
+onclick="exportPDF()"
+class="bg-green-600 px-6 py-3 rounded-xl"
+>
+
+Export PDF
+
+</button>
+
+<button
+onclick="logoutUser()"
+class="bg-red-600 px-6 py-3 rounded-xl"
+>
+
+Logout
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+<section class="py-20 text-center px-6">
+
+<h1 class="text-6xl font-extrabold leading-tight">
+
+AI Assisted Government
+Scheme Application
+
+</h1>
+
+<p class="text-2xl text-gray-200 mt-6 max-w-4xl mx-auto">
+
+Fill forms easily with AI guidance,
+eligibility engine and smart assistance.
+
+</p>
+
+</section>
+
+<!-- MAIN GRID -->
+<section class="px-8 pb-20">
+
+<div class="grid lg:grid-cols-3 gap-8">
+
+<!-- FORM -->
+<div class="lg:col-span-2 glass rounded-3xl p-10">
+
+<h2 class="text-4xl font-bold mb-8">
+Guided Form Filling
+</h2>
+
+<div class="grid md:grid-cols-2 gap-6">
+
+<input type="text" id="fullName" placeholder="Full Name" class="input">
+
+<input type="email" id="email" placeholder="Email" class="input">
+
+<input type="number" id="age" placeholder="Age" class="input">
+
+<select id="gender" class="input">
+
+<option>Gender</option>
+<option>Male</option>
+<option>Female</option>
+
+</select>
+
+<input type="number" id="income" placeholder="Family Income" class="input">
+
+<select id="occupation" class="input">
+
+<option>Occupation</option>
+<option>Student</option>
+<option>Farmer</option>
+<option>Employee</option>
+<option>Business</option>
+
+</select>
+
+<input type="text" id="aadhaar" placeholder="Aadhaar Number" class="input">
+
+<input type="text" id="pan" placeholder="PAN Card Number" class="input">
+
+<input type="text" id="bank" placeholder="Bank Account Number" class="input">
+
+<input type="text" id="ifsc" placeholder="IFSC Code" class="input">
+
+<select id="state" class="input">
+
+<option>Select State</option>
+<option>Assam</option>
+<option>Maharashtra</option>
+<option>Gujarat</option>
+<option>Tamil Nadu</option>
+<option>Karnataka</option>
+
+</select>
+
+<input type="file" class="input">
+
+</div>
+
+<div class="mt-10 flex flex-wrap gap-5">
+
+<button
+onclick="checkEligibility()"
+class="gradient px-8 py-4 rounded-xl text-xl font-bold"
+>
+
+Check Eligibility
+
+</button>
+
+<button
+onclick="validateForm()"
+class="bg-orange-500 px-8 py-4 rounded-xl text-xl font-bold"
+>
+
+Validate Form
+
+</button>
+
+<button
+onclick="saveFormData()"
+class="bg-blue-600 px-8 py-4 rounded-xl text-xl font-bold"
+>
+
+Save Data
+
+</button>
+
+</div>
+
+<!-- RESULT -->
+<div
+id="result"
+class="glass rounded-3xl p-8 mt-10 min-h-[250px]"
+>
+
+<h3 class="text-3xl font-bold mb-5">
+AI Recommendations
+</h3>
+
+<p class="text-gray-200">
+Fill details to get AI suggestions.
+</p>
+
+</div>
+
+</div>
+
+<!-- CHATBOT -->
+<div class="glass rounded-3xl p-8 h-[750px] flex flex-col">
+
+<h2 class="text-3xl font-bold mb-6">
+AI Assistant
+</h2>
+
+<div
+id="chatMessages"
+class="flex-1 overflow-y-auto space-y-4"
+>
+
+<div class="bg-white/10 p-4 rounded-xl">
+
+🤖 Hello! Ask me about schemes,
+eligibility or form filling help.
+
+</div>
+
+</div>
+
+<div class="mt-5 flex gap-3">
+
+<input
+type="text"
+id="chatInput"
+placeholder="Ask anything..."
+class="input"
+>
+
+<button
+onclick="sendMessage()"
+class="bg-blue-600 px-6 rounded-xl"
+>
+
+Send
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- SCRIPT -->
+<script>
+
+/* Eligibility Engine */
+
+function checkEligibility(){
+
+const age=document.getElementById("age").value;
+const occupation=document.getElementById("occupation").value;
+const income=document.getElementById("income").value;
+const gender=document.getElementById("gender").value;
+
+let schemes=[];
+
+if(occupation==="Student"){
+
+schemes.push("National Scholarship Portal");
+schemes.push("Digital Education Scheme");
+
+}
+
+if(occupation==="Farmer"){
+
+schemes.push("PM Kisan");
+schemes.push("Crop Insurance Scheme");
+
+}
+
+if(gender==="Female"){
+
+schemes.push("Women Empowerment Scheme");
+
+}
+
+if(income<250000){
+
+schemes.push("Ayushman Bharat");
+
+}
+
+let html="";
+
+schemes.forEach((scheme)=>{
+
+html+=`
+
+<div class="glass p-5 rounded-2xl mb-5">
+
+<h3 class="text-2xl font-bold">
+${scheme}
+</h3>
+
+<p class="text-gray-200 mt-2">
+You may be eligible for this scheme.
+</p>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("result").innerHTML=html;
+
+}
+
+/* Validation */
+
+function validateForm(){
+
+const email=document.getElementById("email").value;
+const aadhaar=document.getElementById("aadhaar").value;
+
+if(!email.includes("@")){
+
+alert("Invalid Email");
+return;
+
+}
+
+if(aadhaar.length!==12){
+
+alert("Aadhaar must contain 12 digits");
+return;
+
+}
+
+alert("Form Validated Successfully");
+
+}
+
+/* Save Data */
+
+function saveFormData(){
+
+const formData={
+
+name:document.getElementById("fullName").value,
+email:document.getElementById("email").value,
+income:document.getElementById("income").value
+
+};
+
+localStorage.setItem(
+"schemeSathiForm",
+JSON.stringify(formData)
+);
+
+alert("Form Data Saved");
+
+}
+
+/* Chatbot */
+
+function sendMessage(){
+
+const input=document.getElementById("chatInput");
+const message=input.value;
+
+if(message.trim()==="") return;
+
+const messages=document.getElementById("chatMessages");
+
+messages.innerHTML+=`
+
+<div class="bg-blue-500/30 p-4 rounded-xl">
+${message}
+</div>
+
+`;
+
+let reply="";
+
+if(message.toLowerCase().includes("scholarship")){
+
+reply="You can apply for NSP and state scholarship schemes.";
+
+}
+
+else if(message.toLowerCase().includes("farmer")){
+
+reply="PM Kisan and Crop Insurance schemes are available.";
+
+}
+
+else if(message.toLowerCase().includes("income")){
+
+reply="Low income families can apply for Ayushman Bharat.";
+
+}
+
+else{
+
+reply="Please enter your details to get personalized recommendations.";
+
+}
+
+messages.innerHTML+=`
+
+<div class="bg-white/10 p-4 rounded-xl">
+🤖 ${reply}
+</div>
+
+`;
+
+messages.scrollTop=messages.scrollHeight;
+
+input.value="";
+
+}
+
+/* PDF Export */
+
+async function exportPDF(){
+
+const { jsPDF } = window.jspdf;
+
+const doc = new jsPDF();
+
+const name=document.getElementById("fullName").value;
+const email=document.getElementById("email").value;
+const income=document.getElementById("income").value;
+const occupation=document.getElementById("occupation").value;
+
+doc.setFontSize(22);
+
+doc.text("SchemeSathi Application",20,20);
+
+doc.setFontSize(14);
+
+doc.text(`Name: ${name}`,20,50);
+doc.text(`Email: ${email}`,20,65);
+doc.text(`Income: ${income}`,20,80);
+doc.text(`Occupation: ${occupation}`,20,95);
+
+doc.save("SchemeSathi-Application.pdf");
+
+}
+
+</script>
+
+</body>
+</html>
