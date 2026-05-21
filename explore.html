@@ -222,7 +222,6 @@ body{
 <div class="empty" id="emptyState">
   No schemes found
 </div>
-
 <script>
 
 let allSchemes = [];
@@ -361,30 +360,36 @@ function renderSchemes() {
 
     card.className = "scheme-card";
 
-   card.innerHTML = `
-  <h3>${scheme.name}</h3>
+    card.innerHTML = `
+      <h3>${scheme.name}</h3>
 
-  <div class="tag">
-    ${scheme.category}
-  </div>
+      <div class="tag">
+        ${scheme.category}
+      </div>
 
-  <p>
-    ${scheme.description}
-  </p>
+      <p>
+        ${scheme.description}
+      </p>
 
-  <a 
-    href="${scheme.link}" 
-    target="_blank"
-    class="apply-btn"
-    style="
-      display:block;
-      text-align:center;
-      text-decoration:none;
-    "
-  >
-    View Scheme
-  </a>
-`;
+      <a 
+        href="${scheme.link}" 
+        target="_blank"
+        class="apply-btn"
+        style="
+          display:block;
+          text-align:center;
+          text-decoration:none;
+        "
+      >
+        View Scheme
+      </a>
+    `;
+
+    grid.appendChild(card);
+
+  });
+
+}
 
 /* ================= SEARCH ================= */
 
@@ -397,6 +402,7 @@ document
 loadSchemes();
 
 </script>
+
 
 </body>
 </html>
