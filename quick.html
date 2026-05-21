@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,13 +8,10 @@
 
 <title>SchemeSathi AI Portal</title>
 
-<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- jsPDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
@@ -111,7 +106,7 @@ background:linear-gradient(to right,#22c55e,#3b82f6);
 
 <div class="background">
 
-<img src="Background.png">
+<img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=2070&auto=format&fit=crop">
 
 <div class="overlay"></div>
 
@@ -135,7 +130,29 @@ onAuthStateChanged
 
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-/* YOUR FIREBASE CONFIG */
+import {
+
+getFirestore,
+collection,
+addDoc,
+serverTimestamp
+
+}
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import {
+
+getStorage,
+ref,
+uploadBytes,
+getDownloadURL
+
+}
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
@@ -153,9 +170,15 @@ appId: "1:384640220695:web:f4ee2d706c098beef02652"
 
 };
 
+/* INITIALIZE */
+
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+const storage = getStorage(app);
 
 /* REGISTER */
 
@@ -243,9 +266,486 @@ document.getElementById("mainPortal").style.display="block";
 
 });
 
+/* AI ELIGIBILITY */
+
+function calculateEligibility(occupation,income){
+
+let score = 50;
+
+if(occupation==="Farmer") score+=30;
+
+if(occupation==="Student") score+=20;
+
+if(income<300000) score+=20;
+
+if(income>800000) score-=10;
+
+if(score>100) score=100;
+
+return score;
+
+}
+
+/* APPLICATION ID */
+
+function generateApplicationID(){
+
+return "SS-" +
+Math.floor(Math.random()*1000000);
+
+}
+
+/* SCHEMES */
+
+const schemes=[
+
+{
+name:"PM Kisan",
+occupation:"Farmer",
+income:500000,
+desc:"Farmer financial support scheme."
+},
+
+{
+name:"National Scholarship Portal",
+occupation:"Student",
+income:300000,
+desc:"Scholarship for students."
+},
+
+{
+name:"Ayushman Bharat",
+occupation:"Any",
+income:250000,
+desc:"Healthcare support scheme."
+},
+
+{
+name:"Startup India",
+occupation:"Business",
+income:9999999,
+desc:"Startup support initiative."
+}
+
+];
+
+/* FIND SCHEMES */
+
+window.findSchemes = function(){
+
+const occupation =
+document.getElementById("occupation").value;
+
+const income =
+parseInt(document.getElementById("income").value);
+
+let html="";
+
+schemes.forEach((scheme)=>{
+
+if(
+(
+scheme.occupation===occupation ||
+scheme.occupation==="Any"
+)
+&& income<=scheme.income
+){
+
+html += `
+
+<div class="schemeCard glass p-6 rounded-2xl">
+
+<h3 class="text-3xl font-bold">
+
+${scheme.name}
+
+</h3>
+
+<p class="text-gray-300 mt-3">
+
+${scheme.desc}
+
+</p>
+
+<button
+onclick="applyScheme('${scheme.name}')"
+class="gradient mt-5 px-6 py-3 rounded-xl font-bold"
+>
+
+Apply Now
+
+</button>
+
+</div>
+
+`;
+
+}
+
+});
+
+if(html===""){
+
+html=`
+<div class="glass p-6 rounded-2xl">
+No schemes found.
+</div>
+`;
+
+}
+
+document.getElementById("schemeResult").innerHTML=html;
+
+}
+
+/* APPLY */
+
+window.applyScheme = function(name){
+
+alert("Applying for "+name);
+
+simulateProgress();
+
+}
+
+/* AUTO APPLY */
+
+window.autoApply = async function(){
+
+const name =
+document.getElementById("fullName").value;
+
+const email =
+document.getElementById("email").value;
+
+const occupation =
+document.getElementById("occupation").value;
+
+const income =
+parseInt(document.getElementById("income").value);
+
+const aadhaar =
+document.getElementById("aadhaar").value;
+
+const mobile =
+document.getElementById("mobile").value;
+
+const file =
+document.getElementById("documentUpload").files[0];
+
+if(
+name==="" ||
+email==="" ||
+occupation==="Occupation" ||
+isNaN(income) ||
+aadhaar==="" ||
+mobile===""
+
+){
+
+alert("Please fill all fields");
+
+return;
+
+}
+
+/* ELIGIBILITY */
+
+const eligibility =
+calculateEligibility(
+occupation,
+income
+);
+
+/* APPLICATION ID */
+
+const applicationId =
+generateApplicationID();
+
+/* FILE UPLOAD */
+
+let fileURL="";
+
+if(file){
+
+const storageRef = ref(
+storage,
+"documents/" +
+Date.now() +
+"_" +
+file.name
+);
+
+await uploadBytes(storageRef,file);
+
+fileURL =
+await getDownloadURL(storageRef);
+
+}
+
+/* SAVE FIRESTORE */
+
+try{
+
+await addDoc(
+collection(db,"applications"),
+{
+
+name,
+email,
+occupation,
+income,
+aadhaar,
+mobile,
+eligibility,
+applicationId,
+fileURL,
+createdAt:serverTimestamp()
+
+}
+);
+
+/* SHOW RESULT */
+
+document.getElementById("schemeResult").innerHTML=`
+
+<div class="glass p-8 rounded-3xl">
+
+<h2 class="text-4xl font-bold">
+
+Application Submitted
+
+</h2>
+
+<div class="mt-6 space-y-4 text-xl">
+
+<p>
+Application ID:
+<span class="text-green-400">
+${applicationId}
+</span>
+</p>
+
+<p>
+Eligibility Score:
+<span class="text-blue-400">
+${eligibility}%
+</span>
+</p>
+
+<p>
+Government AI Form Generated Successfully.
+</p>
+
+<p>
+Documents Uploaded Successfully.
+</p>
+
+</div>
+
+</div>
+
+`;
+
+/* CHAT */
+
+document.getElementById("chatMessages").innerHTML += `
+
+<div class="bg-white/10 p-4 rounded-xl">
+
+🤖 AI Auto Apply Completed
+
+<br><br>
+
+✔ Documents Verified
+
+<br>
+
+✔ Government Form Filled
+
+<br>
+
+✔ Application Submitted
+
+<br><br>
+
+Application ID:
+<strong>${applicationId}</strong>
+
+</div>
+
+`;
+
+simulateProgress();
+
+}
+catch(error){
+
+alert(error.message);
+
+}
+
+}
+
+/* PROGRESS */
+
+window.simulateProgress = function(){
+
+const values=[25,50,75,100];
+
+document.getElementById("p1").style.width=values[0]+"%";
+document.getElementById("t1").innerText=values[0]+"%";
+
+setTimeout(()=>{
+
+document.getElementById("p2").style.width=values[1]+"%";
+document.getElementById("t2").innerText=values[1]+"%";
+
+},1000);
+
+setTimeout(()=>{
+
+document.getElementById("p3").style.width=values[2]+"%";
+document.getElementById("t3").innerText=values[2]+"%";
+
+},2000);
+
+setTimeout(()=>{
+
+document.getElementById("p4").style.width=values[3]+"%";
+document.getElementById("t4").innerText=values[3]+"%";
+
+},3000);
+
+}
+
+/* SAVE */
+
+window.saveData = function(){
+
+const data={
+
+name:document.getElementById("fullName").value,
+email:document.getElementById("email").value
+
+};
+
+localStorage.setItem(
+"schemeData",
+JSON.stringify(data)
+);
+
+alert("Data Saved");
+
+}
+
+/* CHAT */
+
+window.sendMessage = function(){
+
+const input =
+document.getElementById("chatInput");
+
+const msg =
+input.value;
+
+if(msg.trim()==="") return;
+
+const chat =
+document.getElementById("chatMessages");
+
+chat.innerHTML += `
+
+<div class="bg-blue-500/30 p-4 rounded-xl">
+
+${msg}
+
+</div>
+
+`;
+
+let reply="";
+
+if(msg.toLowerCase().includes("scholarship")){
+
+reply =
+"National Scholarship Portal is available.";
+
+}
+
+else if(msg.toLowerCase().includes("farmer")){
+
+reply =
+"PM Kisan scheme available.";
+
+}
+
+else{
+
+reply =
+"Please fill details to continue.";
+
+}
+
+chat.innerHTML += `
+
+<div class="bg-white/10 p-4 rounded-xl">
+
+🤖 ${reply}
+
+</div>
+
+`;
+
+chat.scrollTop =
+chat.scrollHeight;
+
+input.value="";
+
+}
+
+/* EXPORT PDF */
+
+window.exportPDF = async function(){
+
+const { jsPDF } = window.jspdf;
+
+const doc = new jsPDF();
+
+doc.setFontSize(22);
+
+doc.text("SchemeSathi Application",20,20);
+
+doc.setFontSize(14);
+
+doc.text(
+"Name: "+
+document.getElementById("fullName").value,
+20,
+50
+);
+
+doc.text(
+"Email: "+
+document.getElementById("email").value,
+20,
+65
+);
+
+doc.text(
+"Occupation: "+
+document.getElementById("occupation").value,
+20,
+80
+);
+
+doc.save("SchemeSathi.pdf");
+
+}
+
 </script>
 
-<!-- AUTH PAGE -->
+<!-- AUTH -->
 
 <section
 id="authPage"
@@ -346,11 +846,9 @@ Login
 
 </section>
 
-<!-- MAIN PORTAL -->
+<!-- MAIN -->
 
 <div id="mainPortal" style="display:none;">
-
-<!-- NAVBAR -->
 
 <header class="glass sticky top-0 z-50 px-8 py-5">
 
@@ -388,8 +886,6 @@ Logout
 
 </header>
 
-<!-- HERO -->
-
 <section class="py-20 text-center px-6">
 
 <h1 class="text-6xl font-extrabold leading-tight">
@@ -410,8 +906,6 @@ and smart form filling.
 </p>
 
 </section>
-
-<!-- MAIN -->
 
 <section class="px-8 pb-24">
 
@@ -473,7 +967,7 @@ Applicant Details
 
 <input type="text" id="mobile" placeholder="Mobile Number" class="input">
 
-<input type="file" class="input">
+<input type="file" id="documentUpload" class="input">
 
 </div>
 
@@ -510,7 +1004,7 @@ Save Data
 
 </div>
 
-<!-- SCHEMES -->
+<!-- RESULT -->
 
 <div class="glass rounded-3xl p-8">
 
@@ -520,10 +1014,12 @@ Eligible Schemes
 
 </h2>
 
-<div id="schemeResult" class="space-y-5">
+<div id="schemeResult">
 
 <div class="text-gray-300">
+
 Fill details and click Find Schemes.
+
 </div>
 
 </div>
@@ -547,6 +1043,7 @@ Application Progress
 <div class="flex justify-between mb-3">
 
 <span>Profile Verification</span>
+
 <span id="t1">0%</span>
 
 </div>
@@ -564,6 +1061,7 @@ Application Progress
 <div class="flex justify-between mb-3">
 
 <span>Document Validation</span>
+
 <span id="t2">0%</span>
 
 </div>
@@ -581,6 +1079,7 @@ Application Progress
 <div class="flex justify-between mb-3">
 
 <span>Government Form Fill</span>
+
 <span id="t3">0%</span>
 
 </div>
@@ -598,6 +1097,7 @@ Application Progress
 <div class="flex justify-between mb-3">
 
 <span>Final Submission</span>
+
 <span id="t4">0%</span>
 
 </div>
@@ -618,9 +1118,7 @@ Application Progress
 
 <!-- RIGHT -->
 
-<div class="space-y-8">
-
-<!-- AI CHAT -->
+<div>
 
 <div class="glass rounded-3xl p-8 h-[750px] flex flex-col">
 
@@ -672,275 +1170,6 @@ Send
 </section>
 
 </div>
-
-<!-- MAIN SCRIPT -->
-
-<script>
-
-const schemes=[
-
-{
-name:"PM Kisan",
-occupation:"Farmer",
-income:500000,
-desc:"Farmer financial support scheme."
-},
-
-{
-name:"National Scholarship Portal",
-occupation:"Student",
-income:300000,
-desc:"Scholarship for students."
-},
-
-{
-name:"Ayushman Bharat",
-occupation:"Any",
-income:250000,
-desc:"Healthcare support scheme."
-},
-
-{
-name:"Startup India",
-occupation:"Business",
-income:9999999,
-desc:"Startup support initiative."
-}
-
-];
-
-function findSchemes(){
-
-const occupation=
-document.getElementById("occupation").value;
-
-const income=
-parseInt(document.getElementById("income").value);
-
-let html="";
-
-schemes.forEach((scheme)=>{
-
-if(
-(
-scheme.occupation===occupation ||
-scheme.occupation==="Any"
-)
-&& income<=scheme.income
-){
-
-html+=`
-
-<div class="schemeCard glass p-6 rounded-2xl">
-
-<h3 class="text-3xl font-bold">
-
-${scheme.name}
-
-</h3>
-
-<p class="text-gray-300 mt-3">
-
-${scheme.desc}
-
-</p>
-
-<button
-onclick="applyScheme('${scheme.name}')"
-class="gradient mt-5 px-6 py-3 rounded-xl font-bold"
->
-
-Apply Now
-
-</button>
-
-</div>
-
-`;
-
-}
-
-});
-
-if(html===""){
-
-html=`
-<div class="glass p-6 rounded-2xl">
-No schemes found.
-</div>
-`;
-
-}
-
-document.getElementById("schemeResult").innerHTML=html;
-
-}
-
-function applyScheme(name){
-
-alert(
-"Starting AI guided application for "+name
-);
-
-simulateProgress();
-
-}
-
-function autoApply(){
-
-alert(
-"AI Auto Apply Started.\n\nThe portal will:\n\n• Validate details\n• Guide application\n• Fill forms\n• Monitor progress"
-);
-
-simulateProgress();
-
-}
-
-function simulateProgress(){
-
-const values=[25,50,75,100];
-
-document.getElementById("p1").style.width=values[0]+"%";
-document.getElementById("t1").innerText=values[0]+"%";
-
-setTimeout(()=>{
-
-document.getElementById("p2").style.width=values[1]+"%";
-document.getElementById("t2").innerText=values[1]+"%";
-
-},1000);
-
-setTimeout(()=>{
-
-document.getElementById("p3").style.width=values[2]+"%";
-document.getElementById("t3").innerText=values[2]+"%";
-
-},2000);
-
-setTimeout(()=>{
-
-document.getElementById("p4").style.width=values[3]+"%";
-document.getElementById("t4").innerText=values[3]+"%";
-
-},3000);
-
-}
-
-function saveData(){
-
-const data={
-
-name:document.getElementById("fullName").value,
-email:document.getElementById("email").value,
-state:document.getElementById("state").value
-
-};
-
-localStorage.setItem(
-"schemeData",
-JSON.stringify(data)
-);
-
-alert("Application Saved");
-
-}
-
-function sendMessage(){
-
-const input=
-document.getElementById("chatInput");
-
-const msg=input.value;
-
-if(msg.trim()==="") return;
-
-const chat=
-document.getElementById("chatMessages");
-
-chat.innerHTML+=`
-
-<div class="bg-blue-500/30 p-4 rounded-xl">
-
-${msg}
-
-</div>
-
-`;
-
-let reply="";
-
-if(msg.toLowerCase().includes("scholarship")){
-
-reply="You can apply for NSP scholarship directly from this portal.";
-
-}
-
-else if(msg.toLowerCase().includes("farmer")){
-
-reply="PM Kisan scheme is available.";
-
-}
-
-else{
-
-reply="Fill your details and select a scheme to continue.";
-
-}
-
-chat.innerHTML+=`
-
-<div class="bg-white/10 p-4 rounded-xl">
-
-🤖 ${reply}
-
-</div>
-
-`;
-
-chat.scrollTop=chat.scrollHeight;
-
-input.value="";
-
-}
-
-async function exportPDF(){
-
-const { jsPDF } = window.jspdf;
-
-const doc=new jsPDF();
-
-doc.setFontSize(22);
-
-doc.text("SchemeSathi Application",20,20);
-
-doc.setFontSize(14);
-
-doc.text(
-"Name: "+
-document.getElementById("fullName").value,
-20,
-50
-);
-
-doc.text(
-"Email: "+
-document.getElementById("email").value,
-20,
-65
-);
-
-doc.text(
-"Occupation: "+
-document.getElementById("occupation").value,
-20,
-80
-);
-
-doc.save("SchemeSathi.pdf");
-
-}
-
-</script>
 
 </body>
 </html>
