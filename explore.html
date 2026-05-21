@@ -85,7 +85,20 @@ body{
   color:white;
   border-color:#ff7a00;
 }
-
+.apply-btn{
+  width:100%;
+  
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#ff7a00;
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+  display:block;
+  text-align:center;
+  text-decoration:none;
+}
 /* GRID */
 
 .scheme-grid{
@@ -348,27 +361,30 @@ function renderSchemes() {
 
     card.className = "scheme-card";
 
-    card.innerHTML = `
-      <h3>${scheme.name}</h3>
+   card.innerHTML = `
+  <h3>${scheme.name}</h3>
 
-      <div class="tag">
-        ${scheme.category}
-      </div>
+  <div class="tag">
+    ${scheme.category}
+  </div>
 
-      <p>
-        ${scheme.description}
-      </p>
+  <p>
+    ${scheme.description}
+  </p>
 
-      <button class="apply-btn">
-        View Scheme
-      </button>
-    `;
-
-    grid.appendChild(card);
-
-  });
-
-}
+  <a 
+    href="${scheme.link}" 
+    target="_blank"
+    class="apply-btn"
+    style="
+      display:block;
+      text-align:center;
+      text-decoration:none;
+    "
+  >
+    View Scheme
+  </a>
+`;
 
 /* ================= SEARCH ================= */
 
