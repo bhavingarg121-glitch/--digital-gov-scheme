@@ -1,198 +1,102 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>SchemeSathi Smart Dashboard</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SchemeSathi Dashboard</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet"
-/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-  font-family:'Poppins',sans-serif;
-  background:#07142b;
-  color:white;
-  overflow-x:hidden;
+font-family:'Poppins',sans-serif;
+background:#07142b;
+color:white;
+overflow-x:hidden;
 }
 
-/* BACKGROUND */
-
 .background{
-  position:fixed;
-  inset:0;
-  z-index:-2;
+position:fixed;
+inset:0;
+z-index:-2;
 }
 
 .background img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.35);
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(.3);
 }
 
 .overlay{
-  position:absolute;
-  inset:0;
-  background:
-  linear-gradient(
-    135deg,
-    rgba(7,20,43,.96),
-    rgba(15,23,42,.9),
-    rgba(249,115,22,.15)
-  );
+position:absolute;
+inset:0;
+background:linear-gradient(
+135deg,
+rgba(7,20,43,.95),
+rgba(15,23,42,.9),
+rgba(249,115,22,.15)
+);
 }
-
-/* GLASS */
 
 .glass{
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.1);
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,.1);
 }
-
-/* CARD */
-
-.card{
-  transition:.35s;
-}
-
-.card:hover{
-  transform:translateY(-8px) scale(1.02);
-}
-
-/* MAP CARD */
-
-.map-card{
-  width:100%;
-  max-width:500px;
-  aspect-ratio:1/1;
-
-  background:
-  linear-gradient(
-    145deg,
-    rgba(12,25,55,.95),
-    rgba(6,14,35,.95)
-  );
-
-  border-radius:35px;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  padding:25px;
-
-  position:relative;
-  overflow:hidden;
-
-  margin:auto;
-}
-
-.map-card::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-
-  background:
-  linear-gradient(
-    135deg,
-    #00bfff,
-    #7c3aed,
-    #00bfff
-  );
-
-  filter:blur(18px);
-  opacity:.45;
-}
-
-.india-map{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  position:relative;
-  z-index:1;
-  cursor:pointer;
-  transition:.4s;
-}
-
-.india-map:hover{
-  transform:scale(1.03);
-}
-
-/* SCHEME CARD */
 
 .scheme-card{
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:25px;
-  padding:25px;
-  transition:.35s;
+background:rgba(255,255,255,.08);
+border-radius:24px;
+padding:24px;
+transition:.3s;
 }
 
 .scheme-card:hover{
-  transform:translateY(-8px);
-}
-
-button{
-  transition:.3s;
+transform:translateY(-6px);
 }
 
 .gradient-text{
-  background:
-  linear-gradient(to right,#60a5fa,#f97316);
+background:linear-gradient(to right,#60a5fa,#f97316);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+button{
+transition:.3s;
 }
 
 </style>
-
 </head>
-
 <body>
 
-<!-- BACKGROUND -->
-
 <div class="background">
-
-<img src="Background.png">
-
+<img src="Background.png" alt="bg">
 <div class="overlay"></div>
-
 </div>
 
-<div class="max-w-[1600px] mx-auto">
+<div class="max-w-[1500px] mx-auto">
 
-<!-- NAVBAR -->
-
-<header class="sticky top-0 z-50 glass">
-
+<header class="glass sticky top-0 z-50">
 <div class="flex justify-between items-center px-8 py-5">
 
 <h1 class="text-4xl font-extrabold">
 SchemeSathi
 </h1>
 
-<div class="flex items-center gap-5">
+<div class="flex items-center gap-4">
 
-<button
-onclick="showNotifications()"
-class="bg-white/10 px-5 py-3 rounded-xl"
->
+<button onclick="showNotifications()" class="bg-white/10 px-5 py-3 rounded-xl">
 🔔
 </button>
 
@@ -201,14 +105,10 @@ class="bg-white/10 px-5 py-3 rounded-xl"
 </div>
 
 </div>
-
 </div>
-
 </header>
 
-<!-- HERO -->
-
-<section class="py-16 px-8">
+<section class="px-8 py-14">
 
 <div class="glass rounded-3xl p-10">
 
@@ -217,27 +117,21 @@ class="bg-white/10 px-5 py-3 rounded-xl"
 <div>
 
 <h1 class="text-6xl font-extrabold leading-tight">
-
 Smart
 <span class="gradient-text">
 Government Dashboard
 </span>
-
 </h1>
 
 <p class="text-xl text-gray-200 mt-8 max-w-3xl">
-
-Track applications, eligibility,
-saved schemes and state welfare programs.
-
+Track eligibility, applications and government schemes.
 </p>
 
 </div>
 
-<div class="glass rounded-3xl p-8 text-center min-w-[260px]">
+<div class="glass rounded-3xl p-8 text-center min-w-[250px]">
 
-<h2 id="eligibleCount"
-class="text-7xl font-extrabold text-blue-300">
+<h2 id="eligibleCount" class="text-7xl font-extrabold text-blue-300">
 0
 </h2>
 
@@ -253,8 +147,6 @@ Eligible Schemes
 
 </section>
 
-<!-- PROFILE -->
-
 <section class="px-8 py-10">
 
 <h2 class="text-4xl font-bold mb-8">
@@ -265,56 +157,28 @@ Profile
 
 <div class="space-y-5">
 
-<input
-id="userName"
-type="text"
-placeholder="Your Name"
-class="w-full bg-white/90 text-black px-5 py-4 rounded-xl"
-/>
+<input id="userName" type="text" placeholder="Your Name" class="w-full bg-white text-black px-5 py-4 rounded-xl">
 
-<input
-id="userIncome"
-type="number"
-placeholder="Family Income"
-class="w-full bg-white/90 text-black px-5 py-4 rounded-xl"
-/>
+<input id="userIncome" type="number" placeholder="Family Income" class="w-full bg-white text-black px-5 py-4 rounded-xl">
 
-<input
-id="userAge"
-type="number"
-placeholder="Age"
-class="w-full bg-white/90 text-black px-5 py-4 rounded-xl"
-/>
+<input id="userAge" type="number" placeholder="Age" class="w-full bg-white text-black px-5 py-4 rounded-xl">
 
-<select
-id="userOccupation"
-class="w-full bg-white/90 text-black px-5 py-4 rounded-xl"
->
-
+<select id="userOccupation" class="w-full bg-white text-black px-5 py-4 rounded-xl">
 <option>Student</option>
 <option>Farmer</option>
-<option>Business</option>
 <option>Employee</option>
-
+<option>Business</option>
 </select>
 
-<select
-id="stateFilter"
-class="w-full bg-white/90 text-black px-5 py-4 rounded-xl"
->
-
+<select id="stateFilter" class="w-full bg-white text-black px-5 py-4 rounded-xl">
 <option value="all">All States</option>
-<option value="Assam">Assam</option>
 <option value="Delhi">Delhi</option>
+<option value="Assam">Assam</option>
 <option value="Maharashtra">Maharashtra</option>
 <option value="Karnataka">Karnataka</option>
-
 </select>
 
-<button
-onclick="saveProfile()"
-class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-xl"
->
+<button onclick="saveProfile()" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-xl w-full">
 Save Profile
 </button>
 
@@ -326,59 +190,13 @@ Save Profile
 Application Tracker
 </h3>
 
-<div id="applicationTracker" class="space-y-5">
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- MAP -->
-
-<section class="py-20 px-8">
-
-<div class="grid lg:grid-cols-2 gap-16 items-center">
-
-<div class="map-card">
-
-<img
-src="Indian Map.png"
-class="india-map"
-onclick="openStates()"
-/>
-
-</div>
-
-<div>
-
-<h2 class="text-5xl font-extrabold mb-8">
-Interactive India Map
-</h2>
-
-<p class="text-xl text-gray-200 leading-relaxed mb-10">
-
-Click the India map to explore
-state-wise welfare schemes and recommendations.
-
-</p>
-
-<button
-onclick="openStates()"
-class="bg-gradient-to-r from-blue-600 to-orange-500 px-8 py-4 rounded-2xl text-xl font-bold"
->
-Explore States →
-</button>
+<div id="applicationTracker" class="space-y-5"></div>
 
 </div>
 
 </div>
 
 </section>
-
-<!-- RECOMMENDATIONS -->
 
 <section class="px-8 py-16">
 
@@ -388,25 +206,15 @@ Explore States →
 Recommended Schemes
 </h2>
 
-<button
-onclick="loadRecommendations()"
-class="bg-orange-500 px-6 py-3 rounded-xl"
->
+<button onclick="loadRecommendations()" class="bg-orange-500 px-6 py-3 rounded-xl">
 Refresh
 </button>
 
 </div>
 
-<div
-id="recommendations"
-class="grid md:grid-cols-3 gap-8"
->
-
-</div>
+<div id="recommendations" class="grid md:grid-cols-3 gap-8"></div>
 
 </section>
-
-<!-- SAVED -->
 
 <section class="px-8 py-16">
 
@@ -414,21 +222,11 @@ class="grid md:grid-cols-3 gap-8"
 Saved Schemes
 </h2>
 
-<div
-id="savedSchemes"
-class="grid md:grid-cols-3 gap-8"
->
-
-</div>
+<div id="savedSchemes" class="grid md:grid-cols-3 gap-8"></div>
 
 </section>
 
-<!-- NOTIFICATION PANEL -->
-
-<div
-id="notificationPanel"
-class="hidden fixed top-24 right-8 glass rounded-3xl p-6 w-[350px] z-50"
->
+<div id="notificationPanel" class="hidden fixed top-24 right-8 glass rounded-3xl p-6 w-[350px] z-50">
 
 <h3 class="text-2xl font-bold mb-5">
 Notifications
@@ -441,27 +239,20 @@ PM Kisan approved
 </div>
 
 <div class="glass p-4 rounded-xl">
-New Startup Scheme available
+Scholarship pending
 </div>
 
 <div class="glass p-4 rounded-xl">
-Scholarship verification pending
+New startup scheme available
 </div>
 
 </div>
 
 </div>
-
-<!-- SCRIPT -->
 
 <script type="module">
 
-/* =========================
-   FIREBASE IMPORTS
-========================= */
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
 getFirestore,
@@ -470,151 +261,69 @@ addDoc,
 getDocs,
 setDoc,
 doc
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
 getAuth,
 signInAnonymously
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-/* =========================
-   FIREBASE CONFIG
-========================= */
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-
 apiKey: "AIzaSyDVbSTJ5-JALcukU2FiavqeMqkvrKkfGS0",
-
 authDomain: "schemesathi-bfc0b.firebaseapp.com",
-
 projectId: "schemesathi-bfc0b",
-
 storageBucket: "schemesathi-bfc0b.firebasestorage.app",
-
 messagingSenderId: "384640220695",
-
-appId: "1:384640220695:web:f4ee2d706c098beef02652",
-
-measurementId: "G-GDCQQ50QWB"
-
+appId: "1:384640220695:web:f4ee2d706c098beef02652"
 };
 
-/* =========================
-   FIREBASE INIT
-========================= */
-
-const app =
-initializeApp(firebaseConfig);
-
-const db =
-getFirestore(app);
-
-const auth =
-getAuth(app);
-
-/* =========================
-   STORAGE
-========================= */
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
 
 let schemes = [];
 
-let savedSchemes =
-JSON.parse(
-localStorage.getItem("savedSchemes")
-) || [];
+let savedSchemes = JSON.parse(localStorage.getItem("savedSchemes")) || [];
 
-let profile =
-JSON.parse(
-localStorage.getItem("profile")
-) || {};
-
-/* =========================
-   LOGIN
-========================= */
+let profile = JSON.parse(localStorage.getItem("profile")) || {};
 
 signInAnonymously(auth)
-
 .then(()=>{
-
 console.log("Firebase Connected");
-
-loadSavedSchemes();
-
 })
-
-.catch((error)=>{
-
-console.log(error);
-
+.catch((err)=>{
+console.log(err);
 });
 
-/* =========================
-   LOAD PROFILE
-========================= */
+window.showNotifications = function(){
+document.getElementById("notificationPanel").classList.toggle("hidden");
+};
 
 function loadProfile(){
 
-if(profile.name){
+if(!profile) return;
 
-document.getElementById("userName").value =
-profile.name || "";
-
-document.getElementById("userIncome").value =
-profile.income || "";
-
-document.getElementById("userAge").value =
-profile.age || "";
-
-document.getElementById("userOccupation").value =
-profile.occupation || "";
-
-document.getElementById("stateFilter").value =
-profile.state || "all";
+document.getElementById("userName").value = profile.name || "";
+document.getElementById("userIncome").value = profile.income || "";
+document.getElementById("userAge").value = profile.age || "";
+document.getElementById("userOccupation").value = profile.occupation || "Student";
+document.getElementById("stateFilter").value = profile.state || "all";
 
 }
-
-}
-
-/* =========================
-   SAVE PROFILE
-========================= */
 
 window.saveProfile = async function(){
 
 profile = {
-
-name:
-document.getElementById("userName").value,
-
-income:
-document.getElementById("userIncome").value,
-
-age:
-document.getElementById("userAge").value,
-
-occupation:
-document.getElementById("userOccupation").value,
-
-state:
-document.getElementById("stateFilter").value
-
+name:document.getElementById("userName").value,
+income:document.getElementById("userIncome").value,
+age:document.getElementById("userAge").value,
+occupation:document.getElementById("userOccupation").value,
+state:document.getElementById("stateFilter").value
 };
 
-/* LOCAL STORAGE */
+localStorage.setItem("profile",JSON.stringify(profile));
 
-localStorage.setItem(
-"profile",
-JSON.stringify(profile)
-);
-
-/* FIREBASE SAVE */
-
-await setDoc(
-doc(db,"profiles","mainUser"),
-profile
-);
+await setDoc(doc(db,"profiles","mainUser"),profile);
 
 alert("Profile Saved");
 
@@ -622,109 +331,61 @@ loadRecommendations();
 
 };
 
-/* =========================
-   FETCH SCHEMES
-========================= */
-
 fetch("explore.json")
-
 .then(res=>res.json())
-
 .then(data=>{
 
-schemes=data;
+schemes = data.schemes || data;
 
 loadRecommendations();
-
+renderSaved();
 renderTracker();
 
 })
-
-.catch(error=>{
-
-console.log(error);
-
+.catch(err=>{
+console.log(err);
 });
 
-/* =========================
-   RECOMMEND ENGINE
-========================= */
+window.loadRecommendations = function(){
 
-function loadRecommendations(){
+const container = document.getElementById("recommendations");
+container.innerHTML = "";
 
-const container =
-document.getElementById("recommendations");
-
-if(!container) return;
-
-container.innerHTML="";
-
-let filtered =
-schemes.filter(scheme=>{
+let filtered = schemes.filter(scheme=>{
 
 let matchOccupation = true;
 let matchState = true;
 
 if(profile.occupation){
-
-matchOccupation =
-scheme.category
-?.toLowerCase()
-.includes(
-profile.occupation.toLowerCase()
-);
-
+matchOccupation = (scheme.category || "")
+.toLowerCase()
+.includes(profile.occupation.toLowerCase());
 }
 
-if(
-profile.state &&
-profile.state !== "all"
-){
-
-matchState =
-scheme.state === profile.state;
-
+if(profile.state && profile.state !== "all"){
+matchState = scheme.state === profile.state;
 }
 
 return matchOccupation || matchState;
 
 });
 
-/* FALLBACK */
-
-if(filtered.length===0){
-
-filtered =
-schemes.slice(0,6);
-
+if(filtered.length === 0){
+filtered = schemes.slice(0,6);
 }
 
-/* COUNT */
-
-const eligible =
-document.getElementById("eligibleCount");
-
-if(eligible){
-
-eligible.innerText =
-filtered.length;
-
-}
-
-/* RENDER */
+document.getElementById("eligibleCount").innerText = filtered.length;
 
 filtered.slice(0,6).forEach(scheme=>{
 
-const card =
-document.createElement("div");
+const card = document.createElement("div");
 
-card.className =
-"scheme-card";
+card.className = "scheme-card";
 
 card.innerHTML = `
 
 <h3 class="text-3xl font-bold">
-${scheme.title || "Scheme"}
+${scheme.name || scheme.title || "Scheme"}
 </h3>
 
 <p class="mt-5 text-gray-200">
@@ -745,138 +406,62 @@ ${scheme.state || "India"}
 
 <div class="flex gap-4 mt-6">
 
-<button
-class="bg-blue-600 px-5 py-3 rounded-xl save-btn"
->
+<button class="bg-blue-600 px-5 py-3 rounded-xl save-btn">
 Save
 </button>
 
-<button
-class="bg-orange-500 px-5 py-3 rounded-xl"
->
+<a href="${scheme.link || '#'}" target="_blank" class="bg-orange-500 px-5 py-3 rounded-xl text-center">
 Apply
-</button>
+</a>
 
 </div>
 
 `;
 
-/* SAVE BUTTON */
-
-card
-.querySelector(".save-btn")
+card.querySelector(".save-btn")
 .addEventListener("click",()=>{
-
 saveScheme(scheme);
-
 });
 
 container.appendChild(card);
 
 });
 
-}
-
-/* =========================
-   SAVE SCHEME
-========================= */
+};
 
 window.saveScheme = async function(scheme){
 
 savedSchemes.push(scheme);
-
-/* LOCAL STORAGE */
 
 localStorage.setItem(
 "savedSchemes",
 JSON.stringify(savedSchemes)
 );
 
-/* FIREBASE */
-
-await addDoc(
-collection(db,"savedSchemes"),
-scheme
-);
-
-alert("Scheme Saved");
+await addDoc(collection(db,"savedSchemes"),scheme);
 
 renderSaved();
 
+alert("Scheme Saved");
+
 };
-
-/* =========================
-   LOAD FIREBASE SAVED
-========================= */
-
-async function loadSavedSchemes(){
-
-const container =
-document.getElementById("savedSchemes");
-
-if(!container) return;
-
-container.innerHTML="";
-
-const querySnapshot =
-await getDocs(
-collection(db,"savedSchemes")
-);
-
-querySnapshot.forEach((docItem)=>{
-
-const scheme =
-docItem.data();
-
-const card =
-document.createElement("div");
-
-card.className =
-"scheme-card";
-
-card.innerHTML = `
-
-<h3 class="text-2xl font-bold">
-${scheme.title || "Scheme"}
-</h3>
-
-<p class="mt-4 text-gray-200">
-${scheme.description || "No Description"}
-</p>
-
-`;
-
-container.appendChild(card);
-
-});
-
-}
-
-/* =========================
-   LOCAL SAVED
-========================= */
 
 function renderSaved(){
 
-const container =
-document.getElementById("savedSchemes");
+const container = document.getElementById("savedSchemes");
 
-if(!container) return;
-
-container.innerHTML="";
+container.innerHTML = "";
 
 savedSchemes.forEach(scheme=>{
 
-const card =
-document.createElement("div");
+const card = document.createElement("div");
 
-card.className =
-"scheme-card";
+card.className = "scheme-card";
 
 card.innerHTML = `
 
 <h3 class="text-2xl font-bold">
-${scheme.title || "Scheme"}
+${scheme.name || scheme.title}
 </h3>
 
 <p class="mt-4 text-gray-200">
@@ -891,37 +476,21 @@ container.appendChild(card);
 
 }
 
-/* =========================
-   TRACKER
-========================= */
-
 function renderTracker(){
 
-const tracker =
-document.getElementById("applicationTracker");
-
-if(!tracker) return;
+const tracker = document.getElementById("applicationTracker");
 
 tracker.innerHTML = `
 
 <div class="glass p-5 rounded-2xl">
 
 <div class="flex justify-between mb-3">
-
-<h4 class="text-2xl font-bold">
-PM Kisan
-</h4>
-
-<span class="text-green-300">
-Approved
-</span>
-
+<h4 class="text-2xl font-bold">PM Kisan</h4>
+<span class="text-green-300">Approved</span>
 </div>
 
 <div class="w-full bg-white/10 rounded-full h-4">
-
 <div class="bg-green-500 h-4 rounded-full w-full"></div>
-
 </div>
 
 </div>
@@ -929,21 +498,12 @@ Approved
 <div class="glass p-5 rounded-2xl mt-5">
 
 <div class="flex justify-between mb-3">
-
-<h4 class="text-2xl font-bold">
-Scholarship
-</h4>
-
-<span class="text-yellow-300">
-Pending
-</span>
-
+<h4 class="text-2xl font-bold">Scholarship</h4>
+<span class="text-yellow-300">Pending</span>
 </div>
 
 <div class="w-full bg-white/10 rounded-full h-4">
-
 <div class="bg-yellow-400 h-4 rounded-full w-[70%]"></div>
-
 </div>
 
 </div>
@@ -952,59 +512,13 @@ Pending
 
 }
 
-/* =========================
-   NOTIFICATIONS
-========================= */
-
-window.showNotifications = function(){
-
-document
-.getElementById("notificationPanel")
-.classList.toggle("hidden");
-
-};
-
-/* =========================
-   MAP
-========================= */
-
-window.openStates = function(){
-
-window.location.href =
-"states.html";
-
-};
-
-/* =========================
-   TEST FIREBASE
-========================= */
-
-window.testFirebase =
-async function(){
-
-await addDoc(
-collection(db,"test"),
-{
-message:"Firebase Working",
-time:Date.now()
-}
-);
-
-alert("Firebase Connected");
-
-};
-
-/* =========================
-   INIT
-========================= */
-
 loadProfile();
-
 renderSaved();
 
 </script>
 
 </div>
-
 </body>
 </html>
+
+
