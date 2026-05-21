@@ -1,13 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SchemeSathi Dashboard</title>
+<title>SchemeSathi AI</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -16,54 +14,36 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-font-family:'Poppins',sans-serif;
-background:#07142b;
-color:white;
+background:#020817;
 overflow-x:hidden;
+color:white;
 }
 
-.background{
+canvas{
 position:fixed;
 inset:0;
 z-index:-2;
 }
 
-.background img{
-width:100%;
-height:100%;
-object-fit:cover;
-filter:brightness(.3);
-}
-
-.overlay{
-position:absolute;
+.bg-glow{
+position:fixed;
 inset:0;
-background:linear-gradient(
-135deg,
-rgba(7,20,43,.95),
-rgba(15,23,42,.9),
-rgba(249,115,22,.15)
-);
+z-index:-1;
+background:
+radial-gradient(circle at top left,#2563eb55,transparent 30%),
+radial-gradient(circle at bottom right,#f9731655,transparent 30%),
+linear-gradient(135deg,#020817,#07142b,#111827);
 }
 
 .glass{
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(14px);
-border:1px solid rgba(255,255,255,.1);
-}
-
-.scheme-card{
-background:rgba(255,255,255,.08);
-border-radius:24px;
-padding:24px;
-transition:.3s;
-}
-
-.scheme-card:hover{
-transform:translateY(-6px);
+background:rgba(255,255,255,.07);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 0 30px rgba(0,0,0,.25);
 }
 
 .gradient-text{
@@ -72,125 +52,221 @@ background:linear-gradient(to right,#60a5fa,#f97316);
 -webkit-text-fill-color:transparent;
 }
 
-button{
+.card-hover{
+transition:.4s;
+}
+
+.card-hover:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 0 35px rgba(96,165,250,.2);
+}
+
+.glow-btn{
+background:linear-gradient(to right,#2563eb,#f97316);
 transition:.3s;
+}
+
+.glow-btn:hover{
+transform:scale(1.04);
+box-shadow:0 0 30px rgba(59,130,246,.4);
+}
+
+.chatbot{
+position:fixed;
+bottom:25px;
+right:25px;
+z-index:999;
+}
+
+.chat-window{
+width:340px;
+height:480px;
+display:none;
+flex-direction:column;
+overflow:hidden;
+}
+
+.message{
+padding:12px 15px;
+border-radius:14px;
+max-width:85%;
+margin-bottom:12px;
+font-size:14px;
+}
+
+.ai{
+background:#1e3a8a;
+align-self:flex-start;
+}
+
+.user{
+background:#f97316;
+align-self:flex-end;
+}
+
+.india-map path{
+fill:#1e3a8a;
+stroke:white;
+stroke-width:1;
+transition:.3s;
+cursor:pointer;
+}
+
+.india-map path:hover{
+fill:#f97316;
+transform:translateY(-2px);
+}
+
+.progress{
+height:10px;
+border-radius:20px;
+background:rgba(255,255,255,.1);
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+background:linear-gradient(to right,#2563eb,#f97316);
 }
 
 </style>
 </head>
 <body>
 
-<div class="background">
-<img src="Background.png" alt="bg">
-<div class="overlay"></div>
+<canvas id="particles"></canvas>
+<div class="bg-glow"></div>
+
+<div class="max-w-[1600px] mx-auto px-6">
+
+<nav class="glass mt-5 rounded-3xl px-8 py-5 flex justify-between items-center sticky top-4 z-50">
+
+<div>
+<h1 class="text-3xl font-extrabold">
+Scheme<span class="gradient-text">Sathi AI</span>
+</h1>
 </div>
 
-<div class="max-w-[1500px] mx-auto">
+<div class="hidden md:flex gap-8 text-gray-200">
+<a href="#features">Features</a>
+<a href="#eligibility">Eligibility</a>
+<a href="#map">Map</a>
+<a href="#schemes">Schemes</a>
+</div>
 
-<header class="glass sticky top-0 z-50">
-<div class="flex justify-between items-center px-8 py-5">
-
-<h1 class="text-4xl font-extrabold">
-SchemeSathi
-</h1>
-
-<div class="flex items-center gap-4">
-
-<button onclick="showNotifications()" class="bg-white/10 px-5 py-3 rounded-xl">
+<div class="flex gap-4 items-center">
+<button class="glass px-5 py-3 rounded-2xl">
 🔔
 </button>
-
-<div class="glass px-5 py-3 rounded-xl">
+<div class="glass px-5 py-3 rounded-2xl">
 👤 Bhavin
 </div>
-
 </div>
-</div>
-</header>
 
-<section class="px-8 py-14">
+</nav>
 
-<div class="glass rounded-3xl p-10">
+<section class="min-h-screen flex items-center">
 
-<div class="flex flex-col lg:flex-row justify-between gap-10 items-center">
+<div class="grid lg:grid-cols-2 gap-16 items-center w-full">
 
 <div>
 
-<h1 class="text-6xl font-extrabold leading-tight">
-Smart
-<span class="gradient-text">
-Government Dashboard
-</span>
+<div class="inline-block glass px-5 py-3 rounded-full mb-8 text-blue-300">
+✨ India's AI Government Platform
+</div>
+
+<h1 class="text-6xl lg:text-8xl font-extrabold leading-tight">
+Find Every
+<span class="gradient-text">Government Scheme</span>
+with AI
 </h1>
 
-<p class="text-xl text-gray-200 mt-8 max-w-3xl">
-Track eligibility, applications and government schemes.
+<p class="text-xl text-gray-300 mt-8 leading-relaxed max-w-2xl">
+Smart eligibility engine, AI assistant, real-time tracking and personalized welfare recommendations.
 </p>
 
-</div>
+<div class="flex gap-5 mt-10 flex-wrap">
 
-<div class="glass rounded-3xl p-8 text-center min-w-[250px]">
+<button class="glow-btn px-8 py-5 rounded-2xl text-lg font-bold">
+Start Exploring
+</button>
 
-<h2 id="eligibleCount" class="text-7xl font-extrabold text-blue-300">
-0
-</h2>
-
-<p class="text-2xl mt-4">
-Eligible Schemes
-</p>
+<button class="glass px-8 py-5 rounded-2xl text-lg">
+Watch Demo
+</button>
 
 </div>
 
+<div class="grid grid-cols-3 gap-5 mt-16">
+
+<div class="glass rounded-3xl p-6 text-center card-hover">
+<h2 class="text-4xl font-bold text-blue-300">500+</h2>
+<p class="mt-3 text-gray-300">Schemes</p>
+</div>
+
+<div class="glass rounded-3xl p-6 text-center card-hover">
+<h2 class="text-4xl font-bold text-orange-300">28</h2>
+<p class="mt-3 text-gray-300">States</p>
+</div>
+
+<div class="glass rounded-3xl p-6 text-center card-hover">
+<h2 class="text-4xl font-bold text-green-300">AI</h2>
+<p class="mt-3 text-gray-300">Powered</p>
 </div>
 
 </div>
 
-</section>
+</div>
 
-<section class="px-8 py-10">
+<div>
 
-<h2 class="text-4xl font-bold mb-8">
-Profile
-</h2>
+<div class="glass rounded-[40px] p-8 card-hover">
 
-<div class="glass rounded-3xl p-8 grid md:grid-cols-2 gap-8">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-3xl font-bold">AI Eligibility</h2>
+<div class="bg-green-500/20 text-green-300 px-4 py-2 rounded-full">
+LIVE
+</div>
+</div>
 
 <div class="space-y-5">
 
-<input id="userName" type="text" placeholder="Your Name" class="w-full bg-white text-black px-5 py-4 rounded-xl">
+<input id="name" type="text" placeholder="Your Name" class="w-full bg-white/90 text-black px-5 py-4 rounded-2xl outline-none">
 
-<input id="userIncome" type="number" placeholder="Family Income" class="w-full bg-white text-black px-5 py-4 rounded-xl">
+<input id="income" type="number" placeholder="Annual Income" class="w-full bg-white/90 text-black px-5 py-4 rounded-2xl outline-none">
 
-<input id="userAge" type="number" placeholder="Age" class="w-full bg-white text-black px-5 py-4 rounded-xl">
+<input id="age" type="number" placeholder="Age" class="w-full bg-white/90 text-black px-5 py-4 rounded-2xl outline-none">
 
-<select id="userOccupation" class="w-full bg-white text-black px-5 py-4 rounded-xl">
+<select id="occupation" class="w-full bg-white/90 text-black px-5 py-4 rounded-2xl outline-none">
 <option>Student</option>
 <option>Farmer</option>
-<option>Employee</option>
 <option>Business</option>
+<option>Employee</option>
+<option>Unemployed</option>
 </select>
 
-<select id="stateFilter" class="w-full bg-white text-black px-5 py-4 rounded-xl">
-<option value="all">All States</option>
-<option value="Delhi">Delhi</option>
-<option value="Assam">Assam</option>
-<option value="Maharashtra">Maharashtra</option>
-<option value="Karnataka">Karnataka</option>
+<select id="state" class="w-full bg-white/90 text-black px-5 py-4 rounded-2xl outline-none">
+<option>Delhi</option>
+<option>Assam</option>
+<option>Maharashtra</option>
+<option>Karnataka</option>
+<option>Punjab</option>
 </select>
 
-<button onclick="saveProfile()" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-xl w-full">
-Save Profile
+<button onclick="analyzeProfile()" class="glow-btn w-full py-5 rounded-2xl text-lg font-bold">
+Analyze Eligibility
 </button>
 
 </div>
 
-<div class="glass rounded-3xl p-8">
+<div id="resultBox" class="hidden mt-8 glass rounded-3xl p-6">
+<h3 class="text-2xl font-bold mb-4">AI Result</h3>
+<div class="progress mb-4">
+<div id="eligibilityBar" class="progress-bar" style="width:0%"></div>
+</div>
+<p id="eligibilityText" class="text-gray-200"></p>
+</div>
 
-<h3 class="text-3xl font-bold mb-6">
-Application Tracker
-</h3>
-
-<div id="applicationTracker" class="space-y-5"></div>
+</div>
 
 </div>
 
@@ -198,327 +274,362 @@ Application Tracker
 
 </section>
 
-<section class="px-8 py-16">
+<section id="features" class="py-24">
 
-<div class="flex justify-between items-center mb-10">
-
-<h2 class="text-5xl font-bold">
-Recommended Schemes
+<div class="text-center mb-20">
+<h2 class="text-6xl font-extrabold">
+Why SchemeSathi AI?
 </h2>
+<p class="text-gray-300 mt-6 text-xl">
+Built like a real GovTech startup platform.
+</p>
+</div>
 
-<button onclick="loadRecommendations()" class="bg-orange-500 px-6 py-3 rounded-xl">
-Refresh
+<div class="grid lg:grid-cols-3 gap-8">
+
+<div class="glass rounded-[30px] p-8 card-hover">
+<div class="text-5xl mb-6">🤖</div>
+<h3 class="text-3xl font-bold mb-5">AI Recommendation Engine</h3>
+<p class="text-gray-300 leading-relaxed">
+AI analyzes profile, state, income and occupation to recommend the best schemes.
+</p>
+</div>
+
+<div class="glass rounded-[30px] p-8 card-hover">
+<div class="text-5xl mb-6">📊</div>
+<h3 class="text-3xl font-bold mb-5">Application Tracking</h3>
+<p class="text-gray-300 leading-relaxed">
+Track submitted applications, pending verification and approval stages.
+</p>
+</div>
+
+<div class="glass rounded-[30px] p-8 card-hover">
+<div class="text-5xl mb-6">🗺️</div>
+<h3 class="text-3xl font-bold mb-5">Interactive India Map</h3>
+<p class="text-gray-300 leading-relaxed">
+Explore schemes state-wise using a futuristic interactive India map.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="map" class="py-24">
+
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+
+<div>
+<h2 class="text-6xl font-extrabold leading-tight">
+Explore India State Wise
+</h2>
+<p class="text-xl text-gray-300 mt-8 leading-relaxed">
+Click states to discover welfare schemes, startup subsidies and student benefits.
+</p>
+
+<div class="grid grid-cols-2 gap-5 mt-12">
+
+<div class="glass rounded-3xl p-6">
+<h3 class="text-4xl font-bold text-blue-300">120+</h3>
+<p class="mt-3 text-gray-300">Farmer Schemes</p>
+</div>
+
+<div class="glass rounded-3xl p-6">
+<h3 class="text-4xl font-bold text-orange-300">90+</h3>
+<p class="mt-3 text-gray-300">Student Schemes</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="glass rounded-[40px] p-8 card-hover">
+
+<svg viewBox="0 0 500 500" class="india-map w-full">
+<path d="M171 90 L245 55 L305 75 L355 130 L340 230 L290 330 L210 350 L140 300 L115 210 Z"></path>
+</svg>
+
+<p class="text-center text-gray-300 mt-5">
+Interactive India Map Prototype
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="schemes" class="py-24">
+
+<div class="flex justify-between items-center mb-16 flex-wrap gap-5">
+
+<div>
+<h2 class="text-6xl font-extrabold">
+Trending Schemes
+</h2>
+<p class="text-gray-300 mt-4 text-xl">
+AI recommended welfare programs.
+</p>
+</div>
+
+<button class="glow-btn px-8 py-4 rounded-2xl font-bold">
+Explore All
 </button>
 
 </div>
 
-<div id="recommendations" class="grid md:grid-cols-3 gap-8"></div>
+<div class="grid lg:grid-cols-3 gap-8">
 
-</section>
+<div class="glass rounded-[35px] p-8 card-hover">
 
-<section class="px-8 py-16">
-
-<h2 class="text-5xl font-bold mb-10">
-Saved Schemes
-</h2>
-
-<div id="savedSchemes" class="grid md:grid-cols-3 gap-8"></div>
-
-</section>
-
-<div id="notificationPanel" class="hidden fixed top-24 right-8 glass rounded-3xl p-6 w-[350px] z-50">
-
-<h3 class="text-2xl font-bold mb-5">
-Notifications
-</h3>
-
-<div class="space-y-4">
-
-<div class="glass p-4 rounded-xl">
-PM Kisan approved
+<div class="flex justify-between items-center mb-6">
+<div class="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full">
+Farmer
 </div>
-
-<div class="glass p-4 rounded-xl">
-Scholarship pending
+<div class="text-yellow-300">⭐ 98%</div>
 </div>
-
-<div class="glass p-4 rounded-xl">
-New startup scheme available
-</div>
-
-</div>
-
-</div>
-
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-getFirestore,
-collection,
-addDoc,
-getDocs,
-setDoc,
-doc
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-import {
-getAuth,
-signInAnonymously
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-const firebaseConfig = {
-apiKey: "AIzaSyDVbSTJ5-JALcukU2FiavqeMqkvrKkfGS0",
-authDomain: "schemesathi-bfc0b.firebaseapp.com",
-projectId: "schemesathi-bfc0b",
-storageBucket: "schemesathi-bfc0b.firebasestorage.app",
-messagingSenderId: "384640220695",
-appId: "1:384640220695:web:f4ee2d706c098beef02652"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-
-let schemes = [];
-
-let savedSchemes = JSON.parse(localStorage.getItem("savedSchemes")) || [];
-
-let profile = JSON.parse(localStorage.getItem("profile")) || {};
-
-signInAnonymously(auth)
-.then(()=>{
-console.log("Firebase Connected");
-})
-.catch((err)=>{
-console.log(err);
-});
-
-window.showNotifications = function(){
-document.getElementById("notificationPanel").classList.toggle("hidden");
-};
-
-function loadProfile(){
-
-if(!profile) return;
-
-document.getElementById("userName").value = profile.name || "";
-document.getElementById("userIncome").value = profile.income || "";
-document.getElementById("userAge").value = profile.age || "";
-document.getElementById("userOccupation").value = profile.occupation || "Student";
-document.getElementById("stateFilter").value = profile.state || "all";
-
-}
-
-window.saveProfile = async function(){
-
-profile = {
-name:document.getElementById("userName").value,
-income:document.getElementById("userIncome").value,
-age:document.getElementById("userAge").value,
-occupation:document.getElementById("userOccupation").value,
-state:document.getElementById("stateFilter").value
-};
-
-localStorage.setItem("profile",JSON.stringify(profile));
-
-await setDoc(doc(db,"profiles","mainUser"),profile);
-
-alert("Profile Saved");
-
-loadRecommendations();
-
-};
-
-fetch("explore.json")
-.then(res=>res.json())
-.then(data=>{
-
-schemes = data.schemes || data;
-
-loadRecommendations();
-renderSaved();
-renderTracker();
-
-})
-.catch(err=>{
-console.log(err);
-});
-
-window.loadRecommendations = function(){
-
-const container = document.getElementById("recommendations");
-container.innerHTML = "";
-
-let filtered = schemes.filter(scheme=>{
-
-let matchOccupation = true;
-let matchState = true;
-
-if(profile.occupation){
-matchOccupation = (scheme.category || "")
-.toLowerCase()
-.includes(profile.occupation.toLowerCase());
-}
-
-if(profile.state && profile.state !== "all"){
-matchState = scheme.state === profile.state;
-}
-
-return matchOccupation || matchState;
-
-});
-
-if(filtered.length === 0){
-filtered = schemes.slice(0,6);
-}
-
-document.getElementById("eligibleCount").innerText = filtered.length;
-
-filtered.slice(0,6).forEach(scheme=>{
-
-const card = document.createElement("div");
-
-card.className = "scheme-card";
-
-card.innerHTML = `
 
 <h3 class="text-3xl font-bold">
-${scheme.name || scheme.title || "Scheme"}
+PM Kisan Yojana
 </h3>
 
-<p class="mt-5 text-gray-200">
-${scheme.description || "No Description"}
+<p class="text-gray-300 mt-5 leading-relaxed">
+Financial support for farmers with direct benefit transfer.
 </p>
 
-<div class="flex gap-3 mt-5 flex-wrap">
-
-<span class="bg-blue-500/20 px-4 py-2 rounded-full">
-${scheme.category || "General"}
-</span>
-
-<span class="bg-orange-500/20 px-4 py-2 rounded-full">
-${scheme.state || "India"}
-</span>
-
+<div class="progress mt-6">
+<div class="progress-bar" style="width:95%"></div>
 </div>
 
-<div class="flex gap-4 mt-6">
-
-<button class="bg-blue-600 px-5 py-3 rounded-xl save-btn">
+<div class="flex gap-4 mt-8">
+<button class="glow-btn px-6 py-4 rounded-2xl flex-1">
+Apply
+</button>
+<button class="glass px-6 py-4 rounded-2xl">
 Save
 </button>
-
-<a href="${scheme.link || '#'}" target="_blank" class="bg-orange-500 px-5 py-3 rounded-xl text-center">
-Apply
-</a>
+</div>
 
 </div>
 
-`;
+<div class="glass rounded-[35px] p-8 card-hover">
 
-card.querySelector(".save-btn")
-.addEventListener("click",()=>{
-saveScheme(scheme);
-});
+<div class="flex justify-between items-center mb-6">
+<div class="bg-orange-500/20 text-orange-300 px-4 py-2 rounded-full">
+Student
+</div>
+<div class="text-yellow-300">⭐ 92%</div>
+</div>
 
-container.appendChild(card);
-
-});
-
-};
-
-window.saveScheme = async function(scheme){
-
-savedSchemes.push(scheme);
-
-localStorage.setItem(
-"savedSchemes",
-JSON.stringify(savedSchemes)
-);
-
-await addDoc(collection(db,"savedSchemes"),scheme);
-
-renderSaved();
-
-alert("Scheme Saved");
-
-};
-
-function renderSaved(){
-
-const container = document.getElementById("savedSchemes");
-
-container.innerHTML = "";
-
-savedSchemes.forEach(scheme=>{
-
-const card = document.createElement("div");
-
-card.className = "scheme-card";
-
-card.innerHTML = `
-
-<h3 class="text-2xl font-bold">
-${scheme.name || scheme.title}
+<h3 class="text-3xl font-bold">
+National Scholarship
 </h3>
 
-<p class="mt-4 text-gray-200">
-${scheme.description || "No Description"}
+<p class="text-gray-300 mt-5 leading-relaxed">
+Scholarships for students pursuing higher education.
 </p>
 
-`;
+<div class="progress mt-6">
+<div class="progress-bar" style="width:88%"></div>
+</div>
 
-container.appendChild(card);
+<div class="flex gap-4 mt-8">
+<button class="glow-btn px-6 py-4 rounded-2xl flex-1">
+Apply
+</button>
+<button class="glass px-6 py-4 rounded-2xl">
+Save
+</button>
+</div>
 
+</div>
+
+<div class="glass rounded-[35px] p-8 card-hover">
+
+<div class="flex justify-between items-center mb-6">
+<div class="bg-green-500/20 text-green-300 px-4 py-2 rounded-full">
+Startup
+</div>
+<div class="text-yellow-300">⭐ 89%</div>
+</div>
+
+<h3 class="text-3xl font-bold">
+Startup India Seed Fund
+</h3>
+
+<p class="text-gray-300 mt-5 leading-relaxed">
+Funding support for innovative startups and entrepreneurs.
+</p>
+
+<div class="progress mt-6">
+<div class="progress-bar" style="width:82%"></div>
+</div>
+
+<div class="flex gap-4 mt-8">
+<button class="glow-btn px-6 py-4 rounded-2xl flex-1">
+Apply
+</button>
+<button class="glass px-6 py-4 rounded-2xl">
+Save
+</button>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer class="py-16 text-center text-gray-400">
+Built with ❤️ by Bhavin Garg • SchemeSathi AI
+</footer>
+
+</div>
+
+<div class="chatbot">
+
+<div id="chatWindow" class="chat-window glass rounded-[30px] mb-5 p-5">
+
+<div class="flex justify-between items-center mb-5">
+<h3 class="text-2xl font-bold">AI Assistant</h3>
+<button onclick="toggleChat()">✖</button>
+</div>
+
+<div id="messages" class="flex-1 overflow-y-auto flex flex-col mb-5">
+<div class="message ai">
+Hello 👋 Ask me about schemes.
+</div>
+</div>
+
+<div class="flex gap-3">
+<input id="chatInput" type="text" placeholder="Ask AI..." class="flex-1 bg-white/10 px-4 py-3 rounded-2xl outline-none">
+<button onclick="sendMessage()" class="glow-btn px-5 rounded-2xl">
+➤
+</button>
+</div>
+
+</div>
+
+<button onclick="toggleChat()" class="glow-btn w-20 h-20 rounded-full text-3xl shadow-2xl">
+🤖
+</button>
+
+</div>
+
+<script>
+
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*3,
+dx:(Math.random()-.5)*1,
+dy:(Math.random()-.5)*1
+});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle='rgba(255,255,255,.5)';
+ctx.fill();
+
+p.x+=p.dx;
+p.y+=p.dy;
+
+if(p.x<0||p.x>canvas.width)p.dx*=-1;
+if(p.y<0||p.y>canvas.height)p.dy*=-1;
 });
 
+requestAnimationFrame(animate);
 }
 
-function renderTracker(){
+animate();
 
-const tracker = document.getElementById("applicationTracker");
+function analyzeProfile(){
 
-tracker.innerHTML = `
+const income = document.getElementById('income').value;
+const occupation = document.getElementById('occupation').value;
 
-<div class="glass p-5 rounded-2xl">
+const resultBox = document.getElementById('resultBox');
+const bar = document.getElementById('eligibilityBar');
+const text = document.getElementById('eligibilityText');
 
-<div class="flex justify-between mb-3">
-<h4 class="text-2xl font-bold">PM Kisan</h4>
-<span class="text-green-300">Approved</span>
-</div>
+resultBox.classList.remove('hidden');
 
-<div class="w-full bg-white/10 rounded-full h-4">
-<div class="bg-green-500 h-4 rounded-full w-full"></div>
-</div>
+let score = 60;
 
-</div>
+if(income < 300000) score += 20;
+if(occupation === 'Student') score += 10;
+if(occupation === 'Farmer') score += 15;
 
-<div class="glass p-5 rounded-2xl mt-5">
+bar.style.width = score + '%';
 
-<div class="flex justify-between mb-3">
-<h4 class="text-2xl font-bold">Scholarship</h4>
-<span class="text-yellow-300">Pending</span>
-</div>
-
-<div class="w-full bg-white/10 rounded-full h-4">
-<div class="bg-yellow-400 h-4 rounded-full w-[70%]"></div>
-</div>
-
-</div>
-
+text.innerHTML = `
+${score}% Eligible <br><br>
+✔ AI found matching schemes <br>
+✔ Income criteria matched <br>
+✔ State schemes available <br>
+✔ Occupation benefits available
 `;
 
 }
 
-loadProfile();
-renderSaved();
+function toggleChat(){
+
+const chat = document.getElementById('chatWindow');
+
+if(chat.style.display === 'flex'){
+chat.style.display = 'none';
+}else{
+chat.style.display = 'flex';
+}
+
+}
+
+function sendMessage(){
+
+const input = document.getElementById('chatInput');
+const messages = document.getElementById('messages');
+
+if(input.value.trim()==='') return;
+
+const userMsg = document.createElement('div');
+userMsg.className = 'message user';
+userMsg.innerText = input.value;
+messages.appendChild(userMsg);
+
+const aiMsg = document.createElement('div');
+aiMsg.className = 'message ai';
+
+if(input.value.toLowerCase().includes('student')){
+aiMsg.innerText = 'You may be eligible for scholarship schemes and education grants.';
+}else if(input.value.toLowerCase().includes('farmer')){
+aiMsg.innerText = 'PM Kisan and agriculture subsidy schemes are available.';
+}else{
+aiMsg.innerText = 'AI is analyzing your request and finding schemes.';
+}
+
+messages.appendChild(aiMsg);
+
+messages.scrollTop = messages.scrollHeight;
+
+input.value = '';
+
+}
 
 </script>
 
-</div>
 </body>
 </html>
-
-
