@@ -2,193 +2,444 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Digital Gov Login</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
-body {
-    background: #e6eef8;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+body{
+    background:#e6eef8;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
 }
 
-.container {
-    display: flex;
-    width: 900px;
-    height: 500px;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    overflow: hidden;
+/* MAIN CONTAINER */
+
+.container{
+    width:100%;
+    max-width:950px;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    display:flex;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* LEFT SIDE */
-.left {
-    width: 50%;
-    background: #f4f8fd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* LEFT */
+
+.left{
+    width:50%;
+    background:#f4f8fd;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
 }
 
-.left img {
-    width: 80%;
+.left img{
+    width:100%;
+    max-width:350px;
 }
 
-/* RIGHT SIDE */
-.right {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* RIGHT */
+
+.right{
+    width:50%;
+    padding:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.login-box {
-    width: 80%;
+.login-box{
+    width:100%;
 }
 
-.login-box h2 {
-    margin-bottom: 10px;
-    color: #2c3e50;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
 }
 
-.subtitle {
-    font-size: 14px;
-    color: gray;
-    margin-bottom: 20px;
+.logo-circle{
+    width:40px;
+    height:40px;
+    background:#2f6fed;
+    border-radius:50%;
 }
 
-label {
-    font-size: 14px;
-    margin-top: 10px;
-    display: block;
+.logo h1{
+    font-size:22px;
+    color:#2c3e50;
 }
 
-.input-box {
-    margin-top: 5px;
-    margin-bottom: 15px;
+.login-box h2{
+    margin-bottom:10px;
+    color:#2c3e50;
 }
 
-.input-box input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    outline: none;
+.subtitle{
+    color:#666;
+    margin-bottom:25px;
+    font-size:14px;
 }
 
-.input-box input:focus {
-    border-color: #2f6fed;
+/* INPUTS */
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-size:14px;
+    color:#333;
 }
 
-.extra {
-    text-align: right;
-    margin-bottom: 15px;
+.input-box{
+    margin-bottom:18px;
+    position:relative;
 }
 
-.extra a {
-    font-size: 12px;
-    text-decoration: none;
-    color: #2f6fed;
+.input-box input{
+    width:100%;
+    padding:14px;
+    border:1px solid #dcdcdc;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+    transition:0.3s;
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background: #2f6fed;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
+.input-box input:focus{
+    border-color:#2f6fed;
 }
 
-button:hover {
-    background: #1d4ed8;
+.toggle-password{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    font-size:13px;
+    color:#2f6fed;
 }
 
-.signup {
-    margin-top: 15px;
-    font-size: 13px;
-    text-align: center;
+/* OPTIONS */
+
+.extra{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    font-size:13px;
 }
 
-.signup a {
-    color: #2f6fed;
-    text-decoration: none;
-    font-weight: bold;
+.extra a{
+    color:#2f6fed;
+    text-decoration:none;
 }
 
-footer {
-    margin-top: 15px;
-    font-size: 12px;
-    color: gray;
+/* BUTTON */
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#2f6fed;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
 }
+
+button:hover{
+    background:#1e56d0;
+}
+
+/* MESSAGE */
+
+.message{
+    margin-top:15px;
+    font-size:14px;
+    text-align:center;
+    display:none;
+}
+
+.success{
+    color:green;
+}
+
+.error{
+    color:red;
+}
+
+/* SIGNUP */
+
+.signup{
+    margin-top:20px;
+    text-align:center;
+    font-size:14px;
+}
+
+.signup a{
+    color:#2f6fed;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:20px;
+    text-align:center;
+    color:#666;
+    font-size:12px;
+    max-width:700px;
+    line-height:1.5;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .left,
+    .right{
+        width:100%;
+    }
+
+    .left{
+        padding:20px;
+    }
+
+}
+
 </style>
-
 </head>
+
 <body>
 
 <div class="container">
 
-    <!-- LEFT SIDE -->
-    <div class="left">
-        <!-- If using Flask -->
-        <!-- <img src="{{ url_for('static', filename='gov.png') }}"> -->
+    <!-- LEFT -->
 
-        <!-- If opening directly -->
-        <img src="gov.png" alt="illustration">
+    <div class="left">
+
+<img src="gov.png" alt="illustration">
+
     </div>
 
-    <!-- RIGHT SIDE -->
+    <!-- RIGHT -->
+
     <div class="right">
+
         <div class="login-box">
 
-            <h2>Login to Your Account</h2>
-            <p class="subtitle">Access government schemes easily</p>
+            <div class="logo">
 
-            <form method="POST">
+                <div class="logo-circle"></div>
+
+                <h1>Digital Gov</h1>
+
+            </div>
+
+            <h2>Login to Your Account</h2>
+
+            <p class="subtitle">
+                Access government schemes easily
+            </p>
+
+            <form id="loginForm">
+
+                <!-- USERNAME -->
 
                 <label>Username</label>
+
                 <div class="input-box">
-                    <input type="text" name="username" placeholder="Enter your username" required>
+
+                    <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter your username"
+                    required>
+
                 </div>
+
+                <!-- PASSWORD -->
 
                 <label>Password</label>
+
                 <div class="input-box">
-                    <input type="password" name="password" placeholder="Enter your password" required>
+
+                    <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required>
+
+                    <span
+                    class="toggle-password"
+                    onclick="togglePassword()">
+                    Show
+                    </span>
+
                 </div>
+
+                <!-- EXTRA -->
 
                 <div class="extra">
-                    <a href="#">Forgot Password?</a>
+
+                    <label>
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+
+                    <a href="#">
+                        Forgot Password?
+                    </a>
+
                 </div>
 
-                <button type="submit">Login</button>
+                <!-- BUTTON -->
 
-                <p class="signup">
+                <button type="submit">
+                    Login
+                </button>
+
+                <!-- MESSAGE -->
+
+                <div
+                class="message"
+                id="message">
+                </div>
+
+                <!-- SIGNUP -->
+
+                <div class="signup">
+
                     Don't have an account?
-                    <a href="/register">Sign Up Here</a>
-                </p>
+
+                    <a href="register.html">
+                        Sign Up
+                    </a>
+
+                </div>
 
             </form>
 
         </div>
+
     </div>
 
 </div>
 
 <footer>
-    Disclaimer: This is a helping platform created for informational purposes only and is not affiliated with the Government of India.
+
+    Disclaimer:
+    This is an independent helping platform
+    created for informational purposes only
+    and is not affiliated with the Government of India.
+
 </footer>
+
+<script>
+
+/* PASSWORD TOGGLE */
+
+function togglePassword(){
+
+    const password =
+        document.getElementById("password");
+
+    password.type =
+        password.type === "password"
+        ? "text"
+        : "password";
+
+}
+
+/* LOGIN */
+
+document
+.getElementById("loginForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const username =
+        document.getElementById("username").value;
+
+    const password =
+        document.getElementById("password").value;
+
+    const message =
+        document.getElementById("message");
+
+    /* DEMO LOGIN */
+
+    if(
+        username === "admin"
+        &&
+        password === "1234"
+    ){
+
+        localStorage.setItem(
+            "loggedIn",
+            "true"
+        );
+
+        localStorage.setItem(
+            "username",
+            username
+        );
+
+        message.style.display = "block";
+
+        message.className =
+            "message success";
+
+        message.innerHTML =
+            "Login successful! Redirecting...";
+
+        setTimeout(() => {
+
+            window.location.href =
+                "explore.html";
+
+        }, 1500);
+
+    }
+
+    else{
+
+        message.style.display = "block";
+
+        message.className =
+            "message error";
+
+        message.innerHTML =
+            "Invalid username or password";
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
