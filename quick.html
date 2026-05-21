@@ -10,7 +10,10 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet"
+/>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -152,25 +155,23 @@ getDownloadURL
 
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-/* FIREBASE CONFIG */
+/* FIREBASE */
 
 const firebaseConfig = {
 
-apiKey: "AIzaSyDVbSTJ5-JALcukU2FiavqeMqkvrKkfGS0",
+apiKey: "YOUR_API_KEY",
 
-authDomain: "schemesathi-bfc0b.firebaseapp.com",
+authDomain: "YOUR_AUTH_DOMAIN",
 
-projectId: "schemesathi-bfc0b",
+projectId: "YOUR_PROJECT_ID",
 
-storageBucket: "schemesathi-bfc0b.appspot.com",
+storageBucket: "YOUR_STORAGE_BUCKET",
 
-messagingSenderId: "384640220695",
+messagingSenderId: "YOUR_SENDER_ID",
 
-appId: "1:384640220695:web:f4ee2d706c098beef02652"
+appId: "YOUR_APP_ID"
 
 };
-
-/* INITIALIZE */
 
 const app = initializeApp(firebaseConfig);
 
@@ -266,19 +267,102 @@ document.getElementById("mainPortal").style.display="block";
 
 });
 
-/* AI ELIGIBILITY */
+/* SCHEMES */
+
+window.schemes=[
+
+{
+name:"PM Kisan",
+occupation:"Farmer",
+income:500000,
+desc:"Farmer financial support scheme.",
+portal:"https://pmkisan.gov.in/",
+documents:[
+"Aadhaar Card",
+"Bank Passbook",
+"Land Record",
+"Mobile Number"
+],
+steps:[
+"Verify Aadhaar",
+"Upload Land Documents",
+"Verify Bank Account",
+"Submit Farmer Registration"
+]
+},
+
+{
+name:"National Scholarship Portal",
+occupation:"Student",
+income:300000,
+desc:"Scholarship for students.",
+portal:"https://scholarships.gov.in/",
+documents:[
+"Aadhaar Card",
+"Income Certificate",
+"Bonafide Certificate",
+"Bank Account"
+],
+steps:[
+"Student Registration",
+"Academic Verification",
+"Document Upload",
+"Final Scholarship Submission"
+]
+},
+
+{
+name:"Ayushman Bharat",
+occupation:"Any",
+income:250000,
+desc:"Healthcare support scheme.",
+portal:"https://beneficiary.nha.gov.in/",
+documents:[
+"Aadhaar Card",
+"Ration Card",
+"Mobile Number"
+],
+steps:[
+"Identity Verification",
+"Family Verification",
+"Health Eligibility Check",
+"Generate Ayushman Card"
+]
+},
+
+{
+name:"Startup India",
+occupation:"Business",
+income:9999999,
+desc:"Startup support initiative.",
+portal:"https://www.startupindia.gov.in/",
+documents:[
+"PAN Card",
+"Business Registration",
+"Bank Account",
+"Startup Pitch"
+],
+steps:[
+"Startup Registration",
+"Business Verification",
+"Document Submission",
+"Startup Recognition"
+]
+}
+
+];
+
+/* ELIGIBILITY SCORE */
 
 function calculateEligibility(occupation,income){
 
-let score = 50;
+let score=50;
 
 if(occupation==="Farmer") score+=30;
 
 if(occupation==="Student") score+=20;
 
 if(income<300000) score+=20;
-
-if(income>800000) score-=10;
 
 if(score>100) score=100;
 
@@ -290,44 +374,9 @@ return score;
 
 function generateApplicationID(){
 
-return "SS-" +
-Math.floor(Math.random()*1000000);
+return "SS-"+Math.floor(Math.random()*1000000);
 
 }
-
-/* SCHEMES */
-
-const schemes=[
-
-{
-name:"PM Kisan",
-occupation:"Farmer",
-income:500000,
-desc:"Farmer financial support scheme."
-},
-
-{
-name:"National Scholarship Portal",
-occupation:"Student",
-income:300000,
-desc:"Scholarship for students."
-},
-
-{
-name:"Ayushman Bharat",
-occupation:"Any",
-income:250000,
-desc:"Healthcare support scheme."
-},
-
-{
-name:"Startup India",
-occupation:"Business",
-income:9999999,
-desc:"Startup support initiative."
-}
-
-];
 
 /* FIND SCHEMES */
 
@@ -367,14 +416,27 @@ ${scheme.desc}
 
 </p>
 
+<div class="flex flex-wrap gap-4 mt-5">
+
 <button
 onclick="applyScheme('${scheme.name}')"
-class="gradient mt-5 px-6 py-3 rounded-xl font-bold"
+class="gradient px-6 py-3 rounded-xl font-bold"
 >
 
-Apply Now
+AI Guided Apply
 
 </button>
+
+<button
+onclick="openOfficialPortal('${scheme.portal}')"
+class="bg-orange-500 px-6 py-3 rounded-xl font-bold"
+>
+
+Official Portal
+
+</button>
+
+</div>
 
 </div>
 
@@ -402,9 +464,266 @@ document.getElementById("schemeResult").innerHTML=html;
 
 window.applyScheme = function(name){
 
-alert("Applying for "+name);
+const scheme =
+schemes.find(s=>s.name===name);
+
+let docsHTML="";
+
+scheme.documents.forEach((doc)=>{
+
+docsHTML += `
+
+<div class="glass p-4 rounded-xl flex justify-between">
+
+<span>${doc}</span>
+
+<span class="text-yellow-400">
+
+Required
+
+</span>
+
+</div>
+
+`;
+
+});
+
+let stepsHTML="";
+
+scheme.steps.forEach((step,index)=>{
+
+stepsHTML += `
+
+<div class="glass p-5 rounded-2xl">
+
+<div class="flex gap-4 items-center">
+
+<div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
+
+${index+1}
+
+</div>
+
+<div>
+
+<h3 class="text-xl font-bold">
+
+${step}
+
+</h3>
+
+<p class="text-gray-300">
+
+AI assisted workflow step
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("guidedEngine").innerHTML=`
+
+<div class="space-y-8">
+
+<div class="glass p-6 rounded-3xl">
+
+<h3 class="text-3xl font-bold">
+
+${scheme.name}
+
+</h3>
+
+<p class="text-gray-300 mt-3">
+
+${scheme.desc}
+
+</p>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-bold mb-4">
+
+Eligibility Status
+
+</h3>
+
+<div class="glass p-5 rounded-2xl text-green-400 font-bold text-xl">
+
+✔ Eligible
+
+</div>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-bold mb-4">
+
+Required Documents
+
+</h3>
+
+<div class="space-y-4">
+
+${docsHTML}
+
+</div>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-bold mb-4">
+
+Step By Step Guide
+
+</h3>
+
+<div class="space-y-5">
+
+${stepsHTML}
+
+</div>
+
+</div>
+
+<div class="glass p-6 rounded-3xl">
+
+<h3 class="text-2xl font-bold mb-5">
+
+Semi Auto Application
+
+</h3>
+
+<div class="flex flex-wrap gap-4">
+
+<button
+onclick="openOfficialPortal('${scheme.portal}')"
+class="gradient px-6 py-4 rounded-xl font-bold"
+>
+
+Open Official Portal
+
+</button>
+
+<button
+onclick="copyApplicantData()"
+class="bg-blue-600 px-6 py-4 rounded-xl font-bold"
+>
+
+Copy Applicant Data
+
+</button>
+
+<button
+onclick="downloadChecklist('${scheme.name}')"
+class="bg-green-600 px-6 py-4 rounded-xl font-bold"
+>
+
+Download Checklist
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
 
 simulateProgress();
+
+}
+
+/* OFFICIAL PORTAL */
+
+window.openOfficialPortal = function(url){
+
+window.open(url,"_blank");
+
+}
+
+/* COPY DATA */
+
+window.copyApplicantData = function(){
+
+const data = `
+
+Name:
+${document.getElementById("fullName").value}
+
+Email:
+${document.getElementById("email").value}
+
+Occupation:
+${document.getElementById("occupation").value}
+
+Income:
+${document.getElementById("income").value}
+
+Aadhaar:
+${document.getElementById("aadhaar").value}
+
+Mobile:
+${document.getElementById("mobile").value}
+
+`;
+
+navigator.clipboard.writeText(data);
+
+alert("Applicant data copied.");
+
+}
+
+/* CHECKLIST PDF */
+
+window.downloadChecklist = async function(name){
+
+const scheme =
+schemes.find(s=>s.name===name);
+
+const { jsPDF } = window.jspdf;
+
+const doc = new jsPDF();
+
+doc.setFontSize(22);
+
+doc.text("Scheme Checklist",20,20);
+
+doc.setFontSize(16);
+
+doc.text("Scheme: "+scheme.name,20,40);
+
+doc.text("Documents:",20,60);
+
+let y=80;
+
+scheme.documents.forEach((d,index)=>{
+
+doc.text(
+(index+1)+". "+d,
+25,
+y
+);
+
+y+=15;
+
+});
+
+doc.save(
+scheme.name+"_Checklist.pdf"
+);
 
 }
 
@@ -437,27 +756,20 @@ if(
 name==="" ||
 email==="" ||
 occupation==="Occupation" ||
-isNaN(income) ||
-aadhaar==="" ||
-mobile===""
-
+isNaN(income)
 ){
 
-alert("Please fill all fields");
+alert("Please fill all details");
 
 return;
 
 }
-
-/* ELIGIBILITY */
 
 const eligibility =
 calculateEligibility(
 occupation,
 income
 );
-
-/* APPLICATION ID */
 
 const applicationId =
 generateApplicationID();
@@ -505,8 +817,6 @@ createdAt:serverTimestamp()
 }
 );
 
-/* SHOW RESULT */
-
 document.getElementById("schemeResult").innerHTML=`
 
 <div class="glass p-8 rounded-3xl">
@@ -534,11 +844,15 @@ ${eligibility}%
 </p>
 
 <p>
-Government AI Form Generated Successfully.
+✔ Documents Uploaded
 </p>
 
 <p>
-Documents Uploaded Successfully.
+✔ Government Form Generated
+</p>
+
+<p>
+✔ Semi Auto Application Ready
 </p>
 
 </div>
@@ -546,8 +860,6 @@ Documents Uploaded Successfully.
 </div>
 
 `;
-
-/* CHAT */
 
 document.getElementById("chatMessages").innerHTML += `
 
@@ -557,15 +869,15 @@ document.getElementById("chatMessages").innerHTML += `
 
 <br><br>
 
-✔ Documents Verified
+✔ Eligibility Verified
 
 <br>
 
-✔ Government Form Filled
+✔ Documents Uploaded
 
 <br>
 
-✔ Application Submitted
+✔ Government Form Ready
 
 <br><br>
 
@@ -619,26 +931,6 @@ document.getElementById("t4").innerText=values[3]+"%";
 
 }
 
-/* SAVE */
-
-window.saveData = function(){
-
-const data={
-
-name:document.getElementById("fullName").value,
-email:document.getElementById("email").value
-
-};
-
-localStorage.setItem(
-"schemeData",
-JSON.stringify(data)
-);
-
-alert("Data Saved");
-
-}
-
 /* CHAT */
 
 window.sendMessage = function(){
@@ -664,34 +956,11 @@ ${msg}
 
 `;
 
-let reply="";
-
-if(msg.toLowerCase().includes("scholarship")){
-
-reply =
-"National Scholarship Portal is available.";
-
-}
-
-else if(msg.toLowerCase().includes("farmer")){
-
-reply =
-"PM Kisan scheme available.";
-
-}
-
-else{
-
-reply =
-"Please fill details to continue.";
-
-}
-
 chat.innerHTML += `
 
 <div class="bg-white/10 p-4 rounded-xl">
 
-🤖 ${reply}
+🤖 AI Assistant is helping you with scheme guidance.
 
 </div>
 
@@ -745,7 +1014,7 @@ doc.save("SchemeSathi.pdf");
 
 </script>
 
-<!-- AUTH -->
+<!-- AUTH PAGE -->
 
 <section
 id="authPage"
@@ -846,7 +1115,7 @@ Login
 
 </section>
 
-<!-- MAIN -->
+<!-- MAIN PORTAL -->
 
 <div id="mainPortal" style="display:none;">
 
@@ -886,6 +1155,8 @@ Logout
 
 </header>
 
+<!-- HERO -->
+
 <section class="py-20 text-center px-6">
 
 <h1 class="text-6xl font-extrabold leading-tight">
@@ -898,14 +1169,17 @@ Directly From One Portal
 <p class="text-2xl text-gray-300 mt-6 max-w-4xl mx-auto">
 
 AI assisted application,
-document guidance,
 eligibility engine,
-tracking system,
-and smart form filling.
+guided workflow,
+document detection,
+semi-auto application,
+and smart support.
 
 </p>
 
 </section>
+
+<!-- MAIN -->
 
 <section class="px-8 pb-24">
 
@@ -958,8 +1232,8 @@ Applicant Details
 <option>Select State</option>
 <option>Gujarat</option>
 <option>Maharashtra</option>
-<option>Assam</option>
 <option>Delhi</option>
+<option>Assam</option>
 
 </select>
 
@@ -991,20 +1265,11 @@ Auto Apply
 
 </button>
 
-<button
-onclick="saveData()"
-class="bg-blue-600 px-8 py-4 rounded-xl text-lg font-bold"
->
-
-Save Data
-
-</button>
-
 </div>
 
 </div>
 
-<!-- RESULT -->
+<!-- SCHEMES -->
 
 <div class="glass rounded-3xl p-8">
 
@@ -1026,7 +1291,29 @@ Fill details and click Find Schemes.
 
 </div>
 
-<!-- TRACKER -->
+<!-- GUIDED ENGINE -->
+
+<div class="glass rounded-3xl p-8">
+
+<h2 class="text-4xl font-bold mb-8">
+
+AI Guided Application Engine
+
+</h2>
+
+<div id="guidedEngine">
+
+<div class="text-gray-300">
+
+Select a scheme to start AI guided workflow.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PROGRESS -->
 
 <div class="glass rounded-3xl p-8">
 
